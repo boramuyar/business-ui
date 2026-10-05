@@ -1,6 +1,6 @@
 # Checkbox
 
-Research only, no code. Scope: a single checkbox, the indeterminate (mixed) state, checkbox groups, and when Switch or Radio fits better. Labels, hints and error text belong to [Field](../field/README.md). This file only covers how Checkbox plugs into Field.
+Research only, no code. Scope: a single checkbox, the indeterminate (mixed) state, checkbox groups, and when Switch or Radio fits better. Labels, hints and error text belong to [Field](../../composites/field/README.md). This file only covers how Checkbox plugs into Field.
 
 Statements marked **Recommendation** are opinions for business-ui. Everything else comes from the cited sources.
 

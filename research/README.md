@@ -1,20 +1,40 @@
-# Primitives research
+# Component research
 
-Research only, no code. Each folder holds one primitive's findings on how it should behave: states, keyboard and pointer interaction, accessibility, API shape, and pitfalls seen in other libraries.
+Research only, no code. Each folder holds one component's findings on how it should behave: states, keyboard and pointer interaction, accessibility, API shape, and pitfalls seen in other libraries.
 
-## Why these seven
+Components are grouped by level:
 
-We start with the smallest set that can build a real business screen: a form inside a dialog, laid out cleanly, with a submit action.
+- **Primitives**: the smallest self-contained controls.
+- **Composites**: one level above, wrapping or combining primitives.
+- **Surfaces**: containers that layer content over the page.
+- **Layout**: helpers for arranging everything else.
 
-| Primitive | Why it is in the first set |
+## Primitives
+
+| Component | Why it is in the first set |
 | --- | --- |
-| [Button](./button/README.md) | Every action. Also the first place distinct hover/active/subtle tokens show up. |
-| [Input](./input/README.md) | Text entry, with adornments (icons, units, clear) instead of a bare `<input>`. |
-| [Field](./field/README.md) | Label, hint, error and grouping for any control. This is the "full field system". |
-| [Checkbox](./checkbox/README.md) | Booleans and multi-select, including indeterminate for table row selection. |
-| [Select](./select/README.md) | Picking one value from a list. Sets the line between Select and Combobox. |
-| [Dialog](./dialog/README.md) | Modal forms and destructive confirmations. Owns focus trap and scroll lock. |
-| [Stack](./stack/README.md) | The core layout helper, with notes on Grid, Container and Inline. |
+| [Button](./primitives/button/README.md) | Every action. Also the first place distinct hover/active/subtle tokens show up. |
+| [Input](./primitives/input/README.md) | Text entry, with adornments (icons, units, clear) instead of a bare `<input>`. |
+| [Checkbox](./primitives/checkbox/README.md) | Booleans and multi-select, including indeterminate for table row selection. |
+| [Select](./primitives/select/README.md) | Picking one value from a list. Sets the line between Select and Combobox. |
+
+## Composites
+
+| Component | Notes |
+| --- | --- |
+| [Field](./composites/field/README.md) | Label, hint, error and grouping for any primitive. This is the "full field system". |
+
+## Surfaces
+
+| Component | Notes |
+| --- | --- |
+| [Dialog](./surfaces/dialog/README.md) | Modal forms and destructive confirmations. Owns focus trap and scroll lock. |
+
+## Layout
+
+| Component | Notes |
+| --- | --- |
+| [Stack](./layout/stack/README.md) | The core layout helper, with notes on Grid, Container and Inline. |
 
 ## Deliberately left for later
 
