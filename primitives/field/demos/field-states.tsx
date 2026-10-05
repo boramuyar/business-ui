@@ -13,7 +13,7 @@ export function FieldStates() {
       <FieldError
         errors={[
           { message: "URLs cannot contain spaces." },
-          { message: "Use a .global domain." },
+          { message: "Use a .com domain." },
         ]}
       />
     </Field>
