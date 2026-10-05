@@ -1,0 +1,10 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "business-ui",
+  "homepage": "https://github.com/boramuyar/business-ui",
+  "include": [
+    "style/registry.json",
+    "hooks/registry.json",
+    "primitives/registry.json"
+  ]
+}

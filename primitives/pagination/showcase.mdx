@@ -1,0 +1,23 @@
+---
+title: Pagination
+description: Page navigation with previous/next and numbered links.
+status: stable
+---
+
+## Variants
+
+The full pattern: previous/next, numbered links, an active page, and an
+ellipsis.
+
+<Preview name="pagination-basic" />
+
+Previous/next accept custom `text` labels - the primitive detail pages use
+them for prev/next primitive navigation.
+
+<Preview name="pagination-text" />
+
+## Usage
+
+Use `pagination` for numbered page navigation in tables and lists. In SPA
+routes intercept the click and call the router; the links render real
+anchors for accessibility.

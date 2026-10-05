@@ -1,0 +1,36 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Sidebar UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "sidebar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/sidebar.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/button",
+        "boramuyar/business-ui/input",
+        "boramuyar/business-ui/separator",
+        "boramuyar/business-ui/sheet",
+        "boramuyar/business-ui/skeleton",
+        "boramuyar/business-ui/tooltip",
+        "boramuyar/business-ui/use-mobile"
+      ]
+    }
+  ]
+}

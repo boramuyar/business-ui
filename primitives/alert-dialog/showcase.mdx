@@ -1,0 +1,24 @@
+---
+title: Alert Dialog
+description: Interruptive confirmation for destructive or irreversible actions.
+status: stable
+---
+
+## Variants
+
+A destructive confirmation with cancel and action buttons.
+
+<Preview name="alert-dialog-variants" tall />
+
+## Composition
+
+`AlertDialogMedia` adds an icon inside the header; `AlertDialogInner` holds
+supporting body copy between header and footer.
+
+<Preview name="alert-dialog-composition" tall />
+
+## Usage
+
+Use `alert-dialog` only when the user must explicitly confirm or cancel - it
+traps focus and has no dismiss-on-outside-click. For ordinary tasks use
+`dialog`.

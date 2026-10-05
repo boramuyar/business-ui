@@ -1,0 +1,30 @@
+---
+title: Combobox
+description: Filterable input for picking one or many values from a list.
+status: stable
+---
+
+## Variants
+
+Single selection with text filtering, and a clearable value.
+
+<Preview tall name="combobox-basic" />
+
+<Preview tall name="combobox-clearable" />
+
+## States
+
+<Preview name="combobox-disabled" />
+
+## Composition
+
+Multiple selection renders chips inside the anchor; `ComboboxGroup` and
+`ComboboxLabel` organize grouped lists the same way `select` does.
+
+<Preview tall name="combobox-multiple" />
+
+## Usage
+
+Use `combobox` when the option list is long enough to need filtering or when
+selecting multiple values as chips. For short static lists use `select` or
+`native-select`; for command-style navigation use `command`.

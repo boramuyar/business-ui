@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+# Regenerate style/globals.css and style/registry.json when style sources are staged.
+set -e
+
+sources="style/colors.json style/tokens.json style/theme.json style/css.json"
+
+if ! git diff --cached --name-only -- $sources | grep -q .; then
+  exit 0
+fi
+
+if git diff --name-only -- $sources | grep -q .; then
+  echo "pre-commit: unstaged style source changes. Stage or stash them first." >&2
+  exit 1
+fi
+
+pnpm style:build
+git add style/globals.css style/registry.json

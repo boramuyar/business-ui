@@ -1,0 +1,26 @@
+---
+title: Command
+description: Searchable command list built on cmdk.
+status: stable
+---
+
+## Variants
+
+An inline command list with groups, shortcuts, and an empty state - type to
+filter.
+
+<Preview tall name="command-variants" />
+
+## Composition
+
+`CommandDialog` wraps the list in a modal - the showcase's own Ctrl+K palette
+is built exactly this way.
+
+<Preview name="command-composition" />
+
+## Usage
+
+Use `command` for keyboard-first navigation and action palettes.
+`CommandDialog` provides the modal shell and the `Command` root - nest the
+input, list, and groups directly inside it. For form-value selection use
+`combobox`; for plain action menus use `dropdown-menu`.

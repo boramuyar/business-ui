@@ -1,0 +1,7 @@
+@import "../../style/globals.css";
+
+@source "../../showcase/src/**/*.{ts,tsx}";
+@source "../../primitives/**/*.{ts,tsx}";
+@source "../../utilities/**/*.{ts,tsx}";
+@source "../../hooks/**/*.{ts,tsx}";
+@source "../../primitives/**/*.mdx";
