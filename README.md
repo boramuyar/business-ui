@@ -17,3 +17,5 @@ pnpm install
 pnpm dev     # showcase
 pnpm check   # typecheck, registry validation, showcase build
 ```
+
+MIT licensed. The showcase deploys to GitHub Pages from `main`.

@@ -8,7 +8,7 @@ import { defineConfig } from "vite"
 import { businessStylePlugin } from "../scripts/style-vite-plugin.mjs"
 
 const repositoryName = process.env.GITHUB_REPOSITORY?.split("/").pop()
-const githubPagesBase = repositoryName ? `/${repositoryName}/` : "/frontend/"
+const githubPagesBase = repositoryName ? `/${repositoryName}/` : "/business-ui/"
 
 export default defineConfig({
   base: process.env.GITHUB_PAGES === "true" ? githubPagesBase : "/",

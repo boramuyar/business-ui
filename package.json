@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "packageManager": "pnpm@10.19.0",
   "pnpm": {
     "overrides": {
