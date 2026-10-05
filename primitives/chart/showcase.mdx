@@ -1,0 +1,22 @@
+---
+title: Chart
+description: Themed recharts wrappers with tooltip and legend.
+status: stable
+---
+
+## Variants
+
+A bar chart with grid, axis, tooltip, and legend.
+
+<Preview className="items-stretch" name="chart-bars" />
+
+A line chart from the same config.
+
+<Preview className="items-stretch" name="chart-line" />
+
+## Usage
+
+Define a `ChartConfig` mapping series keys to labels and theme colors
+(`--chart-1` through `--chart-5`), then compose any recharts chart inside
+`ChartContainer` - the config exposes `--color-<key>` variables that track
+light and dark mode automatically.

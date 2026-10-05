@@ -1,0 +1,43 @@
+{
+  "dependencies": [
+    "@fontsource-variable/inter",
+    "@fontsource-variable/jetbrains-mono",
+    "shadcn",
+    "tailwind-scrollbar",
+    "tw-animate-css"
+  ],
+  "css": {
+    "@import \"tailwindcss\"": {},
+    "@import \"shadcn/tailwind.css\"": {},
+    "@import \"tw-animate-css\"": {},
+    "@plugin \"tailwind-scrollbar\"": {},
+    "@import \"@fontsource-variable/inter\"": {},
+    "@import \"@fontsource-variable/jetbrains-mono\"": {},
+    "@custom-variant dark (&:is(.dark *))": {},
+    "@layer utilities": {
+      ".small-caps": {
+        "font-variant": "all-small-caps"
+      }
+    },
+    "@layer base": {
+      "*": {
+        "@apply border-border outline-ring/50": {}
+      },
+      "html": {
+        "font-feature-settings": "\"cv02\", \"cv11\""
+      },
+      "body": {
+        "@apply bg-background text-foreground": {}
+      },
+      "body, html .fancy-scroll": {
+        "@apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted hover:scrollbar-thumb-foreground/20": {}
+      },
+      "button:not(:disabled), [role=\"button\"]:not(:disabled)": {
+        "cursor": "pointer"
+      },
+      ".lucide": {
+        "@apply size-3.5":{}
+     }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+---
+title: Breadcrumb
+description: Hierarchical trail showing the current location.
+status: stable
+---
+
+## Variants
+
+A basic trail; the current page uses `BreadcrumbPage`.
+
+<Preview name="breadcrumb-variants-basic" />
+
+A custom separator via children.
+
+<Preview name="breadcrumb-variants-separator" />
+
+## Composition
+
+`BreadcrumbEllipsis` collapses deep trails; a `dropdown-menu` reveals the
+hidden levels.
+
+<Preview name="breadcrumb-composition" tall />
+
+## Usage
+
+Use `breadcrumb` for hierarchies at least two levels deep - the showcase
+header derives one from the route. Render real links for every level except
+the current page.

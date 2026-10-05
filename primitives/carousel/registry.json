@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Carousel UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "carousel.tsx",
+          "type": "registry:ui",
+          "target": "@ui/carousel.tsx"
+        }
+      ],
+      "dependencies": [
+        "embla-carousel-react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/button"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+---
+title: Tooltip
+description: Short label that appears on hover or keyboard focus.
+status: stable
+---
+
+## Variants
+
+The `side` prop positions the tooltip around the trigger.
+
+<Preview name="tooltip-variants" tall />
+
+## Composition
+
+Icon buttons must carry a tooltip; `kbd` documents the shortcut inline.
+
+<Preview name="tooltip-composition" tall />
+
+## Usage
+
+Use `tooltip` for icon buttons and truncated text. Tooltips appear on
+keyboard focus as well as hover; the showcase mounts one `TooltipProvider` at
+the app root. Never place interactive content inside - use `popover` for
+that.

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Hover Card UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "hover-card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/hover-card.tsx"
+        }
+      ],
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "@frontend/utilities",
+  "version": "1.0.0",
+  "private": true,
+  "description": "frontend utilities.",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./cn": "./cn.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}

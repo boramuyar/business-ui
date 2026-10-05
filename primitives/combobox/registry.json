@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Combobox UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "combobox.tsx",
+          "type": "registry:ui",
+          "target": "@ui/combobox.tsx"
+        }
+      ],
+      "dependencies": [
+        "@base-ui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/button",
+        "boramuyar/business-ui/input-group"
+      ]
+    }
+  ]
+}

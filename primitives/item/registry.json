@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Item UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "item.tsx",
+          "type": "registry:ui",
+          "target": "@ui/item.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/separator"
+      ]
+    }
+  ]
+}

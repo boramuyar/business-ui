@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Label UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "label.tsx",
+          "type": "registry:ui",
+          "target": "@ui/label.tsx"
+        }
+      ],
+      "dependencies": [
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}

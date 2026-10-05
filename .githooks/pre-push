@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+# Block the push when the registry is invalid or generated style files are stale.
+set -e
+
+pnpm registry:validate
+
+if ! git diff --quiet -- style/globals.css style/registry.json; then
+  echo "pre-push: style/globals.css or style/registry.json was stale. Commit the regenerated files." >&2
+  exit 1
+fi

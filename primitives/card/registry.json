@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Card UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "card.tsx",
+          "type": "registry:ui",
+          "target": "@ui/card.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}

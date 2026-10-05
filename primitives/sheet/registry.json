@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Sheet UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "sheet.tsx",
+          "type": "registry:ui",
+          "target": "@ui/sheet.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/button"
+      ]
+    }
+  ]
+}

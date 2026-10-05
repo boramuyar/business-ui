@@ -1,0 +1,21 @@
+---
+title: Sidebar
+description: Composable, collapsible application sidebar.
+status: stable
+---
+
+## Composition
+
+The full anatomy inside a contained frame (`collapsible="none"`): header,
+groups, menu items with icons and badges, a submenu, and a footer. The real
+collapsible behavior is visible in this showcase's own chrome.
+
+<Preview name="sidebar-composition" className="items-stretch p-0" />
+
+## Usage
+
+Use `sidebar` as the primary navigation scaffold of an application. Mount one
+`SidebarProvider` at the root, render `Sidebar` plus `SidebarInset`, and add
+`SidebarTrigger` to the header - exactly how this showcase is built. The
+provider persists collapsed state and handles the mobile sheet behavior
+automatically.

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Pagination UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "pagination.tsx",
+          "type": "registry:ui",
+          "target": "@ui/pagination.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/button"
+      ]
+    }
+  ]
+}

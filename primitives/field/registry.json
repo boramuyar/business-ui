@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Field UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/field.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/label",
+        "boramuyar/business-ui/separator"
+      ]
+    }
+  ]
+}

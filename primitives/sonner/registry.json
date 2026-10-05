@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Sonner UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "sonner.tsx",
+          "type": "registry:ui",
+          "target": "@ui/sonner.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "next-themes",
+        "sonner"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}

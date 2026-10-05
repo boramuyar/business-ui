@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Input Otp UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "input-otp.tsx",
+          "type": "registry:ui",
+          "target": "@ui/input-otp.tsx"
+        }
+      ],
+      "dependencies": [
+        "input-otp",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}

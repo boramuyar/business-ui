@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Input Group UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "input-group.tsx",
+          "type": "registry:ui",
+          "target": "@ui/input-group.tsx"
+        }
+      ],
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/button",
+        "boramuyar/business-ui/input",
+        "boramuyar/business-ui/textarea"
+      ]
+    }
+  ]
+}

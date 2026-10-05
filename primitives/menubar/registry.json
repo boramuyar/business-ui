@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Menubar UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "menubar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/menubar.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "radix-ui"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}

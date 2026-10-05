@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Chart UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "chart.tsx",
+          "type": "registry:ui",
+          "target": "@ui/chart.tsx"
+        }
+      ],
+      "dependencies": [
+        "recharts"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}

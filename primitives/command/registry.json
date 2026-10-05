@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Command UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "command.tsx",
+          "type": "registry:ui",
+          "target": "@ui/command.tsx"
+        }
+      ],
+      "dependencies": [
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/dialog",
+        "boramuyar/business-ui/input-group"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Calendar UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "calendar.tsx",
+          "type": "registry:ui",
+          "target": "@ui/calendar.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react",
+        "react-day-picker@^9.11.3"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/button"
+      ]
+    }
+  ]
+}

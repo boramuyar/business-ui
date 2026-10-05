@@ -1,0 +1,32 @@
+---
+title: Field
+description: Form field scaffolding with labels, descriptions, errors, and layout orientations.
+status: stable
+---
+
+## Variants
+
+Fields lay out vertically by default; `orientation` supports `horizontal` and
+container-query-driven `responsive`.
+
+<Preview name="field-variants" />
+
+## States
+
+`data-invalid` propagates destructive styling; `FieldError` renders single or
+multiple messages.
+
+<Preview name="field-states" />
+
+## Composition
+
+`FieldSet` and `FieldLegend` group related fields; `FieldSeparator` labels the
+boundary between groups.
+
+<Preview name="field-composition" />
+
+## Usage
+
+Use `field` as the standard scaffolding for every form control. It replaces
+ad-hoc label/description/error markup; pair it with `input`, `textarea`,
+`select`, `checkbox`, `radio-group`, and `switch`.

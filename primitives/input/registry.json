@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Input UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/input.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/business-style"
+      ]
+    }
+  ]
+}
