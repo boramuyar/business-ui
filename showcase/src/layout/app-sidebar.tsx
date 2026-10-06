@@ -191,6 +191,7 @@ export function AppSidebar() {
                 to="/primitives"
               />
               <SidebarLink label="Style & Utilities" to="/style" />
+              <SidebarLink label="Style Lab" to="/style-lab" />
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

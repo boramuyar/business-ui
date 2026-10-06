@@ -15,6 +15,7 @@ const pageEntries = [
   { to: "/installation", label: "Installation" },
   { to: "/primitives", label: "Primitives" },
   { to: "/style", label: "Style & Utilities" },
+  { to: "/style-lab", label: "Style Lab" },
 ]
 
 export function CommandPalette({
