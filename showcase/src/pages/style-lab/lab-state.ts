@@ -1,5 +1,11 @@
 import tokens from "../../../../style/tokens.json"
-import { DEFAULT_PALETTE, findPalette, shippedColors } from "./palettes"
+import {
+  buildColors,
+  cloneSpec,
+  DEFAULT_PALETTE,
+  type PaletteSpec,
+  shippedColors,
+} from "./palettes"
 
 export const ELEVATIONS = ["control", "raised", "overlay", "modal"] as const
 export type Elevation = (typeof ELEVATIONS)[number]
@@ -21,20 +27,6 @@ export const ELEVATION_INFO: Record<
   modal: { label: "Modal", usage: "Dialogs, alert dialogs, sheets, drawers" },
 }
 
-export const COLOR_KEYS = [
-  "background",
-  "foreground",
-  "card",
-  "popover",
-  "muted",
-  "border",
-  "input",
-  "ring",
-  "primary",
-  "secondary",
-] as const
-export type ColorKey = (typeof COLOR_KEYS)[number]
-
 export const MODES = ["light", "dark"] as const
 export type Mode = (typeof MODES)[number]
 
@@ -54,7 +46,6 @@ export type Layer = {
 
 export type ModeState = {
   elevations: Record<Elevation, Layer[]>
-  colors: Record<ColorKey, string>
   /** Multiplies every layer's alpha in this mode. */
   intensity: number
 }
@@ -62,8 +53,11 @@ export type ModeState = {
 export type LabState = {
   /** px */
   radius: number
-  /** Name of the palette in palettes.ts the colors start from. */
-  palette: string
+  palette: {
+    /** The preset or saved palette this one started from. */
+    name: string
+    spec: PaletteSpec
+  }
   light: ModeState
   dark: ModeState
 }
@@ -318,13 +312,6 @@ export const PRESETS: Preset[] = [
 
 /* ----------------------------------------------------------------- default */
 
-function paletteColors(paletteName: string, mode: Mode) {
-  const source = findPalette(paletteName)[mode]
-  return Object.fromEntries(
-    COLOR_KEYS.map((key) => [key, source[key] ?? ""])
-  ) as Record<ColorKey, string>
-}
-
 export function defaultRadius() {
   const raw = lightTokens.radius ?? "0.375rem"
   return raw.endsWith("rem")
@@ -342,27 +329,24 @@ export function createDefaultState(): LabState {
   const current = PRESETS[0]
   return {
     radius: defaultRadius(),
-    palette: DEFAULT_PALETTE,
+    palette: {
+      name: DEFAULT_PALETTE.name,
+      spec: cloneSpec(DEFAULT_PALETTE.spec),
+    },
     light: {
       elevations: presetElevations(current, "light"),
-      colors: paletteColors(DEFAULT_PALETTE, "light"),
       intensity: 1,
     },
     dark: {
       elevations: presetElevations(current, "dark"),
-      colors: paletteColors(DEFAULT_PALETTE, "dark"),
       intensity: 1,
     },
   }
 }
 
-export function paletteColorsFor(paletteName: string, mode: Mode) {
-  return paletteColors(paletteName, mode)
-}
-
-/** The palette's full color set with the lab's per-key edits on top. */
+/** The palette's full color set for one mode. */
 export function effectiveColors(state: LabState, mode: Mode) {
-  return { ...findPalette(state.palette)[mode], ...state[mode].colors }
+  return buildColors(state.palette.spec, mode)
 }
 
 /* ------------------------------------------------------------------ export */
@@ -412,6 +396,14 @@ export function exportColorsJson(state: LabState) {
   if (Object.keys(light).length === 0 && Object.keys(dark).length === 0)
     return ""
   return JSON.stringify({ light, dark }, null, 2)
+}
+
+export function exportPaletteJson(state: LabState) {
+  return JSON.stringify(
+    { name: state.palette.name, spec: state.palette.spec },
+    null,
+    2
+  )
 }
 
 export function exportCss(state: LabState) {

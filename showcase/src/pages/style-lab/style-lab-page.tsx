@@ -38,7 +38,6 @@ import {
 } from "./component-preview"
 import { ColorControl, NumberControl } from "./controls"
 import {
-  COLOR_KEYS,
   createDefaultState,
   ELEVATION_INFO,
   ELEVATIONS,
@@ -46,26 +45,42 @@ import {
   effectiveColors,
   exportColorsJson,
   exportCss,
+  exportPaletteJson,
   exportTokensJson,
   type LabState,
   layerToCss,
   type Mode,
   PRESETS,
-  paletteColorsFor,
   parseShadow,
   shadowToCss,
 } from "./lab-state"
-import { findPalette, PALETTE_KEYS, PALETTES, type Palette } from "./palettes"
+import { PaletteDesigner } from "./palette-designer"
+import { PALETTE_KEYS } from "./palettes"
 import { ShadowEditor } from "./shadow-editor"
 
-const STORAGE_KEY = "business-ui:style-lab:v1"
+const STORAGE_KEY = "business-ui:style-lab:v2"
+/** Shadows and radius from before palettes existed carry over. */
+const LEGACY_STORAGE_KEY = "business-ui:style-lab:v1"
 
 function loadState(): LabState {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
-    if (raw) {
-      // Older saves predate palettes; they were built on the shipped colors.
-      return { ...createDefaultState(), ...(JSON.parse(raw) as LabState) }
+    if (raw) return JSON.parse(raw) as LabState
+    const legacy = window.localStorage.getItem(LEGACY_STORAGE_KEY)
+    if (legacy) {
+      const old = JSON.parse(legacy) as LabState
+      return {
+        ...createDefaultState(),
+        radius: old.radius,
+        light: {
+          elevations: old.light.elevations,
+          intensity: old.light.intensity,
+        },
+        dark: {
+          elevations: old.dark.elevations,
+          intensity: old.dark.intensity,
+        },
+      }
     }
   } catch {
     // Storage can be unavailable (private mode); fall back to the shipped style.
@@ -84,7 +99,7 @@ function saveState(state: LabState) {
 /** Every custom property the lab writes onto <html>, so they can be cleared. */
 const OVERRIDDEN_VARS = [
   "--radius",
-  ...new Set([...PALETTE_KEYS, ...COLOR_KEYS].map((key) => `--${key}`)),
+  ...PALETTE_KEYS.map((key) => `--${key}`),
   ...ELEVATIONS.map((e) => `--elevation-${e}`),
 ]
 
@@ -131,6 +146,7 @@ export function StyleLabPage() {
   const [presetName, setPresetName] = useState(PRESETS[1].name)
   const [showShipped, setShowShipped] = useState(false)
   const [stage, setStage] = useState<string>("background")
+  const [tab, setTab] = useState("color")
   const [sections, setSections] = useState<PreviewSectionId[]>(
     PREVIEW_SECTIONS.map((s) => s.id)
   )
@@ -157,14 +173,6 @@ export function StyleLabPage() {
       },
     }))
 
-  const applyPalette = (name: string) =>
-    setState((prev) => ({
-      ...prev,
-      palette: name,
-      light: { ...prev.light, colors: paletteColorsFor(name, "light") },
-      dark: { ...prev.dark, colors: paletteColorsFor(name, "dark") },
-    }))
-
   const applyPreset = (targets: readonly Elevation[], bothModes: boolean) =>
     setState((prev) => {
       const next = { ...prev }
@@ -179,7 +187,7 @@ export function StyleLabPage() {
   return (
     <div className="flex flex-col">
       <PageHeader
-        description="Tune the radius, colors and layered shadows, and see every component update live. Edits stay in this browser; export them to style/tokens.json when they look right."
+        description="Design a color palette, tune the radius and layered shadows, and see every component update live. Edits stay in this browser; export them to style/colors.json and style/tokens.json when they look right."
         eyebrow="Tool"
         title="Style lab"
       />
@@ -217,7 +225,6 @@ export function StyleLabPage() {
               <RotateCcwIcon />
             </Button>
           </div>
-          <PalettePicker onSelect={applyPalette} value={state.palette} />
           <Label className="flex items-center gap-2 text-xs">
             <Switch
               checked={showShipped}
@@ -227,11 +234,23 @@ export function StyleLabPage() {
             Compare: show the shipped style instead
           </Label>
 
-          <Tabs defaultValue="shadows">
+          <Tabs onValueChange={setTab} value={tab}>
             <TabsList>
+              <TabsTrigger value="color">Color</TabsTrigger>
               <TabsTrigger value="shadows">Shadows</TabsTrigger>
-              <TabsTrigger value="shape">Radius & color</TabsTrigger>
+              <TabsTrigger value="shape">Radius</TabsTrigger>
             </TabsList>
+
+            <TabsContent className="pt-3" value="color">
+              <PaletteDesigner
+                mode={mode}
+                name={state.palette.name}
+                onChange={(palette) =>
+                  setState((prev) => ({ ...prev, palette }))
+                }
+                spec={state.palette.spec}
+              />
+            </TabsContent>
 
             <TabsContent className="flex flex-col gap-4 pt-3" value="shadows">
               <div className="grid grid-cols-4 gap-1.5">
@@ -370,120 +389,90 @@ export function StyleLabPage() {
                   {state.radius + 2}px. Shared by both modes.
                 </p>
               </div>
-              <div className="flex flex-col gap-2 rounded-md border p-2.5">
-                <div className="flex items-center justify-between">
-                  <Label className="text-xs">Colors, {mode} mode</Label>
-                  <Button
-                    onClick={() =>
-                      updateMode({
-                        colors: paletteColorsFor(state.palette, mode),
-                      })
-                    }
-                    size="xs"
-                    variant="ghost"
-                  >
-                    Reset colors
-                  </Button>
-                </div>
-                {COLOR_KEYS.map((key) => (
-                  <ColorControl
-                    key={key}
-                    label={key}
-                    onChange={(value) =>
-                      updateMode({
-                        colors: { ...modeState.colors, [key]: value },
-                      })
-                    }
-                    value={modeState.colors[key]}
-                  />
-                ))}
-                <p className="text-[11px] text-muted-foreground">
-                  Any CSS color works in the text field, including oklch() and
-                  color-mix().
-                </p>
-              </div>
             </TabsContent>
           </Tabs>
         </aside>
 
         {/* Preview */}
         <div className="flex min-w-0 flex-col gap-8">
-          <section className="flex flex-col gap-3">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div>
-                <h3 className="font-semibold text-sm">Elevations</h3>
-                <p className="text-muted-foreground text-xs">
-                  Click a level to edit it. The row below shows each layer of
-                  the selected level on its own.
-                </p>
+          {tab === "shadows" ? (
+            <section className="flex flex-col gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h3 className="font-semibold text-sm">Elevations</h3>
+                  <p className="text-muted-foreground text-xs">
+                    Click a level to edit it. The row below shows each layer of
+                    the selected level on its own.
+                  </p>
+                </div>
+                <ToggleGroup
+                  onValueChange={(value) => value && setStage(value)}
+                  size="sm"
+                  type="single"
+                  value={stage}
+                  variant="outline"
+                >
+                  {STAGE_BACKGROUNDS.map((b) => (
+                    <ToggleGroupItem key={b.value} value={b.value}>
+                      {b.label}
+                    </ToggleGroupItem>
+                  ))}
+                </ToggleGroup>
               </div>
-              <ToggleGroup
-                onValueChange={(value) => value && setStage(value)}
-                size="sm"
-                type="single"
-                value={stage}
-                variant="outline"
+              <div
+                className="flex flex-col gap-8 rounded-md border p-8"
+                style={{ background: stageCss }}
               >
-                {STAGE_BACKGROUNDS.map((b) => (
-                  <ToggleGroupItem key={b.value} value={b.value}>
-                    {b.label}
-                  </ToggleGroupItem>
-                ))}
-              </ToggleGroup>
-            </div>
-            <div
-              className="flex flex-col gap-8 rounded-md border p-8"
-              style={{ background: stageCss }}
-            >
-              <div className="flex flex-wrap gap-8">
-                {ELEVATIONS.map((e) => (
-                  <button
-                    className={cn(
-                      "flex h-28 w-44 flex-col justify-end rounded-md bg-card p-3 text-left text-card-foreground outline-offset-4 transition-shadow",
-                      e === elevation &&
-                        "outline-2 outline-primary outline-dashed"
-                    )}
-                    key={e}
-                    onClick={() => setElevation(e)}
-                    style={{ boxShadow: `var(--elevation-${e})` }}
-                    type="button"
-                  >
-                    <span className="font-medium text-xs">
-                      {ELEVATION_INFO[e].label}
-                    </span>
-                    <span className="font-mono text-[10px] text-muted-foreground">
-                      shadow-{e}
-                    </span>
-                  </button>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-6">
-                {modeState.elevations[elevation].length === 0 ? (
-                  <span className="text-muted-foreground text-xs">
-                    No layers.
-                  </span>
-                ) : (
-                  modeState.elevations[elevation].map((layer, index) => (
-                    <div
-                      className="flex flex-col items-center gap-2"
-                      key={layer.id}
+                <div className="flex flex-wrap gap-8">
+                  {ELEVATIONS.map((e) => (
+                    <button
+                      className={cn(
+                        "flex h-28 w-44 flex-col justify-end rounded-md bg-card p-3 text-left text-card-foreground outline-offset-4 transition-shadow",
+                        e === elevation &&
+                          "outline-2 outline-primary outline-dashed"
+                      )}
+                      key={e}
+                      onClick={() => setElevation(e)}
+                      style={{ boxShadow: `var(--elevation-${e})` }}
+                      type="button"
                     >
+                      <span className="font-medium text-xs">
+                        {ELEVATION_INFO[e].label}
+                      </span>
+                      <span className="font-mono text-[10px] text-muted-foreground">
+                        shadow-{e}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-6">
+                  {modeState.elevations[elevation].length === 0 ? (
+                    <span className="text-muted-foreground text-xs">
+                      No layers.
+                    </span>
+                  ) : (
+                    modeState.elevations[elevation].map((layer, index) => (
                       <div
-                        className={cn(
-                          "size-16 rounded-md bg-card",
-                          !layer.enabled && "opacity-40"
-                        )}
-                        style={{
-                          boxShadow: layerToCss(layer, modeState.intensity),
-                        }}
-                      />
-                      <Badge variant="outline">Layer {index + 1}</Badge>
-                    </div>
-                  ))
-                )}
+                        className="flex flex-col items-center gap-2"
+                        key={layer.id}
+                      >
+                        <div
+                          className={cn(
+                            "size-16 rounded-md bg-card",
+                            !layer.enabled && "opacity-40"
+                          )}
+                          style={{
+                            boxShadow: layerToCss(layer, modeState.intensity),
+                          }}
+                        />
+                        <Badge variant="outline">Layer {index + 1}</Badge>
+                      </div>
+                    ))
+                  )}
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          ) : null}
 
           <section className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center gap-2">
@@ -517,71 +506,10 @@ export function StyleLabPage() {
   )
 }
 
-function PaletteSwatches({ palette, mode }: { palette: Palette; mode: Mode }) {
-  const colors = palette[mode]
-  return (
-    <span
-      className="flex h-5 overflow-hidden rounded-sm border"
-      style={{ background: colors.background }}
-    >
-      {[
-        "primary",
-        "secondary",
-        "success",
-        "warning",
-        "destructive",
-        "info",
-      ].map((key) => (
-        <span
-          className="flex-1"
-          key={key}
-          style={{ background: colors[key] }}
-        />
-      ))}
-    </span>
-  )
-}
-
-function PalettePicker({
-  value,
-  onSelect,
-}: {
-  value: string
-  onSelect: (name: string) => void
-}) {
-  const { resolvedTheme } = useTheme()
-  const mode: Mode = resolvedTheme === "dark" ? "dark" : "light"
-  const current = findPalette(value)
-  return (
-    <div className="flex flex-col gap-2 rounded-md border p-2.5">
-      <Label className="text-xs">Palette</Label>
-      <div className="grid grid-cols-2 gap-1.5">
-        {PALETTES.map((p) => (
-          <button
-            aria-pressed={p.name === current.name}
-            className={cn(
-              "flex flex-col gap-1.5 rounded-md border px-2 py-1.5 text-left text-xs transition-colors",
-              p.name === current.name
-                ? "border-primary bg-primary-subtle text-primary-emphasis"
-                : "hover:bg-muted"
-            )}
-            key={p.name}
-            onClick={() => onSelect(p.name)}
-            type="button"
-          >
-            <span className="font-medium">{p.name}</span>
-            <PaletteSwatches mode={mode} palette={p} />
-          </button>
-        ))}
-      </div>
-      <p className="text-[11px] text-muted-foreground">{current.description}</p>
-    </div>
-  )
-}
-
 function ExportDialog({ state }: { state: LabState }) {
   const tokensJson = useMemo(() => exportTokensJson(state), [state])
   const colorsJson = useMemo(() => exportColorsJson(state), [state])
+  const paletteJson = useMemo(() => exportPaletteJson(state), [state])
   const css = useMemo(() => exportCss(state), [state])
   return (
     <Dialog>
@@ -595,9 +523,10 @@ function ExportDialog({ state }: { state: LabState }) {
         <DialogHeader>
           <DialogTitle>Export</DialogTitle>
           <DialogDescription>
-            Paste the tokens into style/tokens.json (and changed colors into
-            style/colors.json), then run pnpm style:build. The CSS works as a
-            quick override in any app using business-style.
+            Paste the tokens into style/tokens.json and the changed colors into
+            style/colors.json, then run pnpm style:build. palette.json
+            re-imports into the lab, and the CSS works as a quick override in
+            any app using business-style.
           </DialogDescription>
         </DialogHeader>
         <Tabs defaultValue="tokens">
@@ -606,6 +535,7 @@ function ExportDialog({ state }: { state: LabState }) {
             {colorsJson ? (
               <TabsTrigger value="colors">colors.json</TabsTrigger>
             ) : null}
+            <TabsTrigger value="palette">palette.json</TabsTrigger>
             <TabsTrigger value="css">CSS</TabsTrigger>
           </TabsList>
           <TabsContent className="pt-3" value="tokens">
@@ -616,6 +546,9 @@ function ExportDialog({ state }: { state: LabState }) {
               <CodeBlock code={colorsJson} />
             </TabsContent>
           ) : null}
+          <TabsContent className="pt-3" value="palette">
+            <CodeBlock code={paletteJson} />
+          </TabsContent>
           <TabsContent className="pt-3" value="css">
             <CodeBlock code={css} />
           </TabsContent>
