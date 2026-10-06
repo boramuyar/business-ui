@@ -94,7 +94,7 @@ import {
 import type { ReactNode } from "react"
 import { toast } from "sonner"
 
-export const PREVIEW_SECTIONS = [
+const PREVIEW_SECTIONS = [
   { id: "colors", label: "Color tokens" },
   { id: "buttons", label: "Buttons" },
   { id: "forms", label: "Form controls" },
@@ -102,7 +102,7 @@ export const PREVIEW_SECTIONS = [
   { id: "surfaces", label: "Cards & feedback" },
   { id: "overlays", label: "Overlays" },
 ] as const
-export type PreviewSectionId = (typeof PREVIEW_SECTIONS)[number]["id"]
+type PreviewSectionId = (typeof PREVIEW_SECTIONS)[number]["id"]
 
 function Section({
   title,
@@ -592,14 +592,10 @@ const SECTION_COMPONENTS: Record<PreviewSectionId, () => ReactNode> = {
   overlays: Overlays,
 }
 
-export function ComponentPreview({
-  sections,
-}: {
-  sections: PreviewSectionId[]
-}) {
+export function ComponentPreview() {
   return (
     <div className="flex flex-col gap-10">
-      {PREVIEW_SECTIONS.filter((s) => sections.includes(s.id)).map((s) => {
+      {PREVIEW_SECTIONS.map((s) => {
         const Component = SECTION_COMPONENTS[s.id]
         return <Component key={s.id} />
       })}
