@@ -55,6 +55,7 @@ import {
   shadowToCss,
 } from "./lab-state"
 import { ShadowEditor } from "./shadow-editor"
+import { ZoomControl, ZoomFrame } from "./zoom"
 
 const STORAGE_KEY = "business-ui:style-lab:v1"
 
@@ -126,6 +127,7 @@ export function StyleLabPage() {
   const [elevation, setElevation] = useState<Elevation>("overlay")
   const [presetName, setPresetName] = useState(PRESETS[1].name)
   const [showShipped, setShowShipped] = useState(false)
+  const [zoom, setZoom] = useState(1)
   const [stage, setStage] = useState<string>("background")
   const [sections, setSections] = useState<PreviewSectionId[]>(
     PREVIEW_SECTIONS.map((s) => s.id)
@@ -393,6 +395,15 @@ export function StyleLabPage() {
 
         {/* Preview */}
         <div className="flex min-w-0 flex-col gap-8">
+          <div className="sticky top-12 z-20 -mb-4 flex flex-wrap items-center gap-3 border-b bg-background/90 py-2 backdrop-blur">
+            <ZoomControl onChange={setZoom} zoom={zoom} />
+            <p className="text-muted-foreground text-xs">
+              Real zoom: the previews re-render at this size, like browser zoom.
+              Pinch or ctrl/⌘ + scroll over a preview to zoom at the cursor.
+              Menus and dialogs opened from the buttons render outside the zoom;
+              use the pinned copies.
+            </p>
+          </div>
           <section className="flex flex-col gap-3">
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div>
@@ -416,58 +427,62 @@ export function StyleLabPage() {
                 ))}
               </ToggleGroup>
             </div>
-            <div
-              className="flex flex-col gap-8 rounded-md border p-8"
+            <ZoomFrame
+              className="max-h-[75svh] rounded-md border p-8"
+              onZoomChange={setZoom}
               style={{ background: stageCss }}
+              zoom={zoom}
             >
-              <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
-                {ELEVATIONS.map((e) => (
-                  <button
-                    className={cn(
-                      "flex aspect-[4/3] flex-col justify-end rounded-md bg-card p-3 text-left text-card-foreground outline-offset-4 transition-shadow",
-                      e === elevation &&
-                        "outline-2 outline-primary outline-dashed"
-                    )}
-                    key={e}
-                    onClick={() => setElevation(e)}
-                    style={{ boxShadow: `var(--elevation-${e})` }}
-                    type="button"
-                  >
-                    <span className="font-medium text-xs">
-                      {ELEVATION_INFO[e].label}
-                    </span>
-                    <span className="font-mono text-[10px] text-muted-foreground">
-                      shadow-{e}
-                    </span>
-                  </button>
-                ))}
-              </div>
-              <div className="flex flex-wrap gap-6">
-                {modeState.elevations[elevation].length === 0 ? (
-                  <span className="text-muted-foreground text-xs">
-                    No layers.
-                  </span>
-                ) : (
-                  modeState.elevations[elevation].map((layer, index) => (
-                    <div
-                      className="flex flex-col items-center gap-2"
-                      key={layer.id}
+              <div className="flex flex-col gap-8">
+                <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+                  {ELEVATIONS.map((e) => (
+                    <button
+                      className={cn(
+                        "flex aspect-[4/3] flex-col justify-end rounded-md bg-card p-3 text-left text-card-foreground outline-offset-4 transition-shadow",
+                        e === elevation &&
+                          "outline-2 outline-primary outline-dashed"
+                      )}
+                      key={e}
+                      onClick={() => setElevation(e)}
+                      style={{ boxShadow: `var(--elevation-${e})` }}
+                      type="button"
                     >
+                      <span className="font-medium text-xs">
+                        {ELEVATION_INFO[e].label}
+                      </span>
+                      <span className="font-mono text-[10px] text-muted-foreground">
+                        shadow-{e}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-6">
+                  {modeState.elevations[elevation].length === 0 ? (
+                    <span className="text-muted-foreground text-xs">
+                      No layers.
+                    </span>
+                  ) : (
+                    modeState.elevations[elevation].map((layer, index) => (
                       <div
-                        className={cn(
-                          "size-16 rounded-md bg-card",
-                          !layer.enabled && "opacity-40"
-                        )}
-                        style={{
-                          boxShadow: layerToCss(layer, modeState.intensity),
-                        }}
-                      />
-                      <Badge variant="outline">Layer {index + 1}</Badge>
-                    </div>
-                  ))
-                )}
+                        className="flex flex-col items-center gap-2"
+                        key={layer.id}
+                      >
+                        <div
+                          className={cn(
+                            "size-16 rounded-md bg-card",
+                            !layer.enabled && "opacity-40"
+                          )}
+                          style={{
+                            boxShadow: layerToCss(layer, modeState.intensity),
+                          }}
+                        />
+                        <Badge variant="outline">Layer {index + 1}</Badge>
+                      </div>
+                    ))
+                  )}
+                </div>
               </div>
-            </div>
+            </ZoomFrame>
           </section>
 
           <section className="flex flex-col gap-3">
@@ -489,12 +504,17 @@ export function StyleLabPage() {
                 ))}
               </ToggleGroup>
             </div>
-            <div
-              className="rounded-md border p-6"
+            <ZoomFrame
+              className={cn(
+                "rounded-md border p-6",
+                zoom !== 1 && "max-h-[85svh]"
+              )}
+              onZoomChange={setZoom}
               style={{ background: stageCss }}
+              zoom={zoom}
             >
               <ComponentPreview sections={sections} />
-            </div>
+            </ZoomFrame>
           </section>
         </div>
       </div>
