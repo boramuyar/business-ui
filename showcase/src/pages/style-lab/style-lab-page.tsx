@@ -434,11 +434,11 @@ export function StyleLabPage() {
               zoom={zoom}
             >
               <div className="flex flex-col gap-8">
-                <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
+                <div className="flex flex-wrap gap-8">
                   {ELEVATIONS.map((e) => (
                     <button
                       className={cn(
-                        "flex aspect-[4/3] flex-col justify-end rounded-md bg-card p-3 text-left text-card-foreground outline-offset-4 transition-shadow",
+                        "flex h-28 w-44 flex-col justify-end rounded-md bg-card p-3 text-left text-card-foreground outline-offset-4 transition-shadow",
                         e === elevation &&
                           "outline-2 outline-primary outline-dashed"
                       )}
