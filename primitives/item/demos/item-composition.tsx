@@ -15,7 +15,7 @@ import { FileTextIcon, FolderIcon } from "lucide-react"
 
 export function ItemComposition() {
   return (
-    <ItemGroup className="rounded-none border">
+    <ItemGroup className="rounded-md border">
       <Item>
         <ItemMedia variant="icon">
           <FolderIcon />

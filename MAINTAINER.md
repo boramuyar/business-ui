@@ -99,8 +99,19 @@ Do not edit `style/globals.css` or `style/registry.json` directly. They are gene
 Edit these source files instead:
 
 - `style/colors.json` - light and dark semantic color values. Color theme variables such as `--color-background` and `--color-sidebar` are derived from these color names.
-- `style/tokens.json` - other light and dark design tokens, such as `radius`.
-- `style/theme.json` - non-derived Tailwind v4 `@theme inline` variables, such as fonts and radius scale.
+- `style/tokens.json` - other light and dark design tokens, such as `radius` and the `elevation-*` shadow values.
+- `style/theme.json` - non-derived Tailwind v4 `@theme inline` variables, such as fonts, the radius scale, and the shadow utilities.
+
+### Radius and elevation
+
+`--radius` is 6px. Use `rounded-md` (6px) for controls and surfaces, `rounded-sm` (4px) for items nested inside a padded surface (menu items, kbd, badges), and `rounded-full` for radios, switches, sliders, avatars, and progress bars.
+
+Use the layered shadow utilities instead of Tailwind's stock `shadow-sm`/`shadow-md` scale. Each maps to an `elevation-*` token with its own dark value:
+
+- `shadow-control` - buttons with a fill or border, inputs, select triggers, checkboxes, radios.
+- `shadow-raised` - cards and floating or inset sidebars.
+- `shadow-overlay` - popovers, menus, select and combobox lists, hover cards, tooltips, toasts.
+- `shadow-modal` - dialogs, alert dialogs, sheets, and drawers.
 - `style/css.json` - style dependencies, imports, plugins, base rules, and custom utilities.
 
 The showcase Vite config runs a local style generator plugin. When `style/colors.json`, `style/tokens.json`, `style/theme.json`, or `style/css.json` changes during `pnpm dev`, the plugin regenerates `style/globals.css` and `style/registry.json`, then reloads the page.

@@ -90,12 +90,16 @@ function deriveColorTheme(colors) {
 }
 
 const CUSTOM_COLOR_VAR = /^(primary|destructive|success|warning|info)-(subtle|border|strong|emphasis)$/
+// Layered shadow values behind the shadow-control/raised/overlay/modal
+// utilities, which theme.json maps to these vars.
+const CUSTOM_ELEVATION_VAR = /^elevation-[a-z]+$/
 
 function splitCustomColorVars(vars) {
   const standard = {}
   const custom = {}
   for (const [key, value] of Object.entries(vars)) {
-    if (CUSTOM_COLOR_VAR.test(key)) custom[key] = value
+    if (CUSTOM_COLOR_VAR.test(key) || CUSTOM_ELEVATION_VAR.test(key))
+      custom[key] = value
     else standard[key] = value
   }
   return [standard, custom]
