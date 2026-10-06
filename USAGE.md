@@ -45,20 +45,43 @@ pnpm dlx shadcn@latest add boramuyar/business-ui/<item>
 Examples:
 
 ```bash
-pnpm dlx shadcn@latest add boramuyar/business-ui/business-style
+pnpm dlx shadcn@latest add boramuyar/business-ui/style
 pnpm dlx shadcn@latest add boramuyar/business-ui/button
 ```
 
+### Optional: the `@business-ui` namespace
+
+The same items are also published as static JSON at
+`https://boramuyar.github.io/business-ui/r/<item>.json`. Add the namespace to the
+app's `components.json` once:
+
+```json
+{
+  "registries": {
+    "@business-ui": "https://boramuyar.github.io/business-ui/r/{name}.json"
+  }
+}
+```
+
+Then install with the shorter address:
+
+```bash
+pnpm dlx shadcn@latest add @business-ui/style @business-ui/button
+```
+
+Both forms install the same files. Item dependencies always use the GitHub
+address, so they resolve with or without the namespace.
+
 ## Common items
 
-- `boramuyar/business-ui/business-style` - theme, tokens, fonts, base styles, and custom utilities.
+- `boramuyar/business-ui/style` - theme, tokens, fonts, base styles, and custom utilities.
 - `boramuyar/business-ui/button` - button primitive.
 - `boramuyar/business-ui/use-mobile` - mobile viewport hook used by sidebar.
 
 ## Notes for consuming agents
 
-- Install `business-style` before primitives when setting up a new app.
-- Use the full GitHub address. Bare names such as `button` refer to the public
+- Install `style` before primitives when setting up a new app.
+- Use the full GitHub or `@business-ui` address. Bare names such as `button` refer to the public
   shadcn registry.
 - React 18 and 19 are both supported (typecheck-verified across all items).
 - `cn` comes from `shadcn init` (the standard `lib/utils.ts`); registry

@@ -20,7 +20,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/style",
         "boramuyar/business-ui/button",
         "boramuyar/business-ui/input",
         "boramuyar/business-ui/textarea"

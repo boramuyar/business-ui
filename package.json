@@ -6,8 +6,9 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter showcase dev",
-    "build": "pnpm --filter showcase build",
+    "build": "pnpm --filter showcase build && pnpm registry:build",
     "typecheck": "pnpm -r --if-present typecheck",
+    "registry:build": "pnpm style:build && shadcn build registry.json -o showcase/dist/r",
     "registry:validate": "pnpm style:build && shadcn registry validate registry.json",
     "check": "pnpm typecheck && pnpm registry:validate && pnpm build",
     "setup:githooks": "git config core.hooksPath .githooks",

@@ -22,7 +22,7 @@ import { countPrimitivesByStatus, primitiveRoutes } from "../primitives-data"
 const SPECTRUM_COLORS = ["primary", "info", "success", "warning", "destructive"]
 const SPECTRUM_ROLES = ["subtle", "border", "emphasis", "strong"]
 
-const quickInstallCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/business-style`
+const quickInstallCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/style`
 
 export function HomePage() {
   const statusCounts = countPrimitivesByStatus()
