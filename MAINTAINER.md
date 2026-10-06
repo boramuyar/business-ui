@@ -26,7 +26,8 @@ pnpm check
 - `pnpm dev` starts the showcase.
 - `pnpm style:build` regenerates `style/globals.css` and `style/registry.json` from style source JSON files.
 - `pnpm registry:validate` regenerates style files, then validates the source registry.
-- `pnpm check` runs type checks, registry validation, and the showcase build.
+- `pnpm registry:build` writes the static item JSON to `showcase/dist/r`, which GitHub Pages serves for the `@business-ui` namespace.
+- `pnpm check` runs type checks, registry validation, and the showcase and registry build.
 
 ## Git hooks
 
@@ -63,7 +64,7 @@ Add the bullet in the same change that alters what a consumer installs or sees: 
 4. Add `primitives/<name>/registry.json` to `primitives/registry.json`.
 5. Optionally create `primitives/<name>/showcase.mdx` for the routed showcase page.
 6. Use registry targets like `@ui/<name>.tsx`.
-7. Use full same-repository dependency addresses, for example `boramuyar/business-ui/business-style` and `boramuyar/business-ui/button`.
+7. Use full same-repository dependency addresses, for example `boramuyar/business-ui/style` and `boramuyar/business-ui/button`.
 
 Primitive source should use shadcn-compatible imports:
 

@@ -20,7 +20,7 @@
         "vaul"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/business-style"
+        "boramuyar/business-ui/style"
       ]
     }
   ]

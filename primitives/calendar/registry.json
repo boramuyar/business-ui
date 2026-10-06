@@ -21,7 +21,7 @@
         "react-day-picker@^9.11.3"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/business-style",
+        "boramuyar/business-ui/style",
         "boramuyar/business-ui/button"
       ]
     }

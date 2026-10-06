@@ -4,7 +4,7 @@ A public [shadcn](https://ui.shadcn.com) registry served straight from this GitH
 a token-driven Tailwind v4 style plus shadcn-compatible primitives, previewed in a Vite showcase.
 
 ```bash
-pnpm dlx shadcn@latest add boramuyar/business-ui/business-style
+pnpm dlx shadcn@latest add boramuyar/business-ui/style
 pnpm dlx shadcn@latest add boramuyar/business-ui/button
 ```
 

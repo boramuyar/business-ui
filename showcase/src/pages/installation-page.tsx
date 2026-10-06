@@ -16,14 +16,22 @@ import { copyText } from "../lib/copy-text"
 
 const installCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/<item>`
 
-const exampleCommands = `pnpm dlx shadcn@latest add boramuyar/business-ui/business-style
+const exampleCommands = `pnpm dlx shadcn@latest add boramuyar/business-ui/style
 pnpm dlx shadcn@latest add boramuyar/business-ui/button`
+
+const namespaceConfig = `{
+  "registries": {
+    "@business-ui": "https://boramuyar.github.io/business-ui/r/{name}.json"
+  }
+}`
+
+const namespaceCommand = `pnpm dlx shadcn@latest add @business-ui/style @business-ui/button`
 
 const previewCommand = `pnpm dlx shadcn@latest view boramuyar/business-ui/button`
 
 const commonItems = [
   {
-    name: "boramuyar/business-ui/business-style",
+    name: "boramuyar/business-ui/style",
     description: "Theme, tokens, fonts, base styles, and custom utilities.",
   },
   {
@@ -67,8 +75,17 @@ export function InstallationPage() {
         </GuideSection>
 
         <GuideSection
-          description="Install business-style before any primitives when setting up a new app — it ships the theme every component depends on."
+          description="Optional: add the @business-ui namespace to components.json once for shorter addresses. Both forms install the same files."
           step="02"
+          title="Shorter addresses"
+        >
+          <CodeBlock code={namespaceConfig} />
+          <CodeBlock code={namespaceCommand} />
+        </GuideSection>
+
+        <GuideSection
+          description="Install the style item before any primitives when setting up a new app — it ships the theme every component depends on."
+          step="03"
           title="Common items"
         >
           <Table>
@@ -94,8 +111,8 @@ export function InstallationPage() {
         </GuideSection>
 
         <GuideSection
-          description="Use the full GitHub address — bare names such as button refer to the public shadcn registry. Preview any item before installing:"
-          step="03"
+          description="Use the full GitHub or @business-ui address — bare names such as button refer to the public shadcn registry. Preview any item before installing:"
+          step="04"
           title="Notes"
         >
           <CodeBlock code={previewCommand} />

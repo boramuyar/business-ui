@@ -20,7 +20,7 @@
         "react-resizable-panels@^3.0.6"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/business-style"
+        "boramuyar/business-ui/style"
       ]
     }
   ]
