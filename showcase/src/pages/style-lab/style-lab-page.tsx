@@ -40,10 +40,10 @@ import { ColorControl, NumberControl } from "./controls"
 import {
   COLOR_KEYS,
   createDefaultState,
-  defaultColorsFor,
   ELEVATION_INFO,
   ELEVATIONS,
   type Elevation,
+  effectiveColors,
   exportColorsJson,
   exportCss,
   exportTokensJson,
@@ -51,9 +51,11 @@ import {
   layerToCss,
   type Mode,
   PRESETS,
+  paletteColorsFor,
   parseShadow,
   shadowToCss,
 } from "./lab-state"
+import { findPalette, PALETTE_KEYS, PALETTES, type Palette } from "./palettes"
 import { ShadowEditor } from "./shadow-editor"
 
 const STORAGE_KEY = "business-ui:style-lab:v1"
@@ -61,7 +63,10 @@ const STORAGE_KEY = "business-ui:style-lab:v1"
 function loadState(): LabState {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY)
-    if (raw) return JSON.parse(raw) as LabState
+    if (raw) {
+      // Older saves predate palettes; they were built on the shipped colors.
+      return { ...createDefaultState(), ...(JSON.parse(raw) as LabState) }
+    }
   } catch {
     // Storage can be unavailable (private mode); fall back to the shipped style.
   }
@@ -79,7 +84,7 @@ function saveState(state: LabState) {
 /** Every custom property the lab writes onto <html>, so they can be cleared. */
 const OVERRIDDEN_VARS = [
   "--radius",
-  ...COLOR_KEYS.map((key) => `--${key}`),
+  ...new Set([...PALETTE_KEYS, ...COLOR_KEYS].map((key) => `--${key}`)),
   ...ELEVATIONS.map((e) => `--elevation-${e}`),
 ]
 
@@ -88,8 +93,7 @@ function useApplyOverrides(state: LabState, mode: Mode, enabled: boolean) {
     const root = document.documentElement.style
     if (enabled) {
       root.setProperty("--radius", `${state.radius}px`)
-      for (const key of COLOR_KEYS) {
-        const value = state[mode].colors[key]
+      for (const [key, value] of Object.entries(effectiveColors(state, mode))) {
         if (value) root.setProperty(`--${key}`, value)
         else root.removeProperty(`--${key}`)
       }
@@ -153,6 +157,14 @@ export function StyleLabPage() {
       },
     }))
 
+  const applyPalette = (name: string) =>
+    setState((prev) => ({
+      ...prev,
+      palette: name,
+      light: { ...prev.light, colors: paletteColorsFor(name, "light") },
+      dark: { ...prev.dark, colors: paletteColorsFor(name, "dark") },
+    }))
+
   const applyPreset = (targets: readonly Elevation[], bothModes: boolean) =>
     setState((prev) => {
       const next = { ...prev }
@@ -205,6 +217,7 @@ export function StyleLabPage() {
               <RotateCcwIcon />
             </Button>
           </div>
+          <PalettePicker onSelect={applyPalette} value={state.palette} />
           <Label className="flex items-center gap-2 text-xs">
             <Switch
               checked={showShipped}
@@ -362,7 +375,9 @@ export function StyleLabPage() {
                   <Label className="text-xs">Colors, {mode} mode</Label>
                   <Button
                     onClick={() =>
-                      updateMode({ colors: defaultColorsFor(mode) })
+                      updateMode({
+                        colors: paletteColorsFor(state.palette, mode),
+                      })
                     }
                     size="xs"
                     variant="ghost"
@@ -498,6 +513,68 @@ export function StyleLabPage() {
           </section>
         </div>
       </div>
+    </div>
+  )
+}
+
+function PaletteSwatches({ palette, mode }: { palette: Palette; mode: Mode }) {
+  const colors = palette[mode]
+  return (
+    <span
+      className="flex h-5 overflow-hidden rounded-sm border"
+      style={{ background: colors.background }}
+    >
+      {[
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "destructive",
+        "info",
+      ].map((key) => (
+        <span
+          className="flex-1"
+          key={key}
+          style={{ background: colors[key] }}
+        />
+      ))}
+    </span>
+  )
+}
+
+function PalettePicker({
+  value,
+  onSelect,
+}: {
+  value: string
+  onSelect: (name: string) => void
+}) {
+  const { resolvedTheme } = useTheme()
+  const mode: Mode = resolvedTheme === "dark" ? "dark" : "light"
+  const current = findPalette(value)
+  return (
+    <div className="flex flex-col gap-2 rounded-md border p-2.5">
+      <Label className="text-xs">Palette</Label>
+      <div className="grid grid-cols-2 gap-1.5">
+        {PALETTES.map((p) => (
+          <button
+            aria-pressed={p.name === current.name}
+            className={cn(
+              "flex flex-col gap-1.5 rounded-md border px-2 py-1.5 text-left text-xs transition-colors",
+              p.name === current.name
+                ? "border-primary bg-primary-subtle text-primary-emphasis"
+                : "hover:bg-muted"
+            )}
+            key={p.name}
+            onClick={() => onSelect(p.name)}
+            type="button"
+          >
+            <span className="font-medium">{p.name}</span>
+            <PaletteSwatches mode={mode} palette={p} />
+          </button>
+        ))}
+      </div>
+      <p className="text-[11px] text-muted-foreground">{current.description}</p>
     </div>
   )
 }

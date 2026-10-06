@@ -1,5 +1,5 @@
-import colors from "../../../../style/colors.json"
 import tokens from "../../../../style/tokens.json"
+import { DEFAULT_PALETTE, findPalette, shippedColors } from "./palettes"
 
 export const ELEVATIONS = ["control", "raised", "overlay", "modal"] as const
 export type Elevation = (typeof ELEVATIONS)[number]
@@ -62,6 +62,8 @@ export type ModeState = {
 export type LabState = {
   /** px */
   radius: number
+  /** Name of the palette in palettes.ts the colors start from. */
+  palette: string
   light: ModeState
   dark: ModeState
 }
@@ -316,12 +318,8 @@ export const PRESETS: Preset[] = [
 
 /* ----------------------------------------------------------------- default */
 
-const lightColors = colors.light as Record<string, string>
-const darkColors = colors.dark as Record<string, string>
-
-function defaultColors(mode: Mode) {
-  const source =
-    mode === "light" ? lightColors : { ...lightColors, ...darkColors }
+function paletteColors(paletteName: string, mode: Mode) {
+  const source = findPalette(paletteName)[mode]
   return Object.fromEntries(
     COLOR_KEYS.map((key) => [key, source[key] ?? ""])
   ) as Record<ColorKey, string>
@@ -344,21 +342,27 @@ export function createDefaultState(): LabState {
   const current = PRESETS[0]
   return {
     radius: defaultRadius(),
+    palette: DEFAULT_PALETTE,
     light: {
       elevations: presetElevations(current, "light"),
-      colors: defaultColors("light"),
+      colors: paletteColors(DEFAULT_PALETTE, "light"),
       intensity: 1,
     },
     dark: {
       elevations: presetElevations(current, "dark"),
-      colors: defaultColors("dark"),
+      colors: paletteColors(DEFAULT_PALETTE, "dark"),
       intensity: 1,
     },
   }
 }
 
-export function defaultColorsFor(mode: Mode) {
-  return defaultColors(mode)
+export function paletteColorsFor(paletteName: string, mode: Mode) {
+  return paletteColors(paletteName, mode)
+}
+
+/** The palette's full color set with the lab's per-key edits on top. */
+export function effectiveColors(state: LabState, mode: Mode) {
+  return { ...findPalette(state.palette)[mode], ...state[mode].colors }
 }
 
 /* ------------------------------------------------------------------ export */
@@ -380,10 +384,10 @@ export function modeVars(state: LabState, mode: Mode) {
 }
 
 export function changedColors(state: LabState, mode: Mode) {
-  const defaults = defaultColors(mode)
+  const shipped = shippedColors(mode)
   return Object.fromEntries(
-    COLOR_KEYS.filter((key) => state[mode].colors[key] !== defaults[key]).map(
-      (key) => [key, state[mode].colors[key]]
+    Object.entries(effectiveColors(state, mode)).filter(
+      ([key, value]) => value !== shipped[key]
     )
   )
 }

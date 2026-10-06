@@ -95,6 +95,7 @@ import type { ReactNode } from "react"
 import { toast } from "sonner"
 
 export const PREVIEW_SECTIONS = [
+  { id: "colors", label: "Color tokens" },
   { id: "buttons", label: "Buttons" },
   { id: "forms", label: "Form controls" },
   { id: "selection", label: "Selection" },
@@ -511,7 +512,79 @@ function Overlays() {
   )
 }
 
+const INTENTS = ["primary", "destructive", "success", "warning", "info"]
+const SHADES = ["", "-subtle", "-border", "-strong", "-emphasis"]
+
+function Swatch({ token }: { token: string }) {
+  return (
+    <div className="flex flex-col gap-1">
+      <div
+        className="h-10 rounded-sm border"
+        style={{ background: `var(--${token})` }}
+      />
+      <span className="truncate font-mono text-[10px] text-muted-foreground">
+        {token}
+      </span>
+    </div>
+  )
+}
+
+function ColorTokens() {
+  return (
+    <Section
+      className="flex-col items-stretch"
+      description="Every intent with its derived shades, plus neutrals and chart colors."
+      title="Color tokens"
+    >
+      <div className="grid grid-cols-5 gap-2">
+        {INTENTS.flatMap((intent) =>
+          SHADES.map((shade) => (
+            <Swatch key={intent + shade} token={intent + shade} />
+          ))
+        )}
+      </div>
+      <div className="grid grid-cols-5 gap-2">
+        {[
+          "background",
+          "card",
+          "secondary",
+          "muted",
+          "border",
+          "foreground",
+          "muted-foreground",
+          "ring",
+          "sidebar",
+          "sidebar-accent",
+        ].map((token) => (
+          <Swatch key={token} token={token} />
+        ))}
+      </div>
+      <div className="grid grid-cols-5 gap-2">
+        {[1, 2, 3, 4, 5].map((n) => (
+          <Swatch key={n} token={`chart-${n}`} />
+        ))}
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {INTENTS.map((intent) => (
+          <span
+            className="rounded-sm border px-2 py-1 font-medium text-xs"
+            key={intent}
+            style={{
+              background: `var(--${intent}-subtle)`,
+              borderColor: `var(--${intent}-border)`,
+              color: `var(--${intent}-strong)`,
+            }}
+          >
+            {intent} subtle text
+          </span>
+        ))}
+      </div>
+    </Section>
+  )
+}
+
 const SECTION_COMPONENTS: Record<PreviewSectionId, () => ReactNode> = {
+  colors: ColorTokens,
   buttons: Buttons,
   forms: Forms,
   selection: Selection,
