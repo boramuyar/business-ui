@@ -21,6 +21,7 @@ const sectionLabels: Record<string, string> = {
   installation: "Installation",
   primitives: "Primitives",
   style: "Style & Utilities",
+  "style-lab": "Style Lab",
 }
 
 function useBreadcrumbs() {
@@ -39,7 +40,6 @@ function useBreadcrumbs() {
       label: route?.title ?? detail,
     })
   }
-
 
   return crumbs
 }
