@@ -10,7 +10,7 @@ pnpm dlx shadcn@latest add boramuyar/business-ui/button
 ```
 
 - Installing items into an app: [USAGE.md](USAGE.md)
-- Design rules for building UI: [DESIGN.md](DESIGN.md)
+- Design rules for building UI: [DESIGN.md](DESIGN.md), published at https://ui.uyar.design/design.md
 - Working on this repository: [MAINTAINER.md](MAINTAINER.md)
 - Changes: [CHANGELOG.md](CHANGELOG.md)
 
@@ -20,4 +20,4 @@ pnpm dev     # showcase
 pnpm check   # typecheck, registry validation, showcase build
 ```
 
-MIT licensed. The showcase deploys to GitHub Pages from `main`.
+MIT licensed. The showcase, the design guides and the registry JSON deploy to https://ui.uyar.design on Vercel from `main`.

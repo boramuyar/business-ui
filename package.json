@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter showcase dev",
-    "build": "pnpm --filter showcase build && pnpm registry:build",
+    "build": "pnpm --filter showcase build && pnpm registry:build && node scripts/publish-site-files.mjs",
     "typecheck": "pnpm -r --if-present typecheck",
     "registry:build": "pnpm style:build && shadcn build registry.json -o showcase/dist/r",
     "registry:validate": "pnpm style:build && shadcn registry validate registry.json",

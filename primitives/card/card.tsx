@@ -9,7 +9,7 @@
  * @avoid Nesting a card inside a card.
  * @avoid Rows of a list: use table or item.
  * @related item, table, overview-page
- * @guide design/foundations/layout.md
+ * @guide https://ui.uyar.design/design/foundations/layout.md
  */
 import type * as React from "react"
 import { cn } from "@/lib/utils"

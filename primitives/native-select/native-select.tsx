@@ -7,7 +7,7 @@
  * @avoid Most desktop forms: use select for consistency.
  * @avoid Searchable lists: use combobox.
  * @related select, combobox
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 import { ChevronDownIcon } from "lucide-react"
 import type * as React from "react"

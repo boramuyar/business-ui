@@ -8,7 +8,7 @@
  * @avoid One or two actions: show them as buttons.
  * @avoid Small forms or filters: use popover.
  * @related button, context-menu, select, popover
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"

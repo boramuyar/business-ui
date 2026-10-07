@@ -8,7 +8,7 @@
  * @avoid One of several options: use toggle-group.
  * @avoid Actions without state: use button.
  * @related toggle-group, switch, button, tooltip
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Toggle as TogglePrimitive } from "radix-ui"

@@ -9,7 +9,7 @@
  * @avoid Questions or choices: use dialog or alert-dialog.
  * @avoid Persistent page state: use alert.
  * @related alert, alert-dialog
- * @guide design/patterns/feedback.md
+ * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 import {
   CircleCheckIcon,

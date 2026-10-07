@@ -8,7 +8,7 @@
  * @avoid Interactive content: use popover.
  * @avoid Short labels: use tooltip.
  * @related tooltip, popover, avatar
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { HoverCard as HoverCardPrimitive } from "radix-ui"
 import type * as React from "react"

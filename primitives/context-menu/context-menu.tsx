@@ -8,7 +8,7 @@
  *        trigger.
  * @avoid Choosing values: use select.
  * @related dropdown-menu, menubar
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui"

@@ -8,6 +8,7 @@ import {
   CommandSeparator,
 } from "@frontend/primitives/command"
 import { useNavigate } from "react-router-dom"
+import { designDocs } from "../design-docs"
 import { primitiveRoutes, shellRoutes } from "../primitives-data"
 
 const pageEntries = [
@@ -47,6 +48,18 @@ export function CommandPalette({
           {pageEntries.map((page) => (
             <CommandItem key={page.to} onSelect={() => goTo(page.to)}>
               {page.label}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Design">
+          {designDocs.map((doc) => (
+            <CommandItem
+              key={doc.path}
+              onSelect={() => goTo(doc.slug ? `/design/${doc.slug}` : "/design")}
+              value={`design ${doc.title}`}
+            >
+              {doc.title}
             </CommandItem>
           ))}
         </CommandGroup>

@@ -7,7 +7,7 @@
  * @avoid Exact numbers: use input with type number.
  * @avoid A few fixed steps: use toggle-group or radio-group.
  * @related input, toggle-group
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 import { Slider as SliderPrimitive } from "radix-ui"
 import * as React from "react"

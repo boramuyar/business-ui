@@ -8,7 +8,7 @@
  * @use Account, workspace, notification and billing settings.
  * @avoid A single form with one Save: use form-page.
  * @related switch, select, radio-group, field, separator
- * @guide design/shells.md
+ * @guide https://ui.uyar.design/design/shells.md
  *
  * Rules:
  * - Settings that apply immediately use switch, select or toggle-group and confirm with a toast.

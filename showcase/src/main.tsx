@@ -1,7 +1,7 @@
 import { ThemeProvider } from "next-themes"
 import * as React from "react"
 import { createRoot } from "react-dom/client"
-import { HashRouter } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
 
 import { App } from "./app"
 import "./styles.css"
@@ -16,7 +16,7 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <React.StrictMode>
-    <HashRouter>
+    <BrowserRouter>
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -30,6 +30,6 @@ createRoot(rootElement).render(
         </TooltipProvider>
         <Toaster />
       </ThemeProvider>
-    </HashRouter>
+    </BrowserRouter>
   </React.StrictMode>
 )

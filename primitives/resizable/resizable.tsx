@@ -7,7 +7,7 @@
  * @avoid Fixed page layouts: use the shells.
  * @avoid Mobile: stack the panels instead.
  * @related detail-page, scroll-area
- * @guide design/foundations/layout.md
+ * @guide https://ui.uyar.design/design/foundations/layout.md
  */
 import type * as React from "react"
 import * as ResizablePrimitive from "react-resizable-panels"

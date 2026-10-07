@@ -8,7 +8,7 @@
  * @use Home screens, account health, reporting summaries.
  * @avoid Finding and acting on records: use list-page, with a small summary if needed.
  * @related card, chart, table, badge, tabs
- * @guide design/shells.md
+ * @guide https://ui.uyar.design/design/shells.md
  *
  * Rules:
  * - stats: two to four cards, each one number with a label and, if useful, the change since last period.

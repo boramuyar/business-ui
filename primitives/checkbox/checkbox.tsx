@@ -9,7 +9,7 @@
  * @avoid Exactly one choice from a set: use radio-group.
  * @avoid Toolbar states such as bold: use toggle.
  * @related switch, radio-group, field
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 import { CheckIcon } from "lucide-react"
 import { Checkbox as CheckboxPrimitive } from "radix-ui"

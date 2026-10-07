@@ -8,7 +8,7 @@
  * @avoid More than about 15 options, or people know the name: use combobox.
  * @avoid A list of actions: use dropdown-menu.
  * @related combobox, radio-group, native-select, field
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { Select as SelectPrimitive } from "radix-ui"

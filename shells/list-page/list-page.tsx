@@ -9,7 +9,7 @@
  * @avoid One record's details: use detail-page.
  * @avoid A dashboard of numbers and charts: use overview-page.
  * @related table, empty, pagination, input-group, dropdown-menu, toggle-group
- * @guide design/shells.md
+ * @guide https://ui.uyar.design/design/shells.md
  *
  * Slots:
  * - actions: one primary "New …" button, plus outline buttons for import or export.

@@ -10,7 +10,7 @@
  * @avoid Editing while the list stays visible: use sheet.
  * @avoid Settings that save as they change: use settings-page with switches.
  * @related field, input, select, radio-group, checkbox, textarea, button
- * @guide design/shells.md
+ * @guide https://ui.uyar.design/design/shells.md
  *
  * Rules:
  * - One column. Labels above inputs (field), never beside them.

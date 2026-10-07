@@ -13,11 +13,13 @@ import { SidebarTrigger } from "@frontend/primitives/sidebar"
 import { SearchIcon } from "lucide-react"
 import { Fragment, useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import { getDesignDoc } from "../design-docs"
 import { getPrimitiveRoute, getShellRoute } from "../primitives-data"
 import { CommandPalette } from "./command-palette"
 import { ThemeToggle } from "./theme-toggle"
 
 const sectionLabels: Record<string, string> = {
+  design: "Design",
   installation: "Installation",
   primitives: "Primitives",
   shells: "Shells",
@@ -41,6 +43,11 @@ function useBreadcrumbs() {
       to: `/${section}/${detail}`,
       label: route?.title ?? detail,
     })
+  }
+
+  if (section === "design" && detail) {
+    const slug = pathname.replace(/^\/design\//, "")
+    crumbs.push({ to: pathname, label: getDesignDoc(slug)?.title ?? slug })
   }
 
   return crumbs

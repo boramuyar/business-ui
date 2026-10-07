@@ -9,7 +9,7 @@
  * @avoid Quick edits that keep the list in view: use sheet from the list-page instead.
  * @avoid Editing the record as a form: use form-page.
  * @related breadcrumb, tabs, card, item, badge, sheet
- * @guide design/shells.md
+ * @guide https://ui.uyar.design/design/shells.md
  *
  * Slots:
  * - breadcrumb: the path back to the list.

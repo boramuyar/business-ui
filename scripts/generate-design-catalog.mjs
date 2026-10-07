@@ -113,7 +113,10 @@ function render(items) {
       for (const use of item.use) lines.push(`- Use: ${use}`)
       for (const avoid of item.avoid) lines.push(`- Avoid: ${avoid}`)
       if (item.related) lines.push(`- Related: ${item.related}`)
-      if (item.guide) lines.push(`- Guide: [${item.guide.replace(/^design\//, "")}](${item.guide.replace(/^design\//, "")})`)
+      if (item.guide) {
+        const guide = item.guide.replace(/^https:\/\/ui\.uyar\.design\/design\//, "")
+        lines.push(`- Guide: [${guide}](${guide})`)
+      }
       lines.push(`- File: \`${item.path}\``, "")
     }
   }

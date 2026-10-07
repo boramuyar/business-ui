@@ -9,7 +9,7 @@
  * @avoid Filters people toggle on and off: use toggle or toggle-group.
  * @avoid Long messages: use alert.
  * @related button, alert, table
- * @guide design/foundations/color.md
+ * @guide https://ui.uyar.design/design/foundations/color.md
  */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"

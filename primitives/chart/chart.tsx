@@ -9,7 +9,7 @@
  * @avoid Exact values people look up: use table.
  * @avoid Pie charts with more than three slices: use a bar chart.
  * @related card, overview-page, table
- * @guide design/foundations/color.md
+ * @guide https://ui.uyar.design/design/foundations/color.md
  */
 import * as React from "react"
 import type { TooltipValueType } from "recharts"

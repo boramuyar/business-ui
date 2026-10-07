@@ -24,6 +24,7 @@ import { cn } from "@frontend/utilities/cn"
 import { ChevronRightIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
+import { designDocs } from "../design-docs"
 import {
   type PrimitiveFrontmatter,
   primitiveRoutes,
@@ -185,6 +186,16 @@ export function AppSidebar() {
             <SidebarMenu>
               <SidebarLink label="Home" to="/" />
               <SidebarLink label="Installation" to="/installation" />
+              <SidebarSubmenu
+                entries={designDocs
+                  .filter((doc) => doc.slug)
+                  .map((doc) => ({
+                    to: `/design/${doc.slug}`,
+                    label: doc.title,
+                  }))}
+                label="Design"
+                to="/design"
+              />
               <SidebarSubmenu
                 entries={primitiveRoutes.map((route) => ({
                   to: `/primitives/${route.name}`,

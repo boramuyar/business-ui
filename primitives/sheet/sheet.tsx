@@ -8,7 +8,7 @@
  * @avoid Confirmations: use alert-dialog.
  * @avoid Mobile: use drawer.
  * @related dialog, drawer, list-page
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { XIcon } from "lucide-react"
 import { Dialog as SheetPrimitive } from "radix-ui"

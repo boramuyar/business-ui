@@ -8,7 +8,7 @@
  * @avoid Read-only hints: use tooltip.
  * @avoid Tasks that need focus or several fields: use dialog.
  * @related dropdown-menu, tooltip, dialog, calendar
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { Popover as PopoverPrimitive } from "radix-ui"
 import type * as React from "react"

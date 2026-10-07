@@ -7,7 +7,7 @@
  * @avoid Loading a whole page or list: use skeleton.
  * @avoid Work with a known end: use progress.
  * @related skeleton, progress, button
- * @guide design/patterns/feedback.md
+ * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 import type * as React from "react"
 import { Loader2Icon } from "lucide-react"

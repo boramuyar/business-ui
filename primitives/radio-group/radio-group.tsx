@@ -8,7 +8,7 @@
  * @avoid More than 5 options: use select.
  * @avoid On or off: use checkbox or switch.
  * @related toggle-group, select, checkbox, field
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
 import type * as React from "react"

@@ -7,7 +7,7 @@
  * @avoid Navigation inside one screen: use tabs.
  * @avoid Settings sections: use SettingsNavItem in settings-page.
  * @related breadcrumb, tabs, settings-page
- * @guide design/foundations/layout.md
+ * @guide https://ui.uyar.design/design/foundations/layout.md
  */
 "use client"
 

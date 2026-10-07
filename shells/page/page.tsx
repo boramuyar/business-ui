@@ -10,7 +10,7 @@
  * @avoid A list, detail, form, settings or overview screen: use list-page, detail-page, form-page, settings-page or overview-page.
  * @avoid Sections inside a card or dialog: use field or card. Page parts are for the screen level only.
  * @related list-page, detail-page, form-page, settings-page, overview-page
- * @guide design/shells.md
+ * @guide https://ui.uyar.design/design/shells.md
  *
  * Rules the parts enforce:
  * - One PageHeader per screen. The title is the only h1.

@@ -7,7 +7,7 @@
  * @avoid Between page sections: use spacing (PageSection and PageBody gaps).
  * @avoid Between form groups: use FieldSet or FieldSeparator.
  * @related field, page
- * @guide design/foundations/layout.md
+ * @guide https://ui.uyar.design/design/foundations/layout.md
  */
 import { Separator as SeparatorPrimitive } from "radix-ui"
 import type * as React from "react"

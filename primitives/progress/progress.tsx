@@ -5,7 +5,7 @@
  * @use Uploads, imports and multi-step work with a known end; quota usage.
  * @avoid Unknown duration: use spinner or skeleton.
  * @related spinner, skeleton
- * @guide design/patterns/feedback.md
+ * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 import { Progress as ProgressPrimitive } from "radix-ui"
 import type * as React from "react"

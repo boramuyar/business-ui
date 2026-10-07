@@ -7,7 +7,7 @@
  *        dropdown-menu.
  * @avoid Navigation between screens: use sidebar or navigation-menu.
  * @related dropdown-menu, navigation-menu
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { Menubar as MenubarPrimitive } from "radix-ui"

@@ -7,7 +7,7 @@
  * @avoid Errors: use alert.
  * @avoid Loading: use skeleton.
  * @related alert, skeleton, list-page
- * @guide design/patterns/feedback.md
+ * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"

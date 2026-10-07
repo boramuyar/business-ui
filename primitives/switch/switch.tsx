@@ -8,7 +8,7 @@
  * @avoid Choosing between named modes: use toggle-group.
  * @avoid Toolbar states such as bold: use toggle.
  * @related checkbox, toggle, toggle-group, settings-page
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 import { Switch as SwitchPrimitive } from "radix-ui"
 import type * as React from "react"

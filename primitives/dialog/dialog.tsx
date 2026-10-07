@@ -11,7 +11,7 @@
  * @avoid Mobile bottom panels: use drawer.
  * @avoid Small anchored panels such as filters: use popover.
  * @related alert-dialog, sheet, drawer, popover, form-page
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { XIcon } from "lucide-react"
 import { Dialog as DialogPrimitive } from "radix-ui"

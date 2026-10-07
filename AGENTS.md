@@ -15,7 +15,7 @@ This repository is a public GitHub-hosted shadcn registry that extends shadcn/ui
 - Same-repository dependencies use full `boramuyar/business-ui/<item>` addresses.
 - Page shells: `shells/`, installed to `components/shells/` in consuming apps.
 - Every primitive and shell starts with a usage header; `design/components.md` is generated from them.
-- Showcase app: `showcase/`
+- Showcase app: `showcase/`, deployed with the design guides and registry JSON to https://ui.uyar.design (Vercel, from `main`).
 - Changelog: `CHANGELOG.md`, one dated entry per registry change (rule in `MAINTAINER.md`).
 
 ## Most common consumer command

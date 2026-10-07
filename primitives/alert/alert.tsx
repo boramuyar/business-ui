@@ -12,7 +12,7 @@
  * @avoid Asking the user to confirm something: use alert-dialog.
  * @avoid Field-level errors: use FieldError in field.
  * @related sonner, alert-dialog, field, empty
- * @guide design/patterns/feedback.md
+ * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"

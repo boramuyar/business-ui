@@ -7,7 +7,7 @@
  * @avoid Actions in progress: use spinner in the button.
  * @avoid Nothing to show: use empty.
  * @related spinner, empty, progress
- * @guide design/patterns/feedback.md
+ * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 import { cn } from "@/lib/utils"
 

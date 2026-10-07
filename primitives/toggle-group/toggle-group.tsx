@@ -11,7 +11,7 @@
  * @avoid More than 5 options: use select.
  * @avoid Switching between areas of content: use tabs.
  * @related radio-group, tabs, toggle, select
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 "use client"
 

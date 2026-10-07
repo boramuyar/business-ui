@@ -3,13 +3,16 @@
  * Business UI design check.
  *
  * Scans source files for things the design system does not allow and prints
- * the fix for each. Run it before finishing UI work:
+ * the fix for each. Run it before finishing UI work. In an app, run the
+ * current version straight from the site instead of copying it:
  *
- *   node scripts/design-check.mjs [paths...]
+ *   curl -fsSL https://ui.uyar.design/design-check.mjs | node --input-type=module - src
+ *
+ * In this repository: node scripts/design-check.mjs [paths...]
  *
  * With no paths it scans `src` when it exists, otherwise the current folder.
- * Rules are described in DESIGN.md. To allow one line on purpose, put
- * `// design-check-ignore: <reason>` on the line above it.
+ * Rules are described at https://ui.uyar.design/design.md. To allow one line
+ * on purpose, put `// design-check-ignore: <reason>` on the line above it.
  */
 
 import { readdir, readFile, stat } from "node:fs/promises"
@@ -31,7 +34,7 @@ const RULES = [
       "g"
     ),
     message: "Tailwind palette colors are removed and render nothing.",
-    fix: "Use a role color such as primary, brand, destructive, success, warning, info, muted or foreground (design/foundations/color.md).",
+    fix: "Use a role color such as primary, brand, destructive, success, warning, info, muted or foreground (https://ui.uyar.design/design/foundations/color.md).",
   },
   {
     id: "arbitrary-color",
@@ -43,7 +46,7 @@ const RULES = [
     id: "arbitrary-type-size",
     pattern: /(?<![\w-])(?:[\w-]+:)*text-\[\d[\d.]*(?:px|rem|em)\]/g,
     message: "Made-up font sizes break the type scale.",
-    fix: "Use text-xs, text-sm, text-base, text-lg, text-xl, text-2xl or text-3xl (design/foundations/typography.md).",
+    fix: "Use text-xs, text-sm, text-base, text-lg, text-xl, text-2xl or text-3xl (https://ui.uyar.design/design/foundations/typography.md).",
   },
   {
     id: "removed-type-step",
@@ -102,7 +105,7 @@ async function checkFile(file) {
         rule: {
           id: "shell-justification",
           message: `Shell is missing ${missing.join(", ")} in its header comment.`,
-          fix: "Reuse an existing shell if one fits. A new shell needs @shell, @closest, @why and @reuses (design/shells.md).",
+          fix: "Reuse an existing shell if one fits. A new shell needs @shell, @closest, @why and @reuses (https://ui.uyar.design/design/shells.md).",
         },
         match: "",
       })
@@ -118,7 +121,7 @@ async function checkFile(file) {
         rule: {
           id: "component-usage",
           message: `Component is missing ${missing.join(", ")} in its header comment.`,
-          fix: "Document when to use it and what to use instead, so the next agent reads it where the code lives (DESIGN.md).",
+          fix: "Document when to use it and what to use instead, so the next agent reads it where the code lives (https://ui.uyar.design/design.md).",
         },
         match: "",
       })

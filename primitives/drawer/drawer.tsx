@@ -5,7 +5,7 @@
  * @use The mobile version of a dialog or sheet. Switch with use-mobile.
  * @avoid Desktop layouts: use dialog or sheet.
  * @related dialog, sheet
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import type * as React from "react"
 import { Drawer as DrawerPrimitive } from "vaul"

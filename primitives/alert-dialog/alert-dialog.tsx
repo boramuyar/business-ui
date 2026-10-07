@@ -10,7 +10,7 @@
  * @avoid Collecting input: use dialog.
  * @avoid Purely informational messages: use alert.
  * @related dialog, sonner, button
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
 import type * as React from "react"

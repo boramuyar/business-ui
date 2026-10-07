@@ -8,7 +8,7 @@
  * @avoid Links or controls: use popover.
  * @avoid Previews of records: use hover-card.
  * @related popover, hover-card, kbd, toggle
- * @guide design/patterns/overlays.md
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
 import { Tooltip as TooltipPrimitive } from "radix-ui"
 import type * as React from "react"

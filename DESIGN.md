@@ -5,7 +5,7 @@ Read this before building UI with Business UI. It says which component, shell, c
 The rules live in two places:
 
 - **Next to the code.** Every component and shell starts with a usage header (`@use`, `@avoid`, `@related`). Read it before you use the file.
-- **Here and in `design/`.** Foundations and cross-component guides that don't belong to one file.
+- **On the site.** This page and the guides it links to are published at [ui.uyar.design/design.md](https://ui.uyar.design/design.md), with an index for agents at [ui.uyar.design/llms.txt](https://ui.uyar.design/llms.txt). Read them there so you always get the current version. Don't copy them into an app.
 
 ## Build a screen in this order
 
@@ -20,11 +20,13 @@ Don't create new primitives or restyle existing ones through `className` to get 
 
 ## Hard rules
 
-These are enforced. Run the check before finishing:
+These are enforced. Run the check from the site before finishing, so it is always the current version:
 
 ```bash
-node scripts/design-check.mjs
+curl -fsSL https://ui.uyar.design/design-check.mjs | node --input-type=module - src
 ```
+
+Pass the folders to scan; with none it scans `src`.
 
 | Rule | Enforced by |
 | --- | --- |

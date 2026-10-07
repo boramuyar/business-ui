@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { SiteLayout } from "./layout/site-layout"
+import { DesignPage } from "./pages/design-page"
 import { HomePage } from "./pages/home-page"
 import { InstallationPage } from "./pages/installation-page"
 import { PrimitivePage } from "./pages/primitive-page"
@@ -18,6 +19,7 @@ export function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/installation" element={<InstallationPage />} />
+              <Route path="/design/*" element={<DesignPage />} />
               <Route path="/primitives" element={<PrimitivesIndexPage />} />
               <Route path="/primitives/:name" element={<PrimitivePage />} />
               <Route

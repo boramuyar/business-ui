@@ -8,7 +8,7 @@
  * @avoid 6 to 15 options people scan rather than search: use select.
  * @avoid Running commands: use command.
  * @related select, command, field
- * @guide design/patterns/selection-controls.md
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
 "use client"
 

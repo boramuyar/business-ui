@@ -7,7 +7,7 @@
  * @avoid Top-level screens: the sidebar already shows where people are.
  * @avoid Steps in a process: use a stepper pattern or tabs.
  * @related sidebar, page
- * @guide design/foundations/layout.md
+ * @guide https://ui.uyar.design/design/foundations/layout.md
  */
 /** biome-ignore-all lint/a11y/useFocusableInteractive: no-fix */
 
