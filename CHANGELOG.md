@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-07
 
+- `style`: `--chart-1` to `--chart-5` are now computed from `--brand` (same hue, fixed lightness steps from light to dark), so overriding `--brand` recolors charts too. Needs a browser with CSS relative color syntax (Chrome 119, Safari 18, Firefox 128).
 - `style`: adds an indigo accent as `--brand` with `-foreground`, `-subtle`, `-border`, `-strong`, and `-emphasis`, in light and dark. `--ring` and `--sidebar-ring` now point at it, so focus rings are indigo. Override `--brand` to change the hue, or set it to `var(--primary)` to turn it off.
 - `checkbox`, `radio-group`, `switch`: checked state uses `brand`.
 - `progress`, `slider`: fill uses `brand`.

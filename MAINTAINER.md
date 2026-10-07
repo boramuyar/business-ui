@@ -105,7 +105,7 @@ Edit these source files instead:
 
 ### Primary and brand
 
-`primary` is for actions (the default button and badge). `brand` is the accent and marks state: checked, selected, active, progress, focus, and links. Use `bg-brand`, `bg-brand-subtle`, `border-brand-border`, and `text-brand-emphasis` for those, never `primary`. `--ring` and `--sidebar-ring` point at `--brand`, so focus rings follow it without per-component work. shadcn's `accent` token is unrelated: it stays the gray hover fill on menus and ghost buttons.
+`primary` is for actions (the default button and badge). `brand` is the accent and marks state: checked, selected, active, progress, focus, and links. Use `bg-brand`, `bg-brand-subtle`, `border-brand-border`, and `text-brand-emphasis` for those, never `primary`. `--ring` and `--sidebar-ring` point at `--brand`, so focus rings follow it without per-component work. The `chart-*` colors are computed from `--brand` with `oklch(from var(--brand) …)`; keep them that way so a brand override recolors charts. shadcn's `accent` token is unrelated: it stays the gray hover fill on menus and ghost buttons.
 
 ### Radius and elevation
 
