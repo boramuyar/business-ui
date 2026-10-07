@@ -3,6 +3,18 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-07
+
+- `style`: adds an indigo accent as `--brand` with `-foreground`, `-subtle`, `-border`, `-strong`, and `-emphasis`, in light and dark. `--ring` and `--sidebar-ring` now point at it, so focus rings are indigo. Override `--brand` to change the hue, or set it to `var(--primary)` to turn it off.
+- `checkbox`, `radio-group`, `switch`: checked state uses `brand`.
+- `progress`, `slider`: fill uses `brand`.
+- `tabs`: the line variant's active indicator uses `brand`.
+- `calendar`: selected days and ranges use `brand`.
+- `table`: selected rows use `bg-brand-subtle`.
+- `field`: checked choice cards use the `brand` subtle surface and border; description links hover to `brand`.
+- `button`: the `link` variant uses `text-brand-emphasis`.
+- `empty`, `item`: description links hover to `brand`.
+
 ## 2026-10-06
 
 - `style`: renamed from `business-style`, so the address is now `boramuyar/business-ui/style`. All items are also served as static JSON on GitHub Pages for the optional `@business-ui` namespace.

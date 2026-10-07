@@ -512,7 +512,14 @@ function Overlays() {
   )
 }
 
-const INTENTS = ["primary", "destructive", "success", "warning", "info"]
+const INTENTS = [
+  "primary",
+  "brand",
+  "destructive",
+  "success",
+  "warning",
+  "info",
+]
 const SHADES = ["", "-subtle", "-border", "-strong", "-emphasis"]
 
 function Swatch({ token }: { token: string }) {

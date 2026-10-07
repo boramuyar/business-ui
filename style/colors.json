@@ -12,6 +12,12 @@
     "primary-border": "color-mix(in oklab, var(--primary) 30%, var(--background))",
     "primary-strong": "color-mix(in oklab, var(--primary) 75%, var(--foreground))",
     "primary-emphasis": "var(--primary)",
+    "brand": "oklch(0.52 0.21 275)",
+    "brand-foreground": "oklch(0.985 0 0)",
+    "brand-subtle": "color-mix(in oklab, var(--brand) 10%, var(--background))",
+    "brand-border": "color-mix(in oklab, var(--brand) 30%, var(--background))",
+    "brand-strong": "color-mix(in oklab, var(--brand) 75%, var(--foreground))",
+    "brand-emphasis": "var(--brand)",
     "secondary": "oklch(0.967 0 0)",
     "secondary-foreground": "oklch(0.21 0 0)",
     "muted": "oklch(0.967 0 0)",
@@ -40,7 +46,7 @@
     "info-emphasis": "var(--info)",
     "border": "oklch(0.92 0 0)",
     "input": "oklch(0.92 0 0)",
-    "ring": "oklch(0.705 0 0)",
+    "ring": "var(--brand)",
     "chart-1": "oklch(0.809 0.105 251.81)",
     "chart-2": "oklch(0.623 0.214 259.82)",
     "chart-3": "oklch(0.546 0.245 262.88)",
@@ -53,7 +59,7 @@
     "sidebar-accent": "oklch(0.937 0 0)",
     "sidebar-accent-foreground": "oklch(0.21 0 0)",
     "sidebar-border": "oklch(0.92 0 0)",
-    "sidebar-ring": "oklch(0.705 0 0)"
+    "sidebar-ring": "var(--brand)"
   },
   "dark": {
     "background": "oklch(0.141 0 0)",
@@ -68,6 +74,12 @@
     "primary-border": "color-mix(in oklab, var(--primary) 50%, var(--background))",
     "primary-strong": "color-mix(in oklab, var(--primary) 90%, var(--foreground))",
     "primary-emphasis": "color-mix(in oklab, var(--primary) 50%, var(--foreground))",
+    "brand": "oklch(0.62 0.19 275)",
+    "brand-foreground": "oklch(0.985 0 0)",
+    "brand-subtle": "color-mix(in oklab, var(--brand) 20%, var(--background))",
+    "brand-border": "color-mix(in oklab, var(--brand) 50%, var(--background))",
+    "brand-strong": "color-mix(in oklab, var(--brand) 90%, var(--foreground))",
+    "brand-emphasis": "color-mix(in oklab, var(--brand) 50%, var(--foreground))",
     "secondary": "oklch(0.274 0 0)",
     "secondary-foreground": "oklch(0.985 0 0)",
     "muted": "oklch(0.274 0 0)",
@@ -96,7 +108,7 @@
     "info-emphasis": "color-mix(in oklab, var(--info) 50%, var(--foreground))",
     "border": "oklch(1 0 0 / 10%)",
     "input": "oklch(1 0 0 / 15%)",
-    "ring": "oklch(0.552 0 0)",
+    "ring": "var(--brand)",
     "chart-1": "oklch(0.809 0.105 251.81)",
     "chart-2": "oklch(0.623 0.214 259.82)",
     "chart-3": "oklch(0.546 0.245 262.88)",
@@ -109,6 +121,6 @@
     "sidebar-accent": "oklch(0.274 0 0)",
     "sidebar-accent-foreground": "oklch(0.985 0 0)",
     "sidebar-border": "oklch(1 0 0 / 10%)",
-    "sidebar-ring": "oklch(0.552 0 0)"
+    "sidebar-ring": "var(--brand)"
   }
 }

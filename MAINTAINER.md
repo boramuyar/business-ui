@@ -103,6 +103,10 @@ Edit these source files instead:
 - `style/tokens.json` - other light and dark design tokens, such as `radius` and the `elevation-*` shadow values.
 - `style/theme.json` - non-derived Tailwind v4 `@theme inline` variables, such as fonts, the radius scale, and the shadow utilities.
 
+### Primary and brand
+
+`primary` is for actions (the default button and badge). `brand` is the accent and marks state: checked, selected, active, progress, focus, and links. Use `bg-brand`, `bg-brand-subtle`, `border-brand-border`, and `text-brand-emphasis` for those, never `primary`. `--ring` and `--sidebar-ring` point at `--brand`, so focus rings follow it without per-component work. shadcn's `accent` token is unrelated: it stays the gray hover fill on menus and ghost buttons.
+
 ### Radius and elevation
 
 `--radius` is 6px. Use `rounded-md` (6px) for controls and surfaces, `rounded-sm` (4px) for items nested inside a padded surface (menu items, kbd, badges), and `rounded-full` for radios, switches, sliders, avatars, and progress bars.

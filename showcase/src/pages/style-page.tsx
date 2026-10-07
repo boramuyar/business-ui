@@ -21,6 +21,7 @@ import { PageHeader } from "../components/page-header"
 
 const ROLE_COLORS = [
   "primary",
+  "brand",
   "destructive",
   "success",
   "warning",

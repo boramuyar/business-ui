@@ -19,7 +19,14 @@ import { Link } from "react-router-dom"
 import { CodeBlock } from "../components/code-block"
 import { countPrimitivesByStatus, primitiveRoutes } from "../primitives-data"
 
-const SPECTRUM_COLORS = ["primary", "info", "success", "warning", "destructive"]
+const SPECTRUM_COLORS = [
+  "primary",
+  "brand",
+  "info",
+  "success",
+  "warning",
+  "destructive",
+]
 const SPECTRUM_ROLES = ["subtle", "border", "emphasis", "strong"]
 
 const quickInstallCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/style`
