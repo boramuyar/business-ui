@@ -78,6 +78,32 @@ address, so they resolve with or without the namespace.
 - `boramuyar/business-ui/button` - button primitive.
 - `boramuyar/business-ui/use-mobile` - mobile viewport hook used by sidebar.
 
+## Accent color
+
+The style ships an indigo accent as `--brand`, with the same `-subtle`,
+`-border`, `-strong`, and `-emphasis` scale as the other colors. Primary
+buttons stay near-black. The accent marks state: checked checkboxes, radios
+and switches, the active line tab, progress and slider fills, selected
+calendar days and table rows, link buttons, and every focus ring (`--ring`
+points at `--brand`).
+
+Change the hue by overriding two variables in your global CSS:
+
+```css
+:root { --brand: oklch(0.55 0.19 252); }
+.dark { --brand: oklch(0.64 0.17 252); }
+```
+
+Set `--brand-foreground` too if the new color needs dark text. To turn the
+accent off and go back to plain Graphite, point it at primary:
+
+```css
+:root, .dark {
+  --brand: var(--primary);
+  --brand-foreground: var(--primary-foreground);
+}
+```
+
 ## Notes for consuming agents
 
 - Install `style` before primitives when setting up a new app.

@@ -19,6 +19,12 @@
   --color-primary-border: var(--primary-border);
   --color-primary-strong: var(--primary-strong);
   --color-primary-emphasis: var(--primary-emphasis);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-brand-border: var(--brand-border);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-emphasis: var(--brand-emphasis);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -87,6 +93,12 @@
   --popover-foreground: oklch(0.141 0 0);
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
+  --brand: oklch(0.52 0.21 275);
+  --brand-foreground: oklch(0.985 0 0);
+  --brand-subtle: color-mix(in oklab, var(--brand) 10%, var(--background));
+  --brand-border: color-mix(in oklab, var(--brand) 30%, var(--background));
+  --brand-strong: color-mix(in oklab, var(--brand) 75%, var(--foreground));
+  --brand-emphasis: var(--brand);
   --secondary: oklch(0.967 0 0);
   --secondary-foreground: oklch(0.21 0 0);
   --muted: oklch(0.967 0 0);
@@ -99,7 +111,7 @@
   --info: oklch(0.6035 0.2112 258.65);
   --border: oklch(0.92 0 0);
   --input: oklch(0.92 0 0);
-  --ring: oklch(0.705 0 0);
+  --ring: var(--brand);
   --chart-1: oklch(0.809 0.105 251.81);
   --chart-2: oklch(0.623 0.214 259.82);
   --chart-3: oklch(0.546 0.245 262.88);
@@ -112,7 +124,7 @@
   --sidebar-accent: oklch(0.937 0 0);
   --sidebar-accent-foreground: oklch(0.21 0 0);
   --sidebar-border: oklch(0.92 0 0);
-  --sidebar-ring: oklch(0.705 0 0);
+  --sidebar-ring: var(--brand);
   --radius: 0.375rem;
 }
 
@@ -125,6 +137,12 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: oklch(0.922 0 0);
   --primary-foreground: oklch(0.205 0 0);
+  --brand: oklch(0.62 0.19 275);
+  --brand-foreground: oklch(0.985 0 0);
+  --brand-subtle: color-mix(in oklab, var(--brand) 20%, var(--background));
+  --brand-border: color-mix(in oklab, var(--brand) 50%, var(--background));
+  --brand-strong: color-mix(in oklab, var(--brand) 90%, var(--foreground));
+  --brand-emphasis: color-mix(in oklab, var(--brand) 50%, var(--foreground));
   --secondary: oklch(0.274 0 0);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0 0);
@@ -137,7 +155,7 @@
   --info: oklch(0.6035 0.2112 258.65);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0 0);
+  --ring: var(--brand);
   --chart-1: oklch(0.809 0.105 251.81);
   --chart-2: oklch(0.623 0.214 259.82);
   --chart-3: oklch(0.546 0.245 262.88);
@@ -150,7 +168,7 @@
   --sidebar-accent: oklch(0.274 0 0);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0 0);
+  --sidebar-ring: var(--brand);
 }
 
 :root {
