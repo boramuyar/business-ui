@@ -1,0 +1,22 @@
+---
+title: List Page
+description: Find and act on many records of one kind.
+status: experimental
+---
+
+## Example
+
+<Preview name="list-page-invoices" className="block p-0 py-6" />
+
+## Slots
+
+- `actions`: one primary "New …" button, plus outline buttons for import or export.
+- `filters`: search first, then filter popovers or selects.
+- `view`: the right side of the toolbar, for a list or board switch or column settings.
+- `summary`: up to four stat cards, only when the numbers change what people do next.
+- `children`: a table, or a card grid when records are visual. Show `empty` when there are no rows.
+
+## Usage
+
+Use for customers, invoices, orders and users. Open a record in `detail-page`,
+or in a `sheet` when people need the list to stay visible.

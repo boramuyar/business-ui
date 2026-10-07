@@ -1,3 +1,14 @@
+/**
+ * @component Resizable
+ * @level layout
+ * @summary Panels people can resize by dragging a handle.
+ * @use Split views where people adjust space: a list beside a record, an
+ *      editor beside a preview.
+ * @avoid Fixed page layouts: use the shells.
+ * @avoid Mobile: stack the panels instead.
+ * @related detail-page, scroll-area
+ * @guide design/foundations/layout.md
+ */
 import type * as React from "react"
 import * as ResizablePrimitive from "react-resizable-panels"
 import { cn } from "@/lib/utils"

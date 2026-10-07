@@ -1,3 +1,13 @@
+/**
+ * @component Button Group
+ * @level composite
+ * @summary Joins related buttons into one visual unit.
+ * @use Actions that belong together: a split button (Save plus a menu of save
+ *      options), pagination arrows, zoom in and out.
+ * @avoid Picking one option from a set: use toggle-group.
+ * @avoid Unrelated actions: space separate buttons with gap-2.
+ * @related button, toggle-group, dropdown-menu
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 import { Separator } from "@/components/ui/separator"

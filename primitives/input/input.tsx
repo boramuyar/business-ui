@@ -1,3 +1,14 @@
+/**
+ * @component Input
+ * @level primitive
+ * @summary A single-line text field.
+ * @use Short free text: names, emails, amounts, search. Always inside a field
+ *      with a label, except a toolbar search.
+ * @avoid Multi-line text: use textarea.
+ * @avoid Choosing from known values: use select or combobox.
+ * @avoid Icons, prefixes or buttons inside the field: use input-group.
+ * @related field, input-group, textarea
+ */
 import type * as React from "react"
 import { cn } from "@/lib/utils"
 

@@ -1,3 +1,14 @@
+/**
+ * @component Slider
+ * @level primitive
+ * @summary Picks a number or range by dragging.
+ * @use Approximate values where feel matters more than precision: volume,
+ *      zoom, a price range filter.
+ * @avoid Exact numbers: use input with type number.
+ * @avoid A few fixed steps: use toggle-group or radio-group.
+ * @related input, toggle-group
+ * @guide design/patterns/selection-controls.md
+ */
 import { Slider as SliderPrimitive } from "radix-ui"
 import * as React from "react"
 import { cn } from "@/lib/utils"
@@ -47,7 +58,7 @@ function Slider({
           data-slot="slider-thumb"
           // biome-ignore lint/suspicious/noArrayIndexKey: non-unique items
           key={index}
-          className="relative block size-3 shrink-0 rounded-full shadow-control border border-ring bg-white ring-ring/50 transition-[color,box-shadow] select-none after:absolute after:-inset-2 hover:ring-1 focus-visible:ring-1 focus-visible:outline-hidden active:ring-1 disabled:pointer-events-none disabled:opacity-50"
+          className="relative block size-3 shrink-0 rounded-full shadow-control border border-ring bg-background ring-ring/50 transition-[color,box-shadow] select-none after:absolute after:-inset-2 hover:ring-1 focus-visible:ring-1 focus-visible:outline-hidden active:ring-1 disabled:pointer-events-none disabled:opacity-50"
         />
       ))}
     </SliderPrimitive.Root>

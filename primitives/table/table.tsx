@@ -1,3 +1,14 @@
+/**
+ * @component Table
+ * @level composite
+ * @summary Rows and columns of records.
+ * @use Records people scan and compare: invoices, customers, transactions.
+ *      Right-align numbers and use tabular-nums.
+ * @avoid A few rich entries: use item.
+ * @avoid Visual records: use a card grid.
+ * @avoid Layout: never use a table to place things on a page.
+ * @related list-page, pagination, item, empty
+ */
 import type * as React from "react"
 import { cn } from "@/lib/utils"
 

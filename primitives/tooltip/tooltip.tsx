@@ -1,3 +1,15 @@
+/**
+ * @component Tooltip
+ * @level surface
+ * @summary A short label that appears on hover or focus.
+ * @use Naming icon-only buttons, showing a full value that is truncated,
+ *      showing a shortcut with kbd.
+ * @avoid Anything people must read to use the screen: put it on the page.
+ * @avoid Links or controls: use popover.
+ * @avoid Previews of records: use hover-card.
+ * @related popover, hover-card, kbd, toggle
+ * @guide design/patterns/overlays.md
+ */
 import { Tooltip as TooltipPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

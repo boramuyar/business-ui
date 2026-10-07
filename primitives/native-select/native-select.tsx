@@ -1,3 +1,14 @@
+/**
+ * @component Native Select
+ * @level primitive
+ * @summary The browser's own select element, styled.
+ * @use Mobile-first forms, or very long simple lists where native scrolling
+ *      and accessibility matter most.
+ * @avoid Most desktop forms: use select for consistency.
+ * @avoid Searchable lists: use combobox.
+ * @related select, combobox
+ * @guide design/patterns/selection-controls.md
+ */
 import { ChevronDownIcon } from "lucide-react"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

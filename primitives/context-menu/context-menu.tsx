@@ -1,3 +1,15 @@
+/**
+ * @component Context Menu
+ * @level surface
+ * @summary Actions for an item, opened with right click or long press.
+ * @use Power-user shortcuts on rows, cards or canvas items. Every action must
+ *      also be reachable another way.
+ * @avoid The only way to reach an action: add a visible dropdown-menu
+ *        trigger.
+ * @avoid Choosing values: use select.
+ * @related dropdown-menu, menubar
+ * @guide design/patterns/overlays.md
+ */
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { ContextMenu as ContextMenuPrimitive } from "radix-ui"
 import type * as React from "react"

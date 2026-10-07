@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "settings-page",
+      "type": "registry:component",
+      "title": "Settings Page",
+      "description": "Shell for grouped settings with section navigation.",
+      "categories": [
+        "shell"
+      ],
+      "files": [
+        {
+          "path": "settings-page.tsx",
+          "type": "registry:component",
+          "target": "@components/shells/settings-page.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/style",
+        "boramuyar/business-ui/page"
+      ]
+    }
+  ]
+}

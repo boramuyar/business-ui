@@ -1,0 +1,22 @@
+---
+title: Detail Page
+description: One record with a main column and a fixed-width aside.
+status: experimental
+---
+
+## Example
+
+<Preview name="detail-page-invoice" className="block p-0 py-6" />
+
+## Slots
+
+- `breadcrumb`: the path back to the list.
+- `actions`: one primary action for the next step, outline buttons, and a dropdown menu for the rest.
+- `tabs`: when the record has several areas, such as Overview, Activity and Files.
+- `aside`: key facts as label and value pairs.
+- `children`: the main content, grouped with `PageSection` or cards.
+
+## Usage
+
+Use for anything opened from a list row. Editing the whole record belongs in
+`form-page`; quick edits that keep the list visible belong in a `sheet`.

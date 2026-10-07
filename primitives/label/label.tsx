@@ -1,3 +1,12 @@
+/**
+ * @component Label
+ * @level primitive
+ * @summary The text label for a form control.
+ * @use Inside field (FieldLabel builds on it). Every control needs one,
+ *      linked with htmlFor.
+ * @avoid Section headings: use FieldLegend or PageSection.
+ * @related field
+ */
 import { Label as LabelPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

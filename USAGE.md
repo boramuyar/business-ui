@@ -77,6 +77,30 @@ address, so they resolve with or without the namespace.
 - `boramuyar/business-ui/style` - theme, tokens, fonts, base styles, and custom utilities.
 - `boramuyar/business-ui/button` - button primitive.
 - `boramuyar/business-ui/use-mobile` - mobile viewport hook used by sidebar.
+- `boramuyar/business-ui/design-guide` - `DESIGN.md` and the `design/` guides for agents.
+- `boramuyar/business-ui/design-check` - `scripts/design-check.mjs`, which flags rule violations.
+- `boramuyar/business-ui/list-page` (and `page`, `detail-page`, `form-page`, `settings-page`, `overview-page`) - page shells, installed to `components/shells/`.
+
+## Design rules
+
+Business UI is a design system, not only a component set. Before building screens, install the guide and the check:
+
+```bash
+pnpm dlx shadcn@latest add boramuyar/business-ui/design-guide boramuyar/business-ui/design-check
+```
+
+This adds `DESIGN.md` at the project root, the `design/` folder, and `scripts/design-check.mjs`. Point the app's agent instructions (AGENTS.md or CLAUDE.md) at `DESIGN.md`, and run the check before finishing UI work:
+
+```bash
+node scripts/design-check.mjs src
+```
+
+Every installed component and shell also starts with a usage header (`@use`, `@avoid`, `@related`), so the rules are in the file you are about to use. The short version:
+
+- Start every screen from a shell. Create a new one in `components/shells/` only with a `@closest`, `@why` and `@reuses` header.
+- Colors are role tokens only. The style removes Tailwind's palette, so `bg-blue-500` and `text-white` render nothing.
+- Type stops at `text-3xl`, with normal, medium and semibold weights.
+- Pick controls and overlays with the guides in `design/patterns/`.
 
 ## Accent color
 

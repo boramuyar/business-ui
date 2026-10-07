@@ -1,0 +1,21 @@
+---
+title: Form Page
+description: A full-screen form in one narrow column with actions at the end.
+status: experimental
+---
+
+## Example
+
+<Preview name="form-page-customer" className="block p-0 py-6" />
+
+## Rules
+
+- One column, labels above inputs.
+- Group related fields with `FieldSet` and `FieldLegend`, not cards.
+- Actions at the end: Cancel as `outline`, then the submit button named for the result, such as "Create customer".
+
+## Usage
+
+Use for more than about five fields or for forms with sections. Three or fewer
+fields fit in a `dialog`. Settings that save as they change belong in
+`settings-page`.

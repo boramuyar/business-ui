@@ -1,3 +1,14 @@
+/**
+ * @component Calendar
+ * @level primitive
+ * @summary A month grid for picking a date or a date range.
+ * @use Inside a popover as a date picker, or inline when the date is the main
+ *      input of a screen.
+ * @avoid Dates people know by heart, such as a birth date: use input with a
+ *        date format.
+ * @avoid Scheduling views: build a dedicated layout.
+ * @related popover, input, field
+ */
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -91,7 +102,7 @@ function Calendar({
         month_grid: cn("w-full border-collapse", defaultClassNames.month_grid),
         weekdays: cn("flex", defaultClassNames.weekdays),
         weekday: cn(
-          "flex-1 rounded-(--cell-radius) text-[0.8rem] font-normal text-muted-foreground select-none",
+          "flex-1 rounded-(--cell-radius) text-xs font-normal text-muted-foreground select-none",
           defaultClassNames.weekday
         ),
         week: cn("mt-2 flex w-full", defaultClassNames.week),
@@ -100,7 +111,7 @@ function Calendar({
           defaultClassNames.week_number_header
         ),
         week_number: cn(
-          "text-[0.8rem] text-muted-foreground select-none",
+          "text-xs text-muted-foreground select-none",
           defaultClassNames.week_number
         ),
         day: cn(

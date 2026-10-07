@@ -1,0 +1,24 @@
+---
+title: Page
+description: The base frame every screen and shell builds on.
+status: experimental
+---
+
+## Example
+
+<Preview name="page-basic" className="block p-0 py-6" />
+
+## Parts
+
+- `Page` sets the width (`narrow`, `default` or `full`) and the page gutters.
+- `PageHeader` holds the only `h1`, a one-sentence description, and the actions on the right. Tabs that switch the whole screen go in its children.
+- `PageToolbar` holds search, filters and view switches. `end` puts controls on the right.
+- `PageBody` stacks the content.
+- `PageSection` groups content under an `h2` with optional actions.
+
+## Usage
+
+Reach for an archetype shell first: list, detail, form, settings or overview.
+Compose these parts yourself only when none of them fits, and if the result
+becomes a pattern you reuse, turn it into a new shell under
+`components/shells/` with a justification header (see `design/shells.md`).

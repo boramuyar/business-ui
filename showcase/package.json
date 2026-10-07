@@ -11,6 +11,7 @@
   "dependencies": {
     "@frontend/hooks": "workspace:*",
     "@frontend/primitives": "workspace:*",
+    "@frontend/shells": "workspace:*",
     "@frontend/style": "workspace:*",
     "@frontend/utilities": "workspace:*",
     "@mdx-js/react": "^3.1.1",

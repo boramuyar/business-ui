@@ -41,7 +41,7 @@ export function HomePage() {
           <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">
             boramuyar/business-ui · shadcn registry
           </span>
-          <h1 className="max-w-2xl text-balance font-semibold text-4xl tracking-tight lg:text-5xl">
+          <h1 className="max-w-2xl text-balance font-semibold text-3xl tracking-tight">
             Every interface, from one source tree.
           </h1>
           <p className="max-w-xl text-muted-foreground text-sm">

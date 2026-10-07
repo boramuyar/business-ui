@@ -1,3 +1,15 @@
+/**
+ * @component Popover
+ * @level surface
+ * @summary A small interactive panel anchored to a trigger.
+ * @use Filters, a date picker, quick edits of one or two values, color or
+ *      column settings.
+ * @avoid Lists of actions: use dropdown-menu.
+ * @avoid Read-only hints: use tooltip.
+ * @avoid Tasks that need focus or several fields: use dialog.
+ * @related dropdown-menu, tooltip, dialog, calendar
+ * @guide design/patterns/overlays.md
+ */
 import { Popover as PopoverPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

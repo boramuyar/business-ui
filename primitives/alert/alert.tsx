@@ -1,3 +1,19 @@
+/**
+ * @component Alert
+ * @level primitive
+ * @summary An inline message about the state of the page or a section, styled
+ *          by severity.
+ * @use A persistent message people must see while they work: a failed sync, a
+ *      missing setting, a read-only notice.
+ * @use Pick the variant by meaning: destructive for errors, warning, info,
+ *      success.
+ * @avoid Reporting the result of an action the user just took: use sonner
+ *        (toast).
+ * @avoid Asking the user to confirm something: use alert-dialog.
+ * @avoid Field-level errors: use FieldError in field.
+ * @related sonner, alert-dialog, field, empty
+ * @guide design/patterns/feedback.md
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

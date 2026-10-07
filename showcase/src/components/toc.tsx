@@ -7,9 +7,12 @@ export function TableOfContents({ contentId }: { contentId: string }) {
 
   useEffect(() => {
     const content = document.getElementById(contentId)
-    const found = Array.from(content?.querySelectorAll("h2") ?? []).map(
-      (heading) => ({ id: heading.id, text: heading.textContent ?? "" })
-    )
+    // Demos can render their own h2s (page shells do); only list doc headings.
+    const found = Array.from(content?.querySelectorAll("h2") ?? [])
+      .filter(
+        (heading) => heading.id && !heading.closest("[data-slot=preview]")
+      )
+      .map((heading) => ({ id: heading.id, text: heading.textContent ?? "" }))
 
     setHeadings(found)
   }, [contentId])

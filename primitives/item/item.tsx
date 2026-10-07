@@ -1,3 +1,13 @@
+/**
+ * @component Item
+ * @level composite
+ * @summary A row with media, title, description and actions.
+ * @use Lists of people, files, integrations or settings rows where each entry
+ *      has a title and a few details.
+ * @avoid Data people compare across columns: use table.
+ * @avoid Peers shown as tiles in a grid: use card.
+ * @related table, card, avatar
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 import type * as React from "react"

@@ -21,6 +21,7 @@ export default defineConfig({
       configureServer(server) {
         server.watcher.add([
           fileURLToPath(new URL("../primitives", import.meta.url)),
+          fileURLToPath(new URL("../shells", import.meta.url)),
         ])
       },
     },
@@ -37,9 +38,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      // MDX files live in ../primitives where pnpm cannot resolve the
+      // MDX files live in ../primitives and ../shells where pnpm cannot resolve the
       // showcase's @mdx-js/react; pin it to this package's copy.
       "@mdx-js/react": fileURLToPath(import.meta.resolve("@mdx-js/react")),
+      "@/components/shells": fileURLToPath(
+        new URL("../shells", import.meta.url)
+      ),
       "@/components/ui": fileURLToPath(
         new URL("../primitives", import.meta.url)
       ),

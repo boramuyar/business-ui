@@ -1,3 +1,12 @@
+/**
+ * @component Scroll Area
+ * @level layout
+ * @summary A scroll container with styled scrollbars.
+ * @use Fixed-height regions inside a page: a long menu, a side panel, a code
+ *      block.
+ * @avoid The page itself: let the window scroll.
+ * @related resizable, sidebar
+ */
 import { ScrollArea as ScrollAreaPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

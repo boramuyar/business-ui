@@ -15,19 +15,27 @@ import { DependencyList } from "../components/dependency-list"
 import { InstallCommand } from "../components/install-command"
 import { PageHeader } from "../components/page-header"
 import { TableOfContents } from "../components/toc"
-import { getAdjacentPrimitives, getPrimitiveRoute } from "../primitives-data"
+import {
+  type CatalogSection,
+  getAdjacentRoutes,
+  primitiveSection,
+} from "../primitives-data"
 
-export function PrimitivePage() {
+export function PrimitivePage({
+  section = primitiveSection,
+}: {
+  section?: CatalogSection
+}) {
   const { name } = useParams()
   const navigate = useNavigate()
-  const route = name ? getPrimitiveRoute(name) : undefined
+  const route = section.routes.find((entry) => entry.name === name)
 
   if (!route) {
-    return <Navigate replace to="/primitives" />
+    return <Navigate replace to={section.basePath} />
   }
 
   const { Doc } = route
-  const { previous, next } = getAdjacentPrimitives(route.name)
+  const { previous, next } = getAdjacentRoutes(section.routes, route.name)
 
   function navigateTo(path: string) {
     return (event: MouseEvent<HTMLAnchorElement>) => {
@@ -41,7 +49,7 @@ export function PrimitivePage() {
       <div className="flex items-start justify-between gap-4">
         <PageHeader
           description={route.description}
-          eyebrow="Primitive"
+          eyebrow={section.eyebrow}
           title={route.title}
         />
         <Badge className="mt-1" variant="outline">
@@ -62,8 +70,8 @@ export function PrimitivePage() {
               <PaginationItem>
                 {previous ? (
                   <PaginationPrevious
-                    href={`/primitives/${previous.name}`}
-                    onClick={navigateTo(`/primitives/${previous.name}`)}
+                    href={`${section.basePath}/${previous.name}`}
+                    onClick={navigateTo(`${section.basePath}/${previous.name}`)}
                     text={previous.title}
                   />
                 ) : null}
@@ -71,8 +79,8 @@ export function PrimitivePage() {
               <PaginationItem>
                 {next ? (
                   <PaginationNext
-                    href={`/primitives/${next.name}`}
-                    onClick={navigateTo(`/primitives/${next.name}`)}
+                    href={`${section.basePath}/${next.name}`}
+                    onClick={navigateTo(`${section.basePath}/${next.name}`)}
                     text={next.title}
                   />
                 ) : null}
@@ -101,8 +109,8 @@ export function PrimitivePage() {
 function MissingDocNotice({ name }: { name: string }) {
   return (
     <div className="border border-dashed p-6 text-muted-foreground text-sm">
-      No MDX reference exists yet. Add `primitives/{name}/showcase.mdx` to
-      document this primitive.
+      No MDX reference exists yet. Add a showcase.mdx next to `{name}` to
+      document it.
     </div>
   )
 }

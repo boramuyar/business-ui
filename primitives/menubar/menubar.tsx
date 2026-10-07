@@ -1,3 +1,14 @@
+/**
+ * @component Menubar
+ * @level composite
+ * @summary A desktop-style row of menus: File, Edit, View.
+ * @use Editor-like apps with many commands grouped by menu.
+ * @avoid Typical business screens: put actions in the PageHeader and a
+ *        dropdown-menu.
+ * @avoid Navigation between screens: use sidebar or navigation-menu.
+ * @related dropdown-menu, navigation-menu
+ * @guide design/patterns/overlays.md
+ */
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { Menubar as MenubarPrimitive } from "radix-ui"
 import type * as React from "react"

@@ -1,3 +1,14 @@
+/**
+ * @component Avatar
+ * @level primitive
+ * @summary A person's or organization's picture, with initials as fallback.
+ * @use Identifying the owner, assignee or author of a record.
+ * @use Always pair it with the name nearby or in a tooltip; the picture alone
+ *      is not enough.
+ * @avoid Status or category markers: use badge.
+ * @avoid Decorative icons: use a lucide icon.
+ * @related badge, item, hover-card
+ */
 import { Avatar as AvatarPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

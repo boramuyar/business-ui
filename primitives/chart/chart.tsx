@@ -1,3 +1,16 @@
+/**
+ * @component Chart
+ * @level composite
+ * @summary Recharts wrappers styled with the chart-* tokens.
+ * @use Trends over time (line), comparisons between categories (bar). Use
+ *      chart-1 to chart-5 in order, so a brand override recolors charts.
+ * @use Give every chart a title and a short description of what it shows.
+ * @avoid A single number: use a stat card.
+ * @avoid Exact values people look up: use table.
+ * @avoid Pie charts with more than three slices: use a bar chart.
+ * @related card, overview-page, table
+ * @guide design/foundations/color.md
+ */
 import * as React from "react"
 import type { TooltipValueType } from "recharts"
 import * as RechartsPrimitive from "recharts"

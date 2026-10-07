@@ -1,3 +1,16 @@
+/**
+ * @component Card
+ * @level composite
+ * @summary A raised container that groups related content as one object.
+ * @use Peers that sit side by side: stat cards, panels on an overview, items
+ *      in a grid.
+ * @use Key facts in a detail-page aside.
+ * @avoid Wrapping a whole page or form: use page parts and FieldSet instead.
+ * @avoid Nesting a card inside a card.
+ * @avoid Rows of a list: use table or item.
+ * @related item, table, overview-page
+ * @guide design/foundations/layout.md
+ */
 import type * as React from "react"
 import { cn } from "@/lib/utils"
 

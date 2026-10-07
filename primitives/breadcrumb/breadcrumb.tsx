@@ -1,3 +1,14 @@
+/**
+ * @component Breadcrumb
+ * @level composite
+ * @summary The path from the top of the app to the current screen.
+ * @use Screens two or more levels deep, such as a record opened from a list.
+ *      Put it in the PageHeader breadcrumb slot.
+ * @avoid Top-level screens: the sidebar already shows where people are.
+ * @avoid Steps in a process: use a stepper pattern or tabs.
+ * @related sidebar, page
+ * @guide design/foundations/layout.md
+ */
 /** biome-ignore-all lint/a11y/useFocusableInteractive: no-fix */
 
 import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"

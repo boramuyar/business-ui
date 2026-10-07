@@ -1,3 +1,14 @@
+/**
+ * @component Empty
+ * @level composite
+ * @summary The placeholder shown when a list or area has nothing in it yet.
+ * @use An empty table, a search with no results, a new workspace. Say what
+ *      will appear here and offer the action that adds the first item.
+ * @avoid Errors: use alert.
+ * @avoid Loading: use skeleton.
+ * @related alert, skeleton, list-page
+ * @guide design/patterns/feedback.md
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 

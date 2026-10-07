@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "page",
+      "type": "registry:component",
+      "title": "Page",
+      "description": "Base page frame: width, padding, header, toolbar, body and sections.",
+      "categories": [
+        "shell"
+      ],
+      "files": [
+        {
+          "path": "page.tsx",
+          "type": "registry:component",
+          "target": "@components/shells/page.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/style"
+      ]
+    }
+  ]
+}

@@ -10,16 +10,12 @@ type DemoModule = Record<string, unknown> & {
 }
 
 const componentModules = import.meta.glob<DemoModule>(
-  [
-    "../../../../primitives/*/demos/*.tsx",
-  ],
+  ["../../../../primitives/*/demos/*.tsx", "../../../../shells/*/demos/*.tsx"],
   { eager: true }
 )
 
 const sourceModules = import.meta.glob<string>(
-  [
-    "../../../../primitives/*/demos/*.tsx",
-  ],
+  ["../../../../primitives/*/demos/*.tsx", "../../../../shells/*/demos/*.tsx"],
   {
     eager: true,
     import: "default",

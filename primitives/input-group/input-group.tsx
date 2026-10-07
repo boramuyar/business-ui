@@ -1,3 +1,12 @@
+/**
+ * @component Input Group
+ * @level composite
+ * @summary An input with attached icons, text or buttons.
+ * @use Search fields with an icon, amounts with a currency, URLs with a
+ *      prefix, inputs with an inline action.
+ * @avoid Plain text fields: use input.
+ * @related input, field, button
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 import { Button } from "@/components/ui/button"

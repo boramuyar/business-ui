@@ -1,3 +1,16 @@
+/**
+ * @component Checkbox
+ * @level primitive
+ * @summary Marks one option on or off, or several items in a list.
+ * @use On or off choices in a form that is submitted later ("I agree", "Send
+ *      copy to me").
+ * @use Selecting several items from a list or table rows.
+ * @avoid A setting that applies immediately: use switch.
+ * @avoid Exactly one choice from a set: use radio-group.
+ * @avoid Toolbar states such as bold: use toggle.
+ * @related switch, radio-group, field
+ * @guide design/patterns/selection-controls.md
+ */
 import { CheckIcon } from "lucide-react"
 import { Checkbox as CheckboxPrimitive } from "radix-ui"
 import type * as React from "react"

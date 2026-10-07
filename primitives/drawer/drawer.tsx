@@ -1,3 +1,12 @@
+/**
+ * @component Drawer
+ * @level surface
+ * @summary A panel that slides up from the bottom, for touch screens.
+ * @use The mobile version of a dialog or sheet. Switch with use-mobile.
+ * @avoid Desktop layouts: use dialog or sheet.
+ * @related dialog, sheet
+ * @guide design/patterns/overlays.md
+ */
 import type * as React from "react"
 import { Drawer as DrawerPrimitive } from "vaul"
 import { cn } from "@/lib/utils"
@@ -34,7 +43,7 @@ function DrawerOverlay({
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/10 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 z-50 bg-scrim supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         className
       )}
       {...props}

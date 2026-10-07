@@ -5,6 +5,15 @@ registry item.
 
 ## 2026-10-07
 
+- `style`: removes Tailwind's default color palette (`blue-500`, `white`, `black` and the rest), so only role tokens exist. Adds `--scrim` for overlay backdrops and `--destructive-foreground`. Removes `text-4xl` to `text-9xl`, the thin, extralight, light, bold, extrabold and black weights, and `font-serif`. Apps that used any of these need to switch to tokens; `design-check` lists every use.
+- `dialog`, `alert-dialog`, `sheet`, `drawer`: the backdrop uses `bg-scrim` instead of `bg-black/10`. In dark mode it is darker.
+- `button`: the destructive variant uses `text-destructive-foreground`.
+- `slider`: the thumb uses `bg-background` instead of `bg-white`.
+- `calendar`: weekday and week-number labels use `text-xs` instead of `text-[0.8rem]`.
+- All primitives: each file starts with a usage header saying when to use it, when not to, and what to use instead.
+- `page`, `list-page`, `detail-page`, `form-page`, `settings-page`, `overview-page`: new page shells, installed to `components/shells/`.
+- `design-guide`: new item that installs `DESIGN.md` and the `design/` guides: color, typography, layout, selection controls, overlays, feedback, shells, and the generated component catalog.
+- `design-check`: new item that installs `scripts/design-check.mjs`, which flags palette and arbitrary colors, made-up type sizes, inline style colors, components without a usage header, and shells without a justification.
 - `style`: `--chart-1` to `--chart-5` are now computed from `--brand` (same hue, fixed lightness steps from light to dark), so overriding `--brand` recolors charts too. Needs a browser with CSS relative color syntax (Chrome 119, Safari 18, Firefox 128).
 - `style`: adds an indigo accent as `--brand` with `-foreground`, `-subtle`, `-border`, `-strong`, and `-emphasis`, in light and dark. `--ring` and `--sidebar-ring` now point at it, so focus rings are indigo. Override `--brand` to change the hue, or set it to `var(--primary)` to turn it off.
 - `checkbox`, `radio-group`, `switch`: checked state uses `brand`.

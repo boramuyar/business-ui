@@ -1,3 +1,16 @@
+/**
+ * @component Badge
+ * @level primitive
+ * @summary A small label for status, category or count.
+ * @use Showing a record's status in a table or header. Pick the variant by
+ *      meaning: success, warning, destructive, info, secondary.
+ * @use Short labels only: one or two words.
+ * @avoid Anything clickable that performs an action: use button.
+ * @avoid Filters people toggle on and off: use toggle or toggle-group.
+ * @avoid Long messages: use alert.
+ * @related button, alert, table
+ * @guide design/foundations/color.md
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 import type * as React from "react"

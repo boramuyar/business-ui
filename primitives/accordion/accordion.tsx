@@ -1,3 +1,14 @@
+/**
+ * @component Accordion
+ * @level composite
+ * @summary Stacked sections that expand one at a time to show their content.
+ * @use Long, skimmable content where people need only one part at a time:
+ *      FAQs, help text, grouped details.
+ * @avoid Showing or hiding a single region: use collapsible.
+ * @avoid Switching between views of equal weight: use tabs.
+ * @avoid Primary navigation: use sidebar or navigation-menu.
+ * @related collapsible, tabs
+ */
 import { ChevronDownIcon } from "lucide-react"
 import { Accordion as AccordionPrimitive } from "radix-ui"
 import type * as React from "react"

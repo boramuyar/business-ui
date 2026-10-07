@@ -1,3 +1,15 @@
+/**
+ * @component Hover Card
+ * @level surface
+ * @summary A preview of a linked record that appears on hover.
+ * @use Previewing a person, customer or document from a link without leaving
+ *      the page.
+ * @avoid Information people need on touch screens: it never opens there.
+ * @avoid Interactive content: use popover.
+ * @avoid Short labels: use tooltip.
+ * @related tooltip, popover, avatar
+ * @guide design/patterns/overlays.md
+ */
 import { HoverCard as HoverCardPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

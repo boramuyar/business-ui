@@ -56,13 +56,53 @@ const docModules = import.meta.glob<PrimitiveDocModule>(
   { eager: true }
 )
 
-export const primitiveRoutes = buildPrimitiveRoutes()
+const shellRegistryModules = import.meta.glob<RegistryModule>(
+  "../../shells/*/registry.json",
+  { eager: true }
+)
+
+const shellDocModules = import.meta.glob<PrimitiveDocModule>(
+  "../../shells/*/showcase.mdx",
+  { eager: true }
+)
+
+export const primitiveRoutes = buildRoutes(registryModules, docModules)
+
+export const shellRoutes = buildRoutes(shellRegistryModules, shellDocModules)
+
+export type CatalogSection = {
+  basePath: string
+  eyebrow: string
+  label: string
+  routes: PrimitiveRoute[]
+}
+
+export const primitiveSection: CatalogSection = {
+  basePath: "/primitives",
+  eyebrow: "Primitive",
+  label: "Primitives",
+  routes: primitiveRoutes,
+}
+
+export const shellSection: CatalogSection = {
+  basePath: "/shells",
+  eyebrow: "Shell",
+  label: "Shells",
+  routes: shellRoutes,
+}
 
 export function getPrimitiveRoute(name: string) {
   return primitiveRoutes.find((route) => route.name === name)
 }
 
-function buildPrimitiveRoutes() {
+export function getShellRoute(name: string) {
+  return shellRoutes.find((route) => route.name === name)
+}
+
+function buildRoutes(
+  registryModules: Record<string, RegistryModule>,
+  docModules: Record<string, PrimitiveDocModule>
+) {
   const routes: PrimitiveRoute[] = []
 
   for (const [path, module] of Object.entries(registryModules)) {
@@ -93,15 +133,13 @@ function buildPrimitiveRoutes() {
   return routes.sort((left, right) => left.title.localeCompare(right.title))
 }
 
-export function getAdjacentPrimitives(name: string) {
-  const index = primitiveRoutes.findIndex((route) => route.name === name)
+export function getAdjacentRoutes(routes: PrimitiveRoute[], name: string) {
+  const index = routes.findIndex((route) => route.name === name)
 
   return {
-    previous: index > 0 ? primitiveRoutes[index - 1] : undefined,
+    previous: index > 0 ? routes[index - 1] : undefined,
     next:
-      index >= 0 && index < primitiveRoutes.length - 1
-        ? primitiveRoutes[index + 1]
-        : undefined,
+      index >= 0 && index < routes.length - 1 ? routes[index + 1] : undefined,
   }
 }
 

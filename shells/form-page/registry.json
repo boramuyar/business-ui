@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "form-page",
+      "type": "registry:component",
+      "title": "Form Page",
+      "description": "Shell for a full-screen form in one narrow column.",
+      "categories": [
+        "shell"
+      ],
+      "files": [
+        {
+          "path": "form-page.tsx",
+          "type": "registry:component",
+          "target": "@components/shells/form-page.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/style",
+        "boramuyar/business-ui/page",
+        "boramuyar/business-ui/field"
+      ]
+    }
+  ]
+}

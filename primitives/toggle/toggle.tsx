@@ -1,3 +1,15 @@
+/**
+ * @component Toggle
+ * @level primitive
+ * @summary A button that holds an on or off state.
+ * @use Toolbar states: bold, pin, show grid, mute. Usually icon-only with a
+ *      tooltip.
+ * @avoid Settings with a text label: use switch.
+ * @avoid One of several options: use toggle-group.
+ * @avoid Actions without state: use button.
+ * @related toggle-group, switch, button, tooltip
+ * @guide design/patterns/selection-controls.md
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Toggle as TogglePrimitive } from "radix-ui"
 import type * as React from "react"

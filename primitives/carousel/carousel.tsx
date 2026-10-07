@@ -1,3 +1,13 @@
+/**
+ * @component Carousel
+ * @level composite
+ * @summary Horizontally scrolling slides with previous and next controls.
+ * @use Browsing a small set of visual items where only one or a few fit:
+ *      product images, onboarding steps.
+ * @avoid Important content people must not miss: show it all in a grid.
+ * @avoid Data: use table.
+ * @related card, aspect-ratio
+ */
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from "embla-carousel-react"

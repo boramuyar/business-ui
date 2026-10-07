@@ -8,8 +8,11 @@ This guide is for agents editing this repository.
 - `utilities/` - showcase-local utilities; consumers use the `cn` helper created by `shadcn init`.
 - `hooks/` - shared hooks used by primitives.
 - `primitives/` - low-level UI primitives. Each primitive has its own `registry.json`.
+- `shells/` - page shells built on the primitives. Each shell has its own `registry.json` and installs to `components/shells/`.
+- `DESIGN.md` and `design/` - design rules for agents building UI. `design/components.md` is generated.
+- `scripts/design-check.mjs` - the design check, also shipped to consumers as the `design-check` item.
 - `showcase/` - Vite app for previewing primitives, style, utilities, and co-located MDX demos.
-- `registry.json` - source registry entrypoint read directly from the public GitHub repository.
+- `registry.json` - source registry entrypoint read directly from the public GitHub repository. It also defines the `design-guide` and `design-check` items, because their files live at the repository root.
 
 ## Commands
 
@@ -27,7 +30,9 @@ pnpm check
 - `pnpm style:build` regenerates `style/globals.css` and `style/registry.json` from style source JSON files.
 - `pnpm registry:validate` regenerates style files, then validates the source registry.
 - `pnpm registry:build` writes the static item JSON to `showcase/dist/r`, which GitHub Pages serves for the `@business-ui` namespace.
-- `pnpm check` runs type checks, registry validation, and the showcase and registry build.
+- `pnpm design:build` regenerates `design/components.md` from the usage headers.
+- `pnpm design:check` runs the design check on primitives and shells and fails if `design/components.md` is out of date.
+- `pnpm check` runs type checks, the design check, registry validation, and the showcase and registry build.
 
 ## Git hooks
 
@@ -56,9 +61,32 @@ Consumers read `registry.json` and its included source registries directly throu
 
 Add the bullet in the same change that alters what a consumer installs or sees: item props, behavior, styling, variants, dependencies, new or removed items, or style tokens. Showcase-only, test-only, and doc-only changes get no bullet. If today's heading does not exist yet, add it above the previous one. If a registry change adds no bullet, state why before finishing.
 
+## Usage headers
+
+Every primitive and shell starts with a usage header. It is the source of truth for when to use the item: agents read it in the file they are about to use, and `pnpm design:build` collects all headers into `design/components.md`.
+
+```tsx
+/**
+ * @component Switch
+ * @level primitive
+ * @summary Turns one setting on or off, effective immediately.
+ * @use A setting that applies the moment it flips.
+ * @avoid Inside a form with a Save button: use checkbox.
+ * @related checkbox, toggle, toggle-group
+ * @guide design/patterns/selection-controls.md
+ */
+```
+
+- `@level` is `primitive`, `composite`, `surface` or `layout` for primitives, and `shell` for shells.
+- Each `@avoid` names the item to use instead.
+- Shells use `@shell` instead of `@component` and also need `@closest`, `@why` and `@reuses`.
+- Continuation lines are indented under the tag text.
+
+When a change affects when an item should be used, update its header, run `pnpm design:build`, and update the matching guide in `design/` if it has one.
+
 ## Add a primitive
 
-1. Create `primitives/<name>/<name>.tsx`.
+1. Create `primitives/<name>/<name>.tsx`, starting with a usage header.
 2. Create `primitives/<name>/index.ts` that exports the component file.
 3. Create `primitives/<name>/registry.json`.
 4. Add `primitives/<name>/registry.json` to `primitives/registry.json`.
@@ -86,6 +114,14 @@ status: stable
 ```
 
 Supported `status` values are `draft`, `experimental`, and `stable`.
+
+## Add a shell
+
+1. Check `design/shells.md`: a new shell must do something the existing ones can't.
+2. Create `shells/<name>/<name>.tsx`, built from `@/components/shells/page`, starting with a shell usage header.
+3. Create `shells/<name>/index.ts`, `shells/<name>/registry.json` (target `@components/shells/<name>.tsx`, type `registry:component`), and add it to `shells/registry.json`.
+4. Add `shells/<name>/showcase.mdx` and a demo in `shells/<name>/demos/`. Shell pages appear at `/shells/<name>`.
+5. Add the shell to the table in `design/shells.md` and run `pnpm design:build`.
 
 ## Add a utility or hook
 

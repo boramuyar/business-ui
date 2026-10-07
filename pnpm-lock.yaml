@@ -107,6 +107,28 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  shells:
+    dependencies:
+      '@frontend/primitives':
+        specifier: workspace:*
+        version: link:../primitives
+      '@frontend/utilities':
+        specifier: workspace:*
+        version: link:../utilities
+      lucide-react:
+        specifier: ^1.17.0
+        version: 1.52.0(@types/react@19.3.0)(react@19.3.0)
+      react:
+        specifier: ^19.2.7
+        version: 19.3.0
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.17
+        version: 19.3.0
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   showcase:
     dependencies:
       '@frontend/hooks':
@@ -115,6 +137,9 @@ importers:
       '@frontend/primitives':
         specifier: workspace:*
         version: link:../primitives
+      '@frontend/shells':
+        specifier: workspace:*
+        version: link:../shells
       '@frontend/style':
         specifier: workspace:*
         version: link:../style

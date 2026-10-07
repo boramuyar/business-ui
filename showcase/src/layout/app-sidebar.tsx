@@ -24,7 +24,11 @@ import { cn } from "@frontend/utilities/cn"
 import { ChevronRightIcon } from "lucide-react"
 import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { type PrimitiveFrontmatter, primitiveRoutes } from "../primitives-data"
+import {
+  type PrimitiveFrontmatter,
+  primitiveRoutes,
+  shellRoutes,
+} from "../primitives-data"
 
 type Status = PrimitiveFrontmatter["status"]
 
@@ -189,6 +193,15 @@ export function AppSidebar() {
                 }))}
                 label="Primitives"
                 to="/primitives"
+              />
+              <SidebarSubmenu
+                entries={shellRoutes.map((route) => ({
+                  to: `/shells/${route.name}`,
+                  label: route.title,
+                  status: route.status,
+                }))}
+                label="Shells"
+                to="/shells"
               />
               <SidebarLink label="Style & Utilities" to="/style" />
               <SidebarLink label="Style Lab" to="/style-lab" />
