@@ -46,24 +46,20 @@ const commonItems = [
 
 export function InstallationPage() {
   return (
-    <div>
-      <div className="flex items-start justify-between gap-4">
-        <PageHeader
-          eyebrow="Get started"
-          title="Installation"
-          description="Consume the registry directly from GitHub with the shadcn CLI."
-        />
-        <Button
-          className="mt-1 shrink-0"
-          onClick={() => copyText(usageMarkdown)}
-          variant="outline"
-        >
-          <ClipboardCopyIcon data-icon="inline-start" />
-          Copy as Markdown
-        </Button>
-      </div>
+    <div className="max-w-4xl">
+      <PageHeader
+        actions={
+          <Button onClick={() => copyText(usageMarkdown)} variant="outline">
+            <ClipboardCopyIcon data-icon="inline-start" />
+            Copy as Markdown
+          </Button>
+        }
+        description="Install items straight from GitHub with the shadcn CLI."
+        eyebrow="Get started"
+        title="Installation"
+      />
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-12">
         <GuideSection
           description="Address the GitHub repository directly. No auth or registry namespace is needed."
           step="01"
@@ -134,11 +130,13 @@ function GuideSection({
   children: ReactNode
 }) {
   return (
-    <section className="grid gap-x-5 gap-y-3 border p-5 sm:grid-cols-[auto_1fr]">
-      <span className="font-mono text-primary-emphasis text-sm">{step}</span>
+    <section className="grid gap-x-4 gap-y-3 sm:grid-cols-[auto_1fr]">
+      <span className="flex size-6 items-center justify-center rounded-full bg-muted font-medium text-xs tabular-nums">
+        {Number(step)}
+      </span>
       <div className="flex max-w-3xl flex-col gap-3">
         <div className="flex flex-col gap-1">
-          <h2 className="font-medium text-sm">{title}</h2>
+          <h2 className="font-semibold text-base">{title}</h2>
           <p className="text-muted-foreground text-sm">{description}</p>
         </div>
         {children}

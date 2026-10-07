@@ -94,9 +94,7 @@ export const navSections: NavSection[] = [
         label: "Overview",
         links: [
           { to: "/shells", label: "All shells" },
-          ...designLinks("Reference").filter(
-            (link) => link.to === "/design/shells"
-          ),
+          { to: "/design/shells", label: "When to add a shell" },
         ],
       },
       { label: "Shells", links: catalogLinks("/shells", shellRoutes) },

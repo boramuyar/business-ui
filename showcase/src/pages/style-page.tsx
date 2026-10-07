@@ -67,7 +67,8 @@ export function StylePage() {
   return (
     <div>
       <PageHeader
-        title="Style & Utilities"
+        eyebrow="Foundations"
+        title="Style & utilities"
         description="Theme colors, color role tokens, design tokens, and the shared cn helper."
       />
 
@@ -79,20 +80,20 @@ export function StylePage() {
           <TabsTrigger value="utilities">Utilities</TabsTrigger>
         </TabsList>
 
-        <TabsContent className="pt-4" value="colors">
+        <TabsContent className="pt-6" value="colors">
           <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {baseColorNames.map((colorName) => (
               <div className="grid gap-1.5" key={colorName}>
                 <Swatch className="h-14" name={colorName} />
                 <span className="font-mono text-muted-foreground text-xs">
-                  --{colorName}
+                  {colorName}
                 </span>
               </div>
             ))}
           </div>
         </TabsContent>
 
-        <TabsContent className="flex flex-col gap-6 pt-4" value="roles">
+        <TabsContent className="flex flex-col gap-6 pt-6" value="roles">
           <p className="max-w-3xl text-muted-foreground text-sm">
             Each semantic color ships four role tokens with stable, theme-tuned
             levels mixed from the base color. Components never hand-tune
@@ -102,12 +103,15 @@ export function StylePage() {
 
           <div className="grid gap-3 sm:grid-cols-2">
             {roleGuide.map((entry) => (
-              <div className="flex flex-col gap-1 border p-4" key={entry.role}>
+              <div
+                className="flex flex-col gap-1.5 rounded-lg p-4 ring-1 ring-border"
+                key={entry.role}
+              >
                 <span className="font-medium font-mono text-sm">
                   *-{entry.role}
                 </span>
                 <p className="text-muted-foreground text-sm">{entry.purpose}</p>
-                <code className="w-fit bg-muted px-1 py-0.5 font-mono text-xs">
+                <code className="w-fit rounded-sm bg-muted px-1 py-0.5 font-mono text-xs">
                   {entry.example}
                 </code>
               </div>
@@ -144,7 +148,7 @@ export function StylePage() {
             <div className="flex flex-wrap gap-2">
               {ROLE_COLORS.map((color) => (
                 <span
-                  className="border px-2 py-1 font-mono text-xs"
+                  className="rounded-sm border px-2 py-1 text-xs"
                   key={color}
                   style={{
                     backgroundColor: `var(--${color}-subtle)`,
@@ -159,7 +163,7 @@ export function StylePage() {
           </div>
         </TabsContent>
 
-        <TabsContent className="flex flex-col gap-6 pt-4" value="tokens">
+        <TabsContent className="flex flex-col gap-6 pt-6" value="tokens">
           <Table>
             <TableHeader>
               <TableRow>
@@ -205,13 +209,13 @@ export function StylePage() {
           </Table>
         </TabsContent>
 
-        <TabsContent className="flex flex-col gap-6 pt-4" value="utilities">
+        <TabsContent className="flex flex-col gap-6 pt-6" value="utilities">
           <div className="flex flex-col gap-2">
             <span className="font-medium font-mono text-sm">.small-caps</span>
             <p className="max-w-3xl text-muted-foreground text-sm">
               Renders text in all small caps via `font-variant`.
             </p>
-            <p className="small-caps w-fit border px-3 py-2">
+            <p className="small-caps w-fit rounded-md border px-3 py-2">
               Quarterly Portfolio Review
             </p>
           </div>
@@ -240,7 +244,7 @@ function Swatch({
 }) {
   return (
     <div
-      className={`${className} border`}
+      className={`${className} rounded-md ring-1 ring-border ring-inset`}
       style={{ backgroundColor: `var(--${name})` }}
       title={`--${name}`}
     />

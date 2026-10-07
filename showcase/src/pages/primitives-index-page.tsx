@@ -1,5 +1,12 @@
 import { Badge } from "@frontend/primitives/badge"
 import { Input } from "@frontend/primitives/input"
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemTitle,
+} from "@frontend/primitives/item"
 import { ToggleGroup, ToggleGroupItem } from "@frontend/primitives/toggle-group"
 import { useState } from "react"
 import { Link } from "react-router-dom"
@@ -50,14 +57,14 @@ export function PrimitivesIndexPage({
       : [{ label: section.label, routes: visibleRoutes }]
 
   return (
-    <div className="max-w-6xl">
+    <div>
       <PageHeader
         eyebrow={section === primitiveSection ? "Components" : "Shells"}
         title={section === primitiveSection ? "All components" : "All shells"}
         description={copy.description}
       />
 
-      <div className="mb-4 flex flex-wrap items-center gap-3">
+      <div className="mb-8 flex flex-wrap items-center gap-3">
         <Input
           className="max-w-xs"
           onChange={(event) => setQuery(event.target.value)}
@@ -82,34 +89,36 @@ export function PrimitivesIndexPage({
         </ToggleGroup>
       </div>
 
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-12">
         {groups.map((group) => (
           <section className="flex flex-col gap-3" key={group.label}>
-            <h2 className="font-semibold text-xl tracking-tight">
+            <h2 className="flex items-baseline gap-2 font-semibold text-lg tracking-tight">
               {group.label}
-              <span className="ml-2 font-normal text-base text-muted-foreground">
+              <span className="font-normal text-muted-foreground text-sm tabular-nums">
                 {group.routes.length}
               </span>
             </h2>
-            <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+            <ItemGroup className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
               {group.routes.map((route) => (
-                <Link
-                  className="flex flex-col gap-1 rounded-md border px-4 py-3 transition-colors hover:bg-muted"
-                  key={route.name}
-                  to={`${section.basePath}/${route.name}`}
-                >
-                  <span className="flex items-center justify-between gap-3">
-                    <span className="font-medium text-sm">{route.title}</span>
-                    {route.status === "stable" ? null : (
-                      <Badge variant="outline">{route.status}</Badge>
-                    )}
-                  </span>
-                  <span className="text-muted-foreground text-sm">
-                    {route.usage.summary || route.description}
-                  </span>
-                </Link>
+                <Item asChild key={route.name} variant="outline">
+                  <Link to={`${section.basePath}/${route.name}`}>
+                    <ItemContent>
+                      <ItemTitle>
+                        {route.title}
+                        {route.status === "stable" ? null : (
+                          <Badge size="sm" variant="secondary">
+                            {route.status}
+                          </Badge>
+                        )}
+                      </ItemTitle>
+                      <ItemDescription>
+                        {route.usage.summary || route.description}
+                      </ItemDescription>
+                    </ItemContent>
+                  </Link>
+                </Item>
               ))}
-            </div>
+            </ItemGroup>
           </section>
         ))}
       </div>

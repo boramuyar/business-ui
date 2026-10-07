@@ -1,3 +1,8 @@
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarProvider,
+} from "@frontend/primitives/sidebar"
 import type { ReactNode } from "react"
 import { useLocation } from "react-router-dom"
 import { SectionNav } from "./section-nav"
@@ -9,16 +14,21 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   const section = getNavSection(pathname)
 
   return (
-    <div className="flex min-h-svh flex-col">
+    <SidebarProvider className="flex-col">
       <SiteHeader section={section} />
       <div className="flex flex-1">
-        <aside className="sticky top-14 hidden h-[calc(100svh-3.5rem)] w-64 shrink-0 overflow-y-auto border-r px-4 py-6 lg:block">
-          <SectionNav section={section} />
-        </aside>
-        <main className="min-w-0 flex-1 px-4 py-8 sm:px-8 lg:px-12 lg:py-10">
-          {children}
+        <Sidebar
+          className="sticky top-14 hidden h-[calc(100svh-3.5rem)] border-r bg-background py-4 pl-2 lg:flex"
+          collapsible="none"
+        >
+          <SidebarContent>
+            <SectionNav section={section} />
+          </SidebarContent>
+        </Sidebar>
+        <main className="min-w-0 flex-1 px-4 pt-10 pb-24 sm:px-8 lg:px-14">
+          <div className="mx-auto w-full max-w-6xl">{children}</div>
         </main>
       </div>
-    </div>
+    </SidebarProvider>
   )
 }
