@@ -85,7 +85,8 @@ The style ships an indigo accent as `--brand`, with the same `-subtle`,
 buttons stay near-black. The accent marks state: checked checkboxes, radios
 and switches, the active line tab, progress and slider fills, selected
 calendar days and table rows, link buttons, and every focus ring (`--ring`
-points at `--brand`).
+points at `--brand`). The five chart colors are a lightness ramp computed
+from `--brand` with OKLCH relative color syntax, so they follow it too.
 
 Change the hue by overriding two variables in your global CSS:
 
