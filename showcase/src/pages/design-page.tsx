@@ -36,7 +36,11 @@ export function DesignPage() {
   return (
     <div key={doc.slug}>
       <div className="flex items-start justify-between gap-4">
-        <PageHeader description={description} eyebrow="Design" title={title} />
+        <PageHeader
+          description={description}
+          eyebrow={doc.group}
+          title={title}
+        />
         <div className="mt-1 flex shrink-0 gap-2">
           <Button asChild variant="ghost">
             <a href={rawDesignUrl(doc)}>

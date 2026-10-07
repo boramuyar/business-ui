@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom"
 
 import { App } from "./app"
 import "./styles.css"
-import { SidebarProvider, TooltipProvider } from "@frontend/primitives"
+import { TooltipProvider } from "@frontend/primitives"
 import { Toaster } from "@frontend/primitives/sonner"
 
 const rootElement = document.getElementById("root")
@@ -24,9 +24,7 @@ createRoot(rootElement).render(
         disableTransitionOnChange
       >
         <TooltipProvider>
-          <SidebarProvider>
-            <App />
-          </SidebarProvider>
+          <App />
         </TooltipProvider>
         <Toaster />
       </ThemeProvider>

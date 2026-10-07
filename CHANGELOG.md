@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-07
 
+- Showcase: ui.uyar.design is laid out as a handbook. Section tabs (Get started, Foundations, Components, Shells, Patterns) replace the app sidebar, components are grouped by level, and each component page opens with the Use when and Avoid rules from its usage header. Routes are unchanged.
 - `style`: removes Tailwind's default color palette (`blue-500`, `white`, `black` and the rest), so only role tokens exist. Adds `--scrim` for overlay backdrops and `--destructive-foreground`. Removes `text-4xl` to `text-9xl`, the thin, extralight, light, bold, extrabold and black weights, and `font-serif`. Apps that used any of these need to switch to tokens; the design check lists every use.
 - `dialog`, `alert-dialog`, `sheet`, `drawer`: the backdrop uses `bg-scrim` instead of `bg-black/10`. In dark mode it is darker.
 - `button`: the destructive variant uses `text-destructive-foreground`.

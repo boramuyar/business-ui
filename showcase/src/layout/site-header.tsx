@@ -1,61 +1,25 @@
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@frontend/primitives/breadcrumb"
 import { Button } from "@frontend/primitives/button"
 import { Kbd, KbdGroup } from "@frontend/primitives/kbd"
-import { Separator } from "@frontend/primitives/separator"
-import { SidebarTrigger } from "@frontend/primitives/sidebar"
-import { SearchIcon } from "lucide-react"
-import { Fragment, useEffect, useState } from "react"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@frontend/primitives/sheet"
+import { cn } from "@frontend/utilities/cn"
+import { MenuIcon, SearchIcon } from "lucide-react"
+import { useEffect, useState } from "react"
 import { Link, useLocation } from "react-router-dom"
-import { getDesignDoc } from "../design-docs"
-import { getPrimitiveRoute, getShellRoute } from "../primitives-data"
 import { CommandPalette } from "./command-palette"
+import { SectionNav } from "./section-nav"
+import { type NavSection, navSections } from "./site-nav"
 import { ThemeToggle } from "./theme-toggle"
 
-const sectionLabels: Record<string, string> = {
-  design: "Design",
-  installation: "Installation",
-  primitives: "Primitives",
-  shells: "Shells",
-  style: "Style & Utilities",
-  "style-lab": "Style Lab",
-}
+const logoUrl = `${import.meta.env.BASE_URL}logo.svg`
 
-function useBreadcrumbs() {
-  const { pathname } = useLocation()
-  const crumbs: { to: string; label: string }[] = [{ to: "/", label: "Home" }]
-  const [section, detail] = pathname.split("/").filter(Boolean)
-
-  if (section && sectionLabels[section]) {
-    crumbs.push({ to: `/${section}`, label: sectionLabels[section] })
-  }
-
-  if ((section === "primitives" || section === "shells") && detail) {
-    const route =
-      section === "shells" ? getShellRoute(detail) : getPrimitiveRoute(detail)
-    crumbs.push({
-      to: `/${section}/${detail}`,
-      label: route?.title ?? detail,
-    })
-  }
-
-  if (section === "design" && detail) {
-    const slug = pathname.replace(/^\/design\//, "")
-    crumbs.push({ to: pathname, label: getDesignDoc(slug)?.title ?? slug })
-  }
-
-  return crumbs
-}
-
-export function SiteHeader() {
+export function SiteHeader({ section }: { section: NavSection }) {
   const [paletteOpen, setPaletteOpen] = useState(false)
-  const crumbs = useBreadcrumbs()
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -70,51 +34,95 @@ export function SiteHeader() {
   }, [])
 
   return (
-    <header className="flex h-12 shrink-0 items-center gap-2 border-b px-3">
-      <SidebarTrigger className="-ml-1" />
-      <Separator
-        className="mr-2 data-[orientation=vertical]:h-4"
-        orientation="vertical"
-      />
-      <Breadcrumb>
-        <BreadcrumbList>
-          {crumbs.map((crumb, index) => {
-            const isLast = index === crumbs.length - 1
+    <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-6 border-b bg-background px-4 sm:px-6">
+      <MobileMenu />
+      <Link className="flex shrink-0 items-center gap-2" to="/">
+        <img alt="" className="size-5" src={logoUrl} />
+        <span className="font-semibold text-sm">Business UI</span>
+      </Link>
+      <nav
+        aria-label="Sections"
+        className="hidden h-full items-stretch gap-1 lg:flex"
+      >
+        {navSections.map((entry) => {
+          const active = entry.id === section.id
 
-            return (
-              <Fragment key={crumb.to}>
-                {index > 0 ? <BreadcrumbSeparator /> : null}
-                <BreadcrumbItem>
-                  {isLast ? (
-                    <BreadcrumbPage>{crumb.label}</BreadcrumbPage>
-                  ) : (
-                    <BreadcrumbLink asChild>
-                      <Link to={crumb.to}>{crumb.label}</Link>
-                    </BreadcrumbLink>
-                  )}
-                </BreadcrumbItem>
-              </Fragment>
-            )
-          })}
-        </BreadcrumbList>
-      </Breadcrumb>
+          return (
+            <Link
+              aria-current={active ? "page" : undefined}
+              className={cn(
+                "flex items-center border-transparent border-y-2 px-2.5 text-muted-foreground text-sm transition-colors hover:text-foreground",
+                active && "border-b-brand font-medium text-foreground"
+              )}
+              key={entry.id}
+              to={entry.to}
+            >
+              {entry.label}
+            </Link>
+          )
+        })}
+      </nav>
       <div className="ml-auto flex items-center gap-1">
         <Button
-          className="gap-2 text-muted-foreground"
+          className="w-9 justify-center gap-2 px-0 text-muted-foreground sm:w-56 sm:justify-between sm:px-2.5"
           onClick={() => setPaletteOpen(true)}
-          size="sm"
-          variant="outline"
+          variant="secondary"
         >
-          <SearchIcon />
-          Search
-          <KbdGroup>
+          <span className="flex items-center gap-2">
+            <SearchIcon />
+            <span className="hidden sm:inline">Search the handbook</span>
+          </span>
+          <KbdGroup className="hidden sm:inline-flex">
             <Kbd>Ctrl</Kbd>
             <Kbd>K</Kbd>
           </KbdGroup>
+        </Button>
+        <Button asChild className="hidden sm:inline-flex" variant="ghost">
+          <a href="https://github.com/boramuyar/business-ui">GitHub</a>
         </Button>
         <ThemeToggle />
       </div>
       <CommandPalette onOpenChange={setPaletteOpen} open={paletteOpen} />
     </header>
+  )
+}
+
+function MobileMenu() {
+  const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+
+  // Close the menu after navigating.
+  useEffect(() => {
+    setOpen(false)
+  }, [pathname])
+
+  return (
+    <Sheet onOpenChange={setOpen} open={open}>
+      <SheetTrigger asChild>
+        <Button
+          aria-label="Open navigation"
+          className="-ml-2 lg:hidden"
+          size="icon"
+          variant="ghost"
+        >
+          <MenuIcon />
+        </Button>
+      </SheetTrigger>
+      <SheetContent className="w-72 gap-0 overflow-y-auto" side="left">
+        <SheetHeader>
+          <SheetTitle>Business UI</SheetTitle>
+        </SheetHeader>
+        <div className="flex flex-col gap-8 px-4 pb-8">
+          {navSections.map((section) => (
+            <div className="flex flex-col gap-2" key={section.id}>
+              <span className="px-2 font-semibold text-sm">
+                {section.label}
+              </span>
+              <SectionNav section={section} />
+            </div>
+          ))}
+        </div>
+      </SheetContent>
+    </Sheet>
   )
 }

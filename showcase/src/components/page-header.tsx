@@ -8,14 +8,16 @@ export function PageHeader({
   description: string
 }) {
   return (
-    <header className="mb-6 flex flex-col gap-2 border-b pb-6">
+    <header className="mb-8 flex flex-col gap-2.5">
       {eyebrow ? (
-        <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">
-          {eyebrow}
-        </span>
+        <span className="text-muted-foreground text-sm">{eyebrow}</span>
       ) : null}
-      <h1 className="text-3xl font-semibold tracking-tight">{title}</h1>
-      <p className="max-w-3xl text-muted-foreground text-sm">{description}</p>
+      <h1 className="text-balance font-semibold text-3xl tracking-tight">
+        {title}
+      </h1>
+      <p className="max-w-2xl text-base text-muted-foreground leading-relaxed">
+        {description}
+      </p>
     </header>
   )
 }

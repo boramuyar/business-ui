@@ -15,10 +15,12 @@ import { DependencyList } from "../components/dependency-list"
 import { InstallCommand } from "../components/install-command"
 import { PageHeader } from "../components/page-header"
 import { TableOfContents } from "../components/toc"
+import { RelatedComponents, UsageGuidance } from "../components/usage-guidance"
 import {
   type CatalogSection,
   getAdjacentRoutes,
   primitiveSection,
+  usageLevels,
 } from "../primitives-data"
 
 export function PrimitivePage({
@@ -36,6 +38,13 @@ export function PrimitivePage({
 
   const { Doc } = route
   const { previous, next } = getAdjacentRoutes(section.routes, route.name)
+  const levelLabel = usageLevels.find(
+    (entry) => entry.level === route.usage.level
+  )?.label
+  const eyebrow =
+    section === primitiveSection
+      ? `Components / ${levelLabel ?? section.label}`
+      : section.label
 
   function navigateTo(path: string) {
     return (event: MouseEvent<HTMLAnchorElement>) => {
@@ -49,7 +58,7 @@ export function PrimitivePage({
       <div className="flex items-start justify-between gap-4">
         <PageHeader
           description={route.description}
-          eyebrow={section.eyebrow}
+          eyebrow={eyebrow}
           title={route.title}
         />
         <Badge className="mt-1" variant="outline">
@@ -57,11 +66,15 @@ export function PrimitivePage({
         </Badge>
       </div>
 
-      <div className="grid gap-8 xl:grid-cols-[1fr_16rem]">
+      <div className="grid gap-12 xl:grid-cols-[minmax(0,48rem)_15rem]">
         <article className="flex min-w-0 flex-col gap-6" id="primitive-doc">
+          <UsageGuidance usage={route.usage} />
+
           <MDXProvider components={mdxComponents}>
             {Doc ? <Doc /> : <MissingDocNotice name={route.name} />}
           </MDXProvider>
+
+          <RelatedComponents names={route.usage.related} />
 
           <Separator />
 
@@ -89,7 +102,7 @@ export function PrimitivePage({
           </Pagination>
         </article>
 
-        <aside className="flex flex-col gap-6 xl:sticky xl:top-6 xl:self-start">
+        <aside className="flex flex-col gap-6 xl:sticky xl:top-24 xl:self-start">
           <div className="flex flex-col gap-2">
             <span className="font-medium text-foreground text-xs">Install</span>
             <InstallCommand item={route.name} />

@@ -1,16 +1,14 @@
 import { Badge } from "@frontend/primitives/badge"
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@frontend/primitives/card"
 import { Input } from "@frontend/primitives/input"
 import { ToggleGroup, ToggleGroupItem } from "@frontend/primitives/toggle-group"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { PageHeader } from "../components/page-header"
-import { type CatalogSection, primitiveSection } from "../primitives-data"
+import {
+  type CatalogSection,
+  groupByLevel,
+  primitiveSection,
+} from "../primitives-data"
 
 const statusFilters = ["all", "stable", "experimental", "draft"] as const
 
@@ -19,8 +17,8 @@ type StatusFilter = (typeof statusFilters)[number]
 const sectionCopy: Record<string, { description: string; filter: string }> = {
   "/primitives": {
     description:
-      "This index is generated from primitive registry files. Each primitive has a co-located showcase.mdx reference.",
-    filter: "Filter primitives...",
+      "Every component in the registry, grouped by level: primitives are single controls, composites combine them, surfaces float above the page, and layout arranges it.",
+    filter: "Filter components...",
   },
   "/shells": {
     description:
@@ -46,11 +44,16 @@ export function PrimitivesIndexPage({
     return matchesStatus && matchesQuery
   })
 
+  const groups =
+    section === primitiveSection
+      ? groupByLevel(visibleRoutes)
+      : [{ label: section.label, routes: visibleRoutes }]
+
   return (
-    <div>
+    <div className="max-w-6xl">
       <PageHeader
-        eyebrow="Generated"
-        title={section.label}
+        eyebrow={section === primitiveSection ? "Components" : "Shells"}
+        title={section === primitiveSection ? "All components" : "All shells"}
         description={copy.description}
       />
 
@@ -79,19 +82,35 @@ export function PrimitivesIndexPage({
         </ToggleGroup>
       </div>
 
-      <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {visibleRoutes.map((route) => (
-          <Link key={route.name} to={`${section.basePath}/${route.name}`}>
-            <Card className="h-full transition-colors hover:bg-muted/50">
-              <CardHeader>
-                <div className="flex items-start justify-between gap-3">
-                  <CardTitle>{route.title}</CardTitle>
-                  <Badge variant="outline">{route.status}</Badge>
-                </div>
-                <CardDescription>{route.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          </Link>
+      <div className="flex flex-col gap-10">
+        {groups.map((group) => (
+          <section className="flex flex-col gap-3" key={group.label}>
+            <h2 className="font-semibold text-xl tracking-tight">
+              {group.label}
+              <span className="ml-2 font-normal text-base text-muted-foreground">
+                {group.routes.length}
+              </span>
+            </h2>
+            <div className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+              {group.routes.map((route) => (
+                <Link
+                  className="flex flex-col gap-1 rounded-md border px-4 py-3 transition-colors hover:bg-muted"
+                  key={route.name}
+                  to={`${section.basePath}/${route.name}`}
+                >
+                  <span className="flex items-center justify-between gap-3">
+                    <span className="font-medium text-sm">{route.title}</span>
+                    {route.status === "stable" ? null : (
+                      <Badge variant="outline">{route.status}</Badge>
+                    )}
+                  </span>
+                  <span className="text-muted-foreground text-sm">
+                    {route.usage.summary || route.description}
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </div>

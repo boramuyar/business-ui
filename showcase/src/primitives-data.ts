@@ -35,16 +35,38 @@ export type PrimitiveFrontmatter = {
   status?: "draft" | "experimental" | "stable"
 }
 
+export type UsageLevel =
+  | "primitive"
+  | "composite"
+  | "surface"
+  | "layout"
+  | "shell"
+
+/** Parsed from the usage header at the top of every primitive and shell. */
+export type UsageHeader = {
+  level: UsageLevel
+  summary: string
+  use: string[]
+  avoid: string[]
+  related: string[]
+}
+
 export type PrimitiveRoute = {
   name: string
   title: string
   description: string
+  usage: UsageHeader
   status: NonNullable<PrimitiveFrontmatter["status"]>
   dependencies: string[]
   registryDependencies: string[]
   registryItem: RegistryItem
   Doc?: ComponentType
 }
+
+const sourceModules = import.meta.glob<string>(
+  ["../../primitives/*/*.tsx", "../../shells/*/*.tsx"],
+  { eager: true, import: "default", query: "?raw" }
+)
 
 const registryModules = import.meta.glob<RegistryModule>(
   "../../primitives/*/registry.json",
@@ -114,6 +136,9 @@ function buildRoutes(
 
     const doc = docModules[path.replace("registry.json", "showcase.mdx")]
     const frontmatter = doc?.frontmatter ?? {}
+    const folder = path.replace("/registry.json", "")
+    const source =
+      sourceModules[`${folder}/${folder.split("/").pop()}.tsx`] ?? ""
 
     routes.push({
       name: registryItem.name,
@@ -122,6 +147,7 @@ function buildRoutes(
         registryItem.title ??
         titleFromName(registryItem.name),
       description: frontmatter.description ?? registryItem.description ?? "",
+      usage: parseUsageHeader(source),
       status: frontmatter.status ?? "draft",
       dependencies: registryItem.dependencies ?? [],
       registryDependencies: registryItem.registryDependencies ?? [],
@@ -151,6 +177,54 @@ export function countPrimitivesByStatus() {
   }
 
   return counts
+}
+
+export const usageLevels: { level: UsageLevel; label: string }[] = [
+  { level: "primitive", label: "Primitives" },
+  { level: "composite", label: "Composites" },
+  { level: "surface", label: "Surfaces" },
+  { level: "layout", label: "Layout" },
+]
+
+export function groupByLevel(routes: PrimitiveRoute[]) {
+  return usageLevels
+    .map((group) => ({
+      ...group,
+      routes: routes.filter((route) => route.usage.level === group.level),
+    }))
+    .filter((group) => group.routes.length > 0)
+}
+
+/** Same rules as scripts/generate-design-catalog.mjs. */
+function parseUsageHeader(source: string): UsageHeader {
+  const header = source.match(/^\s*\/\*\*([\s\S]*?)\*\//)?.[1] ?? ""
+  const tags: Record<string, string[]> = {}
+  let current: string[] | undefined
+
+  for (const rawLine of header.split("\n")) {
+    const line = rawLine.replace(/^\s*\*\s?/, "")
+    const tag = line.match(/^@(\w+)\s+(.*)$/)
+    if (tag) {
+      tags[tag[1]] ??= []
+      current = tags[tag[1]]
+      current.push(tag[2].trim())
+    } else if (current && line.trim() && /^\s{2,}/.test(line)) {
+      current[current.length - 1] += ` ${line.trim()}`
+    } else {
+      current = undefined
+    }
+  }
+
+  return {
+    level: (tags.level?.[0] as UsageLevel | undefined) ?? "primitive",
+    summary: tags.summary?.[0] ?? "",
+    use: tags.use ?? [],
+    avoid: tags.avoid ?? [],
+    related: (tags.related?.[0] ?? "")
+      .split(",")
+      .map((name) => name.trim())
+      .filter(Boolean),
+  }
 }
 
 function titleFromName(name: string) {

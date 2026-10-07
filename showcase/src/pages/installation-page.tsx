@@ -49,7 +49,7 @@ export function InstallationPage() {
     <div>
       <div className="flex items-start justify-between gap-4">
         <PageHeader
-          eyebrow="Guide"
+          eyebrow="Get started"
           title="Installation"
           description="Consume the registry directly from GitHub with the shadcn CLI."
         />

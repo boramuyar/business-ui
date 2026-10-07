@@ -1,172 +1,70 @@
 import { Button } from "@frontend/primitives/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@frontend/primitives/card"
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemGroup,
-  ItemTitle,
-} from "@frontend/primitives/item"
-import { Kbd, KbdGroup } from "@frontend/primitives/kbd"
 import { ArrowRightIcon } from "lucide-react"
 import { Link } from "react-router-dom"
 import { CodeBlock } from "../components/code-block"
-import { countPrimitivesByStatus, primitiveRoutes } from "../primitives-data"
-
-const SPECTRUM_COLORS = [
-  "primary",
-  "brand",
-  "info",
-  "success",
-  "warning",
-  "destructive",
-]
-const SPECTRUM_ROLES = ["subtle", "border", "emphasis", "strong"]
+import { PageHeader } from "../components/page-header"
+import { navSections } from "../layout/site-nav"
+import { primitiveRoutes, shellRoutes } from "../primitives-data"
 
 const quickInstallCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/style`
 
+const sectionCopy: Record<string, string> = {
+  foundations:
+    "Color roles, type steps and layout rules, plus the tokens behind them.",
+  components: `${primitiveRoutes.length} components with usage rules, live demos and install commands.`,
+  shells: `${shellRoutes.length} page layouts to start a screen from before composing your own.`,
+  patterns:
+    "Which dialog, toggle or feedback to pick, and the generated component catalog.",
+}
+
 export function HomePage() {
-  const statusCounts = countPrimitivesByStatus()
-
   return (
-    <div className="flex flex-col gap-10">
-      <section className="overflow-hidden border">
-        <div className="flex flex-col gap-5 p-8 lg:p-12">
-          <span className="font-mono text-muted-foreground text-xs uppercase tracking-wide">
-            boramuyar/business-ui · shadcn registry
-          </span>
-          <h1 className="max-w-2xl text-balance font-semibold text-3xl tracking-tight">
-            Every interface, from one source tree.
-          </h1>
-          <p className="max-w-xl text-muted-foreground text-sm">
-            Primitives, hooks, and a token-driven theme — previewed live
-            from the exact files the registry serves.
-          </p>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button asChild>
-              <Link to="/primitives">
-                Browse {primitiveRoutes.length} primitives
-                <ArrowRightIcon data-icon="inline-end" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline">
-              <Link to="/installation">Installation</Link>
-            </Button>
-          </div>
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-muted-foreground text-xs">
-            <span className="flex items-center gap-1.5">
-              <KbdGroup>
-                <Kbd>Ctrl</Kbd>
-                <Kbd>K</Kbd>
-              </KbdGroup>
-              Search
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Kbd>D</Kbd>
-              Toggle theme
-            </span>
-            <span className="flex items-center gap-1.5">
-              <KbdGroup>
-                <Kbd>Ctrl</Kbd>
-                <Kbd>B</Kbd>
-              </KbdGroup>
-              Sidebar
-            </span>
-          </div>
-        </div>
-        <div aria-hidden className="flex h-2">
-          {SPECTRUM_COLORS.flatMap((color) =>
-            SPECTRUM_ROLES.map((role) => (
-              <div
-                className="flex-1"
-                key={`${color}-${role}`}
-                style={{ backgroundColor: `var(--${color}-${role})` }}
-              />
-            ))
-          )}
-        </div>
-      </section>
+    <div className="flex max-w-4xl flex-col gap-10">
+      <PageHeader
+        description="A shadcn registry with its own style and primitives, and the rules for using them. People read this handbook here; agents read the same rules from /llms.txt."
+        eyebrow="Get started"
+        title="Business UI handbook"
+      />
 
-      <ItemGroup className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
-        <StatItem count={primitiveRoutes.length} label="Primitives" />
-        <StatItem count={statusCounts.stable} label="Stable" />
-        <StatItem count={statusCounts.experimental} label="Experimental" />
-        <StatItem count={statusCounts.draft} label="Draft" />
-      </ItemGroup>
-
-      <section className="flex flex-col gap-3" id="installation">
-        <div className="flex flex-col gap-1">
-          <h2 className="font-semibold text-xl tracking-tight">Installation</h2>
-          <p className="max-w-2xl text-muted-foreground text-sm">
-            shadcn reads the registry directly from GitHub. Start with the
-            style, then add primitives:
-          </p>
-        </div>
+      <section className="flex flex-col gap-3">
+        <h2 className="font-semibold text-xl tracking-tight">Install</h2>
+        <p className="max-w-2xl text-muted-foreground text-sm">
+          shadcn reads the registry from GitHub. Add the style first, then the
+          components you need.
+        </p>
         <CodeBlock code={quickInstallCommand} />
         <Button asChild className="w-fit" variant="outline">
           <Link to="/installation">
-            Full installation guide
+            Installation guide
             <ArrowRightIcon data-icon="inline-end" />
           </Link>
         </Button>
       </section>
 
-      <section className="grid gap-4 lg:grid-cols-2">
-        <SummaryCard
-          description="Low-level components documented with live demos, install commands, and dependency lists."
-          href="/primitives"
-          title="Primitives"
-        />
-        <SummaryCard
-          description="Color roles, theme tokens, fonts, and the shared cn helper."
-          href="/style"
-          title="Style & Utilities"
-        />
+      <section className="flex flex-col gap-3">
+        <h2 className="font-semibold text-xl tracking-tight">
+          Find your way around
+        </h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {navSections
+            .filter((section) => sectionCopy[section.id])
+            .map((section) => (
+              <Link
+                className="group flex flex-col gap-1.5 rounded-md border p-4 transition-colors hover:bg-muted"
+                key={section.id}
+                to={section.to}
+              >
+                <span className="flex items-center justify-between font-medium">
+                  {section.label}
+                  <ArrowRightIcon className="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+                </span>
+                <span className="text-muted-foreground text-sm">
+                  {sectionCopy[section.id]}
+                </span>
+              </Link>
+            ))}
+        </div>
       </section>
     </div>
-  )
-}
-
-function StatItem({ count, label }: { count: number; label: string }) {
-  return (
-    <Item variant="outline">
-      <ItemContent>
-        <ItemTitle className="font-mono text-xl">{count}</ItemTitle>
-        <ItemDescription>{label}</ItemDescription>
-      </ItemContent>
-    </Item>
-  )
-}
-
-function SummaryCard({
-  title,
-  description,
-  href,
-}: {
-  title: string
-  description: string
-  href: string
-}) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <Button asChild variant="outline">
-          <Link to={href}>
-            Open
-            <ArrowRightIcon data-icon="inline-end" />
-          </Link>
-        </Button>
-      </CardContent>
-    </Card>
   )
 }
