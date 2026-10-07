@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "detail-page",
+      "type": "registry:component",
+      "title": "Detail Page",
+      "description": "Shell for one record with a main column and an aside.",
+      "categories": [
+        "shell"
+      ],
+      "files": [
+        {
+          "path": "detail-page.tsx",
+          "type": "registry:component",
+          "target": "@components/shells/detail-page.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/style",
+        "boramuyar/business-ui/page"
+      ]
+    }
+  ]
+}

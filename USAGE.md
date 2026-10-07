@@ -52,13 +52,13 @@ pnpm dlx shadcn@latest add boramuyar/business-ui/button
 ### Optional: the `@business-ui` namespace
 
 The same items are also published as static JSON at
-`https://boramuyar.github.io/business-ui/r/<item>.json`. Add the namespace to the
+`https://ui.uyar.design/r/<item>.json`. Add the namespace to the
 app's `components.json` once:
 
 ```json
 {
   "registries": {
-    "@business-ui": "https://boramuyar.github.io/business-ui/r/{name}.json"
+    "@business-ui": "https://ui.uyar.design/r/{name}.json"
   }
 }
 ```
@@ -77,6 +77,30 @@ address, so they resolve with or without the namespace.
 - `boramuyar/business-ui/style` - theme, tokens, fonts, base styles, and custom utilities.
 - `boramuyar/business-ui/button` - button primitive.
 - `boramuyar/business-ui/use-mobile` - mobile viewport hook used by sidebar.
+- `boramuyar/business-ui/list-page` (and `page`, `detail-page`, `form-page`, `settings-page`, `overview-page`) - page shells, installed to `components/shells/`.
+
+## Design rules
+
+Business UI is a design system, not only a component set. The rules are published at https://ui.uyar.design/design.md, with an index for agents at https://ui.uyar.design/llms.txt. Read them from there; nothing is copied into the app, so they never go stale.
+
+Add one line to the app's agent instructions (AGENTS.md or CLAUDE.md):
+
+```markdown
+Before building or changing UI, read https://ui.uyar.design/llms.txt and follow the Business UI design rules. Run the design check before finishing.
+```
+
+Run the check straight from the site, which always serves the current version:
+
+```bash
+curl -fsSL https://ui.uyar.design/design-check.mjs | node --input-type=module - src
+```
+
+Every installed component and shell also starts with a usage header (`@use`, `@avoid`, `@related`), so the rules travel with the code and update when you re-pull an item. The short version:
+
+- Start every screen from a shell. Create a new one in `components/shells/` only with a `@closest`, `@why` and `@reuses` header.
+- Colors are role tokens only. The style removes Tailwind's palette, so `bg-blue-500` and `text-white` render nothing.
+- Type stops at `text-3xl`, with normal, medium and semibold weights.
+- Pick controls and overlays with the pattern guides on the site.
 
 ## Accent color
 

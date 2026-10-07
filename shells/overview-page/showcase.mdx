@@ -1,0 +1,20 @@
+---
+title: Overview Page
+description: Dashboards that lead with key numbers, then charts and panels.
+status: experimental
+---
+
+## Example
+
+<Preview name="overview-page-finance" className="block p-0 py-6" />
+
+## Rules
+
+- `stats`: two to four cards, each one number with a label and, if useful, the change since last period.
+- `children`: panels in a two-column grid. Give a panel `data-span="full"` to take the whole row. Charts are full or half width, never thirds.
+- Chart colors come only from the `chart-*` tokens.
+
+## Usage
+
+Use for home screens and reporting summaries. Screens for finding and acting on
+records are `list-page`, with a small summary if needed.

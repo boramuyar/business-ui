@@ -1,3 +1,15 @@
+/**
+ * @component Dropdown Menu
+ * @level surface
+ * @summary A list of actions or links opened from a button.
+ * @use Secondary actions for a record (the row's more menu), account menus,
+ *      "More" in a header.
+ * @avoid Picking a value for a form: use select.
+ * @avoid One or two actions: show them as buttons.
+ * @avoid Small forms or filters: use popover.
+ * @related button, context-menu, select, popover
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
+ */
 import { CheckIcon, ChevronRightIcon } from "lucide-react"
 import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
 import type * as React from "react"

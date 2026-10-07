@@ -1,3 +1,11 @@
+/**
+ * @component Input Otp
+ * @level primitive
+ * @summary Separate boxes for one-time codes.
+ * @use Verification codes sent by email or SMS.
+ * @avoid Passwords or any other text: use input.
+ * @related input, field
+ */
 import { OTPInput, OTPInputContext } from "input-otp"
 import { MinusIcon } from "lucide-react"
 import * as React from "react"

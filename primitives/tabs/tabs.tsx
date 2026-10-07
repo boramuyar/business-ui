@@ -1,3 +1,15 @@
+/**
+ * @component Tabs
+ * @level composite
+ * @summary Switches between views of the same subject.
+ * @use Areas of one record or screen: Overview, Activity, Files. In a shell,
+ *      pass them to the header's tabs slot.
+ * @avoid Navigating between different screens: use sidebar.
+ * @avoid Picking a value in a form or a view mode in a toolbar: use
+ *        toggle-group.
+ * @avoid Sequential steps: use a stepper pattern.
+ * @related toggle-group, sidebar, detail-page
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Tabs as TabsPrimitive } from "radix-ui"
 import type * as React from "react"

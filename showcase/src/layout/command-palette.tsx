@@ -8,12 +8,14 @@ import {
   CommandSeparator,
 } from "@frontend/primitives/command"
 import { useNavigate } from "react-router-dom"
-import { primitiveRoutes } from "../primitives-data"
+import { designDocs } from "../design-docs"
+import { primitiveRoutes, shellRoutes } from "../primitives-data"
 
 const pageEntries = [
   { to: "/", label: "Home" },
   { to: "/installation", label: "Installation" },
   { to: "/primitives", label: "Primitives" },
+  { to: "/shells", label: "Shells" },
   { to: "/style", label: "Style & Utilities" },
   { to: "/style-lab", label: "Style Lab" },
 ]
@@ -50,11 +52,35 @@ export function CommandPalette({
           ))}
         </CommandGroup>
         <CommandSeparator />
+        <CommandGroup heading="Design">
+          {designDocs.map((doc) => (
+            <CommandItem
+              key={doc.path}
+              onSelect={() => goTo(doc.slug ? `/design/${doc.slug}` : "/design")}
+              value={`design ${doc.title}`}
+            >
+              {doc.title}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+        <CommandSeparator />
         <CommandGroup heading="Primitives">
           {primitiveRoutes.map((route) => (
             <CommandItem
               key={route.name}
               onSelect={() => goTo(`/primitives/${route.name}`)}
+              value={`${route.title} ${route.name} ${route.description}`}
+            >
+              {route.title}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Shells">
+          {shellRoutes.map((route) => (
+            <CommandItem
+              key={route.name}
+              onSelect={() => goTo(`/shells/${route.name}`)}
               value={`${route.title} ${route.name} ${route.description}`}
             >
               {route.title}

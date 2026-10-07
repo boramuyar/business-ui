@@ -1,3 +1,15 @@
+/**
+ * @component Switch
+ * @level primitive
+ * @summary Turns one setting on or off, effective immediately.
+ * @use A setting that applies the moment it flips: notifications, auto-renew,
+ *      a feature toggle. Confirm with a toast if the effect is not visible.
+ * @avoid Inside a form with a Save button: use checkbox.
+ * @avoid Choosing between named modes: use toggle-group.
+ * @avoid Toolbar states such as bold: use toggle.
+ * @related checkbox, toggle, toggle-group, settings-page
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
+ */
 import { Switch as SwitchPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"

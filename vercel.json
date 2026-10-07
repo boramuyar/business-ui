@@ -1,0 +1,46 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm build",
+  "outputDirectory": "showcase/dist",
+  "rewrites": [
+    {
+      "source": "/((?!r/|assets/)[^.]*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(md|txt)",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/markdown; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/r/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/design-check.mjs",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/javascript; charset=utf-8"
+        }
+      ]
+    }
+  ]
+}

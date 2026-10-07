@@ -1,3 +1,12 @@
+/**
+ * @component Navigation Menu
+ * @level composite
+ * @summary Top-level site navigation with optional dropdown panels.
+ * @use Marketing sites and public pages with a horizontal top navigation.
+ * @avoid App navigation between screens: use sidebar.
+ * @avoid Actions: use dropdown-menu.
+ * @related sidebar, menubar
+ */
 import { cva } from "class-variance-authority"
 import { ChevronDownIcon } from "lucide-react"
 import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui"

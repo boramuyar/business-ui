@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "list-page",
+      "type": "registry:component",
+      "title": "List Page",
+      "description": "Shell for screens that find and act on many records.",
+      "categories": [
+        "shell"
+      ],
+      "files": [
+        {
+          "path": "list-page.tsx",
+          "type": "registry:component",
+          "target": "@components/shells/list-page.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/style",
+        "boramuyar/business-ui/page"
+      ]
+    }
+  ]
+}

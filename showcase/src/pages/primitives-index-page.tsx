@@ -10,17 +10,35 @@ import { ToggleGroup, ToggleGroupItem } from "@frontend/primitives/toggle-group"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { PageHeader } from "../components/page-header"
-import { primitiveRoutes } from "../primitives-data"
+import { type CatalogSection, primitiveSection } from "../primitives-data"
 
 const statusFilters = ["all", "stable", "experimental", "draft"] as const
 
 type StatusFilter = (typeof statusFilters)[number]
 
-export function PrimitivesIndexPage() {
+const sectionCopy: Record<string, { description: string; filter: string }> = {
+  "/primitives": {
+    description:
+      "This index is generated from primitive registry files. Each primitive has a co-located showcase.mdx reference.",
+    filter: "Filter primitives...",
+  },
+  "/shells": {
+    description:
+      "Page-level layouts built from the primitives. Reuse one before composing a screen yourself; a new shell needs a written justification.",
+    filter: "Filter shells...",
+  },
+}
+
+export function PrimitivesIndexPage({
+  section = primitiveSection,
+}: {
+  section?: CatalogSection
+}) {
+  const copy = sectionCopy[section.basePath] ?? sectionCopy["/primitives"]
   const [query, setQuery] = useState("")
   const [status, setStatus] = useState<StatusFilter>("all")
 
-  const visibleRoutes = primitiveRoutes.filter((route) => {
+  const visibleRoutes = section.routes.filter((route) => {
     const matchesStatus = status === "all" || route.status === status
     const text = `${route.title} ${route.name} ${route.description}`
     const matchesQuery = text.toLowerCase().includes(query.toLowerCase())
@@ -32,15 +50,15 @@ export function PrimitivesIndexPage() {
     <div>
       <PageHeader
         eyebrow="Generated"
-        title="Primitives"
-        description="This index is generated from primitive registry files. Each primitive has a co-located showcase.mdx reference."
+        title={section.label}
+        description={copy.description}
       />
 
       <div className="mb-4 flex flex-wrap items-center gap-3">
         <Input
           className="max-w-xs"
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Filter primitives..."
+          placeholder={copy.filter}
           value={query}
         />
         <ToggleGroup
@@ -63,7 +81,7 @@ export function PrimitivesIndexPage() {
 
       <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
         {visibleRoutes.map((route) => (
-          <Link key={route.name} to={`/primitives/${route.name}`}>
+          <Link key={route.name} to={`${section.basePath}/${route.name}`}>
             <Card className="h-full transition-colors hover:bg-muted/50">
               <CardHeader>
                 <div className="flex items-start justify-between gap-3">

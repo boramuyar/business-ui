@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "overview-page",
+      "type": "registry:component",
+      "title": "Overview Page",
+      "description": "Shell for dashboards: key numbers, then charts and panels.",
+      "categories": [
+        "shell"
+      ],
+      "files": [
+        {
+          "path": "overview-page.tsx",
+          "type": "registry:component",
+          "target": "@components/shells/overview-page.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/style",
+        "boramuyar/business-ui/page"
+      ]
+    }
+  ]
+}

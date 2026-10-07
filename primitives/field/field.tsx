@@ -1,3 +1,15 @@
+/**
+ * @component Field
+ * @level composite
+ * @summary Label, control, description and error laid out as one form field.
+ * @use Every form control: input, select, textarea, checkbox, switch. Labels
+ *      go above the control (orientation vertical) except for checkbox and
+ *      switch rows.
+ * @use Group related fields with FieldSet and FieldLegend.
+ * @avoid Bare inputs with a placeholder instead of a label.
+ * @avoid Wrapping groups of fields in cards: use FieldSet.
+ * @related input, label, form-page
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { useMemo } from "react"
 import { Label } from "@/components/ui/label"

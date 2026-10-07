@@ -1,0 +1,23 @@
+{
+  "name": "@frontend/shells",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Page shells built from the primitives.",
+  "type": "module",
+  "exports": {
+    "./*": "./*/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@frontend/primitives": "workspace:*",
+    "@frontend/utilities": "workspace:*",
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.7"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.17",
+    "typescript": "^5.9.3"
+  }
+}

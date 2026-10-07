@@ -1,3 +1,18 @@
+/**
+ * @component Dialog
+ * @level surface
+ * @summary A modal window for a short, focused task that blocks the page.
+ * @use Short tasks with up to about three fields: rename, invite a member,
+ *      add a note.
+ * @use Footer: Cancel (outline) then the primary action named for the result.
+ * @avoid Destructive confirmations: use alert-dialog.
+ * @avoid Long forms, or when people need to see the page: use sheet or
+ *        form-page.
+ * @avoid Mobile bottom panels: use drawer.
+ * @avoid Small anchored panels such as filters: use popover.
+ * @related alert-dialog, sheet, drawer, popover, form-page
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
+ */
 import { XIcon } from "lucide-react"
 import { Dialog as DialogPrimitive } from "radix-ui"
 import type * as React from "react"
@@ -36,7 +51,7 @@ function DialogOverlay({
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 isolate z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 isolate z-50 bg-scrim duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         className
       )}
       {...props}

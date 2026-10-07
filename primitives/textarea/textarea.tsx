@@ -1,3 +1,12 @@
+/**
+ * @component Textarea
+ * @level primitive
+ * @summary A multi-line text field.
+ * @use Notes, descriptions, messages: anything that may run past one line.
+ *      Always inside a field with a label.
+ * @avoid Single-line values: use input.
+ * @related input, field
+ */
 import type * as React from "react"
 import { cn } from "@/lib/utils"
 

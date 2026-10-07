@@ -1,3 +1,18 @@
+/**
+ * @component Toggle Group
+ * @level primitive
+ * @summary A row of buttons where one (or several) can be active; also called
+ *          a segmented control or button radio group.
+ * @use 2 to 5 short options that switch a view or mode and apply immediately:
+ *      List or Board, Day, Week or Month.
+ * @use type="multiple" for toolbar formatting groups.
+ * @avoid Options need descriptions, or the choice is submitted with a form:
+ *        use radio-group.
+ * @avoid More than 5 options: use select.
+ * @avoid Switching between areas of content: use tabs.
+ * @related radio-group, tabs, toggle, select
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
+ */
 "use client"
 
 import type { VariantProps } from "class-variance-authority"

@@ -21,7 +21,7 @@ pnpm dlx shadcn@latest add boramuyar/business-ui/button`
 
 const namespaceConfig = `{
   "registries": {
-    "@business-ui": "https://boramuyar.github.io/business-ui/r/{name}.json"
+    "@business-ui": "https://ui.uyar.design/r/{name}.json"
   }
 }`
 

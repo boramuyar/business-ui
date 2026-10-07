@@ -5,6 +5,7 @@
   "include": [
     "style/registry.json",
     "hooks/registry.json",
-    "primitives/registry.json"
+    "primitives/registry.json",
+    "shells/registry.json"
   ]
 }

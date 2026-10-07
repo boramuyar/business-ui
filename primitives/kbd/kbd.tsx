@@ -1,3 +1,12 @@
+/**
+ * @component Kbd
+ * @level primitive
+ * @summary Shows a keyboard key or shortcut.
+ * @use Next to the action a shortcut triggers, in menus, tooltips and the
+ *      command palette.
+ * @avoid Code or values: use font-mono text.
+ * @related command, tooltip, dropdown-menu
+ */
 import type * as React from "react"
 import { cn } from "@/lib/utils"
 

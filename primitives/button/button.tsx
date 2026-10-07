@@ -1,3 +1,21 @@
+/**
+ * @component Button
+ * @level primitive
+ * @summary Triggers an action.
+ * @use default (primary): the one main action of a screen or dialog. At most
+ *      one per header, dialog or form.
+ * @use outline: other actions next to the primary one. secondary: quiet
+ *      actions in dense areas. ghost: toolbar and icon actions. destructive:
+ *      deletes, only inside alert-dialog or a danger section. link: inline
+ *      navigation in text.
+ * @use Label with a verb that names the result: "Create invoice", not
+ *      "Submit".
+ * @avoid Going to another page: use a link (or Button asChild with an
+ *        anchor).
+ * @avoid Holding an on or off state: use toggle.
+ * @avoid Choosing one of several modes: use toggle-group.
+ * @related button-group, toggle, dropdown-menu, alert-dialog
+ */
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 import * as React from "react"
@@ -18,7 +36,7 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:
-          "bg-destructive text-white shadow-control hover:bg-destructive-strong",
+          "bg-destructive text-destructive-foreground shadow-control hover:bg-destructive-strong",
         link: "text-brand-emphasis underline-offset-4 hover:underline",
       },
       size: {

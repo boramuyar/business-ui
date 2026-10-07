@@ -1,3 +1,16 @@
+/**
+ * @component Sonner
+ * @level surface
+ * @summary Toasts: brief, non-blocking messages about the result of an
+ *          action.
+ * @use Confirming what just happened: "Invoice sent". Offer Undo for
+ *      reversible actions instead of asking first.
+ * @avoid Errors people must fix before continuing: use alert or field errors.
+ * @avoid Questions or choices: use dialog or alert-dialog.
+ * @avoid Persistent page state: use alert.
+ * @related alert, alert-dialog
+ * @guide https://ui.uyar.design/design/patterns/feedback.md
+ */
 import {
   CircleCheckIcon,
   InfoIcon,

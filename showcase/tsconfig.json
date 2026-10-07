@@ -17,11 +17,12 @@
     "jsx": "react-jsx",
     "types": ["vite/client"],
     "paths": {
+      "@/components/shells/*": ["../shells/*/index.ts"],
       "@/components/ui/*": ["../primitives/*/index.ts"],
       "@/hooks/use-mobile": ["../hooks/use-mobile.ts"],
       "@/lib/utils": ["../utilities/index.ts"]
     }
   },
-  "include": ["src", "../primitives", "../utilities", "../hooks"],
+  "include": ["src", "../primitives", "../shells", "../utilities", "../hooks"],
   "references": []
 }

@@ -1,3 +1,15 @@
+/**
+ * @component Sheet
+ * @level surface
+ * @summary A panel that slides in from the side of the screen.
+ * @use Viewing or editing a record while the list stays visible.
+ * @use Long forms and filters that need more room than a popover.
+ * @avoid Short tasks: use dialog.
+ * @avoid Confirmations: use alert-dialog.
+ * @avoid Mobile: use drawer.
+ * @related dialog, drawer, list-page
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
+ */
 import { XIcon } from "lucide-react"
 import { Dialog as SheetPrimitive } from "radix-ui"
 import type * as React from "react"
@@ -34,7 +46,7 @@ function SheetOverlay({
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/10 text-xs/relaxed duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 z-50 bg-scrim text-xs/relaxed duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         className
       )}
       {...props}

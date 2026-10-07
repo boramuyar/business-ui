@@ -1,3 +1,17 @@
+/**
+ * @component Alert Dialog
+ * @level surface
+ * @summary A blocking confirmation for destructive or irreversible actions.
+ * @use Confirming an action that deletes data, sends something, or cannot be
+ *      undone.
+ * @use Two buttons: Cancel, and the destructive action named for what it does
+ *      ("Delete invoice", never "OK").
+ * @avoid The action can be undone: do it and offer Undo in a toast (sonner).
+ * @avoid Collecting input: use dialog.
+ * @avoid Purely informational messages: use alert.
+ * @related dialog, sonner, button
+ * @guide https://ui.uyar.design/design/patterns/overlays.md
+ */
 import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
 import type * as React from "react"
 import { Button } from "@/components/ui/button"
@@ -33,7 +47,7 @@ function AlertDialogOverlay({
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/10 duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 z-50 bg-scrim duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
         className
       )}
       {...props}

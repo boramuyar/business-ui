@@ -1,3 +1,15 @@
+/**
+ * @component Select
+ * @level primitive
+ * @summary Picks one value from a list in a dropdown.
+ * @use 6 to 15 options, or when space is tight. Always inside a field with a
+ *      label.
+ * @avoid Fewer than 6 options: use radio-group or toggle-group.
+ * @avoid More than about 15 options, or people know the name: use combobox.
+ * @avoid A list of actions: use dropdown-menu.
+ * @related combobox, radio-group, native-select, field
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
+ */
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { Select as SelectPrimitive } from "radix-ui"
 import type * as React from "react"

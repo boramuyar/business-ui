@@ -1,3 +1,15 @@
+/**
+ * @component Combobox
+ * @level primitive
+ * @summary A searchable select: type to filter, then pick a value.
+ * @use More than about 15 options, or options people know by name: customers,
+ *      countries, accounts.
+ * @avoid Fewer than 6 options: use radio-group or toggle-group.
+ * @avoid 6 to 15 options people scan rather than search: use select.
+ * @avoid Running commands: use command.
+ * @related select, command, field
+ * @guide https://ui.uyar.design/design/patterns/selection-controls.md
+ */
 "use client"
 
 import { Combobox as ComboboxPrimitive } from "@base-ui/react"

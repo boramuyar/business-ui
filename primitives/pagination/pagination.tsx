@@ -1,3 +1,13 @@
+/**
+ * @component Pagination
+ * @level composite
+ * @summary Moves between pages of a long list.
+ * @use Tables with more rows than fit, when people need to know where they
+ *      are. Place it below the table, aligned right.
+ * @avoid Feeds where people only scroll: load more as they reach the end.
+ * @avoid Short lists: show them all.
+ * @related table, list-page
+ */
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
