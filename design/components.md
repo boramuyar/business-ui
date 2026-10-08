@@ -117,6 +117,7 @@ A modal window for a short, focused task that blocks the page.
 A panel that slides up from the bottom, for touch screens.
 
 - Use: The mobile version of a dialog or sheet. Switch with use-mobile.
+- Use: Top and bottom drawers stay max-w-lg wide and centered. Pass size="full" only when the content needs the whole screen width.
 - Avoid: Desktop layouts: use dialog or sheet.
 - Related: dialog, sheet
 - Guide: [patterns/overlays.md](patterns/overlays.md)

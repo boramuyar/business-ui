@@ -12,7 +12,7 @@ export function CarouselBasic() {
       <CarouselContent>
         {["One", "Two", "Three"].map((label) => (
           <CarouselItem key={label}>
-            <div className="flex h-32 items-center justify-center border bg-muted/50 text-sm">
+            <div className="flex h-32 items-center justify-center border rounded-md bg-muted/50 text-sm">
               {label}
             </div>
           </CarouselItem>

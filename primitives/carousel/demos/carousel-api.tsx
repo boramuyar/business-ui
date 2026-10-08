@@ -32,7 +32,7 @@ export function CarouselApi() {
         <CarouselContent>
           {[1, 2, 3, 4, 5].map((slide) => (
             <CarouselItem key={slide}>
-              <div className="flex h-32 items-center justify-center border bg-muted/50 font-semibold text-2xl">
+              <div className="flex h-32 items-center justify-center border rounded-md bg-muted/50 font-semibold text-2xl">
                 {slide}
               </div>
             </CarouselItem>

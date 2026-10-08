@@ -46,6 +46,13 @@ const Toaster = ({ ...props }: ToasterProps) => {
       toastOptions={{
         classNames: {
           toast: "cn-toast shadow-overlay!",
+          success:
+            "border-success-border! bg-success-subtle! text-success-strong!",
+          info: "border-info-border! bg-info-subtle! text-info-strong!",
+          warning:
+            "border-warning-border! bg-warning-subtle! text-warning-strong!",
+          error:
+            "border-destructive-border! bg-destructive-subtle! text-destructive-strong!",
         },
       }}
       {...props}

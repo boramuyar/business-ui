@@ -19,7 +19,11 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 import * as React from "react"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -41,10 +45,10 @@ const buttonVariants = cva(
       },
       size: {
         default:
-          "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+          "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 has-[>[data-slot=badge]:last-child]:pr-1.5",
         xs: "h-6 gap-1 rounded-sm px-2 text-xs has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 gap-1 px-2.5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
+        sm: "h-7 gap-1 px-2.5 has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 has-[>[data-slot=badge]:last-child]:pr-1 [&_svg:not([class*='size-'])]:size-3.5",
+        lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2 has-[>[data-slot=badge]:last-child]:pr-2",
         icon: "size-8",
         "icon-xs": "size-6 rounded-sm [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-7",
@@ -65,10 +69,17 @@ const Button = React.forwardRef<
       asChild?: boolean
       tooltip?: React.ReactNode
     }
-// forwardRef (not ref-as-prop) so consumer refs are delivered on React 18 as
-// well as 19; it remains supported on 19, merely soft-deprecated.
+  // forwardRef (not ref-as-prop) so consumer refs are delivered on React 18 as
+  // well as 19; it remains supported on 19, merely soft-deprecated.
 >(function Button(
-  { className, variant = "default", size = "default", asChild = false, tooltip, ...props },
+  {
+    className,
+    variant = "default",
+    size = "default",
+    asChild = false,
+    tooltip,
+    ...props
+  },
   ref
 ) {
   const Comp = asChild ? Slot.Root : "button"

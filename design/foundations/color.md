@@ -39,4 +39,4 @@ The status families (`destructive`, `success`, `warning`, `info`, plus `primary`
 
 ## Dark mode
 
-Every token has a dark value. Don't write `dark:` color overrides in app code; if something looks wrong in dark mode, the token needs fixing in the registry.
+Every token has a dark value, so tokens alone usually look right in both themes. When something still looks wrong in dark mode, fix the token in your app: override it under `.dark` in your `globals.css`. Use a `dark:` class only for a one-off fix on a single element. If the same fix keeps coming back, open an issue at https://github.com/boramuyar/business-ui so the token can change for everyone.

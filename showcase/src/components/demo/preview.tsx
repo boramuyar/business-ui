@@ -100,7 +100,7 @@ function PreviewFrame({
   return (
     <div
       className={cn(
-        "flex min-h-40 flex-wrap items-center justify-center gap-4 rounded-lg bg-background p-10 ring-1 ring-border",
+        "flex min-h-40 flex-wrap content-center items-center justify-center gap-4 rounded-lg bg-background p-10 ring-1 ring-border",
         tall && "min-h-72",
         className
       )}

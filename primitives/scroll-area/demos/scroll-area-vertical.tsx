@@ -18,7 +18,7 @@ const items = [
 
 export function ScrollAreaVertical() {
   return (
-    <ScrollArea className="h-48 w-56 border">
+    <ScrollArea className="h-48 w-56 border rounded-md">
       <div className="p-3">
         <p className="mb-2 font-medium text-foreground text-xs">Primitives</p>
         {items.map((name) => (

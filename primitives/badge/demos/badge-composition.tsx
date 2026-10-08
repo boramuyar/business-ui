@@ -5,7 +5,9 @@ export function BadgeComposition() {
   return (
     <Button variant="outline">
       Inbox
-      <Badge variant="secondary">12</Badge>
+      <Badge variant="secondary" size="sm">
+        12
+      </Badge>
     </Button>
   )
 }

@@ -11,6 +11,7 @@ export function CalendarRangeDate() {
 
   return (
     <Calendar
+      defaultMonth={new Date(2026, 5, 1)}
       mode="range"
       onSelect={setRange}
       required={false}

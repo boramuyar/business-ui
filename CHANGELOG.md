@@ -3,6 +3,27 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-08
+
+- `dropdown-menu`, `context-menu`, `menubar`, `select`, `combobox`, `command`: menus have 4px of padding around their items, so the rounded hover sits inside the surface instead of touching its edges. Items and labels are shorter (`py-1.5`) and separators get `my-1`. The command input no longer has a grey fill.
+- `sidebar`: groups have `p-2`, so menu items no longer run edge to edge. Items are 2px apart and the active item uses `brand-subtle` with `brand-emphasis` text, so it no longer looks like the hovered one.
+- `pagination`: the active page uses `brand-subtle` with `brand-emphasis` text instead of an outlined, raised button.
+- `input`, `textarea`, `input-group`, `native-select`, `select`, `combobox`, `input-otp`: text fields and select triggers are flat (no `shadow-control`).
+- `tabs`: orientation styles read the trigger's own orientation, so tabs nested inside other tabs no longer pick up the outer layout. This fixes the vertical line variant, which showed a small square instead of its indicator.
+- `calendar`: rows have no gaps; the space between them is part of each day button, so every click lands on a day while the highlight stays smaller. Range selection no longer shows colored corners behind the rounded ends, and today's background sits on the button.
+- `alert-dialog`: laid out like `dialog` (one padded surface, no section dividers). The media is a small circle beside the title instead of a large tile above it.
+- `drawer`: top and bottom drawers are `max-w-lg` wide and centered by default. Pass `size="full"` to `DrawerContent` for the old full-width panel.
+- `sonner`: success, info, warning and error toasts use their status colors.
+- `item`: the icon media variant is a 32px muted tile, media centers vertically, title and description sit closer, and an `ItemGroup` with separators has no extra gaps.
+- `navigation-menu`: links stack their title and description instead of putting them side by side.
+- `avatar`: initials are `text-xs` and medium weight (`text-sm` on `lg`). `AvatarGroup` overlaps its members by default and `AvatarGroupCount` is round.
+- `button`: when a badge is the last child, the right padding shrinks to match the badge.
+- `input-otp`: the active slot shows its outline on all four sides.
+- `slider`: the clickable area extends 12px above and below the rail.
+- `label`: shows a pointer cursor when it belongs to an enabled checkbox, radio or switch, matching the control.
+- `checkbox`: the check mark is nudged left to look centered.
+- `switch`: the thumb has no shadow, so it looks centered in the track.
+
 ## 2026-10-07
 
 - `tabs`: the default list is a segmented control (muted track, raised active trigger, rounded corners) instead of the boxed bar with dividers. `variant="line"` is unchanged.

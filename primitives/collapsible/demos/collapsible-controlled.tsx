@@ -27,12 +27,16 @@ export function CollapsibleControlled() {
           </Button>
         </CollapsibleTrigger>
       </div>
-      <div className="border px-3 py-2 font-mono text-xs">
+      <div className="border rounded-md px-3 py-2 font-mono text-xs">
         boramuyar/business-ui
       </div>
       <CollapsibleContent className="flex flex-col gap-2">
-        <div className="border px-3 py-2 font-mono text-xs">shadcn-ui/ui</div>
-        <div className="border px-3 py-2 font-mono text-xs">vercel/next.js</div>
+        <div className="border rounded-md px-3 py-2 font-mono text-xs">
+          shadcn-ui/ui
+        </div>
+        <div className="border rounded-md px-3 py-2 font-mono text-xs">
+          vercel/next.js
+        </div>
       </CollapsibleContent>
     </Collapsible>
   )
