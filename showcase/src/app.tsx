@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom"
+import { DemoFrame } from "./components/demo/demo-frame"
 import { SiteLayout } from "./layout/site-layout"
 import { DesignPage } from "./pages/design-page"
 import { HomePage } from "./pages/home-page"
@@ -12,6 +13,7 @@ import { shellSection } from "./primitives-data"
 export function App() {
   return (
     <Routes>
+      <Route path="/demo/:name" element={<DemoFrame />} />
       <Route
         path="*"
         element={

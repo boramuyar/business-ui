@@ -5,11 +5,10 @@ import {
   FieldContent,
   FieldDescription,
   FieldGroup,
-  FieldLegend,
   FieldLabel,
+  FieldLegend,
   FieldSeparator,
   FieldSet,
-  FieldTitle,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
@@ -33,11 +32,11 @@ export function FieldComposition() {
       <Field orientation="horizontal">
         <Checkbox defaultChecked id="field-demo-updates" />
         <FieldContent>
-          <FieldTitle>Product updates</FieldTitle>
+          <FieldLabel htmlFor="field-demo-updates">Product updates</FieldLabel>
           <FieldDescription>A short monthly summary.</FieldDescription>
         </FieldContent>
       </Field>
-      <Button className="self-start">Save</Button>
+      <Button className="self-start">Save profile</Button>
     </FieldGroup>
   )
 }

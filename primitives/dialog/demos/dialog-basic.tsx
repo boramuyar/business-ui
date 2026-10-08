@@ -9,25 +9,31 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Field, FieldLabel } from "@/components/ui/field"
+import { Textarea } from "@/components/ui/textarea"
 
 export function DialogBasic() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Open dialog</Button>
+        <Button variant="outline">Add note</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Archive project</DialogTitle>
+          <DialogTitle>Add a note</DialogTitle>
           <DialogDescription>
-            The project is hidden from the dashboard but not deleted.
+            Notes are visible to everyone in the workspace.
           </DialogDescription>
         </DialogHeader>
+        <Field>
+          <FieldLabel htmlFor="dialog-basic-note">Note</FieldLabel>
+          <Textarea id="dialog-basic-note" />
+        </Field>
         <DialogFooter>
           <DialogClose asChild>
-            <Button variant="ghost">Cancel</Button>
+            <Button variant="outline">Cancel</Button>
           </DialogClose>
-          <Button>Archive</Button>
+          <Button>Add note</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

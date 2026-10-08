@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
 import {
   InputOTP,
   InputOTPGroup,
@@ -9,8 +10,16 @@ export function InputOtpComposition() {
   const [value, setValue] = useState("")
 
   return (
-    <div className="flex flex-col items-center gap-2">
-      <InputOTP maxLength={6} onChange={setValue} value={value}>
+    <Field className="w-auto">
+      <FieldLabel htmlFor="input-otp-composition-code">
+        Verification code
+      </FieldLabel>
+      <InputOTP
+        id="input-otp-composition-code"
+        maxLength={6}
+        onChange={setValue}
+        value={value}
+      >
         <InputOTPGroup>
           <InputOTPSlot index={0} />
           <InputOTPSlot index={1} />
@@ -20,9 +29,9 @@ export function InputOtpComposition() {
           <InputOTPSlot index={5} />
         </InputOTPGroup>
       </InputOTP>
-      <span className="text-muted-foreground text-xs">
+      <FieldDescription>
         {value ? `Entered: ${value}` : "Enter your code"}
-      </span>
-    </div>
+      </FieldDescription>
+    </Field>
   )
 }

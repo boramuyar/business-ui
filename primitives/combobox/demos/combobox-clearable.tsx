@@ -6,23 +6,48 @@ import {
   ComboboxItem,
   ComboboxList,
 } from "@/components/ui/combobox"
+import { Field, FieldLabel } from "@/components/ui/field"
 
-const frameworks = ["Astro", "Next.js", "Remix", "SvelteKit", "Vite"]
+const countries = [
+  "Austria",
+  "Belgium",
+  "Denmark",
+  "Finland",
+  "France",
+  "Germany",
+  "Ireland",
+  "Italy",
+  "Netherlands",
+  "Norway",
+  "Poland",
+  "Portugal",
+  "Spain",
+  "Sweden",
+  "Switzerland",
+  "United Kingdom",
+]
 
 export function ComboboxClearable() {
   return (
-    <Combobox defaultValue="Vite" items={frameworks}>
-      <ComboboxInput className="w-56" showClear />
-      <ComboboxContent>
-        <ComboboxEmpty>No framework found.</ComboboxEmpty>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
-    </Combobox>
+    <Field className="w-56">
+      <FieldLabel htmlFor="combobox-clearable-country">Country</FieldLabel>
+      <Combobox defaultValue="Sweden" items={countries}>
+        <ComboboxInput
+          id="combobox-clearable-country"
+          placeholder="Search countries"
+          showClear
+        />
+        <ComboboxContent>
+          <ComboboxEmpty>No country found.</ComboboxEmpty>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Field>
   )
 }

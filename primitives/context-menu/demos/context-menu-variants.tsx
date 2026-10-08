@@ -48,7 +48,7 @@ export function ContextMenuVariants() {
           <ContextMenuRadioItem value="date">Date</ContextMenuRadioItem>
         </ContextMenuRadioGroup>
         <ContextMenuSeparator />
-        <ContextMenuItem variant="destructive">Delete</ContextMenuItem>
+        <ContextMenuItem variant="destructive">Delete file</ContextMenuItem>
       </ContextMenuContent>
     </ContextMenu>
   )

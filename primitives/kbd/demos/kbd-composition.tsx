@@ -10,11 +10,7 @@ import {
 export function KbdComposition() {
   return (
     <>
-      <Button
-        className="gap-2 text-muted-foreground"
-        size="sm"
-        variant="outline"
-      >
+      <Button size="sm" variant="outline">
         <SearchIcon />
         Search
         <KbdGroup>
@@ -24,7 +20,7 @@ export function KbdComposition() {
       </Button>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="outline">Save</Button>
+          <Button variant="outline">Save changes</Button>
         </TooltipTrigger>
         <TooltipContent>
           Save changes

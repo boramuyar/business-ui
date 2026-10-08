@@ -6,11 +6,18 @@ import {
   PageToolbar,
 } from "@/components/shells/page"
 import { Button } from "@/components/ui/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty"
 import { Input } from "@/components/ui/input"
 
 export function PageBasic() {
   return (
-    <Page className="py-0 md:py-0" width="full">
+    <Page width="full">
       <PageHeader
         actions={
           <>
@@ -29,9 +36,19 @@ export function PageBasic() {
           description="Shared with everyone in the workspace."
           title="Shared reports"
         >
-          <div className="rounded-md border border-dashed p-6 text-center text-muted-foreground text-xs">
-            Body content goes here
-          </div>
+          <Empty className="border">
+            <EmptyHeader>
+              <EmptyTitle>No shared reports yet</EmptyTitle>
+              <EmptyDescription>
+                Reports you share with the workspace appear here.
+              </EmptyDescription>
+            </EmptyHeader>
+            <EmptyContent>
+              <Button size="sm" variant="outline">
+                Share a report
+              </Button>
+            </EmptyContent>
+          </Empty>
         </PageSection>
       </PageBody>
     </Page>

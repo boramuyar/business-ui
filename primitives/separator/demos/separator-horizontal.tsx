@@ -6,7 +6,7 @@ export function SeparatorHorizontal() {
       <p className="font-medium text-foreground text-xs">Business UI</p>
       <Separator />
       <p className="text-muted-foreground text-xs">
-        Primitives, blocks, style, and utilities.
+        Primitives, shells, style and utilities.
       </p>
     </div>
   )

@@ -6,7 +6,9 @@ status: stable
 
 ## Variants
 
-Labels attach to any control through `htmlFor`.
+A plain `Label` is the low-level part that `FieldLabel` builds on; it attaches
+to a control through `htmlFor`. The checkbox and switch rows use `FieldLabel`
+inside a `field`, which is how forms should label controls.
 
 <Preview name="label-variants" />
 

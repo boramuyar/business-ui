@@ -36,7 +36,9 @@ export function AlertDialogComposition() {
         </AlertDialogInner>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Remove</AlertDialogAction>
+          <AlertDialogAction variant="destructive">
+            Remove member
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

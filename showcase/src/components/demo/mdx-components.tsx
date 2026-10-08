@@ -25,8 +25,8 @@ function AnchoredHeading({
     <HeadingTag
       className={
         level === "h2"
-          ? "group/heading mt-6 scroll-mt-24 font-semibold text-lg tracking-tight first:mt-0"
-          : "group/heading mt-2 scroll-mt-24 font-medium text-base"
+          ? "group/heading scroll-mt-6 font-semibold text-sm"
+          : "group/heading scroll-mt-6 font-medium text-xs"
       }
       id={id}
     >
@@ -44,6 +44,9 @@ function AnchoredHeading({
 }
 
 export const mdxComponents: MdxComponents = {
+  section: ({ children }) => (
+    <section className="flex min-w-0 flex-col gap-3">{children}</section>
+  ),
   h2: ({ children }) => (
     <AnchoredHeading level="h2">{children}</AnchoredHeading>
   ),
@@ -66,6 +69,16 @@ export const mdxComponents: MdxComponents = {
       </span>
     )
   },
+  ul: ({ children }) => (
+    <ul className="flex max-w-2xl list-disc flex-col gap-1 pl-5 text-muted-foreground text-sm/relaxed">
+      {children}
+    </ul>
+  ),
+  ol: ({ children }) => (
+    <ol className="flex max-w-2xl list-decimal flex-col gap-1 pl-5 text-muted-foreground text-sm/relaxed">
+      {children}
+    </ol>
+  ),
   code: ({ children }) => (
     <code className="rounded-sm bg-muted px-1 py-0.5 font-mono text-foreground text-xs">
       {children}

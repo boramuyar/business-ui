@@ -3,6 +3,8 @@
  * @level composite
  * @summary Top-level site navigation with optional dropdown panels.
  * @use Marketing sites and public pages with a horizontal top navigation.
+ * @use variant="muted" on NavigationMenuLink for text-only section tabs in a
+ *      site header; the active link turns foreground.
  * @avoid App navigation between screens: use sidebar.
  * @avoid Actions: use dropdown-menu.
  * @related sidebar, menubar
@@ -128,17 +130,36 @@ function NavigationMenuViewport({
   )
 }
 
+const navigationMenuLinkVariants = cva(
+  "flex items-center gap-2 rounded-sm p-2 text-xs transition-all outline-none focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:outline-1 [&_svg:not([class*='size-'])]:size-4",
+  {
+    variants: {
+      variant: {
+        default:
+          "hover:bg-muted focus:bg-muted data-active:bg-muted/50 data-active:hover:bg-muted data-active:focus:bg-muted",
+        muted:
+          "text-muted-foreground hover:text-foreground focus-visible:text-foreground data-active:font-medium data-active:text-foreground",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+)
+
 function NavigationMenuLink({
   className,
+  variant = "default",
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Link>) {
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Link> & {
+  /** muted: text-only links for a top navigation bar; the active one turns foreground. */
+  variant?: "default" | "muted"
+}) {
   return (
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
-      className={cn(
-        "flex items-center gap-2 rounded-sm p-2 text-xs transition-all outline-none hover:bg-muted focus:bg-muted focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:outline-1 data-active:bg-muted/50 data-active:hover:bg-muted data-active:focus:bg-muted [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
+      data-variant={variant}
+      className={cn(navigationMenuLinkVariants({ variant }), className)}
       {...props}
     />
   )

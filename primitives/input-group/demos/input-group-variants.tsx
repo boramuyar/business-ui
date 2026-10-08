@@ -1,32 +1,47 @@
+import { MailIcon, SearchIcon } from "lucide-react"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
   InputGroupText,
 } from "@/components/ui/input-group"
-import { MailIcon, SearchIcon } from "lucide-react"
 
 export function InputGroupVariants() {
   return (
-    <div className="flex w-full max-w-sm flex-col gap-3">
+    <FieldGroup className="max-w-sm">
       <InputGroup>
         <InputGroupAddon>
           <SearchIcon />
         </InputGroupAddon>
-        <InputGroupInput placeholder="Search..." />
+        <InputGroupInput aria-label="Search" placeholder="Search..." />
       </InputGroup>
-      <InputGroup>
-        <InputGroupInput placeholder="Email address" />
-        <InputGroupAddon align="inline-end">
-          <MailIcon />
-        </InputGroupAddon>
-      </InputGroup>
-      <InputGroup>
-        <InputGroupAddon>
-          <InputGroupText>https://</InputGroupText>
-        </InputGroupAddon>
-        <InputGroupInput placeholder="example.com" />
-      </InputGroup>
-    </div>
+      <Field>
+        <FieldLabel htmlFor="input-group-variants-email">
+          Email address
+        </FieldLabel>
+        <InputGroup>
+          <InputGroupInput
+            id="input-group-variants-email"
+            placeholder="you@example.com"
+          />
+          <InputGroupAddon align="inline-end">
+            <MailIcon />
+          </InputGroupAddon>
+        </InputGroup>
+      </Field>
+      <Field>
+        <FieldLabel htmlFor="input-group-variants-website">Website</FieldLabel>
+        <InputGroup>
+          <InputGroupAddon>
+            <InputGroupText>https://</InputGroupText>
+          </InputGroupAddon>
+          <InputGroupInput
+            id="input-group-variants-website"
+            placeholder="example.com"
+          />
+        </InputGroup>
+      </Field>
+    </FieldGroup>
   )
 }

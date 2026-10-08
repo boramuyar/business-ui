@@ -31,7 +31,7 @@ export function TableComposition() {
             </Badge>
           </TableCell>
           <TableCell>Credit card</TableCell>
-          <TableCell className="text-right">$250.00</TableCell>
+          <TableCell className="text-right tabular-nums">$250.00</TableCell>
         </TableRow>
         <TableRow>
           <TableCell className="font-mono">INV-002</TableCell>
@@ -41,7 +41,7 @@ export function TableComposition() {
             </Badge>
           </TableCell>
           <TableCell>Bank transfer</TableCell>
-          <TableCell className="text-right">$1,480.00</TableCell>
+          <TableCell className="text-right tabular-nums">$1,480.00</TableCell>
         </TableRow>
         <TableRow>
           <TableCell className="font-mono">INV-003</TableCell>
@@ -51,13 +51,13 @@ export function TableComposition() {
             </Badge>
           </TableCell>
           <TableCell>Credit card</TableCell>
-          <TableCell className="text-right">$320.00</TableCell>
+          <TableCell className="text-right tabular-nums">$320.00</TableCell>
         </TableRow>
       </TableBody>
       <TableFooter>
         <TableRow>
           <TableCell colSpan={3}>Total</TableCell>
-          <TableCell className="text-right">$2,050.00</TableCell>
+          <TableCell className="text-right tabular-nums">$2,050.00</TableCell>
         </TableRow>
       </TableFooter>
     </Table>

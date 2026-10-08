@@ -1,4 +1,5 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { InboxIcon, UsersIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import {
   Empty,
   EmptyContent,
@@ -7,7 +8,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { InboxIcon } from "lucide-react"
 
 export function EmptyVariants() {
   return (
@@ -25,14 +25,15 @@ export function EmptyVariants() {
       </Empty>
       <Empty className="border border-dashed">
         <EmptyHeader>
-          <EmptyMedia>
-            <Avatar size="lg">
-              <AvatarFallback>BU</AvatarFallback>
-            </Avatar>
+          <EmptyMedia variant="icon">
+            <UsersIcon />
           </EmptyMedia>
           <EmptyTitle>No teammates yet</EmptyTitle>
           <EmptyDescription>Invite people to collaborate.</EmptyDescription>
         </EmptyHeader>
+        <EmptyContent>
+          <Button size="sm">Invite teammates</Button>
+        </EmptyContent>
       </Empty>
     </>
   )

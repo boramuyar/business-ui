@@ -25,16 +25,13 @@ export function DialogComposition() {
           <FieldLabel htmlFor="dialog-demo-project-name">
             Project name
           </FieldLabel>
-          <Input
-            defaultValue="Business UI"
-            id="dialog-demo-project-name"
-          />
+          <Input defaultValue="Business UI" id="dialog-demo-project-name" />
         </Field>
         <DialogFooter>
           <DialogClose asChild>
             <Button variant="ghost">Cancel</Button>
           </DialogClose>
-          <Button>Save</Button>
+          <Button>Rename project</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

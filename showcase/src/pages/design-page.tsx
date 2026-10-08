@@ -7,13 +7,13 @@ import {
   TableHeader,
   TableRow,
 } from "@frontend/primitives/table"
+import { DetailPage } from "@frontend/shells/detail-page"
 import { ClipboardCopyIcon, FileTextIcon } from "lucide-react"
 import type { ComponentProps, ReactNode } from "react"
 import ReactMarkdown, { type Components } from "react-markdown"
 import { Link, Navigate, useParams } from "react-router-dom"
 import remarkGfm from "remark-gfm"
 import { CodeBlock } from "../components/code-block"
-import { PageHeader } from "../components/page-header"
 import { TableOfContents } from "../components/toc"
 import {
   type DesignDoc,
@@ -22,6 +22,7 @@ import {
   resolveDesignLink,
 } from "../design-docs"
 import { copyText } from "../lib/copy-text"
+import { rehypeSections } from "../lib/rehype-sections"
 
 export function DesignPage() {
   const params = useParams()
@@ -35,43 +36,36 @@ export function DesignPage() {
   const { title, description, body } = splitDoc(doc.source)
 
   return (
-    <div key={doc.slug}>
-      <PageHeader
-        actions={
-          <>
-            <Button asChild variant="ghost">
-              <a href={rawDesignUrl(doc)}>
-                <FileTextIcon data-icon="inline-start" />
-                Raw
-              </a>
-            </Button>
-            <Button onClick={() => copyText(doc.source)} variant="outline">
-              <ClipboardCopyIcon data-icon="inline-start" />
-              Copy as Markdown
-            </Button>
-          </>
-        }
-        description={description}
-        eyebrow={doc.group}
-        title={title}
-      />
-      <div className="grid gap-x-14 gap-y-10 xl:grid-cols-[minmax(0,1fr)_14rem]">
-        <article
-          className="flex min-w-0 max-w-3xl flex-col gap-4"
-          id="design-doc"
+    <DetailPage
+      actions={
+        <>
+          <Button asChild variant="ghost">
+            <a href={rawDesignUrl(doc)}>
+              <FileTextIcon data-icon="inline-start" />
+              View raw Markdown
+            </a>
+          </Button>
+          <Button onClick={() => copyText(doc.source)} variant="outline">
+            <ClipboardCopyIcon data-icon="inline-start" />
+            Copy as Markdown
+          </Button>
+        </>
+      }
+      aside={<TableOfContents contentId="design-doc" key={doc.slug} />}
+      description={description}
+      key={doc.slug}
+      title={title}
+    >
+      <article className="flex min-w-0 flex-col gap-6" id="design-doc">
+        <ReactMarkdown
+          components={markdownComponents(doc)}
+          rehypePlugins={[rehypeSections]}
+          remarkPlugins={[remarkGfm]}
         >
-          <ReactMarkdown
-            components={markdownComponents(doc)}
-            remarkPlugins={[remarkGfm]}
-          >
-            {body}
-          </ReactMarkdown>
-        </article>
-        <aside className="hidden xl:sticky xl:top-24 xl:block xl:self-start">
-          <TableOfContents contentId="design-doc" key={doc.slug} />
-        </aside>
-      </div>
-    </div>
+          {body}
+        </ReactMarkdown>
+      </article>
+    </DetailPage>
   )
 }
 
@@ -103,19 +97,16 @@ function slugify(children: ReactNode) {
 
 function markdownComponents(doc: DesignDoc): Components {
   return {
+    section: ({ children }) => (
+      <section className="flex min-w-0 flex-col gap-3">{children}</section>
+    ),
     h2: ({ children }) => (
-      <h2
-        className="mt-8 scroll-mt-24 font-semibold text-lg tracking-tight first:mt-0"
-        id={slugify(children)}
-      >
+      <h2 className="scroll-mt-6 font-semibold text-sm" id={slugify(children)}>
         {children}
       </h2>
     ),
     h3: ({ children }) => (
-      <h3
-        className="mt-3 scroll-mt-24 font-medium text-base"
-        id={slugify(children)}
-      >
+      <h3 className="scroll-mt-6 font-medium text-xs" id={slugify(children)}>
         {children}
       </h3>
     ),
@@ -155,11 +146,7 @@ function markdownComponents(doc: DesignDoc): Components {
           : ""
       return <CodeBlock code={text.trimEnd()} />
     },
-    table: ({ children }) => (
-      <div className="overflow-x-auto rounded-lg ring-1 ring-border">
-        <Table>{children}</Table>
-      </div>
-    ),
+    table: ({ children }) => <Table>{children}</Table>,
     thead: ({ children }) => <TableHeader>{children}</TableHeader>,
     tbody: ({ children }) => <TableBody>{children}</TableBody>,
     tr: ({ children }) => <TableRow>{children}</TableRow>,
@@ -179,26 +166,22 @@ function MarkdownLink({
   href: string
   children: ComponentProps<"a">["children"]
 }) {
-  const className = "text-brand-emphasis underline-offset-4 hover:underline"
   const route = resolveDesignLink(doc, href)
-
-  if (route) {
-    return (
-      <Link className={className} to={route}>
-        {children}
-      </Link>
-    )
-  }
-
   const external = /^https?:/.test(href)
+
   return (
-    <a
-      className={className}
-      href={href}
-      rel={external ? "noreferrer" : undefined}
-      target={external ? "_blank" : undefined}
-    >
-      {children}
-    </a>
+    <Button asChild size="inline" variant="link">
+      {route ? (
+        <Link to={route}>{children}</Link>
+      ) : (
+        <a
+          href={href}
+          rel={external ? "noreferrer" : undefined}
+          target={external ? "_blank" : undefined}
+        >
+          {children}
+        </a>
+      )}
+    </Button>
   )
 }

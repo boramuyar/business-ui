@@ -1,13 +1,13 @@
-import { Button } from "@frontend/primitives/button"
+import { Kbd } from "@frontend/primitives/kbd"
+import { ToggleGroup, ToggleGroupItem } from "@frontend/primitives/toggle-group"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@frontend/primitives/dropdown-menu"
-import { MoonIcon, SunIcon } from "lucide-react"
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@frontend/primitives/tooltip"
+import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react"
 import { useTheme } from "next-themes"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 function isShortcutBlocked(target: EventTarget | null) {
   if (!(target instanceof HTMLElement)) {
@@ -23,8 +23,18 @@ function isShortcutBlocked(target: EventTarget | null) {
   )
 }
 
+const themes = [
+  { value: "light", label: "Light", Icon: SunIcon },
+  { value: "dark", label: "Dark", Icon: MoonIcon },
+  { value: "system", label: "System", Icon: MonitorIcon },
+] as const
+
 export function ThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme()
+  const { theme, resolvedTheme, setTheme } = useTheme()
+  // The stored theme is only known after mount.
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -42,29 +52,28 @@ export function ThemeToggle() {
   }, [resolvedTheme, setTheme])
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          aria-label="Change theme"
-          size="icon"
-          title="Change theme (D)"
-          variant="ghost"
-        >
-          <SunIcon className="dark:hidden" />
-          <MoonIcon className="hidden dark:block" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <ToggleGroup
+      aria-label="Theme"
+      onValueChange={(value) => {
+        if (value) setTheme(value)
+      }}
+      size="sm"
+      type="single"
+      value={mounted ? theme : undefined}
+    >
+      {themes.map(({ value, label, Icon }) => (
+        <Tooltip key={value}>
+          <TooltipTrigger asChild>
+            <ToggleGroupItem aria-label={label} value={value}>
+              <Icon />
+            </ToggleGroupItem>
+          </TooltipTrigger>
+          <TooltipContent>
+            {label}
+            {value === "dark" ? <Kbd>D</Kbd> : null}
+          </TooltipContent>
+        </Tooltip>
+      ))}
+    </ToggleGroup>
   )
 }

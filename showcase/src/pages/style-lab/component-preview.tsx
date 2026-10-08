@@ -15,6 +15,7 @@ import {
 import { Checkbox } from "@frontend/primitives/checkbox"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -31,15 +32,29 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@frontend/primitives/dropdown-menu"
-import { Field, FieldLabel } from "@frontend/primitives/field"
+import {
+  Field,
+  FieldGroup,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from "@frontend/primitives/field"
 import { Input } from "@frontend/primitives/input"
 import {
   InputGroup,
   InputGroupAddon,
   InputGroupInput,
 } from "@frontend/primitives/input-group"
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemMedia,
+  ItemTitle,
+} from "@frontend/primitives/item"
 import { Kbd } from "@frontend/primitives/kbd"
-import { Label } from "@frontend/primitives/label"
 import {
   Popover,
   PopoverContent,
@@ -65,7 +80,12 @@ import {
 import { Skeleton } from "@frontend/primitives/skeleton"
 import { Slider } from "@frontend/primitives/slider"
 import { Switch } from "@frontend/primitives/switch"
-import { Tabs, TabsList, TabsTrigger } from "@frontend/primitives/tabs"
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@frontend/primitives/tabs"
 import { Textarea } from "@frontend/primitives/textarea"
 import { Toggle } from "@frontend/primitives/toggle"
 import { ToggleGroup, ToggleGroupItem } from "@frontend/primitives/toggle-group"
@@ -74,6 +94,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@frontend/primitives/tooltip"
+import { PageSection } from "@frontend/shells/page"
 import { cn } from "@frontend/utilities"
 import {
   AlignCenterIcon,
@@ -84,12 +105,10 @@ import {
   CircleCheckIcon,
   CopyIcon,
   InfoIcon,
-  LogOutIcon,
+  MoreHorizontalIcon,
   PlusIcon,
   SearchIcon,
   SettingsIcon,
-  Trash2Icon,
-  UserIcon,
 } from "lucide-react"
 import type { ReactNode } from "react"
 import { toast } from "sonner"
@@ -116,17 +135,11 @@ function Section({
   className?: string
 }) {
   return (
-    <section className="flex flex-col gap-3">
-      <div>
-        <h3 className="font-semibold text-sm">{title}</h3>
-        {description ? (
-          <p className="text-muted-foreground text-xs">{description}</p>
-        ) : null}
-      </div>
+    <PageSection description={description} title={title}>
       <div className={cn("flex flex-wrap items-start gap-4", className)}>
         {children}
       </div>
-    </section>
+    </PageSection>
   )
 }
 
@@ -158,16 +171,11 @@ function Buttons() {
         <Button size="icon" variant="outline" aria-label="Settings">
           <SettingsIcon />
         </Button>
-        <Button size="icon-lg" variant="destructive" aria-label="Delete">
-          <Trash2Icon />
+        <Button size="icon-lg" variant="outline" aria-label="More actions">
+          <MoreHorizontalIcon />
         </Button>
       </div>
       <div className="flex flex-wrap items-center gap-2">
-        <ButtonGroup>
-          <Button variant="outline">Day</Button>
-          <Button variant="outline">Week</Button>
-          <Button variant="outline">Month</Button>
-        </ButtonGroup>
         <ButtonGroup>
           <Button>Deploy</Button>
           <Button aria-label="More deploy options" size="icon">
@@ -196,15 +204,18 @@ function Forms() {
         <Input aria-invalid defaultValue="not-an-email" id="lab-invalid" />
       </Field>
       <Field>
-        <FieldLabel>Region</FieldLabel>
+        <FieldLabel htmlFor="lab-region">Region</FieldLabel>
         <Select defaultValue="frankfurt">
-          <SelectTrigger className="w-full">
+          <SelectTrigger className="w-full" id="lab-region">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="frankfurt">Frankfurt</SelectItem>
             <SelectItem value="london">London</SelectItem>
+            <SelectItem value="paris">Paris</SelectItem>
+            <SelectItem value="stockholm">Stockholm</SelectItem>
             <SelectItem value="singapore">Singapore</SelectItem>
+            <SelectItem value="tokyo">Tokyo</SelectItem>
           </SelectContent>
         </Select>
       </Field>
@@ -234,43 +245,52 @@ function Selection() {
       description="Checkboxes, radios, switches, sliders and toggles."
       title="Selection"
     >
-      <div className="flex flex-col gap-3">
-        <Label className="flex items-center gap-2">
-          <Checkbox defaultChecked /> Email me receipts
-        </Label>
-        <Label className="flex items-center gap-2">
-          <Checkbox /> Weekly summary
-        </Label>
-        <Label className="flex items-center gap-2">
-          <Switch defaultChecked /> Live mode
-        </Label>
-        <Label className="flex items-center gap-2">
-          <Switch /> Test mode
-        </Label>
-      </div>
-      <RadioGroup defaultValue="monthly">
-        <Label className="flex items-center gap-2">
-          <RadioGroupItem value="monthly" /> Monthly
-        </Label>
-        <Label className="flex items-center gap-2">
-          <RadioGroupItem value="yearly" /> Yearly
-        </Label>
-        <Label className="flex items-center gap-2">
-          <RadioGroupItem value="custom" /> Custom
-        </Label>
-      </RadioGroup>
-      <div className="flex w-56 flex-col gap-4">
-        <Slider defaultValue={[40]} max={100} />
-        <Progress value={64} />
-        <Tabs defaultValue="overview">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="usage">Usage</TabsTrigger>
-            <TabsTrigger value="logs">Logs</TabsTrigger>
-          </TabsList>
-        </Tabs>
-      </div>
+      <FieldGroup className="w-48">
+        <Field orientation="horizontal">
+          <Checkbox defaultChecked id="lab-receipts" />
+          <FieldLabel htmlFor="lab-receipts">Email me receipts</FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox id="lab-summary" />
+          <FieldLabel htmlFor="lab-summary">Weekly summary</FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Switch defaultChecked id="lab-live" />
+          <FieldLabel htmlFor="lab-live">Live mode</FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <Switch id="lab-test" />
+          <FieldLabel htmlFor="lab-test">Test mode</FieldLabel>
+        </Field>
+      </FieldGroup>
+      <FieldSet className="w-40">
+        <FieldLegend variant="label">Billing period</FieldLegend>
+        <RadioGroup defaultValue="monthly">
+          {[
+            ["monthly", "Monthly"],
+            ["yearly", "Yearly"],
+            ["custom", "Custom"],
+          ].map(([value, label]) => (
+            <Field key={value} orientation="horizontal">
+              <RadioGroupItem id={`lab-${value}`} value={value} />
+              <FieldLabel htmlFor={`lab-${value}`}>{label}</FieldLabel>
+            </Field>
+          ))}
+        </RadioGroup>
+      </FieldSet>
+      <FieldGroup className="w-56">
+        <Field>
+          <FieldLabel htmlFor="lab-volume">Volume</FieldLabel>
+          <Slider defaultValue={[40]} id="lab-volume" max={100} />
+        </Field>
+        <Progress aria-label="Upload progress" value={64} />
+      </FieldGroup>
       <div className="flex flex-col items-start gap-3">
+        <ToggleGroup defaultValue="week" type="single" variant="outline">
+          <ToggleGroupItem value="day">Day</ToggleGroupItem>
+          <ToggleGroupItem value="week">Week</ToggleGroupItem>
+          <ToggleGroupItem value="month">Month</ToggleGroupItem>
+        </ToggleGroup>
         <ToggleGroup defaultValue="left" type="single" variant="outline">
           <ToggleGroupItem aria-label="Align left" value="left">
             <AlignLeftIcon />
@@ -285,7 +305,7 @@ function Selection() {
         <Toggle aria-label="Bold" defaultPressed>
           <BoldIcon />
         </Toggle>
-        <div className="flex flex-wrap gap-1.5">
+        <div className="flex flex-wrap gap-1">
           <Badge>Default</Badge>
           <Badge variant="success">Paid</Badge>
           <Badge variant="warning">Pending</Badge>
@@ -313,7 +333,7 @@ function Surfaces() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <p className="font-semibold text-3xl tracking-tight">€24,810.00</p>
+          <p className="font-semibold text-2xl tabular-nums">€24,810.00</p>
         </CardContent>
         <CardFooter className="gap-2">
           <Button size="sm" variant="outline">
@@ -329,33 +349,57 @@ function Surfaces() {
           <CardTitle>Team</CardTitle>
           <CardDescription>People with access to this account.</CardDescription>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3">
-          {[
-            ["BU", "Boram Uyar", "Owner"],
-            ["AK", "Alex Kim", "Developer"],
-          ].map(([initials, name, role]) => (
-            <div className="flex items-center gap-3" key={name}>
-              <Avatar>
-                <AvatarFallback>{initials}</AvatarFallback>
-              </Avatar>
-              <div className="flex-1">
-                <p className="font-medium text-xs">{name}</p>
-                <p className="text-muted-foreground text-xs">{role}</p>
-              </div>
-              <Button size="xs" variant="outline">
-                Manage
-              </Button>
-            </div>
-          ))}
-          <div className="flex items-center gap-3">
-            <Skeleton className="size-8 rounded-full" />
-            <div className="flex flex-1 flex-col gap-1.5">
-              <Skeleton className="h-3 w-24" />
-              <Skeleton className="h-3 w-16" />
-            </div>
-          </div>
+        <CardContent>
+          <ItemGroup>
+            {[
+              ["BU", "Boram Uyar", "Owner"],
+              ["AK", "Alex Kim", "Developer"],
+            ].map(([initials, name, role]) => (
+              <Item key={name} size="sm">
+                <ItemMedia>
+                  <Avatar>
+                    <AvatarFallback>{initials}</AvatarFallback>
+                  </Avatar>
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle>{name}</ItemTitle>
+                  <ItemDescription>{role}</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <Button size="xs" variant="outline">
+                    Manage
+                  </Button>
+                </ItemActions>
+              </Item>
+            ))}
+            <Item size="sm">
+              <ItemMedia>
+                <Skeleton className="size-8 rounded-full" />
+              </ItemMedia>
+              <ItemContent>
+                <Skeleton className="h-3 w-24" />
+                <Skeleton className="h-3 w-16" />
+              </ItemContent>
+            </Item>
+          </ItemGroup>
         </CardContent>
       </Card>
+      <Tabs className="md:col-span-2" defaultValue="overview">
+        <TabsList>
+          <TabsTrigger value="overview">Overview</TabsTrigger>
+          <TabsTrigger value="usage">Usage</TabsTrigger>
+          <TabsTrigger value="logs">Logs</TabsTrigger>
+        </TabsList>
+        <TabsContent className="text-muted-foreground text-xs" value="overview">
+          Gross volume, payouts and disputes for this month.
+        </TabsContent>
+        <TabsContent className="text-muted-foreground text-xs" value="usage">
+          API requests and seats used this month.
+        </TabsContent>
+        <TabsContent className="text-muted-foreground text-xs" value="logs">
+          Every request made with this account's keys.
+        </TabsContent>
+      </Tabs>
       <Alert>
         <InfoIcon />
         <AlertTitle>Payouts are paused</AlertTitle>
@@ -371,61 +415,6 @@ function Surfaces() {
         </AlertDescription>
       </Alert>
     </Section>
-  )
-}
-
-/** Inline copies of overlay surfaces, so they can be judged without opening them. */
-function OverlayReplicas() {
-  return (
-    <div className="flex flex-wrap items-start gap-8">
-      <div className="flex w-52 flex-col gap-0.5 rounded-md bg-popover p-1 text-popover-foreground shadow-overlay ring-1 ring-foreground/10">
-        <p className="px-2 py-1.5 font-medium text-muted-foreground text-xs">
-          My account
-        </p>
-        <div className="flex items-center gap-2 rounded-sm bg-accent px-2 py-2 text-accent-foreground text-xs">
-          <UserIcon /> Profile{" "}
-          <span className="ml-auto text-muted-foreground">⇧⌘P</span>
-        </div>
-        <div className="flex items-center gap-2 rounded-sm px-2 py-2 text-xs">
-          <SettingsIcon /> Settings
-        </div>
-        <div className="-mx-1 my-1 h-px bg-border" />
-        <div className="flex items-center gap-2 rounded-sm px-2 py-2 text-destructive text-xs">
-          <LogOutIcon /> Log out
-        </div>
-      </div>
-      <div className="flex w-64 flex-col gap-2.5 rounded-md bg-popover p-2.5 text-popover-foreground text-xs shadow-overlay ring-1 ring-foreground/10">
-        <p className="font-medium">Dimensions</p>
-        <div className="grid grid-cols-[4rem_1fr] items-center gap-2">
-          <Label>Width</Label>
-          <Input className="h-7" defaultValue="100%" />
-          <Label>Height</Label>
-          <Input className="h-7" defaultValue="25px" />
-        </div>
-      </div>
-      <div className="flex flex-col items-start gap-6">
-        <div className="rounded-md bg-foreground px-3 py-1.5 text-background text-xs shadow-overlay">
-          Copied to clipboard
-        </div>
-        <div className="flex w-72 items-center gap-2 rounded-md border bg-popover p-4 text-popover-foreground text-xs shadow-overlay">
-          <CircleCheckIcon className="size-4" />
-          Payment of €120.00 captured.
-        </div>
-      </div>
-      <div className="grid w-full max-w-md gap-4 rounded-md bg-popover p-4 text-popover-foreground text-xs shadow-modal ring-1 ring-foreground/10">
-        <div className="flex flex-col gap-1">
-          <p className="font-medium text-sm">Refund payment</p>
-          <p className="text-muted-foreground">
-            Refunds take 5 to 10 days to appear on the customer's statement.
-          </p>
-        </div>
-        <Input defaultValue="€120.00" />
-        <div className="flex justify-end gap-2">
-          <Button variant="outline">Cancel</Button>
-          <Button>Refund</Button>
-        </div>
-      </div>
-    </div>
   )
 }
 
@@ -472,9 +461,15 @@ function LiveOverlays() {
             <DialogTitle>Refund payment</DialogTitle>
             <DialogDescription>Uses shadow-modal.</DialogDescription>
           </DialogHeader>
-          <Input defaultValue="€120.00" />
+          <Field>
+            <FieldLabel htmlFor="lab-refund">Amount</FieldLabel>
+            <Input defaultValue="€120.00" id="lab-refund" />
+          </Field>
           <DialogFooter>
-            <Button>Refund</Button>
+            <DialogClose asChild>
+              <Button variant="outline">Cancel</Button>
+            </DialogClose>
+            <Button>Refund payment</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
@@ -503,11 +498,10 @@ function Overlays() {
   return (
     <Section
       className="flex-col"
-      description="Static copies below stay open for comparison; the buttons open the real components."
+      description="Each button opens the real component."
       title="Overlays"
     >
       <LiveOverlays />
-      <OverlayReplicas />
     </Section>
   )
 }
@@ -529,7 +523,7 @@ function Swatch({ token }: { token: string }) {
         className="h-10 rounded-sm border"
         style={{ background: `var(--${token})` }}
       />
-      <span className="truncate font-mono text-[10px] text-muted-foreground">
+      <span className="truncate font-mono text-muted-foreground text-xs">
         {token}
       </span>
     </div>
@@ -572,19 +566,11 @@ function ColorTokens() {
         ))}
       </div>
       <div className="flex flex-wrap gap-2">
-        {INTENTS.map((intent) => (
-          <span
-            className="rounded-sm border px-2 py-1 font-medium text-xs"
-            key={intent}
-            style={{
-              background: `var(--${intent}-subtle)`,
-              borderColor: `var(--${intent}-border)`,
-              color: `var(--${intent}-strong)`,
-            }}
-          >
-            {intent} subtle text
-          </span>
-        ))}
+        <Badge>Primary</Badge>
+        <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="success">Success</Badge>
+        <Badge variant="warning">Warning</Badge>
+        <Badge variant="info">Info</Badge>
       </div>
     </Section>
   )
@@ -601,7 +587,7 @@ const SECTION_COMPONENTS: Record<PreviewSectionId, () => ReactNode> = {
 
 export function ComponentPreview() {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-6">
       {PREVIEW_SECTIONS.map((s) => {
         const Component = SECTION_COMPONENTS[s.id]
         return <Component key={s.id} />

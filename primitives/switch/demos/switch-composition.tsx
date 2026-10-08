@@ -2,7 +2,7 @@ import {
   Field,
   FieldContent,
   FieldDescription,
-  FieldTitle,
+  FieldLabel,
 } from "@/components/ui/field"
 import { Switch } from "@/components/ui/switch"
 
@@ -10,7 +10,9 @@ export function SwitchComposition() {
   return (
     <Field className="max-w-sm" orientation="horizontal">
       <FieldContent>
-        <FieldTitle>Two-factor authentication</FieldTitle>
+        <FieldLabel htmlFor="switch-demo-2fa">
+          Two-factor authentication
+        </FieldLabel>
         <FieldDescription>
           Require a verification code at sign-in.
         </FieldDescription>

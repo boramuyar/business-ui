@@ -1,3 +1,4 @@
+import { Trash2Icon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -15,7 +16,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Trash2Icon } from "lucide-react"
 
 export function DropdownMenuVariants() {
   return (
@@ -47,7 +47,7 @@ export function DropdownMenuVariants() {
         <DropdownMenuItem disabled>Transfer ownership</DropdownMenuItem>
         <DropdownMenuItem variant="destructive">
           <Trash2Icon />
-          Delete
+          Delete project
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

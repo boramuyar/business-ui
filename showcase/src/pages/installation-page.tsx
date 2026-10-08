@@ -7,11 +7,10 @@ import {
   TableHeader,
   TableRow,
 } from "@frontend/primitives/table"
+import { Page, PageBody, PageHeader, PageSection } from "@frontend/shells/page"
 import { ClipboardCopyIcon } from "lucide-react"
-import type { ReactNode } from "react"
 import usageMarkdown from "../../../USAGE.md?raw"
 import { CodeBlock } from "../components/code-block"
-import { PageHeader } from "../components/page-header"
 import { copyText } from "../lib/copy-text"
 
 const installCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/<item>`
@@ -46,7 +45,7 @@ const commonItems = [
 
 export function InstallationPage() {
   return (
-    <div className="max-w-4xl">
+    <Page width="narrow">
       <PageHeader
         actions={
           <Button onClick={() => copyText(usageMarkdown)} variant="outline">
@@ -55,34 +54,30 @@ export function InstallationPage() {
           </Button>
         }
         description="Install items straight from GitHub with the shadcn CLI."
-        eyebrow="Get started"
         title="Installation"
       />
 
-      <div className="flex flex-col gap-12">
-        <GuideSection
+      <PageBody>
+        <PageSection
           description="Address the GitHub repository directly. No auth or registry namespace is needed."
-          step="01"
-          title="Install items"
+          title="1. Install items"
         >
           <CodeBlock code={installCommand} />
           <span className="text-muted-foreground text-xs">Examples</span>
           <CodeBlock code={exampleCommands} />
-        </GuideSection>
+        </PageSection>
 
-        <GuideSection
+        <PageSection
           description="Optional: add the @business-ui namespace to components.json once for shorter addresses. Both forms install the same files."
-          step="02"
-          title="Shorter addresses"
+          title="2. Shorter addresses"
         >
           <CodeBlock code={namespaceConfig} />
           <CodeBlock code={namespaceCommand} />
-        </GuideSection>
+        </PageSection>
 
-        <GuideSection
-          description="Install the style item before any primitives when setting up a new app — it ships the theme every component depends on."
-          step="03"
-          title="Common items"
+        <PageSection
+          description="Install the style item before any primitives when setting up a new app. It ships the theme every component depends on."
+          title="3. Common items"
         >
           <Table>
             <TableHeader>
@@ -104,43 +99,15 @@ export function InstallationPage() {
               ))}
             </TableBody>
           </Table>
-        </GuideSection>
+        </PageSection>
 
-        <GuideSection
-          description="Use the full GitHub or @business-ui address — bare names such as button refer to the public shadcn registry. Preview any item before installing:"
-          step="04"
-          title="Notes"
+        <PageSection
+          description="Use the full GitHub or @business-ui address. Bare names such as button refer to the public shadcn registry. Preview any item before installing:"
+          title="4. Notes"
         >
           <CodeBlock code={previewCommand} />
-        </GuideSection>
-      </div>
-    </div>
-  )
-}
-
-function GuideSection({
-  step,
-  title,
-  description,
-  children,
-}: {
-  step: string
-  title: string
-  description: string
-  children: ReactNode
-}) {
-  return (
-    <section className="grid gap-x-4 gap-y-3 sm:grid-cols-[auto_1fr]">
-      <span className="flex size-6 items-center justify-center rounded-full bg-muted font-medium text-xs tabular-nums">
-        {Number(step)}
-      </span>
-      <div className="flex max-w-3xl flex-col gap-3">
-        <div className="flex flex-col gap-1">
-          <h2 className="font-semibold text-base">{title}</h2>
-          <p className="text-muted-foreground text-sm">{description}</p>
-        </div>
-        {children}
-      </div>
-    </section>
+        </PageSection>
+      </PageBody>
+    </Page>
   )
 }

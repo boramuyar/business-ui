@@ -1,5 +1,4 @@
 import { OverviewPage } from "@/components/shells/overview-page"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -18,8 +17,6 @@ const stats = [
 export function OverviewPageFinance() {
   return (
     <OverviewPage
-      actions={<Button variant="outline">Last 30 days</Button>}
-      className="py-0 md:py-0"
       description="Cash position across all customers."
       stats={stats.map((stat) => (
         <Card key={stat.label} size="sm">
@@ -42,7 +39,7 @@ export function OverviewPageFinance() {
           <CardDescription>Invoiced and paid, by month.</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="h-32 rounded-md bg-brand-subtle" />
+          <div className="h-32 rounded-md bg-muted" />
         </CardContent>
       </Card>
       <Card>

@@ -11,6 +11,21 @@ import {
 } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@/components/ui/empty"
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 const facts = [
   [
@@ -24,6 +39,21 @@ const facts = [
   ["Due", "26 Sep 2026"],
   ["Total", "€1,180.50"],
 ] as const
+
+const lineItems = [
+  {
+    description: "Consulting, August",
+    quantity: "12 h",
+    price: "€85.00",
+    amount: "€1,020.00",
+  },
+  {
+    description: "Travel to Malmö",
+    quantity: "1",
+    price: "€160.50",
+    amount: "€160.50",
+  },
+]
 
 export function DetailPageInvoice() {
   return (
@@ -64,19 +94,54 @@ export function DetailPageInvoice() {
           </BreadcrumbList>
         </Breadcrumb>
       }
-      className="py-0 md:py-0"
       description="Consulting hours for August."
       title="INV-1043"
     >
       <PageSection title="Line items">
-        <div className="rounded-md border border-dashed p-6 text-center text-muted-foreground text-xs">
-          Line items table
-        </div>
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Description</TableHead>
+              <TableHead className="text-right">Quantity</TableHead>
+              <TableHead className="text-right">Price</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {lineItems.map((item) => (
+              <TableRow key={item.description}>
+                <TableCell>{item.description}</TableCell>
+                <TableCell className="text-right tabular-nums">
+                  {item.quantity}
+                </TableCell>
+                <TableCell className="text-right tabular-nums">
+                  {item.price}
+                </TableCell>
+                <TableCell className="text-right tabular-nums">
+                  {item.amount}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3}>Total</TableCell>
+              <TableCell className="text-right tabular-nums">
+                €1,180.50
+              </TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
       </PageSection>
       <PageSection title="Activity">
-        <div className="rounded-md border border-dashed p-6 text-center text-muted-foreground text-xs">
-          Activity feed
-        </div>
+        <Empty className="border">
+          <EmptyHeader>
+            <EmptyTitle>No activity yet</EmptyTitle>
+            <EmptyDescription>
+              Reminders, payments and comments appear here.
+            </EmptyDescription>
+          </EmptyHeader>
+        </Empty>
       </PageSection>
     </DetailPage>
   )

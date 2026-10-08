@@ -1,3 +1,4 @@
+import { CalendarIcon, SettingsIcon, SmileIcon, UserIcon } from "lucide-react"
 import {
   Command,
   CommandEmpty,
@@ -8,7 +9,6 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
-import { CalendarIcon, SettingsIcon, SmileIcon, UserIcon } from "lucide-react"
 
 export function CommandVariants() {
   return (

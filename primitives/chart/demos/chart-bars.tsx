@@ -1,6 +1,13 @@
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
 
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
@@ -19,25 +26,35 @@ const monthlyData = [
 
 const chartConfig = {
   desktop: { label: "Desktop", color: "var(--chart-1)" },
-  mobile: { label: "Mobile", color: "var(--chart-4)" },
+  mobile: { label: "Mobile", color: "var(--chart-2)" },
 }
 
 export function ChartBars() {
   return (
-    <ChartContainer className="h-64 w-full" config={chartConfig}>
-      <BarChart accessibilityLayer data={monthlyData}>
-        <CartesianGrid vertical={false} />
-        <XAxis
-          axisLine={false}
-          dataKey="month"
-          tickLine={false}
-          tickMargin={8}
-        />
-        <ChartTooltip content={<ChartTooltipContent />} />
-        <ChartLegend content={<ChartLegendContent />} />
-        <Bar dataKey="desktop" fill="var(--color-desktop)" radius={0} />
-        <Bar dataKey="mobile" fill="var(--color-mobile)" radius={0} />
-      </BarChart>
-    </ChartContainer>
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>Visitors by device</CardTitle>
+        <CardDescription>
+          Desktop and mobile sessions, January to June.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ChartContainer className="h-64 w-full" config={chartConfig}>
+          <BarChart accessibilityLayer data={monthlyData}>
+            <CartesianGrid vertical={false} />
+            <XAxis
+              axisLine={false}
+              dataKey="month"
+              tickLine={false}
+              tickMargin={8}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <ChartLegend content={<ChartLegendContent />} />
+            <Bar dataKey="desktop" fill="var(--color-desktop)" radius={0} />
+            <Bar dataKey="mobile" fill="var(--color-mobile)" radius={0} />
+          </BarChart>
+        </ChartContainer>
+      </CardContent>
+    </Card>
   )
 }

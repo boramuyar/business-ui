@@ -1,3 +1,4 @@
+import { FileTextIcon, FolderIcon } from "lucide-react"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -11,7 +12,6 @@ import {
   ItemSeparator,
   ItemTitle,
 } from "@/components/ui/item"
-import { FileTextIcon, FolderIcon } from "lucide-react"
 
 export function ItemComposition() {
   return (

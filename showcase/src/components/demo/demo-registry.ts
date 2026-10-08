@@ -3,6 +3,8 @@ import type { ComponentType } from "react"
 type Demo = {
   Component: ComponentType
   source: string
+  /** Shell demos render a whole screen, so they preview in an iframe. */
+  isShell: boolean
 }
 
 type DemoModule = Record<string, unknown> & {
@@ -41,7 +43,11 @@ function buildDemos() {
       continue
     }
 
-    entries[name] = { Component, source }
+    entries[name] = {
+      Component,
+      source,
+      isShell: path.startsWith("../../../../shells/"),
+    }
   }
 
   return entries

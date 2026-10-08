@@ -1,3 +1,4 @@
+import { InboxIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import {
@@ -8,7 +9,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty"
-import { InboxIcon } from "lucide-react"
 
 export function EmptyComposition() {
   return (
@@ -19,13 +19,13 @@ export function EmptyComposition() {
             <EmptyMedia variant="icon">
               <InboxIcon />
             </EmptyMedia>
-            <EmptyTitle>No blocks yet</EmptyTitle>
+            <EmptyTitle>No invoices yet</EmptyTitle>
             <EmptyDescription>
-              Blocks are composed patterns built from primitives.
+              Invoices you create appear here.
             </EmptyDescription>
           </EmptyHeader>
           <EmptyContent>
-            <Button size="sm">Create the first block</Button>
+            <Button size="sm">Create invoice</Button>
           </EmptyContent>
         </Empty>
       </CardContent>

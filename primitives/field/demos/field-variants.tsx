@@ -5,7 +5,6 @@ import {
   FieldGroup,
   FieldLabel,
   FieldSeparator,
-  FieldTitle,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
@@ -23,7 +22,7 @@ export function FieldVariants() {
       <FieldSeparator />
       <Field orientation="horizontal">
         <FieldContent>
-          <FieldTitle>Horizontal</FieldTitle>
+          <FieldLabel htmlFor="field-demo-horizontal">Horizontal</FieldLabel>
           <FieldDescription>Control sits beside the text.</FieldDescription>
         </FieldContent>
         <Switch id="field-demo-horizontal" />

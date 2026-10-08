@@ -1,3 +1,4 @@
+import { FolderIcon, HomeIcon, InboxIcon, SettingsIcon } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import {
   Sidebar,
@@ -16,7 +17,6 @@ import {
   SidebarMenuSubItem,
   SidebarProvider,
 } from "@/components/ui/sidebar"
-import { FolderIcon, HomeIcon, InboxIcon, SettingsIcon } from "lucide-react"
 
 export function SidebarComposition() {
   return (
@@ -71,9 +71,9 @@ export function SidebarComposition() {
             </SidebarGroup>
           </SidebarContent>
           <SidebarFooter>
-            <Badge className="mx-2" variant="outline">
-              v1.0.0
-            </Badge>
+            <div className="flex px-2">
+              <Badge variant="outline">v1.0.0</Badge>
+            </div>
           </SidebarFooter>
         </Sidebar>
         <div className="flex flex-1 items-center justify-center text-muted-foreground text-xs">

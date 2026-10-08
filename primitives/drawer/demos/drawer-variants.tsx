@@ -12,35 +12,22 @@ import {
 
 export function DrawerVariants() {
   return (
-    <>
-      <Drawer>
-        <DrawerTrigger asChild>
-          <Button variant="outline">Bottom (default)</Button>
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Bottom drawer</DrawerTitle>
-            <DrawerDescription>Drag down to dismiss.</DrawerDescription>
-          </DrawerHeader>
-          <DrawerFooter>
-            <Button>Confirm</Button>
-            <DrawerClose asChild>
-              <Button variant="ghost">Cancel</Button>
-            </DrawerClose>
-          </DrawerFooter>
-        </DrawerContent>
-      </Drawer>
-      <Drawer direction="right">
-        <DrawerTrigger asChild>
-          <Button variant="outline">Right</Button>
-        </DrawerTrigger>
-        <DrawerContent>
-          <DrawerHeader>
-            <DrawerTitle>Right drawer</DrawerTitle>
-            <DrawerDescription>Desktop side panel feel.</DrawerDescription>
-          </DrawerHeader>
-        </DrawerContent>
-      </Drawer>
-    </>
+    <Drawer>
+      <DrawerTrigger asChild>
+        <Button variant="outline">Bottom (default)</Button>
+      </DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>Filter invoices</DrawerTitle>
+          <DrawerDescription>Drag down to dismiss.</DrawerDescription>
+        </DrawerHeader>
+        <DrawerFooter>
+          <Button>Apply filters</Button>
+          <DrawerClose asChild>
+            <Button variant="ghost">Cancel</Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
   )
 }

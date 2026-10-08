@@ -1,11 +1,11 @@
 import { useState } from "react"
 
 import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
 
 const itemsSeed = [
-  { id: "checkbox-demo-0", checked: true, label: 1 },
-  { id: "checkbox-demo-1", checked: false, label: 2 },
+  { id: "checkbox-indeterminate-0", checked: true, label: 1 },
+  { id: "checkbox-indeterminate-1", checked: false, label: 2 },
 ]
 
 export function CheckboxIndeterminate() {
@@ -14,11 +14,11 @@ export function CheckboxIndeterminate() {
   const someChecked = items.some((item) => item.checked)
 
   return (
-    <div className="flex flex-col gap-3">
-      <div className="flex items-center gap-2">
+    <FieldGroup className="w-auto gap-3">
+      <Field orientation="horizontal">
         <Checkbox
           checked={allChecked ? true : someChecked ? "indeterminate" : false}
-          id="checkbox-demo-all"
+          id="checkbox-indeterminate-all"
           onCheckedChange={(checked) =>
             setItems(
               items.map((item) => ({
@@ -28,10 +28,10 @@ export function CheckboxIndeterminate() {
             )
           }
         />
-        <Label htmlFor="checkbox-demo-all">Select all</Label>
-      </div>
+        <FieldLabel htmlFor="checkbox-indeterminate-all">Select all</FieldLabel>
+      </Field>
       {items.map((item) => (
-        <div className="flex items-center gap-2 pl-6" key={item.id}>
+        <Field className="pl-6" key={item.id} orientation="horizontal">
           <Checkbox
             checked={item.checked}
             id={item.id}
@@ -43,9 +43,9 @@ export function CheckboxIndeterminate() {
               )
             }
           />
-          <Label htmlFor={item.id}>Item {item.label}</Label>
-        </div>
+          <FieldLabel htmlFor={item.id}>Item {item.label}</FieldLabel>
+        </Field>
       ))}
-    </div>
+    </FieldGroup>
   )
 }
