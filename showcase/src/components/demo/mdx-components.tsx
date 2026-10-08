@@ -25,13 +25,19 @@ function AnchoredHeading({
     <HeadingTag
       className={
         level === "h2"
-          ? "scroll-mt-20 font-semibold text-xl first:mt-0"
-          : "scroll-mt-20 font-medium text-base"
+          ? "group/heading mt-6 scroll-mt-24 font-semibold text-lg tracking-tight first:mt-0"
+          : "group/heading mt-2 scroll-mt-24 font-medium text-base"
       }
       id={id}
     >
-      <a className="hover:underline" href={`#${id}`}>
+      <a className="inline-flex items-center gap-2" href={`#${id}`}>
         {children}
+        <span
+          aria-hidden
+          className="text-muted-foreground opacity-0 transition-opacity group-hover/heading:opacity-100"
+        >
+          #
+        </span>
       </a>
     </HeadingTag>
   )
@@ -55,13 +61,15 @@ export const mdxComponents: MdxComponents = {
     }
 
     return (
-      <span className="block max-w-2xl text-muted-foreground text-sm">
+      <span className="block max-w-2xl text-muted-foreground text-sm leading-relaxed">
         {children}
       </span>
     )
   },
   code: ({ children }) => (
-    <code className="bg-muted px-1 py-0.5 font-mono text-xs">{children}</code>
+    <code className="rounded-sm bg-muted px-1 py-0.5 font-mono text-foreground text-xs">
+      {children}
+    </code>
   ),
   Preview,
 }

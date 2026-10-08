@@ -14,6 +14,7 @@ import { Link, Navigate, useParams } from "react-router-dom"
 import remarkGfm from "remark-gfm"
 import { CodeBlock } from "../components/code-block"
 import { PageHeader } from "../components/page-header"
+import { TableOfContents } from "../components/toc"
 import {
   type DesignDoc,
   getDesignDoc,
@@ -35,29 +36,41 @@ export function DesignPage() {
 
   return (
     <div key={doc.slug}>
-      <div className="flex items-start justify-between gap-4">
-        <PageHeader description={description} eyebrow="Design" title={title} />
-        <div className="mt-1 flex shrink-0 gap-2">
-          <Button asChild variant="ghost">
-            <a href={rawDesignUrl(doc)}>
-              <FileTextIcon data-icon="inline-start" />
-              Raw
-            </a>
-          </Button>
-          <Button onClick={() => copyText(doc.source)} variant="outline">
-            <ClipboardCopyIcon data-icon="inline-start" />
-            Copy as Markdown
-          </Button>
-        </div>
-      </div>
-      <article className="flex max-w-3xl flex-col gap-4">
-        <ReactMarkdown
-          components={markdownComponents(doc)}
-          remarkPlugins={[remarkGfm]}
+      <PageHeader
+        actions={
+          <>
+            <Button asChild variant="ghost">
+              <a href={rawDesignUrl(doc)}>
+                <FileTextIcon data-icon="inline-start" />
+                Raw
+              </a>
+            </Button>
+            <Button onClick={() => copyText(doc.source)} variant="outline">
+              <ClipboardCopyIcon data-icon="inline-start" />
+              Copy as Markdown
+            </Button>
+          </>
+        }
+        description={description}
+        eyebrow={doc.group}
+        title={title}
+      />
+      <div className="grid gap-x-14 gap-y-10 xl:grid-cols-[minmax(0,1fr)_14rem]">
+        <article
+          className="flex min-w-0 max-w-3xl flex-col gap-4"
+          id="design-doc"
         >
-          {body}
-        </ReactMarkdown>
-      </article>
+          <ReactMarkdown
+            components={markdownComponents(doc)}
+            remarkPlugins={[remarkGfm]}
+          >
+            {body}
+          </ReactMarkdown>
+        </article>
+        <aside className="hidden xl:sticky xl:top-24 xl:block xl:self-start">
+          <TableOfContents contentId="design-doc" key={doc.slug} />
+        </aside>
+      </div>
     </div>
   )
 }
@@ -92,7 +105,7 @@ function markdownComponents(doc: DesignDoc): Components {
   return {
     h2: ({ children }) => (
       <h2
-        className="mt-6 scroll-mt-20 font-semibold text-xl first:mt-0"
+        className="mt-8 scroll-mt-24 font-semibold text-lg tracking-tight first:mt-0"
         id={slugify(children)}
       >
         {children}
@@ -100,7 +113,7 @@ function markdownComponents(doc: DesignDoc): Components {
     ),
     h3: ({ children }) => (
       <h3
-        className="mt-2 scroll-mt-20 font-medium text-base"
+        className="mt-3 scroll-mt-24 font-medium text-base"
         id={slugify(children)}
       >
         {children}
@@ -128,7 +141,9 @@ function markdownComponents(doc: DesignDoc): Components {
       </MarkdownLink>
     ),
     code: ({ children }) => (
-      <code className="bg-muted px-1 py-0.5 font-mono text-xs">{children}</code>
+      <code className="rounded-sm bg-muted px-1 py-0.5 font-mono text-foreground text-xs">
+        {children}
+      </code>
     ),
     pre: ({ node }) => {
       const code = node?.children[0]
@@ -141,7 +156,7 @@ function markdownComponents(doc: DesignDoc): Components {
       return <CodeBlock code={text.trimEnd()} />
     },
     table: ({ children }) => (
-      <div className="overflow-x-auto border">
+      <div className="overflow-x-auto rounded-lg ring-1 ring-border">
         <Table>{children}</Table>
       </div>
     ),
