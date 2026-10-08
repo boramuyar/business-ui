@@ -8,35 +8,39 @@ import { PrimitivesIndexPage } from "./pages/primitives-index-page"
 import { StyleLabPage } from "./pages/style-lab/style-lab-page"
 import { StylePage } from "./pages/style-page"
 import { shellSection } from "./primitives-data"
+import { ReviewGate } from "./review/review-gate"
 
 export function App() {
   return (
-    <Routes>
-      <Route
-        path="*"
-        element={
-          <SiteLayout>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/installation" element={<InstallationPage />} />
-              <Route path="/design/*" element={<DesignPage />} />
-              <Route path="/primitives" element={<PrimitivesIndexPage />} />
-              <Route path="/primitives/:name" element={<PrimitivePage />} />
-              <Route
-                path="/shells"
-                element={<PrimitivesIndexPage section={shellSection} />}
-              />
-              <Route
-                path="/shells/:name"
-                element={<PrimitivePage section={shellSection} />}
-              />
-              <Route path="/style" element={<StylePage />} />
-              <Route path="/style-lab" element={<StyleLabPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </SiteLayout>
-        }
-      />
-    </Routes>
+    <>
+      <Routes>
+        <Route
+          path="*"
+          element={
+            <SiteLayout>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/installation" element={<InstallationPage />} />
+                <Route path="/design/*" element={<DesignPage />} />
+                <Route path="/primitives" element={<PrimitivesIndexPage />} />
+                <Route path="/primitives/:name" element={<PrimitivePage />} />
+                <Route
+                  path="/shells"
+                  element={<PrimitivesIndexPage section={shellSection} />}
+                />
+                <Route
+                  path="/shells/:name"
+                  element={<PrimitivePage section={shellSection} />}
+                />
+                <Route path="/style" element={<StylePage />} />
+                <Route path="/style-lab" element={<StyleLabPage />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </SiteLayout>
+          }
+        />
+      </Routes>
+      <ReviewGate />
+    </>
   )
 }
