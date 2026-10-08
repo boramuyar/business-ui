@@ -83,6 +83,12 @@ const ui = { [reviewUiAttribute]: "" }
 
 type Draft = {
   element: Element
+  /**
+   * Where the note box opens, in page coordinates: the click point, or the
+   * pin when editing. Anchoring to a point instead of the element keeps the
+   * box on screen when the element is tall or sits at the top of the page.
+   */
+  point: { x: number; y: number }
   /** Set when editing an existing note. */
   noteId?: string
   note: string
@@ -210,7 +216,14 @@ export default function ReviewMode() {
       event.preventDefault()
       event.stopPropagation()
       setPicking(false)
-      setDraft({ element, note: "" })
+      setDraft({
+        element,
+        point: {
+          x: event.clientX + window.scrollX,
+          y: event.clientY + window.scrollY,
+        },
+        note: "",
+      })
     }
 
     const blocked = ["pointerdown", "mousedown", "pointerup", "mouseup"]
@@ -256,7 +269,13 @@ export default function ReviewMode() {
   function editNote(note: ReviewNote) {
     const element = findElement(note.selector)
     if (element) {
-      setDraft({ element, noteId: note.id, note: note.note })
+      const rect = element.getBoundingClientRect()
+      setDraft({
+        element,
+        point: { x: rect.right + window.scrollX, y: rect.top + window.scrollY },
+        noteId: note.id,
+        note: note.note,
+      })
     }
   }
 
@@ -440,8 +459,14 @@ function NoteEditor({
   onDelete: () => void
   onSave: () => void
 }) {
-  const anchor = useRef<Element | null>(null)
-  anchor.current = draft?.element ?? null
+  const anchor = useRef<{ getBoundingClientRect: () => DOMRect } | null>(null)
+  const point = draft?.point
+  anchor.current = point
+    ? {
+        getBoundingClientRect: () =>
+          new DOMRect(point.x - window.scrollX, point.y - window.scrollY, 0, 0),
+      }
+    : null
   const described = draft ? describeElement(draft.element) : null
 
   return (
@@ -459,6 +484,8 @@ function NoteEditor({
         align="start"
         className="w-80"
         collisionPadding={16}
+        side="bottom"
+        sideOffset={8}
         onInteractOutside={(event) => {
           // Keep a note that has text in it; Escape or Cancel still close.
           if (draft?.note.trim()) {
