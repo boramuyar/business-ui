@@ -18,7 +18,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <SiteHeader section={section} />
       <div className="flex flex-1">
         <Sidebar
-          className="sticky top-14 hidden h-[calc(100svh-3.5rem)] border-r bg-background py-4 pl-2 lg:flex"
+          className="sticky top-14 hidden h-[calc(100svh-3.5rem)] border-r bg-background px-2 py-4 lg:flex"
           collapsible="none"
         >
           <SidebarContent>
