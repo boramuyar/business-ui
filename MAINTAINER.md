@@ -137,6 +137,10 @@ Vercel builds `main` with `pnpm build` and serves `showcase/dist` at https://ui.
 
 Guides and the check are read from the site, so a merge to `main` updates every app at once. Don't add registry items that copy them into apps.
 
+## Review notes
+
+Open any showcase URL with `?review` to turn on review mode in that browser (`?review=off` or its close button turns it off). Press `C` or choose Add note, click an element, and type the note; notes stay in localStorage across pages and reloads and show as numbered pins. The Notes list copies every note as one markdown block, grouped by page, with each element's component (`data-slot`), visible text, nearest heading, CSS selector, theme and viewport width. To fix a pasted block, open each page, find the element by its selector or text, and change the source behind it (usually the primitive, not the page). The code lives in `showcase/src/review/` and only loads once review mode is on.
+
 ## Add a utility or hook
 
 - Consumers get `@lib/utils.ts` from `shadcn init`; add a utility registry item only when it provides behavior beyond that standard helper.
