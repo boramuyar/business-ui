@@ -1,12 +1,18 @@
-import { Card, CardContent } from "@frontend/primitives/card"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@frontend/primitives/card"
 import {
   Item,
   ItemContent,
   ItemDescription,
   ItemGroup,
+  ItemMedia,
   ItemTitle,
 } from "@frontend/primitives/item"
-import { cn } from "@frontend/utilities/cn"
+import { PageSection } from "@frontend/shells/page"
 import { CheckIcon, XIcon } from "lucide-react"
 import { Link } from "react-router-dom"
 import {
@@ -22,16 +28,14 @@ export function UsageGuidance({ usage }: { usage: UsageHeader }) {
   }
 
   return (
-    <Card>
-      <CardContent className="grid gap-x-10 gap-y-6 md:grid-cols-2">
-        <GuidanceList items={usage.use} tone="use" />
-        <GuidanceList items={usage.avoid} tone="avoid" />
-      </CardContent>
-    </Card>
+    <div className="grid gap-4 md:grid-cols-2">
+      <GuidanceCard items={usage.use} tone="use" />
+      <GuidanceCard items={usage.avoid} tone="avoid" />
+    </div>
   )
 }
 
-function GuidanceList({
+function GuidanceCard({
   items,
   tone,
 }: {
@@ -42,31 +46,33 @@ function GuidanceList({
     return null
   }
 
-  const Icon = tone === "use" ? CheckIcon : XIcon
-
   return (
-    <div className="flex flex-col gap-3">
-      <h2 className="flex items-center gap-2 font-medium text-sm">
-        <span
-          className={cn(
-            "flex size-5 items-center justify-center rounded-full",
-            tone === "use"
-              ? "bg-success-subtle text-success-emphasis"
-              : "bg-destructive-subtle text-destructive-emphasis"
-          )}
-        >
-          <Icon className="size-3" strokeWidth={2.5} />
-        </span>
-        {tone === "use" ? "Use when" : "Avoid"}
-      </h2>
-      <ul className="flex flex-col gap-2.5 pl-7 text-muted-foreground text-sm leading-relaxed">
-        {items.map((item) => (
-          <li key={item}>
-            <GuidanceText text={item} />
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Card>
+      <CardHeader>
+        <CardTitle>{tone === "use" ? "Use when" : "Avoid"}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ItemGroup>
+          {items.map((item) => (
+            <Item key={item} size="xs">
+              <ItemMedia variant="icon">
+                {tone === "use" ? (
+                  <CheckIcon className="text-success-emphasis" />
+                ) : (
+                  <XIcon className="text-destructive-emphasis" />
+                )}
+              </ItemMedia>
+              <ItemContent>
+                {/* Header lines are full sentences; show them whole. */}
+                <ItemDescription className="line-clamp-none">
+                  <GuidanceText text={item} />
+                </ItemDescription>
+              </ItemContent>
+            </Item>
+          ))}
+        </ItemGroup>
+      </CardContent>
+    </Card>
   )
 }
 
@@ -107,14 +113,8 @@ export function RelatedComponents({ names }: { names: string[] }) {
   }
 
   return (
-    <section className="flex flex-col gap-3">
-      <h2
-        className="mt-6 scroll-mt-24 font-semibold text-lg tracking-tight"
-        id="related"
-      >
-        Related
-      </h2>
-      <ItemGroup className="grid gap-2 sm:grid-cols-2">
+    <PageSection id="related" title="Related">
+      <ItemGroup>
         {links.map((link) => (
           <Item asChild key={link.to} variant="outline">
             <Link to={link.to}>
@@ -126,7 +126,7 @@ export function RelatedComponents({ names }: { names: string[] }) {
           </Item>
         ))}
       </ItemGroup>
-    </section>
+    </PageSection>
   )
 }
 

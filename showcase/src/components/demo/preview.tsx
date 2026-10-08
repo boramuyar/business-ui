@@ -1,3 +1,4 @@
+import { Alert, AlertDescription, AlertTitle } from "@frontend/primitives/alert"
 import { Button } from "@frontend/primitives/button"
 import {
   Tabs,
@@ -9,6 +10,7 @@ import { cn } from "@frontend/utilities"
 import { CopyIcon } from "lucide-react"
 import { createContext, type ReactNode, useContext } from "react"
 import { copyText } from "../../lib/copy-text"
+import { CodeBlock } from "../code-block"
 import { getDemo } from "./demo-registry"
 
 const PreviewContext = createContext(false)
@@ -40,49 +42,50 @@ export function Preview({
 
   if (!demo) {
     return (
-      <div className="rounded-lg border border-dashed p-6 text-muted-foreground text-sm">
-        Demo `{name}` was not found.
-      </div>
+      <Alert variant="destructive">
+        <AlertTitle>Demo not found</AlertTitle>
+        <AlertDescription>
+          Add {name}.tsx to the item's demos folder.
+        </AlertDescription>
+      </Alert>
     )
   }
 
-  const { Component, source } = demo
+  const { Component, source, isShell } = demo
+  const code = source.trim()
 
   return (
-    <Tabs
-      className="gap-0 overflow-hidden rounded-lg ring-1 ring-border"
-      defaultValue="preview"
-    >
-      <div className="flex items-center justify-between border-b px-3">
-        <TabsList variant="line">
+    <Tabs className="gap-3" defaultValue="preview">
+      <div className="flex items-center justify-between gap-2">
+        <TabsList>
           <TabsTrigger value="preview">Preview</TabsTrigger>
           <TabsTrigger value="code">Code</TabsTrigger>
         </TabsList>
         <Button
           aria-label="Copy code"
-          className="text-muted-foreground"
-          onClick={() => copyText(source.trim())}
+          onClick={() => copyText(code)}
           size="icon-sm"
+          tooltip="Copy code"
           variant="ghost"
         >
           <CopyIcon />
         </Button>
       </div>
       <TabsContent value="preview">
-        <PreviewFrame
-          className={cn("rounded-none ring-0", className)}
-          tall={tall}
-        >
-          <Component />
-        </PreviewFrame>
+        {isShell ? (
+          <iframe
+            className="h-[40rem] w-full rounded-md bg-background ring-1 ring-border"
+            src={`${import.meta.env.BASE_URL}demo/${name}`}
+            title={`${name} demo`}
+          />
+        ) : (
+          <PreviewFrame className={className} tall={tall}>
+            <Component />
+          </PreviewFrame>
+        )}
       </TabsContent>
       <TabsContent value="code">
-        <pre
-          className="max-h-96 overflow-auto bg-muted/40 px-4 py-3 text-left font-mono text-xs leading-relaxed"
-          data-slot="code"
-        >
-          <code>{source.trim()}</code>
-        </pre>
+        <CodeBlock className="max-h-96 overflow-auto" code={code} />
       </TabsContent>
     </Tabs>
   )
@@ -100,7 +103,7 @@ function PreviewFrame({
   return (
     <div
       className={cn(
-        "flex min-h-40 flex-wrap items-center justify-center gap-4 rounded-lg bg-background p-10 ring-1 ring-border",
+        "flex min-h-40 flex-wrap items-center justify-center gap-4 rounded-md bg-background p-6 ring-1 ring-border",
         tall && "min-h-72",
         className
       )}

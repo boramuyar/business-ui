@@ -29,7 +29,9 @@ export function SheetVariants() {
         <SheetContent side="left">
           <SheetHeader>
             <SheetTitle>Left sheet</SheetTitle>
-            <SheetDescription>Good for navigation.</SheetDescription>
+            <SheetDescription>
+              Filters or a secondary record panel.
+            </SheetDescription>
           </SheetHeader>
         </SheetContent>
       </Sheet>
@@ -51,7 +53,7 @@ export function SheetVariants() {
         <SheetContent side="bottom">
           <SheetHeader>
             <SheetTitle>Bottom sheet</SheetTitle>
-            <SheetDescription>Mobile-friendly placement.</SheetDescription>
+            <SheetDescription>Use a drawer on touch screens.</SheetDescription>
           </SheetHeader>
         </SheetContent>
       </Sheet>

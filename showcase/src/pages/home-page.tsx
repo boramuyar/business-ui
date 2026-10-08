@@ -7,10 +7,10 @@ import {
   ItemGroup,
   ItemTitle,
 } from "@frontend/primitives/item"
+import { Page, PageBody, PageHeader, PageSection } from "@frontend/shells/page"
 import { ArrowRightIcon, ChevronRightIcon } from "lucide-react"
 import { Link } from "react-router-dom"
 import { CodeBlock } from "../components/code-block"
-import { PageHeader } from "../components/page-header"
 import { navSections } from "../layout/site-nav"
 import { primitiveRoutes, shellRoutes } from "../primitives-data"
 
@@ -27,19 +27,16 @@ const sectionCopy: Record<string, string> = {
 
 export function HomePage() {
   return (
-    <div className="max-w-4xl">
+    <Page width="narrow">
       <PageHeader
         description="A shadcn registry with its own style and primitives, and the rules for using them. People read this handbook here; agents read the same rules from /llms.txt."
-        eyebrow="Get started"
         title="Business UI handbook"
       />
-      <div className="flex flex-col gap-12">
-        <section className="flex flex-col gap-3">
-          <h2 className="font-semibold text-lg tracking-tight">Install</h2>
-          <p className="max-w-2xl text-muted-foreground text-sm">
-            shadcn reads the registry from GitHub. Add the style first, then the
-            components you need.
-          </p>
+      <PageBody>
+        <PageSection
+          description="shadcn reads the registry from GitHub. Add the style first, then the components you need."
+          title="Install"
+        >
           <CodeBlock code={quickInstallCommand} />
           <Button asChild className="w-fit" variant="outline">
             <Link to="/installation">
@@ -47,13 +44,10 @@ export function HomePage() {
               <ArrowRightIcon data-icon="inline-end" />
             </Link>
           </Button>
-        </section>
+        </PageSection>
 
-        <section className="flex flex-col gap-3">
-          <h2 className="font-semibold text-lg tracking-tight">
-            Find your way around
-          </h2>
-          <ItemGroup className="grid gap-3 sm:grid-cols-2">
+        <PageSection title="Find your way around">
+          <ItemGroup>
             {navSections
               .filter((section) => sectionCopy[section.id])
               .map((section) => (
@@ -72,8 +66,8 @@ export function HomePage() {
                 </Item>
               ))}
           </ItemGroup>
-        </section>
-      </div>
-    </div>
+        </PageSection>
+      </PageBody>
+    </Page>
   )
 }

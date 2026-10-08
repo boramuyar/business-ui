@@ -60,7 +60,6 @@ export function ListPageInvoices() {
           <Button>New invoice</Button>
         </>
       }
-      className="py-0 md:py-0"
       description="Every invoice sent from this workspace."
       filters={
         <InputGroup className="max-w-xs">

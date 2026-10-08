@@ -14,7 +14,7 @@ export function HoverCardVariants() {
       <HoverCardContent className="w-64">
         <p className="font-medium text-foreground text-xs">@boramuyar</p>
         <p className="text-muted-foreground text-xs">
-          Private shadcn registry with primitives, blocks, style, and utilities.
+          Public shadcn registry with primitives, shells, style and utilities.
         </p>
       </HoverCardContent>
     </HoverCard>

@@ -1,6 +1,14 @@
 import { FormPage } from "@/components/shells/form-page"
 import { Button } from "@/components/ui/button"
 import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@/components/ui/combobox"
+import {
   Field,
   FieldDescription,
   FieldLabel,
@@ -8,14 +16,42 @@ import {
   FieldSet,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
+
+const countries = [
+  "Australia",
+  "Austria",
+  "Belgium",
+  "Brazil",
+  "Canada",
+  "Czechia",
+  "Denmark",
+  "Estonia",
+  "Finland",
+  "France",
+  "Germany",
+  "Greece",
+  "Iceland",
+  "India",
+  "Ireland",
+  "Italy",
+  "Japan",
+  "Latvia",
+  "Lithuania",
+  "Luxembourg",
+  "Mexico",
+  "Netherlands",
+  "New Zealand",
+  "Norway",
+  "Poland",
+  "Portugal",
+  "Singapore",
+  "Spain",
+  "Sweden",
+  "Switzerland",
+  "United Kingdom",
+  "United States",
+]
 
 export function FormPageCustomer() {
   return (
@@ -28,7 +64,6 @@ export function FormPageCustomer() {
           <Button type="submit">Create customer</Button>
         </>
       }
-      className="py-0 md:py-0"
       description="Customers can be invoiced once they have a billing email."
       onSubmit={(event) => event.preventDefault()}
       title="New customer"
@@ -41,19 +76,22 @@ export function FormPageCustomer() {
         </Field>
         <Field>
           <FieldLabel htmlFor="form-page-country">Country</FieldLabel>
-          <Select defaultValue="se">
-            <SelectTrigger id="form-page-country">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="se">Sweden</SelectItem>
-              <SelectItem value="no">Norway</SelectItem>
-              <SelectItem value="dk">Denmark</SelectItem>
-              <SelectItem value="fi">Finland</SelectItem>
-              <SelectItem value="de">Germany</SelectItem>
-              <SelectItem value="nl">Netherlands</SelectItem>
-            </SelectContent>
-          </Select>
+          <Combobox defaultValue="Sweden" items={countries}>
+            <ComboboxInput
+              id="form-page-country"
+              placeholder="Search countries"
+            />
+            <ComboboxContent>
+              <ComboboxEmpty>No country found.</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem key={item} value={item}>
+                    {item}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
         </Field>
       </FieldSet>
       <FieldSet>

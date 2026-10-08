@@ -1,26 +1,51 @@
 import {
   Combobox,
   ComboboxContent,
-  ComboboxItem,
   ComboboxInput,
+  ComboboxItem,
   ComboboxList,
 } from "@/components/ui/combobox"
+import { Field, FieldLabel } from "@/components/ui/field"
 
-const frameworks = ["Astro", "Next.js", "Remix", "SvelteKit", "Vite"]
+const countries = [
+  "Austria",
+  "Belgium",
+  "Denmark",
+  "Finland",
+  "France",
+  "Germany",
+  "Ireland",
+  "Italy",
+  "Netherlands",
+  "Norway",
+  "Poland",
+  "Portugal",
+  "Spain",
+  "Sweden",
+  "Switzerland",
+  "United Kingdom",
+]
 
 export function ComboboxDisabled() {
   return (
-    <Combobox items={frameworks}>
-      <ComboboxInput className="w-56" disabled placeholder="Disabled" />
-      <ComboboxContent>
-        <ComboboxList>
-          {(item) => (
-            <ComboboxItem key={item} value={item}>
-              {item}
-            </ComboboxItem>
-          )}
-        </ComboboxList>
-      </ComboboxContent>
-    </Combobox>
+    <Field className="w-56" data-disabled="true">
+      <FieldLabel htmlFor="combobox-disabled-country">Country</FieldLabel>
+      <Combobox items={countries}>
+        <ComboboxInput
+          disabled
+          id="combobox-disabled-country"
+          placeholder="Search countries"
+        />
+        <ComboboxContent>
+          <ComboboxList>
+            {(item) => (
+              <ComboboxItem key={item} value={item}>
+                {item}
+              </ComboboxItem>
+            )}
+          </ComboboxList>
+        </ComboboxContent>
+      </Combobox>
+    </Field>
   )
 }

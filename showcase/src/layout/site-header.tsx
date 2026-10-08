@@ -1,4 +1,9 @@
 import { Button } from "@frontend/primitives/button"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@frontend/primitives/input-group"
 import { Kbd, KbdGroup } from "@frontend/primitives/kbd"
 import {
   NavigationMenu,
@@ -6,18 +11,11 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@frontend/primitives/navigation-menu"
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@frontend/primitives/sheet"
-import { MenuIcon, SearchIcon } from "lucide-react"
+import { SidebarTrigger } from "@frontend/primitives/sidebar"
+import { SearchIcon } from "lucide-react"
 import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { CommandPalette } from "./command-palette"
-import { SectionNav } from "./section-nav"
 import { type NavSection, navSections } from "./site-nav"
 import { ThemeToggle } from "./theme-toggle"
 
@@ -39,20 +37,26 @@ export function SiteHeader({ section }: { section: NavSection }) {
   }, [])
 
   return (
-    <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-8 border-b bg-background px-4 sm:px-6">
-      <MobileMenu />
-      <Link className="flex shrink-0 items-center gap-2" to="/">
-        <img alt="" className="size-5" src={logoUrl} />
-        <span className="font-semibold text-sm">Business UI</span>
-      </Link>
-      <NavigationMenu className="hidden lg:flex" viewport={false}>
+    <header className="sticky top-0 z-40 flex h-14 shrink-0 items-center gap-6 border-b bg-background px-4 md:px-6">
+      <div className="flex shrink-0 items-center gap-2">
+        <SidebarTrigger
+          aria-label="Open navigation"
+          className="md:hidden"
+          tooltip="Open navigation"
+        />
+        <Link className="flex items-center gap-2" to="/">
+          <img alt="" className="size-5" src={logoUrl} />
+          <span className="font-semibold text-sm">Business UI</span>
+        </Link>
+      </div>
+      <NavigationMenu className="hidden md:flex" viewport={false}>
         <NavigationMenuList>
           {navSections.map((entry) => (
             <NavigationMenuItem key={entry.id}>
               <NavigationMenuLink
                 active={entry.id === section.id}
                 asChild
-                className="px-3 text-muted-foreground hover:text-foreground data-active:font-medium data-active:text-foreground"
+                variant="muted"
               >
                 <Link to={entry.to}>{entry.label}</Link>
               </NavigationMenuLink>
@@ -60,67 +64,48 @@ export function SiteHeader({ section }: { section: NavSection }) {
           ))}
         </NavigationMenuList>
       </NavigationMenu>
-      <div className="ml-auto flex items-center gap-1">
-        <Button
-          className="w-9 justify-center gap-2 px-0 font-normal text-muted-foreground sm:w-60 sm:justify-between sm:pr-1.5 sm:pl-2.5"
+      <div className="ml-auto flex items-center gap-2">
+        <InputGroup
+          className="hidden w-60 lg:flex"
           onClick={() => setPaletteOpen(true)}
-          variant="outline"
         >
-          <span className="flex items-center gap-2">
+          <InputGroupAddon>
             <SearchIcon />
-            <span className="hidden sm:inline">Search the handbook</span>
-          </span>
-          <KbdGroup className="hidden sm:inline-flex">
-            <Kbd>Ctrl</Kbd>
-            <Kbd>K</Kbd>
-          </KbdGroup>
+          </InputGroupAddon>
+          <InputGroupInput
+            aria-label="Search the handbook"
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault()
+                setPaletteOpen(true)
+              }
+            }}
+            placeholder="Search the handbook"
+            readOnly
+          />
+          <InputGroupAddon align="inline-end">
+            <KbdGroup>
+              <Kbd>Ctrl</Kbd>
+              <Kbd>K</Kbd>
+            </KbdGroup>
+          </InputGroupAddon>
+        </InputGroup>
+        <Button
+          aria-label="Search the handbook"
+          className="lg:hidden"
+          onClick={() => setPaletteOpen(true)}
+          size="icon"
+          tooltip="Search the handbook"
+          variant="ghost"
+        >
+          <SearchIcon />
         </Button>
-        <Button asChild className="hidden sm:inline-flex" variant="ghost">
+        <Button asChild className="hidden lg:inline-flex" variant="ghost">
           <a href="https://github.com/boramuyar/business-ui">GitHub</a>
         </Button>
         <ThemeToggle />
       </div>
       <CommandPalette onOpenChange={setPaletteOpen} open={paletteOpen} />
     </header>
-  )
-}
-
-function MobileMenu() {
-  const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
-
-  // Close the menu after navigating.
-  useEffect(() => {
-    setOpen(false)
-  }, [pathname])
-
-  return (
-    <Sheet onOpenChange={setOpen} open={open}>
-      <SheetTrigger asChild>
-        <Button
-          aria-label="Open navigation"
-          className="-ml-2 lg:hidden"
-          size="icon"
-          variant="ghost"
-        >
-          <MenuIcon />
-        </Button>
-      </SheetTrigger>
-      <SheetContent className="w-72 gap-0 overflow-y-auto" side="left">
-        <SheetHeader>
-          <SheetTitle>Business UI</SheetTitle>
-        </SheetHeader>
-        <div className="flex flex-col gap-4 px-2 pb-8">
-          {navSections.map((section) => (
-            <div className="flex flex-col" key={section.id}>
-              <span className="px-4 pt-2 font-semibold text-sm">
-                {section.label}
-              </span>
-              <SectionNav section={section} />
-            </div>
-          ))}
-        </div>
-      </SheetContent>
-    </Sheet>
   )
 }

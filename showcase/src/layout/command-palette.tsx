@@ -10,15 +10,16 @@ import {
 import { useNavigate } from "react-router-dom"
 import { designDocs } from "../design-docs"
 import { primitiveRoutes, shellRoutes } from "../primitives-data"
+import { navSections } from "./site-nav"
 
-const pageEntries = [
-  { to: "/", label: "Home" },
-  { to: "/installation", label: "Installation" },
-  { to: "/primitives", label: "Primitives" },
-  { to: "/shells", label: "Shells" },
-  { to: "/style", label: "Style & Utilities" },
-  { to: "/style-lab", label: "Style Lab" },
-]
+/** Site pages, labelled as in the navigation; docs and catalog items have their own groups. */
+const pageEntries = navSections
+  .flatMap((section) => section.groups.flatMap((group) => group.links))
+  .filter(
+    (link) =>
+      !link.to.startsWith("/design") &&
+      !/^\/(primitives|shells)\/./.test(link.to)
+  )
 
 export function CommandPalette({
   open,
@@ -36,12 +37,12 @@ export function CommandPalette({
 
   return (
     <CommandDialog
-      description="Search pages and primitives"
+      description="Search pages and components"
       onOpenChange={onOpenChange}
       open={open}
       title="Search"
     >
-      <CommandInput placeholder="Search pages and primitives..." />
+      <CommandInput placeholder="Search pages and components..." />
       <CommandList>
         <CommandEmpty>No results found.</CommandEmpty>
         <CommandGroup heading="Pages">
@@ -56,7 +57,9 @@ export function CommandPalette({
           {designDocs.map((doc) => (
             <CommandItem
               key={doc.path}
-              onSelect={() => goTo(doc.slug ? `/design/${doc.slug}` : "/design")}
+              onSelect={() =>
+                goTo(doc.slug ? `/design/${doc.slug}` : "/design")
+              }
               value={`design ${doc.title}`}
             >
               {doc.title}
@@ -64,7 +67,7 @@ export function CommandPalette({
           ))}
         </CommandGroup>
         <CommandSeparator />
-        <CommandGroup heading="Primitives">
+        <CommandGroup heading="Components">
           {primitiveRoutes.map((route) => (
             <CommandItem
               key={route.name}

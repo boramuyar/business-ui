@@ -1,3 +1,5 @@
+import { ZoomInIcon, ZoomOutIcon } from "lucide-react"
+
 import { Button } from "@/components/ui/button"
 import { ButtonGroup } from "@/components/ui/button-group"
 
@@ -5,9 +7,13 @@ export function ButtonGroupVariants() {
   return (
     <>
       <ButtonGroup>
-        <Button variant="outline">Day</Button>
-        <Button variant="outline">Week</Button>
-        <Button variant="outline">Month</Button>
+        <Button aria-label="Zoom out" variant="outline">
+          <ZoomOutIcon />
+        </Button>
+        <Button variant="outline">100%</Button>
+        <Button aria-label="Zoom in" variant="outline">
+          <ZoomInIcon />
+        </Button>
       </ButtonGroup>
       <ButtonGroup orientation="vertical">
         <Button variant="outline">Top</Button>

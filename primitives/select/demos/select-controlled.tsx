@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
 import {
   Select,
   SelectContent,
@@ -7,22 +8,37 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 
+const regions = [
+  { value: "frankfurt", label: "Frankfurt" },
+  { value: "london", label: "London" },
+  { value: "paris", label: "Paris" },
+  { value: "stockholm", label: "Stockholm" },
+  { value: "singapore", label: "Singapore" },
+  { value: "tokyo", label: "Tokyo" },
+  { value: "sydney", label: "Sydney" },
+  { value: "virginia", label: "Virginia" },
+  { value: "oregon", label: "Oregon" },
+]
+
 export function SelectControlled() {
   const [region, setRegion] = useState("frankfurt")
 
   return (
-    <div className="flex flex-col items-center gap-2">
+    <Field className="w-44">
+      <FieldLabel htmlFor="select-controlled-region">Region</FieldLabel>
       <Select onValueChange={setRegion} value={region}>
-        <SelectTrigger className="w-44">
+        <SelectTrigger id="select-controlled-region">
           <SelectValue placeholder="Pick a region" />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value="frankfurt">Frankfurt</SelectItem>
-          <SelectItem value="london">London</SelectItem>
-          <SelectItem value="singapore">Singapore</SelectItem>
+          {regions.map((item) => (
+            <SelectItem key={item.value} value={item.value}>
+              {item.label}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
-      <span className="text-muted-foreground text-xs">Selected: {region}</span>
-    </div>
+      <FieldDescription>Selected: {region}</FieldDescription>
+    </Field>
   )
 }

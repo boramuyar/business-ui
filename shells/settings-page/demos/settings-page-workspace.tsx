@@ -3,13 +3,23 @@ import {
   SettingsPage,
   SettingsSection,
 } from "@/components/shells/settings-page"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
 import {
   Field,
   FieldContent,
   FieldDescription,
   FieldLabel,
-  FieldTitle,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
@@ -17,7 +27,6 @@ import { Switch } from "@/components/ui/switch"
 export function SettingsPageWorkspace() {
   return (
     <SettingsPage
-      className="py-0 md:py-0"
       description="Settings that apply to everyone in this workspace."
       nav={
         <>
@@ -50,21 +59,21 @@ export function SettingsPageWorkspace() {
       >
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>Overdue invoices</FieldTitle>
+            <FieldLabel htmlFor="settings-overdue">Overdue invoices</FieldLabel>
             <FieldDescription>
               Email the owner when an invoice is overdue.
             </FieldDescription>
           </FieldContent>
-          <Switch defaultChecked />
+          <Switch defaultChecked id="settings-overdue" />
         </Field>
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>Weekly summary</FieldTitle>
+            <FieldLabel htmlFor="settings-weekly">Weekly summary</FieldLabel>
             <FieldDescription>
               A Monday email with last week's totals.
             </FieldDescription>
           </FieldContent>
-          <Switch />
+          <Switch id="settings-weekly" />
         </Field>
       </SettingsSection>
       <SettingsSection
@@ -72,9 +81,28 @@ export function SettingsPageWorkspace() {
         id="danger"
         title="Delete workspace"
       >
-        <Button className="self-start" variant="destructive">
-          Delete workspace
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button className="self-start" variant="destructive">
+              Delete workspace
+            </Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Delete this workspace?</AlertDialogTitle>
+              <AlertDialogDescription>
+                All invoices, customers and members are removed. This cannot be
+                undone.
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction variant="destructive">
+                Delete workspace
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </SettingsSection>
     </SettingsPage>
   )

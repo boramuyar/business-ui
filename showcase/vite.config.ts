@@ -6,6 +6,7 @@ import remarkFrontmatter from "remark-frontmatter"
 import remarkMdxFrontmatter from "remark-mdx-frontmatter"
 import { defineConfig } from "vite"
 import { businessStylePlugin } from "../scripts/style-vite-plugin.mjs"
+import { rehypeSections } from "./src/lib/rehype-sections"
 
 export default defineConfig({
   plugins: [
@@ -28,6 +29,7 @@ export default defineConfig({
       include: /\.mdx$/,
       providerImportSource: "@mdx-js/react",
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+      rehypePlugins: [rehypeSections],
     }),
     react(),
     tailwindcss(),

@@ -3,24 +3,28 @@ import {
   Field,
   FieldContent,
   FieldDescription,
-  FieldTitle,
+  FieldGroup,
+  FieldLabel,
 } from "@/components/ui/field"
-import { Label } from "@/components/ui/label"
 
 export function CheckboxComposition() {
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex items-center gap-2">
-        <Checkbox defaultChecked id="checkbox-demo-terms" />
-        <Label htmlFor="checkbox-demo-terms">Accept terms and conditions</Label>
-      </div>
+    <FieldGroup className="max-w-sm">
       <Field orientation="horizontal">
-        <Checkbox id="checkbox-demo-marketing" />
+        <Checkbox defaultChecked id="checkbox-composition-terms" />
+        <FieldLabel htmlFor="checkbox-composition-terms">
+          Accept terms and conditions
+        </FieldLabel>
+      </Field>
+      <Field orientation="horizontal">
+        <Checkbox id="checkbox-composition-marketing" />
         <FieldContent>
-          <FieldTitle>Marketing emails</FieldTitle>
+          <FieldLabel htmlFor="checkbox-composition-marketing">
+            Marketing emails
+          </FieldLabel>
           <FieldDescription>Occasional product announcements.</FieldDescription>
         </FieldContent>
       </Field>
-    </div>
+    </FieldGroup>
   )
 }

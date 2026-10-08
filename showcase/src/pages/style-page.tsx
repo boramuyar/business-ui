@@ -1,3 +1,12 @@
+import { Badge } from "@frontend/primitives/badge"
+import {
+  Item,
+  ItemActions,
+  ItemContent,
+  ItemDescription,
+  ItemGroup,
+  ItemTitle,
+} from "@frontend/primitives/item"
 import { Kbd } from "@frontend/primitives/kbd"
 import {
   Table,
@@ -13,11 +22,11 @@ import {
   TabsList,
   TabsTrigger,
 } from "@frontend/primitives/tabs"
+import { Page, PageHeader } from "@frontend/shells/page"
 import { Fragment } from "react"
 import colors from "../../../style/colors.json"
 import theme from "../../../style/theme.json"
 import tokens from "../../../style/tokens.json"
-import { PageHeader } from "../components/page-header"
 
 const ROLE_COLORS = [
   "primary",
@@ -65,9 +74,8 @@ const themeTokens: Record<string, string> = theme
 
 export function StylePage() {
   return (
-    <div>
+    <Page>
       <PageHeader
-        eyebrow="Foundations"
         title="Style & utilities"
         description="Theme colors, color role tokens, design tokens, and the shared cn helper."
       />
@@ -83,7 +91,7 @@ export function StylePage() {
         <TabsContent className="pt-6" value="colors">
           <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {baseColorNames.map((colorName) => (
-              <div className="grid gap-1.5" key={colorName}>
+              <div className="grid gap-1" key={colorName}>
                 <Swatch className="h-14" name={colorName} />
                 <span className="font-mono text-muted-foreground text-xs">
                   {colorName}
@@ -101,24 +109,23 @@ export function StylePage() {
             the token. Press <Kbd>D</Kbd> and watch the swatches adapt.
           </p>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <ItemGroup>
             {roleGuide.map((entry) => (
-              <div
-                className="flex flex-col gap-1.5 rounded-lg p-4 ring-1 ring-border"
-                key={entry.role}
-              >
-                <span className="font-medium font-mono text-sm">
-                  *-{entry.role}
-                </span>
-                <p className="text-muted-foreground text-sm">{entry.purpose}</p>
-                <code className="w-fit rounded-sm bg-muted px-1 py-0.5 font-mono text-xs">
-                  {entry.example}
-                </code>
-              </div>
+              <Item key={entry.role} variant="outline">
+                <ItemContent>
+                  <ItemTitle className="font-mono">*-{entry.role}</ItemTitle>
+                  <ItemDescription>{entry.purpose}</ItemDescription>
+                </ItemContent>
+                <ItemActions>
+                  <code className="rounded-sm bg-muted px-1 py-0.5 font-mono text-xs">
+                    {entry.example}
+                  </code>
+                </ItemActions>
+              </Item>
             ))}
-          </div>
+          </ItemGroup>
 
-          <div className="grid grid-cols-[5.5rem_repeat(5,minmax(0,1fr))] gap-1.5">
+          <div className="grid grid-cols-[5.5rem_repeat(5,minmax(0,1fr))] gap-1">
             <span />
             {["base", ...COLOR_ROLES].map((label) => (
               <span
@@ -143,22 +150,14 @@ export function StylePage() {
 
           <div className="flex flex-col gap-2">
             <span className="font-medium text-sm">
-              Composed: subtle + border + emphasis
+              Composed: subtle + border + strong
             </span>
             <div className="flex flex-wrap gap-2">
-              {ROLE_COLORS.map((color) => (
-                <span
-                  className="rounded-sm border px-2 py-1 text-xs"
-                  key={color}
-                  style={{
-                    backgroundColor: `var(--${color}-subtle)`,
-                    borderColor: `var(--${color}-border)`,
-                    color: `var(--${color}-emphasis)`,
-                  }}
-                >
-                  {color}
-                </span>
-              ))}
+              <Badge>Primary</Badge>
+              <Badge variant="destructive">Destructive</Badge>
+              <Badge variant="success">Success</Badge>
+              <Badge variant="warning">Warning</Badge>
+              <Badge variant="info">Info</Badge>
             </div>
           </div>
         </TabsContent>
@@ -215,9 +214,7 @@ export function StylePage() {
             <p className="max-w-3xl text-muted-foreground text-sm">
               Renders text in all small caps via `font-variant`.
             </p>
-            <p className="small-caps w-fit rounded-md border px-3 py-2">
-              Quarterly Portfolio Review
-            </p>
+            <p className="small-caps text-sm">Quarterly Portfolio Review</p>
           </div>
           <div className="flex flex-col gap-2">
             <span className="font-medium font-mono text-sm">cn()</span>
@@ -231,7 +228,7 @@ export function StylePage() {
           </div>
         </TabsContent>
       </Tabs>
-    </div>
+    </Page>
   )
 }
 

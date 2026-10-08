@@ -10,8 +10,8 @@ export function ButtonComposition() {
         <Badge variant="secondary">12</Badge>
       </Button>
       <ButtonGroup>
-        <Button variant="outline">Save</Button>
-        <Button variant="outline">Discard</Button>
+        <Button variant="outline">Save draft</Button>
+        <Button variant="outline">Discard draft</Button>
       </ButtonGroup>
     </>
   )

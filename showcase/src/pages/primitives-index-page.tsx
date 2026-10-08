@@ -1,5 +1,17 @@
 import { Badge } from "@frontend/primitives/badge"
-import { Input } from "@frontend/primitives/input"
+import { Button } from "@frontend/primitives/button"
+import {
+  Empty,
+  EmptyContent,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyTitle,
+} from "@frontend/primitives/empty"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@frontend/primitives/input-group"
 import {
   Item,
   ItemContent,
@@ -8,13 +20,17 @@ import {
   ItemTitle,
 } from "@frontend/primitives/item"
 import { ToggleGroup, ToggleGroupItem } from "@frontend/primitives/toggle-group"
+import { ListPage } from "@frontend/shells/list-page"
+import { PageSection } from "@frontend/shells/page"
+import { SearchIcon } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { PageHeader } from "../components/page-header"
 import {
   type CatalogSection,
   groupByLevel,
   primitiveSection,
+  statusBadge,
+  statusLabel,
 } from "../primitives-data"
 
 const statusFilters = ["all", "stable", "experimental", "draft"] as const
@@ -57,21 +73,25 @@ export function PrimitivesIndexPage({
       : [{ label: section.label, routes: visibleRoutes }]
 
   return (
-    <div>
-      <PageHeader
-        eyebrow={section === primitiveSection ? "Components" : "Shells"}
-        title={section === primitiveSection ? "All components" : "All shells"}
-        description={copy.description}
-      />
-
-      <div className="mb-8 flex flex-wrap items-center gap-3">
-        <Input
-          className="max-w-xs"
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder={copy.filter}
-          value={query}
-        />
+    <ListPage
+      description={copy.description}
+      filters={
+        <InputGroup className="max-w-xs">
+          <InputGroupAddon>
+            <SearchIcon />
+          </InputGroupAddon>
+          <InputGroupInput
+            aria-label={copy.filter}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder={copy.filter}
+            value={query}
+          />
+        </InputGroup>
+      }
+      title={section === primitiveSection ? "All components" : "All shells"}
+      view={
         <ToggleGroup
+          aria-label="Status"
           onValueChange={(value) => {
             if (value) {
               setStatus(value as StatusFilter)
@@ -83,22 +103,42 @@ export function PrimitivesIndexPage({
         >
           {statusFilters.map((filter) => (
             <ToggleGroupItem key={filter} value={filter}>
-              {filter}
+              {statusLabel[filter]}
             </ToggleGroupItem>
           ))}
         </ToggleGroup>
-      </div>
-
-      <div className="flex flex-col gap-12">
-        {groups.map((group) => (
-          <section className="flex flex-col gap-3" key={group.label}>
-            <h2 className="flex items-baseline gap-2 font-semibold text-lg tracking-tight">
-              {group.label}
-              <span className="font-normal text-muted-foreground text-sm tabular-nums">
-                {group.routes.length}
-              </span>
-            </h2>
-            <ItemGroup className="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
+      }
+    >
+      {visibleRoutes.length === 0 ? (
+        <Empty>
+          <EmptyHeader>
+            <EmptyTitle>No matches</EmptyTitle>
+            <EmptyDescription>
+              {query
+                ? `Nothing matches "${query}".`
+                : "Nothing has this status."}
+            </EmptyDescription>
+          </EmptyHeader>
+          <EmptyContent>
+            <Button
+              onClick={() => {
+                setQuery("")
+                setStatus("all")
+              }}
+              variant="outline"
+            >
+              Clear filters
+            </Button>
+          </EmptyContent>
+        </Empty>
+      ) : (
+        groups.map((group) => (
+          <PageSection
+            description={`${group.routes.length} ${group.routes.length === 1 ? "item" : "items"}`}
+            key={group.label}
+            title={group.label}
+          >
+            <ItemGroup>
               {group.routes.map((route) => (
                 <Item asChild key={route.name} variant="outline">
                   <Link to={`${section.basePath}/${route.name}`}>
@@ -106,8 +146,8 @@ export function PrimitivesIndexPage({
                       <ItemTitle>
                         {route.title}
                         {route.status === "stable" ? null : (
-                          <Badge size="sm" variant="secondary">
-                            {route.status}
+                          <Badge size="sm" variant={statusBadge[route.status]}>
+                            {statusLabel[route.status]}
                           </Badge>
                         )}
                       </ItemTitle>
@@ -119,9 +159,9 @@ export function PrimitivesIndexPage({
                 </Item>
               ))}
             </ItemGroup>
-          </section>
-        ))}
-      </div>
-    </div>
+          </PageSection>
+        ))
+      )}
+    </ListPage>
   )
 }

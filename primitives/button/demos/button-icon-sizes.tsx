@@ -1,4 +1,9 @@
-import { CopyIcon, PlusIcon, SettingsIcon, TrashIcon } from "lucide-react"
+import {
+  CopyIcon,
+  MoreHorizontalIcon,
+  PlusIcon,
+  SettingsIcon,
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function ButtonIconSizes() {
@@ -13,8 +18,8 @@ export function ButtonIconSizes() {
       <Button aria-label="Settings" size="icon" variant="outline">
         <SettingsIcon />
       </Button>
-      <Button aria-label="Delete" size="icon-lg" variant="destructive">
-        <TrashIcon />
+      <Button aria-label="More actions" size="icon-lg" variant="outline">
+        <MoreHorizontalIcon />
       </Button>
     </>
   )

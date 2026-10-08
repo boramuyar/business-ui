@@ -3,6 +3,15 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-08
+
+- `button`: adds an `inline` size so `variant="link"` can sit inside running text (inherits the text size, no height or padding).
+- `navigation-menu`: adds a `muted` variant to `NavigationMenuLink` for text-only top navigation; the active link turns foreground.
+- `avatar`: `AvatarGroup` overlaps its avatars itself (`-space-x-2`), so apps no longer add it.
+- `sidebar`: `SidebarGroup` pads its content (`p-2`), so labels and menu items sit inset from the sidebar edge.
+- `table`: body and footer cells use the sans font instead of mono. Add `font-mono` to the cells that hold codes or IDs.
+- Showcase: pages are built from the `page`, `list-page` and `detail-page` shells, shell demos preview in an iframe, the mobile navigation is the sidebar's own sheet, and every demo follows its component's usage rules (labels, option counts, button names, overlays).
+
 ## 2026-10-07
 
 - `tabs`: the default list is a segmented control (muted track, raised active trigger, rounded corners) instead of the boxed bar with dividers. `variant="line"` is unchanged.

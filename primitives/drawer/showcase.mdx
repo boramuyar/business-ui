@@ -6,7 +6,8 @@ status: stable
 
 ## Variants
 
-The `direction` prop on the root controls the edge.
+The drawer opens from the bottom edge by default. The `direction` prop moves it
+to a side edge, for touch layouts only.
 
 <Preview name="drawer-variants" tall />
 
@@ -18,5 +19,6 @@ Scrollable content stays usable inside the drawer.
 
 ## Usage
 
-Use `drawer` for mobile-first flows where drag-to-dismiss feels natural. On
-desktop-dense UIs prefer `sheet`; for blocking confirmation use `dialog`.
+Use `drawer` as the mobile version of a dialog or sheet, switched with
+`use-mobile`. On desktop use `sheet` or `dialog`; to confirm a destructive
+action use `alert-dialog`.

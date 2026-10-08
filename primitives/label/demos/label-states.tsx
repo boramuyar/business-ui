@@ -1,11 +1,11 @@
 import { Checkbox } from "@/components/ui/checkbox"
-import { Label } from "@/components/ui/label"
+import { Field, FieldLabel } from "@/components/ui/field"
 
 export function LabelStates() {
   return (
-    <div className="flex items-center gap-2" data-disabled="true">
-      <Checkbox disabled id="label-demo-disabled" />
-      <Label htmlFor="label-demo-disabled">Disabled option</Label>
-    </div>
+    <Field className="w-auto" data-disabled="true" orientation="horizontal">
+      <Checkbox disabled id="label-states-disabled" />
+      <FieldLabel htmlFor="label-states-disabled">Disabled option</FieldLabel>
+    </Field>
   )
 }

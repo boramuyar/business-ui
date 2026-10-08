@@ -343,6 +343,7 @@ A desktop-style row of menus: File, Edit, View.
 Top-level site navigation with optional dropdown panels.
 
 - Use: Marketing sites and public pages with a horizontal top navigation.
+- Use: variant="muted" on NavigationMenuLink for text-only section tabs in a site header; the active link turns foreground.
 - Avoid: App navigation between screens: use sidebar.
 - Avoid: Actions: use dropdown-menu.
 - Related: sidebar, menubar
@@ -435,7 +436,7 @@ A small label for status, category or count.
 Triggers an action.
 
 - Use: default (primary): the one main action of a screen or dialog. At most one per header, dialog or form.
-- Use: outline: other actions next to the primary one. secondary: quiet actions in dense areas. ghost: toolbar and icon actions. destructive: deletes, only inside alert-dialog or a danger section. link: inline navigation in text.
+- Use: outline: other actions next to the primary one. secondary: quiet actions in dense areas. ghost: toolbar and icon actions. destructive: deletes, only inside alert-dialog or a danger section. link: inline navigation in text, with size="inline" inside running text.
 - Use: Label with a verb that names the result: "Create invoice", not "Submit".
 - Avoid: Going to another page: use a link (or Button asChild with an anchor).
 - Avoid: Holding an on or off state: use toggle.

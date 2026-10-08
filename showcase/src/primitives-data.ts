@@ -233,3 +233,16 @@ function titleFromName(name: string) {
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ")
 }
+
+/** One badge variant per status, so a status looks the same everywhere. */
+export const statusBadge = {
+  experimental: "warning",
+  draft: "secondary",
+} as const
+
+export const statusLabel = {
+  all: "All",
+  stable: "Stable",
+  experimental: "Experimental",
+  draft: "Draft",
+} as const

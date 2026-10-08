@@ -21,7 +21,8 @@ export function SonnerComposition() {
           toast.promise(new Promise((resolve) => setTimeout(resolve, 1500)), {
             loading: "Building registry...",
             success: "54 items generated",
-            error: "Build failed",
+            error:
+              "Registry build failed. Check the validation log and try again.",
           })
         }
         variant="outline"

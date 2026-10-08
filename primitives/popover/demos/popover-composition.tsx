@@ -21,22 +21,14 @@ export function PopoverComposition() {
           <PopoverTitle>Dimensions</PopoverTitle>
           <PopoverDescription>Set the layer size.</PopoverDescription>
         </PopoverHeader>
-        <FieldGroup className="p-3 pt-0">
-          <Field orientation="horizontal">
+        <FieldGroup className="grid grid-cols-2 gap-3 p-3 pt-0">
+          <Field>
             <FieldLabel htmlFor="popover-demo-width">Width</FieldLabel>
-            <Input
-              className="w-20"
-              defaultValue="100%"
-              id="popover-demo-width"
-            />
+            <Input defaultValue="100%" id="popover-demo-width" />
           </Field>
-          <Field orientation="horizontal">
+          <Field>
             <FieldLabel htmlFor="popover-demo-height">Height</FieldLabel>
-            <Input
-              className="w-20"
-              defaultValue="25px"
-              id="popover-demo-height"
-            />
+            <Input defaultValue="25px" id="popover-demo-height" />
           </Field>
         </FieldGroup>
       </PopoverContent>

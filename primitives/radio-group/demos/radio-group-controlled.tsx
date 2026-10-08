@@ -1,24 +1,35 @@
 import { useState } from "react"
 
-import { Label } from "@/components/ui/label"
+import {
+  Field,
+  FieldDescription,
+  FieldLabel,
+  FieldLegend,
+  FieldSet,
+} from "@/components/ui/field"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
 export function RadioGroupControlled() {
-  const [density, setDensity] = useState("comfortable")
+  const [period, setPeriod] = useState("monthly")
 
   return (
-    <div className="flex flex-col gap-2">
-      <RadioGroup onValueChange={setDensity} value={density}>
-        <div className="flex items-center gap-2">
-          <RadioGroupItem id="radio-demo-compact" value="compact" />
-          <Label htmlFor="radio-demo-compact">Compact</Label>
-        </div>
-        <div className="flex items-center gap-2">
-          <RadioGroupItem id="radio-demo-comfortable" value="comfortable" />
-          <Label htmlFor="radio-demo-comfortable">Comfortable</Label>
-        </div>
+    <FieldSet>
+      <FieldLegend variant="label">Billing period</FieldLegend>
+      <RadioGroup onValueChange={setPeriod} value={period}>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="radio-group-controlled-monthly" value="monthly" />
+          <FieldLabel htmlFor="radio-group-controlled-monthly">
+            Monthly
+          </FieldLabel>
+        </Field>
+        <Field orientation="horizontal">
+          <RadioGroupItem id="radio-group-controlled-yearly" value="yearly" />
+          <FieldLabel htmlFor="radio-group-controlled-yearly">
+            Yearly
+          </FieldLabel>
+        </Field>
       </RadioGroup>
-      <span className="text-muted-foreground text-xs">Density: {density}</span>
-    </div>
+      <FieldDescription>Billing period: {period}</FieldDescription>
+    </FieldSet>
   )
 }

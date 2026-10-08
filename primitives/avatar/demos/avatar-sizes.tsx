@@ -1,17 +1,37 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export function AvatarSizes() {
   return (
     <>
-      <Avatar size="sm">
-        <AvatarFallback>SM</AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarFallback>MD</AvatarFallback>
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarFallback>LG</AvatarFallback>
-      </Avatar>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Avatar size="sm">
+            <AvatarFallback>BU</AvatarFallback>
+          </Avatar>
+        </TooltipTrigger>
+        <TooltipContent>Boram Uyar</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Avatar>
+            <AvatarFallback>JD</AvatarFallback>
+          </Avatar>
+        </TooltipTrigger>
+        <TooltipContent>Jane Doe</TooltipContent>
+      </Tooltip>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Avatar size="lg">
+            <AvatarFallback>MK</AvatarFallback>
+          </Avatar>
+        </TooltipTrigger>
+        <TooltipContent>Mina Kim</TooltipContent>
+      </Tooltip>
     </>
   )
 }

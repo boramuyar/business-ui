@@ -14,12 +14,7 @@ export function CodeBlock({
   wrap?: boolean
 }) {
   return (
-    <div
-      className={cn(
-        "relative rounded-lg bg-muted/60 ring-1 ring-border/70 ring-inset",
-        className
-      )}
-    >
+    <div className={cn("relative rounded-md bg-muted", className)}>
       <pre
         className={cn(
           "py-3 font-mono text-xs leading-relaxed",
@@ -32,9 +27,10 @@ export function CodeBlock({
       </pre>
       <Button
         aria-label="Copy code"
-        className="absolute top-1.5 right-1.5 bg-muted text-muted-foreground"
+        className="absolute top-1.5 right-1.5"
         onClick={() => copyText(code)}
         size="icon-sm"
+        tooltip="Copy code"
         variant="ghost"
       >
         <CopyIcon />

@@ -10,7 +10,7 @@ import { Fragment } from "react"
 import { Link } from "react-router-dom"
 
 /** Where a page sits in the handbook; the last entry is plain text. */
-export function EyebrowTrail({
+export function PageBreadcrumb({
   items,
 }: {
   items: { label: string; to?: string }[]
@@ -27,9 +27,7 @@ export function EyebrowTrail({
                   <Link to={item.to}>{item.label}</Link>
                 </BreadcrumbLink>
               ) : (
-                <BreadcrumbPage className="text-muted-foreground">
-                  {item.label}
-                </BreadcrumbPage>
+                <BreadcrumbPage>{item.label}</BreadcrumbPage>
               )}
             </BreadcrumbItem>
           </Fragment>

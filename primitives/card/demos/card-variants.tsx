@@ -21,7 +21,7 @@ export function CardVariants() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <span className="font-semibold text-3xl tracking-tight">24,810</span>
+        <span className="font-semibold text-2xl tabular-nums">24,810</span>
       </CardContent>
       <CardFooter>
         <Button size="sm" variant="outline">

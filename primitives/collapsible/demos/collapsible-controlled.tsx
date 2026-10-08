@@ -1,12 +1,12 @@
+import { ChevronsUpDownIcon } from "lucide-react"
 import { useState } from "react"
-
 import { Button } from "@/components/ui/button"
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { ChevronsUpDownIcon } from "lucide-react"
+import { Item, ItemContent, ItemTitle } from "@/components/ui/item"
 
 export function CollapsibleControlled() {
   const [open, setOpen] = useState(false)
@@ -27,12 +27,22 @@ export function CollapsibleControlled() {
           </Button>
         </CollapsibleTrigger>
       </div>
-      <div className="border px-3 py-2 font-mono text-xs">
-        boramuyar/business-ui
-      </div>
+      <Item size="sm" variant="outline">
+        <ItemContent>
+          <ItemTitle className="font-mono">boramuyar/business-ui</ItemTitle>
+        </ItemContent>
+      </Item>
       <CollapsibleContent className="flex flex-col gap-2">
-        <div className="border px-3 py-2 font-mono text-xs">shadcn-ui/ui</div>
-        <div className="border px-3 py-2 font-mono text-xs">vercel/next.js</div>
+        <Item size="sm" variant="outline">
+          <ItemContent>
+            <ItemTitle className="font-mono">shadcn-ui/ui</ItemTitle>
+          </ItemContent>
+        </Item>
+        <Item size="sm" variant="outline">
+          <ItemContent>
+            <ItemTitle className="font-mono">vercel/next.js</ItemTitle>
+          </ItemContent>
+        </Item>
       </CollapsibleContent>
     </Collapsible>
   )

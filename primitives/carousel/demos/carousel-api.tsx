@@ -1,4 +1,4 @@
-import { type UseEmblaCarouselType } from "embla-carousel-react"
+import type { UseEmblaCarouselType } from "embla-carousel-react"
 import { useEffect, useState } from "react"
 
 import {

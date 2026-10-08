@@ -7,7 +7,7 @@
  * @use outline: other actions next to the primary one. secondary: quiet
  *      actions in dense areas. ghost: toolbar and icon actions. destructive:
  *      deletes, only inside alert-dialog or a danger section. link: inline
- *      navigation in text.
+ *      navigation in text, with size="inline" inside running text.
  * @use Label with a verb that names the result: "Create invoice", not
  *      "Submit".
  * @avoid Going to another page: use a link (or Button asChild with an
@@ -19,7 +19,11 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 import * as React from "react"
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -49,6 +53,8 @@ const buttonVariants = cva(
         "icon-xs": "size-6 rounded-sm [&_svg:not([class*='size-'])]:size-3",
         "icon-sm": "size-7",
         "icon-lg": "size-9",
+        inline:
+          "inline h-auto border-0 p-0 align-baseline text-[length:inherit] whitespace-normal",
       },
     },
     defaultVariants: {
@@ -65,10 +71,17 @@ const Button = React.forwardRef<
       asChild?: boolean
       tooltip?: React.ReactNode
     }
-// forwardRef (not ref-as-prop) so consumer refs are delivered on React 18 as
-// well as 19; it remains supported on 19, merely soft-deprecated.
+  // forwardRef (not ref-as-prop) so consumer refs are delivered on React 18 as
+  // well as 19; it remains supported on 19, merely soft-deprecated.
 >(function Button(
-  { className, variant = "default", size = "default", asChild = false, tooltip, ...props },
+  {
+    className,
+    variant = "default",
+    size = "default",
+    asChild = false,
+    tooltip,
+    ...props
+  },
   ref
 ) {
   const Comp = asChild ? Slot.Root : "button"

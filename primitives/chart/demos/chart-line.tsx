@@ -1,6 +1,13 @@
 import { CartesianGrid, Line, LineChart, XAxis } from "recharts"
 
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
   ChartContainer,
   ChartLegend,
   ChartLegendContent,
@@ -19,36 +26,46 @@ const monthlyData = [
 
 const chartConfig = {
   desktop: { label: "Desktop", color: "var(--chart-1)" },
-  mobile: { label: "Mobile", color: "var(--chart-4)" },
+  mobile: { label: "Mobile", color: "var(--chart-2)" },
 }
 
 export function ChartLine() {
   return (
-    <ChartContainer className="h-64 w-full" config={chartConfig}>
-      <LineChart accessibilityLayer data={monthlyData}>
-        <CartesianGrid vertical={false} />
-        <XAxis
-          axisLine={false}
-          dataKey="month"
-          tickLine={false}
-          tickMargin={8}
-        />
-        <ChartTooltip content={<ChartTooltipContent />} />
-        <Line
-          dataKey="desktop"
-          dot={false}
-          stroke="var(--color-desktop)"
-          strokeWidth={2}
-          type="monotone"
-        />
-        <Line
-          dataKey="mobile"
-          dot={false}
-          stroke="var(--color-mobile)"
-          strokeWidth={2}
-          type="monotone"
-        />
-      </LineChart>
-    </ChartContainer>
+    <Card className="w-full">
+      <CardHeader>
+        <CardTitle>Visitors by device</CardTitle>
+        <CardDescription>
+          Desktop and mobile sessions, January to June.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ChartContainer className="h-64 w-full" config={chartConfig}>
+          <LineChart accessibilityLayer data={monthlyData}>
+            <CartesianGrid vertical={false} />
+            <XAxis
+              axisLine={false}
+              dataKey="month"
+              tickLine={false}
+              tickMargin={8}
+            />
+            <ChartTooltip content={<ChartTooltipContent />} />
+            <Line
+              dataKey="desktop"
+              dot={false}
+              stroke="var(--color-desktop)"
+              strokeWidth={2}
+              type="monotone"
+            />
+            <Line
+              dataKey="mobile"
+              dot={false}
+              stroke="var(--color-mobile)"
+              strokeWidth={2}
+              type="monotone"
+            />
+          </LineChart>
+        </ChartContainer>
+      </CardContent>
+    </Card>
   )
 }
