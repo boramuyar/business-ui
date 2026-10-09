@@ -6,7 +6,10 @@ import {
 
 export function ResizableNested() {
   return (
-    <ResizablePanelGroup className="h-56 border" direction="horizontal">
+    <ResizablePanelGroup
+      className="min-h-56 border rounded-md"
+      direction="horizontal"
+    >
       <ResizablePanel defaultSize={30} minSize={20}>
         <div className="flex h-full items-center justify-center text-xs">
           Explorer

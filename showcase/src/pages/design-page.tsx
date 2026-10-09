@@ -40,7 +40,7 @@ export function DesignPage() {
         actions={
           <>
             <Button asChild variant="ghost">
-              <a href={rawDesignUrl(doc)}>
+              <a href={rawDesignUrl(doc)} rel="noreferrer" target="_blank">
                 <FileTextIcon data-icon="inline-start" />
                 Raw
               </a>

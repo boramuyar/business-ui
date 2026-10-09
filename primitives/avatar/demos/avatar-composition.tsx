@@ -7,7 +7,7 @@ import {
 
 export function AvatarComposition() {
   return (
-    <AvatarGroup className="-space-x-2">
+    <AvatarGroup>
       <Avatar>
         <AvatarFallback>BU</AvatarFallback>
       </Avatar>

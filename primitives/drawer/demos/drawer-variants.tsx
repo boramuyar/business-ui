@@ -30,6 +30,19 @@ export function DrawerVariants() {
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
+      <Drawer>
+        <DrawerTrigger asChild>
+          <Button variant="outline">Full width</Button>
+        </DrawerTrigger>
+        <DrawerContent size="full">
+          <DrawerHeader>
+            <DrawerTitle>Full-width drawer</DrawerTitle>
+            <DrawerDescription>
+              Spans the whole screen, for wide content such as a table.
+            </DrawerDescription>
+          </DrawerHeader>
+        </DrawerContent>
+      </Drawer>
       <Drawer direction="right">
         <DrawerTrigger asChild>
           <Button variant="outline">Right</Button>

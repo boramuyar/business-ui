@@ -15,7 +15,7 @@ export function NavigationMenuVariants() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid w-72 gap-2 p-2">
+            <div className="grid w-72 gap-0.5">
               <NavigationMenuLink href="#variants">
                 <span className="font-medium">Installation</span>
                 <span className="text-muted-foreground">
@@ -34,7 +34,7 @@ export function NavigationMenuVariants() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Primitives</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid w-72 gap-2 p-2">
+            <div className="grid w-72 gap-0.5">
               <NavigationMenuLink href="#variants">
                 <span className="font-medium">Forms</span>
                 <span className="text-muted-foreground">

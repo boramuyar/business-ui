@@ -6,7 +6,10 @@ import {
 
 export function ResizableHorizontal() {
   return (
-    <ResizablePanelGroup className="h-40 border" direction="horizontal">
+    <ResizablePanelGroup
+      className="min-h-40 border rounded-md"
+      direction="horizontal"
+    >
       <ResizablePanel defaultSize={40}>
         <div className="flex h-full items-center justify-center text-xs">
           Sidebar

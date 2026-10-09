@@ -17,7 +17,7 @@ import {
 export function ContextMenuVariants() {
   return (
     <ContextMenu>
-      <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center border border-dashed text-muted-foreground text-xs">
+      <ContextMenuTrigger className="flex h-32 w-64 items-center justify-center border rounded-md border-dashed text-muted-foreground text-xs">
         Right-click here
       </ContextMenuTrigger>
       <ContextMenuContent className="w-52">

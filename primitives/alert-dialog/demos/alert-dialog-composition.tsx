@@ -22,7 +22,7 @@ export function AlertDialogComposition() {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogMedia>
+          <AlertDialogMedia className="bg-destructive-subtle text-destructive">
             <Trash2Icon />
           </AlertDialogMedia>
           <AlertDialogTitle>Remove Boram from the team?</AlertDialogTitle>
@@ -36,7 +36,7 @@ export function AlertDialogComposition() {
         </AlertDialogInner>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction>Remove</AlertDialogAction>
+          <AlertDialogAction variant="destructive">Remove</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

@@ -12,7 +12,7 @@ export function CarouselVertical() {
       <CarouselContent className="h-40">
         {["A", "B", "C"].map((label) => (
           <CarouselItem key={label}>
-            <div className="flex h-32 items-center justify-center border bg-muted/50 text-sm">
+            <div className="flex h-32 items-center justify-center border rounded-md bg-muted/50 text-sm">
               {label}
             </div>
           </CarouselItem>

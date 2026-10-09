@@ -48,7 +48,7 @@ Stick to these five. If two things need more separation than `gap-6`, they proba
 
 Use the layered shadows, never Tailwind's `shadow-sm` or `shadow-lg`:
 
-- `shadow-control`: buttons with a fill or border, inputs, checkboxes.
+- `shadow-control`: buttons with a fill or border, checkboxes, radios and slider thumbs. Text fields and selects stay flat.
 - `shadow-raised`: cards and floating panels.
 - `shadow-overlay`: popovers, menus, tooltips, toasts.
 - `shadow-modal`: dialogs, sheets, drawers.

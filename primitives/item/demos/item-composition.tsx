@@ -33,7 +33,7 @@ export function ItemComposition() {
       <ItemSeparator />
       <Item>
         <ItemMedia>
-          <Avatar size="sm">
+          <Avatar>
             <AvatarFallback>BU</AvatarFallback>
           </Avatar>
         </ItemMedia>

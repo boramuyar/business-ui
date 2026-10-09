@@ -6,7 +6,10 @@ import {
 
 export function ResizableVertical() {
   return (
-    <ResizablePanelGroup className="h-48 border" direction="vertical">
+    <ResizablePanelGroup
+      className="min-h-48 border rounded-md"
+      direction="vertical"
+    >
       <ResizablePanel defaultSize={30}>
         <div className="flex h-full items-center justify-center text-xs">
           Header
