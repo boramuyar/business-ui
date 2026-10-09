@@ -3,7 +3,7 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
-## 2026-10-08
+## 2026-10-09
 
 - `dropdown-menu`, `context-menu`, `menubar`, `select`, `combobox`, `command`: menus have 4px of padding around their items, so the rounded hover sits inside the surface instead of touching its edges. Items and labels are shorter (`py-1.5`) and separators get `my-1`. The command input no longer has a grey fill.
 - `sidebar`: groups have `p-2`, so menu items no longer run edge to edge. Items are 2px apart and the active item uses `brand-subtle` with `brand-emphasis` text, so it no longer looks like the hovered one.
