@@ -11,7 +11,7 @@ import {
   ItemSeparator,
   ItemTitle,
 } from "@/components/ui/item"
-import { FileTextIcon, FolderIcon } from "lucide-react"
+import { FileTextIcon, FolderIcon, MoreHorizontalIcon } from "lucide-react"
 
 export function ItemComposition() {
   return (
@@ -44,6 +44,22 @@ export function ItemComposition() {
         <ItemActions>
           <Button size="xs" variant="secondary">
             View
+          </Button>
+        </ItemActions>
+      </Item>
+      <ItemSeparator />
+      <Item>
+        <ItemContent>
+          <ItemTitle asChild>
+            <button type="button">Q3 budget review</button>
+          </ItemTitle>
+          <ItemDescription>
+            The title opens the row; the menu stays separate.
+          </ItemDescription>
+        </ItemContent>
+        <ItemActions>
+          <Button size="icon-sm" variant="ghost" aria-label="Actions">
+            <MoreHorizontalIcon />
           </Button>
         </ItemActions>
       </Item>

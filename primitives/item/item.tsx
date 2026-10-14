@@ -10,6 +10,11 @@ import { cn } from "@/lib/utils"
  * @summary A row with media, title, description and actions.
  * @use Lists of people, files, integrations or settings rows where each entry
  *      has a title and a few details.
+ * @use A row that opens something and also has its own actions: put the
+ *      button or link in ItemTitle asChild. It covers the whole row, and
+ *      ItemActions stay clickable above it.
+ * @avoid Making the whole row an anchor (Item asChild) when it has actions:
+ *        links cannot contain buttons.
  * @avoid Data people compare across columns: use table.
  * @avoid Peers shown as tiles in a grid: use card.
  * @related table, card, avatar
@@ -43,7 +48,7 @@ function ItemSeparator({
 }
 
 const itemVariants = cva(
-  "group/item flex w-full flex-wrap items-center rounded-md border text-xs transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 [a]:transition-colors [a]:hover:bg-muted",
+  "group/item relative flex w-full flex-wrap items-center rounded-md border text-xs transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[target]:hover:bg-muted has-[[data-target]:focus-visible]:border-ring has-[[data-target]:focus-visible]:ring-[3px] has-[[data-target]:focus-visible]:ring-ring/50 [a]:transition-colors [a]:hover:bg-muted",
   {
     variants: {
       variant: {
@@ -129,12 +134,23 @@ function ItemContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
-function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
+function ItemTitle({
+  className,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"div"> & {
+  /** Render the row's button or link as the title; its hit area covers the row. */
+  asChild?: boolean
+}) {
+  const Comp = asChild ? Slot.Root : "div"
   return (
-    <div
+    <Comp
       data-slot="item-title"
+      data-target={asChild || undefined}
       className={cn(
         "line-clamp-1 flex w-fit items-center gap-2 text-xs font-medium underline-offset-4",
+        asChild &&
+          "cursor-pointer text-left outline-none after:absolute after:inset-0 after:rounded-md",
         className
       )}
       {...props}
@@ -159,7 +175,7 @@ function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="item-actions"
-      className={cn("flex items-center gap-2", className)}
+      className={cn("relative flex items-center gap-2", className)}
       {...props}
     />
   )

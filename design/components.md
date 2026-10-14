@@ -347,6 +347,8 @@ An input with attached icons, text or buttons.
 A row with media, title, description and actions.
 
 - Use: Lists of people, files, integrations or settings rows where each entry has a title and a few details.
+- Use: A row that opens something and also has its own actions: put the button or link in ItemTitle asChild. It covers the whole row, and ItemActions stay clickable above it.
+- Avoid: Making the whole row an anchor (Item asChild) when it has actions: links cannot contain buttons.
 - Avoid: Data people compare across columns: use table.
 - Avoid: Peers shown as tiles in a grid: use card.
 - Related: table, card, avatar
