@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-14
 
+- `pane`: new shell for narrow, fixed-height surfaces such as Office task panes, side panels and full-height sheets: `Pane`, `PaneHeader` (with `leading` and `actions`), `PaneTitle` (`asChild` for dialog and sheet titles), `PaneToolbar`, `PaneBody` (the only part that scrolls) and `PaneFooter`.
 - `fonts`: new item. It holds the Inter and JetBrains Mono imports and their `@fontsource-variable` packages, which used to come with `style`. Apps that serve the fonts themselves skip it.
 - All primitives, shells and `use-mobile`: no longer depend on `style`. Install `style` once per app; adding an item no longer re-merges the style into your global CSS.
 - All primitives and shells: the usage header sits below the imports instead of at the top of the file. `shadcn add` dropped every comment above the first import, so installed files arrived without their header and failed the design check. Re-add items to get the header.

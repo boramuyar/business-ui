@@ -1,0 +1,24 @@
+---
+title: Pane
+description: A dense, fixed-height frame for narrow surfaces.
+status: experimental
+---
+
+## Example
+
+<Preview name="pane-conversations" />
+
+## Parts
+
+- `Pane`: fills its container as a column. Give the container a height.
+- `PaneHeader`: 40px tall. `leading` holds a back or menu button, `actions` holds icon buttons, and the children are the title.
+- `PaneTitle`: the heading. Use `asChild` around `DialogTitle` or `SheetTitle` when the pane is a sheet's content.
+- `PaneToolbar`: search and filters, with `end` for controls on the right.
+- `PaneBody`: the only part that scrolls.
+- `PaneFooter`: one or two equal-width buttons, primary last.
+
+## Usage
+
+Use for Office task panes, browser extension popups, side panels and the
+content of full-height sheets. Lists inside a pane use `item`; an empty body
+uses `empty`. Full-width screens use `page` or one of its archetypes.

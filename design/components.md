@@ -62,6 +62,18 @@ The base frame of every screen: width, padding, header, toolbar and body.
 - Guide: [shells.md](shells.md)
 - File: `components/shells/page.tsx`
 
+### pane
+
+A dense, fixed-height frame for narrow surfaces: a compact header, an optional toolbar, one scrolling body and a pinned footer.
+
+- Use: Office task panes, browser extension popups, side panels and docked inspectors.
+- Use: The content of a full-height sheet or dialog: put PaneTitle asChild around DialogTitle or SheetTitle.
+- Avoid: Full-width screens in an app window: use page or a page archetype.
+- Avoid: Short confirmations: use dialog or alert-dialog.
+- Related: page, sheet, sidebar
+- Guide: [shells.md](shells.md)
+- File: `components/shells/pane.tsx`
+
 ### settings-page
 
 Grouped settings: section navigation on the left, sections of controls on the right.

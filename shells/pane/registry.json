@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "pane",
+      "type": "registry:component",
+      "title": "Pane",
+      "description": "Dense fixed-height frame for task panes, side panels and full-height sheets.",
+      "categories": [
+        "shell"
+      ],
+      "files": [
+        {
+          "path": "pane.tsx",
+          "type": "registry:component",
+          "target": "@components/shells/pane.tsx"
+        }
+      ],
+      "dependencies": [
+        "radix-ui"
+      ]
+    }
+  ]
+}

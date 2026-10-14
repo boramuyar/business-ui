@@ -14,6 +14,7 @@ Reuse a shell before composing a screen yourself. A consistent frame is what mak
 | `form-page` | Creating or editing a record with more than about five fields. | `boramuyar/business-ui/form-page` |
 | `settings-page` | Grouped settings with section navigation. | `boramuyar/business-ui/settings-page` |
 | `overview-page` | Dashboards: key numbers, then charts and panels. | `boramuyar/business-ui/overview-page` |
+| `pane` | Narrow, fixed-height surfaces: task panes, side panels, full-height sheets. Compact header, one scrolling body, pinned footer. | `boramuyar/business-ui/pane` |
 
 Each shell's header comment lists its slots and rules. The [component catalog](components.md#shells) collects them.
 

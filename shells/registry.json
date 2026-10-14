@@ -6,6 +6,7 @@
     "detail-page/registry.json",
     "form-page/registry.json",
     "settings-page/registry.json",
-    "overview-page/registry.json"
+    "overview-page/registry.json",
+    "pane/registry.json"
   ]
 }
