@@ -236,7 +236,7 @@
   --success-emphasis: var(--success);
   --warning-subtle: color-mix(in oklab, var(--warning) 10%, var(--background));
   --warning-border: color-mix(in oklab, var(--warning) 30%, var(--background));
-  --warning-strong: color-mix(in oklab, var(--warning) 75%, var(--foreground));
+  --warning-strong: color-mix(in oklab, var(--warning) 50%, var(--foreground));
   --warning-emphasis: var(--warning);
   --info-subtle: color-mix(in oklab, var(--info) 10%, var(--background));
   --info-border: color-mix(in oklab, var(--info) 30%, var(--background));
@@ -255,7 +255,7 @@
   --primary-emphasis: color-mix(in oklab, var(--primary) 50%, var(--foreground));
   --destructive-subtle: color-mix(in oklab, var(--destructive) 20%, var(--background));
   --destructive-border: color-mix(in oklab, var(--destructive) 50%, var(--background));
-  --destructive-strong: color-mix(in oklab, var(--destructive) 90%, var(--foreground));
+  --destructive-strong: color-mix(in oklab, var(--destructive) 70%, var(--foreground));
   --destructive-emphasis: color-mix(in oklab, var(--destructive) 50%, var(--foreground));
   --success-subtle: color-mix(in oklab, var(--success) 20%, var(--background));
   --success-border: color-mix(in oklab, var(--success) 50%, var(--background));
@@ -384,7 +384,7 @@
     --success-strong: rgb(35, 118, 80);
     --warning-subtle: rgb(255, 248, 237);
     --warning-border: rgb(255, 233, 201);
-    --warning-strong: rgb(185, 131, 36);
+    --warning-strong: rgb(120, 86, 32);
     --info-subtle: rgb(234, 243, 255);
     --info-border: rgb(191, 218, 255);
     --info-strong: rgb(29, 92, 183);
@@ -400,7 +400,7 @@
     --brand-emphasis: rgb(172, 186, 252);
     --destructive-subtle: rgb(40, 20, 21);
     --destructive-border: rgb(91, 33, 39);
-    --destructive-strong: rgb(196, 75, 89);
+    --destructive-strong: rgb(212, 116, 123);
     --destructive-emphasis: rgb(226, 155, 158);
     --success-subtle: rgb(19, 35, 26);
     --success-border: rgb(30, 78, 55);

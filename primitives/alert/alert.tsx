@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils"
  * @use A persistent message people must see while they work: a failed sync, a
  *      missing setting, a read-only notice.
  * @use Pick the variant by meaning: destructive for errors, warning, info,
- *      success. The variant colors only the icon tile; the card stays
- *      neutral, so always pass an icon with a status variant.
+ *      success. A status variant tints the whole card, border and text, so
+ *      its meaning reads at a glance; default stays a neutral card. Always
+ *      pass an icon.
  * @avoid Reporting the result of an action the user just took: use sonner
  *        (toast).
  * @avoid Asking the user to confirm something: use alert-dialog.
@@ -26,10 +27,12 @@ const alertVariants = cva(
       variant: {
         default: "*:[svg]:bg-muted *:[svg]:text-foreground",
         destructive:
-          "*:[svg]:bg-destructive-subtle *:[svg]:text-destructive-strong",
-        success: "*:[svg]:bg-success-subtle *:[svg]:text-success-strong",
-        warning: "*:[svg]:bg-warning-subtle *:[svg]:text-warning-strong",
-        info: "*:[svg]:bg-info-subtle *:[svg]:text-info-strong",
+          "border-destructive-border bg-destructive-subtle text-destructive-strong *:data-[slot=alert-description]:text-destructive-strong *:[svg]:text-destructive-strong",
+        success:
+          "border-success-border bg-success-subtle text-success-strong *:data-[slot=alert-description]:text-success-strong *:[svg]:text-success-strong",
+        warning:
+          "border-warning-border bg-warning-subtle text-warning-strong *:data-[slot=alert-description]:text-warning-strong *:[svg]:text-warning-strong",
+        info: "border-info-border bg-info-subtle text-info-strong *:data-[slot=alert-description]:text-info-strong *:[svg]:text-info-strong",
       },
     },
     defaultVariants: {

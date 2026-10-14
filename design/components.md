@@ -426,7 +426,7 @@ Switches between views of the same subject.
 An inline message about the state of the page or a section, styled by severity.
 
 - Use: A persistent message people must see while they work: a failed sync, a missing setting, a read-only notice.
-- Use: Pick the variant by meaning: destructive for errors, warning, info, success. The variant colors only the icon tile; the card stays neutral, so always pass an icon with a status variant.
+- Use: Pick the variant by meaning: destructive for errors, warning, info, success. A status variant tints the whole card, border and text, so its meaning reads at a glance; default stays a neutral card. Always pass an icon.
 - Avoid: Reporting the result of an action the user just took: use sonner (toast).
 - Avoid: Asking the user to confirm something: use alert-dialog.
 - Avoid: Field-level errors: use FieldError in field.
