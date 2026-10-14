@@ -17,7 +17,7 @@ registry item.
 - `input`: the native file picker button looks like a small secondary button. The usage header points to `file-input` for files.
 - `scroll-area`: scrollbars are 6px instead of 10px.
 - `style`: every scroll container gets the thin scrollbar, not only the page body.
-- `alert`: every variant is a neutral card with muted description text; the variant only tints the icon, which sits in a 28px tile. `AlertAction` sits 12px from the top-right corner, beside the tile. Title-only alerts center their icon.
+- `alert`: every variant is a neutral card with muted description text; the variant only tints the icon, which sits in a 28px tile. `AlertAction` sits 12px from the top-right corner, beside the tile. Title-only alerts center their icon. The root carries `data-variant`, like `button` and `badge`.
 - `resizable`: handles read `data-panel-group-direction`, so handles in vertical groups run across the full width instead of sitting at the side.
 
 ## 2026-10-09
