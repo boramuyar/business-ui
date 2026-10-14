@@ -22,3 +22,4 @@ Overlays are ordered from lightest to heaviest. Pick the lightest one that can h
 - Alert dialogs name the action: "Delete invoice", not "OK" or "Yes".
 - Prefer undo over confirmation. Archive, remove from list and mark as paid can all be undone from a toast.
 - On small screens, swap `dialog` and `sheet` for `drawer` using the `use-mobile` hook.
+- Sheets and drawers dim the page without blurring it, so people can still read what they are acting on. Dialogs and alert dialogs also blur it, to keep attention on the task. Pass `blurBackdrop` to the content to change either.

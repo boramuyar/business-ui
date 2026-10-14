@@ -39,13 +39,18 @@ function DrawerClose({
 
 function DrawerOverlay({
   className,
+  blur = false,
   ...props
-}: React.ComponentProps<typeof DrawerPrimitive.Overlay>) {
+}: React.ComponentProps<typeof DrawerPrimitive.Overlay> & {
+  /** Blurs the page behind the scrim. Off keeps the page readable. */
+  blur?: boolean
+}) {
   return (
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-scrim supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 z-50 bg-scrim data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        blur && "supports-backdrop-filter:backdrop-blur-xs",
         className
       )}
       {...props}
@@ -55,15 +60,18 @@ function DrawerOverlay({
 
 function DrawerContent({
   className,
+  blurBackdrop = false,
   children,
   size = "default",
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Content> & {
+  /** Blurs the page behind the scrim. */
+  blurBackdrop?: boolean
   size?: "default" | "full"
 }) {
   return (
     <DrawerPortal data-slot="drawer-portal">
-      <DrawerOverlay />
+      <DrawerOverlay blur={blurBackdrop} />
       <DrawerPrimitive.Content
         data-slot="drawer-content"
         data-size={size}

@@ -40,13 +40,18 @@ function SheetPortal({
 
 function SheetOverlay({
   className,
+  blur = false,
   ...props
-}: React.ComponentProps<typeof SheetPrimitive.Overlay>) {
+}: React.ComponentProps<typeof SheetPrimitive.Overlay> & {
+  /** Blurs the page behind the scrim. Off keeps the page readable. */
+  blur?: boolean
+}) {
   return (
     <SheetPrimitive.Overlay
       data-slot="sheet-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-scrim text-xs/relaxed duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 z-50 bg-scrim text-xs/relaxed duration-100 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        blur && "supports-backdrop-filter:backdrop-blur-xs",
         className
       )}
       {...props}
@@ -56,17 +61,20 @@ function SheetOverlay({
 
 function SheetContent({
   className,
+  blurBackdrop = false,
   children,
   side = "right",
   showCloseButton = true,
   ...props
 }: React.ComponentProps<typeof SheetPrimitive.Content> & {
+  /** Blurs the page behind the scrim. */
+  blurBackdrop?: boolean
   side?: "top" | "right" | "bottom" | "left"
   showCloseButton?: boolean
 }) {
   return (
     <SheetPortal>
-      <SheetOverlay />
+      <SheetOverlay blur={blurBackdrop} />
       <SheetPrimitive.Content
         data-slot="sheet-content"
         data-side={side}

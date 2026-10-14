@@ -45,13 +45,18 @@ function DialogClose({
 
 function DialogOverlay({
   className,
+  blur = true,
   ...props
-}: React.ComponentProps<typeof DialogPrimitive.Overlay>) {
+}: React.ComponentProps<typeof DialogPrimitive.Overlay> & {
+  /** Blurs the page behind the scrim. Off keeps the page readable. */
+  blur?: boolean
+}) {
   return (
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 isolate z-50 bg-scrim duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 isolate z-50 bg-scrim duration-100 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        blur && "supports-backdrop-filter:backdrop-blur-xs",
         className
       )}
       {...props}
@@ -61,15 +66,18 @@ function DialogOverlay({
 
 function DialogContent({
   className,
+  blurBackdrop = true,
   children,
   showCloseButton = true,
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Content> & {
+  /** Blurs the page behind the scrim. */
+  blurBackdrop?: boolean
   showCloseButton?: boolean
 }) {
   return (
     <DialogPortal>
-      <DialogOverlay />
+      <DialogOverlay blur={blurBackdrop} />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(

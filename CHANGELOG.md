@@ -3,6 +3,11 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-15
+
+- `sheet`, `drawer`: the scrim no longer blurs the page, so people can still read what the panel acts on, such as a conversation behind an approval sheet. Pass `blurBackdrop` to the content to blur it again.
+- `dialog`, `alert-dialog`: new `blurBackdrop` prop on the content, on by default. The overlay components take the same switch as `blur`.
+
 ## 2026-10-14
 
 - `item`: new `divided` variant for edge-to-edge lists: square rows separated by a line, hover fills the row, and a group of divided items has no gaps. `ItemTitle asChild` makes the title's button or link the row's target. Its hit area covers the row, the row highlights on hover and shows the focus ring, and `ItemActions` stay clickable above it, so a row can open something and still have a menu.

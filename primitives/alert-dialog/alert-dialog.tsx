@@ -41,13 +41,18 @@ function AlertDialogPortal({
 
 function AlertDialogOverlay({
   className,
+  blur = true,
   ...props
-}: React.ComponentProps<typeof AlertDialogPrimitive.Overlay>) {
+}: React.ComponentProps<typeof AlertDialogPrimitive.Overlay> & {
+  /** Blurs the page behind the scrim. Off keeps the page readable. */
+  blur?: boolean
+}) {
   return (
     <AlertDialogPrimitive.Overlay
       data-slot="alert-dialog-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-scrim duration-100 supports-backdrop-filter:backdrop-blur-xs data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        "fixed inset-0 z-50 bg-scrim duration-100 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0",
+        blur && "supports-backdrop-filter:backdrop-blur-xs",
         className
       )}
       {...props}
@@ -57,14 +62,17 @@ function AlertDialogOverlay({
 
 function AlertDialogContent({
   className,
+  blurBackdrop = true,
   size = "default",
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Content> & {
+  /** Blurs the page behind the scrim. */
+  blurBackdrop?: boolean
   size?: "default" | "sm"
 }) {
   return (
     <AlertDialogPortal>
-      <AlertDialogOverlay />
+      <AlertDialogOverlay blur={blurBackdrop} />
       <AlertDialogPrimitive.Content
         data-slot="alert-dialog-content"
         data-size={size}
