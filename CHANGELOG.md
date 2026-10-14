@@ -5,6 +5,8 @@ registry item.
 
 ## 2026-10-15
 
+- `dropdown-menu`: the menu is as wide as its longest item (at least 8rem or the trigger's width) instead of exactly the trigger's width, and items never wrap. A menu opened from an icon button used to squeeze its labels onto two lines.
+- `item`: new `ItemGroupLabel` names the group that follows it, so a long list can be split into sections instead of tagging every row.
 - `sheet`, `drawer`: the scrim no longer blurs the page, so people can still read what the panel acts on, such as a conversation behind an approval sheet. Pass `blurBackdrop` to the content to blur it again.
 - `skeleton`: new `SkeletonText` for text placeholders. It goes inside the element that will hold the text, such as an `ItemTitle` or a table cell, and takes sample text that stays invisible, so a skeleton row is exactly as tall as a loaded one and wraps like it.
 - `dialog`, `alert-dialog`: new `blurBackdrop` prop on the content, on by default. The overlay components take the same switch as `blur`.

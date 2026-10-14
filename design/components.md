@@ -140,6 +140,7 @@ A panel that slides up from the bottom, for touch screens.
 A list of actions or links opened from a button.
 
 - Use: Secondary actions for a record (the row's more menu), account menus, "More" in a header.
+- Use: Item labels stay on one line; the menu grows to fit them. Keep labels short instead of letting them wrap.
 - Avoid: Picking a value for a form: use select.
 - Avoid: One or two actions: show them as buttons.
 - Avoid: Small forms or filters: use popover.
@@ -304,6 +305,8 @@ A searchable list of commands or destinations, usually in a dialog.
 The placeholder shown when a list or area has nothing in it yet.
 
 - Use: An empty table, a search with no results, a new workspace. Say what will appear here and offer the action that adds the first item.
+- Use: Always give it a title and a description.
+- Use: It fills the area it replaces and centers its content. Put it in a flex column that fills that area, such as PaneBody.
 - Avoid: Errors: use alert.
 - Avoid: Loading: use skeleton.
 - Related: alert, skeleton, list-page
@@ -349,6 +352,7 @@ A row with media, title, description and actions.
 - Use: Lists of people, files, integrations or settings rows where each entry has a title and a few details.
 - Use: variant divided for full-width lists that run edge to edge, such as a narrow pane: square rows separated by a line, hover fills the row.
 - Use: A row that opens something and also has its own actions: put the button or link in ItemTitle asChild. It covers the whole row, and ItemActions stay clickable above it.
+- Use: Long lists with kinds of rows (yours and shared, by source): split them into groups, each under an ItemGroupLabel, instead of a tag on every row.
 - Avoid: Making the whole row an anchor (Item asChild) when it has actions: links cannot contain buttons.
 - Avoid: Data people compare across columns: use table.
 - Avoid: Peers shown as tiles in a grid: use card.

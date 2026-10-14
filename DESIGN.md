@@ -44,6 +44,8 @@ To allow one line on purpose, put `// design-check-ignore: <reason>` on the line
 Short rules every screen follows. Unsorted for now.
 
 - **Loading shows a skeleton of the real UI.** It has the same rows, columns, cards and spacing as the loaded screen, so nothing moves when the data arrives. Never put a centered spinner or "Loading…" text in place of content.
+- **Empty areas use `empty`, with a title and a description.** It fills the area it replaces and centers its content both ways, so put it in a flex column that fills that area, such as `PaneBody`.
+- **Menu items stay on one line.** Keep labels short ("System prompt", not "View the system prompt") instead of letting them wrap.
 - **A spinner means work is running right now.** Show it only on the thing doing the work: the button whose action runs, the step executing, the file uploading. Remove it when the work stops, including while waiting for the user.
 
 ## Guides

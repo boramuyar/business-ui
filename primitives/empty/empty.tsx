@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils"
  * @summary The placeholder shown when a list or area has nothing in it yet.
  * @use An empty table, a search with no results, a new workspace. Say what
  *      will appear here and offer the action that adds the first item.
+ * @use Always give it a title and a description.
+ * @use It fills the area it replaces and centers its content. Put it in a
+ *      flex column that fills that area, such as PaneBody.
  * @avoid Errors: use alert.
  * @avoid Loading: use skeleton.
  * @related alert, skeleton, list-page

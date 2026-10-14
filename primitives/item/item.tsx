@@ -15,6 +15,9 @@ import { cn } from "@/lib/utils"
  * @use A row that opens something and also has its own actions: put the
  *      button or link in ItemTitle asChild. It covers the whole row, and
  *      ItemActions stay clickable above it.
+ * @use Long lists with kinds of rows (yours and shared, by source): split
+ *      them into groups, each under an ItemGroupLabel, instead of a tag on
+ *      every row.
  * @avoid Making the whole row an anchor (Item asChild) when it has actions:
  *        links cannot contain buttons.
  * @avoid Data people compare across columns: use table.
@@ -28,6 +31,23 @@ function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="item-group"
       className={cn(
         "group/item-group flex w-full flex-col gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2 has-data-[slot=item-separator]:gap-0 has-data-[variant=divided]:gap-0",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+/**
+ * Names the ItemGroup that follows it. Give it an id and point the group at
+ * it with aria-labelledby, so the list is announced by its name.
+ */
+function ItemGroupLabel({ className, ...props }: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="item-group-label"
+      className={cn(
+        "px-3 pt-3 pb-1 text-xs font-medium text-muted-foreground",
         className
       )}
       {...props}
@@ -217,6 +237,7 @@ export {
   ItemDescription,
   ItemFooter,
   ItemGroup,
+  ItemGroupLabel,
   ItemHeader,
   ItemMedia,
   ItemSeparator,
