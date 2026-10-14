@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "file-input",
+      "type": "registry:ui",
+      "title": "File Input",
+      "description": "Picks one or more files with a button and lists what was chosen.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "file-input.tsx",
+          "type": "registry:ui",
+          "target": "@ui/file-input.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/style",
+        "boramuyar/business-ui/button"
+      ]
+    }
+  ]
+}

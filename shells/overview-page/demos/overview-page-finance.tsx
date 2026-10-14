@@ -18,7 +18,7 @@ const stats = [
 export function OverviewPageFinance() {
   return (
     <OverviewPage
-      actions={<Button variant="outline">Last 30 days</Button>}
+      actions={<Button variant="secondary">Last 30 days</Button>}
       className="py-0 md:py-0"
       description="Cash position across all customers."
       stats={stats.map((stat) => (

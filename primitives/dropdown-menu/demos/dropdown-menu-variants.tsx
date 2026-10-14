@@ -21,7 +21,7 @@ export function DropdownMenuVariants() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">Project actions</Button>
+        <Button variant="secondary">Project actions</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-52">
         <DropdownMenuLabel>Project</DropdownMenuLabel>

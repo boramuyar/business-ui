@@ -25,7 +25,7 @@ export function KbdComposition() {
         className="gap-2 text-muted-foreground"
         onClick={() => setOpen(true)}
         size="sm"
-        variant="outline"
+        variant="secondary"
       >
         <SearchIcon />
         Search
@@ -52,7 +52,7 @@ export function KbdComposition() {
       </CommandDialog>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="outline">Save</Button>
+          <Button variant="secondary">Save</Button>
         </TooltipTrigger>
         <TooltipContent>
           Save changes

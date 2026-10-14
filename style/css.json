@@ -21,16 +21,13 @@
     },
     "@layer base": {
       "*": {
-        "@apply border-border outline-ring/50": {}
+        "@apply border-border outline-ring/50 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted hover:scrollbar-thumb-foreground/20": {}
       },
       "html": {
         "font-feature-settings": "\"cv02\", \"cv11\""
       },
       "body": {
         "@apply bg-background text-foreground": {}
-      },
-      "body, html .fancy-scroll": {
-        "@apply scrollbar-thin scrollbar-track-transparent scrollbar-thumb-muted hover:scrollbar-thumb-foreground/20": {}
       },
       "button:not(:disabled), [role=\"button\"]:not(:disabled)": {
         "cursor": "pointer"

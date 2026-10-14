@@ -56,7 +56,7 @@ export function ListPageInvoices() {
     <ListPage
       actions={
         <>
-          <Button variant="outline">Import</Button>
+          <Button variant="secondary">Import</Button>
           <Button>New invoice</Button>
         </>
       }

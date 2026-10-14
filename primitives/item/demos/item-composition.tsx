@@ -42,7 +42,7 @@ export function ItemComposition() {
           <ItemDescription>Updated the style tokens</ItemDescription>
         </ItemContent>
         <ItemActions>
-          <Button size="xs" variant="outline">
+          <Button size="xs" variant="secondary">
             View
           </Button>
         </ItemActions>

@@ -24,7 +24,7 @@ export function CardVariants() {
         <span className="font-semibold text-3xl tracking-tight">24,810</span>
       </CardContent>
       <CardFooter>
-        <Button size="sm" variant="outline">
+        <Button size="sm" variant="secondary">
           View report
         </Button>
       </CardFooter>

@@ -14,7 +14,7 @@ export function DialogBasic() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Open dialog</Button>
+        <Button variant="secondary">Open dialog</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

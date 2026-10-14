@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 
 export function BadgeComposition() {
   return (
-    <Button variant="outline">
+    <Button variant="secondary">
       Inbox
       <Badge variant="secondary" size="sm">
         12

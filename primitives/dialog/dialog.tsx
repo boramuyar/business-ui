@@ -4,7 +4,7 @@
  * @summary A modal window for a short, focused task that blocks the page.
  * @use Short tasks with up to about three fields: rename, invite a member,
  *      add a note.
- * @use Footer: Cancel (outline) then the primary action named for the result.
+ * @use Footer: Cancel (secondary) then the primary action named for the result.
  * @avoid Destructive confirmations: use alert-dialog.
  * @avoid Long forms, or when people need to see the page: use sheet or
  *        form-page.
@@ -126,7 +126,7 @@ function DialogFooter({
       {children}
       {showCloseButton && (
         <DialogPrimitive.Close asChild>
-          <Button variant="outline">Close</Button>
+          <Button variant="secondary">Close</Button>
         </DialogPrimitive.Close>
       )}
     </div>

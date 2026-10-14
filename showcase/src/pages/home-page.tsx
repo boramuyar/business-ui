@@ -41,7 +41,7 @@ export function HomePage() {
             components you need.
           </p>
           <CodeBlock code={quickInstallCommand} />
-          <Button asChild className="w-fit" variant="outline">
+          <Button asChild className="w-fit" variant="secondary">
             <Link to="/installation">
               Installation guide
               <ArrowRightIcon data-icon="inline-end" />

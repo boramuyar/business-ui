@@ -15,7 +15,7 @@
  * Rules:
  * - One column. Labels above inputs (field), never beside them.
  * - Group related fields with FieldSet and FieldLegend instead of cards.
- * - actions: Cancel (variant="outline") then the submit button named for the result ("Create invoice", not "Submit").
+ * - actions: Cancel (variant="secondary") then the submit button named for the result ("Create invoice", not "Submit").
  */
 import type * as React from "react"
 import { Page, PageBody, PageHeader } from "@/components/shells/page"

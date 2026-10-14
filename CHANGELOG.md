@@ -3,6 +3,17 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-14
+
+- `button`: the `outline` variant is now `secondary`, on a white (`bg-card`) fill, and the old grey `secondary` is gone. Replace `variant="outline"` with `variant="secondary"`. Buttons no longer use `bg-clip-padding`, which left a light ring between the fill and the shadow when zoomed in.
+- `checkbox`: the check is drawn on a centered 12px grid instead of lucide's `CheckIcon` with a pixel nudge, so it stays centered at every zoom level. Indeterminate boxes are filled and show a dash. No longer depends on `lucide-react`.
+- `file-input`: new composite. A secondary button with a plus icon picks one file, or with `multiple` adds files to a list where each can be removed. The native input stays in the form.
+- `input`: the native file picker button looks like a small secondary button. The usage header points to `file-input` for files.
+- `scroll-area`: scrollbars are 6px instead of 10px.
+- `style`: every scroll container gets the thin scrollbar, not only the page body.
+- `alert`: every variant is a neutral card with muted description text; the variant only tints the icon, which sits in a 28px tile. `AlertAction` sits 12px from the top-right corner, beside the tile. Title-only alerts center their icon.
+- `resizable`: handles read `data-panel-group-direction`, so handles in vertical groups run across the full width instead of sitting at the side.
+
 ## 2026-10-09
 
 - `dropdown-menu`, `context-menu`, `menubar`, `select`, `combobox`, `command`: menus have 4px of padding around their items, so the rounded hover sits inside the surface instead of touching its edges. Items and labels are shorter (`py-1.5`) and separators get `my-1`. The command input no longer has a grey fill.

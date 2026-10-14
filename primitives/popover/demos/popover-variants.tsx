@@ -13,7 +13,7 @@ export function PopoverVariants() {
     <>
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">Bottom (default)</Button>
+          <Button variant="secondary">Bottom (default)</Button>
         </PopoverTrigger>
         <PopoverContent>
           <PopoverHeader>
@@ -24,7 +24,7 @@ export function PopoverVariants() {
       </Popover>
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">Top, start-aligned</Button>
+          <Button variant="secondary">Top, start-aligned</Button>
         </PopoverTrigger>
         <PopoverContent align="start" side="top">
           <PopoverHeader>

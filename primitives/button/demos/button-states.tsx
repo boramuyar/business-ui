@@ -5,11 +5,11 @@ export function ButtonStates() {
   return (
     <>
       <Button disabled>Disabled</Button>
-      <Button disabled variant="outline">
+      <Button disabled variant="secondary">
         <Spinner />
         Saving...
       </Button>
-      <Button asChild variant="outline">
+      <Button asChild variant="secondary">
         <a href="#states">Anchor button</a>
       </Button>
     </>

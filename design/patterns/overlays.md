@@ -18,7 +18,7 @@ Overlays are ordered from lightest to heaviest. Pick the lightest one that can h
 ## Rules
 
 - One overlay at a time. Don't open a dialog from a dialog; if a task needs two steps, make it a sheet or a page.
-- Dialog footers: Cancel (`variant="outline"`) first, then the primary action named for its result. One primary button.
+- Dialog footers: Cancel (`variant="secondary"`) first, then the primary action named for its result. One primary button.
 - Alert dialogs name the action: "Delete invoice", not "OK" or "Yes".
 - Prefer undo over confirmation. Archive, remove from list and mark as paid can all be undone from a toast.
 - On small screens, swap `dialog` and `sheet` for `drawer` using the `use-mobile` hook.

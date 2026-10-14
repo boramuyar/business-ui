@@ -64,7 +64,7 @@ export function SiteHeader({ section }: { section: NavSection }) {
         <Button
           className="w-9 justify-center gap-2 px-0 font-normal text-muted-foreground sm:w-60 sm:justify-between sm:pr-1.5 sm:pl-2.5"
           onClick={() => setPaletteOpen(true)}
-          variant="outline"
+          variant="secondary"
         >
           <span className="flex items-center gap-2">
             <SearchIcon />

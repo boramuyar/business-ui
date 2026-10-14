@@ -14,7 +14,7 @@ export function PopoverComposition() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">Dimensions</Button>
+        <Button variant="secondary">Dimensions</Button>
       </PopoverTrigger>
       <PopoverContent className="w-64">
         <PopoverHeader>

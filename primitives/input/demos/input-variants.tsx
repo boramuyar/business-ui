@@ -7,7 +7,6 @@ export function InputVariants() {
       <Input placeholder="Email" type="email" />
       <Input placeholder="Password" type="password" />
       <Input placeholder="Number" type="number" />
-      <Input type="file" />
     </div>
   )
 }

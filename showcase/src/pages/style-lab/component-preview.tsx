@@ -139,7 +139,7 @@ function Buttons() {
       <div className="flex flex-wrap items-center gap-2">
         <Button>Default</Button>
         <Button variant="secondary">Secondary</Button>
-        <Button variant="outline">Outline</Button>
+        <Button variant="secondary">Outline</Button>
         <Button variant="ghost">Ghost</Button>
         <Button variant="destructive">Destructive</Button>
         <Button variant="link">Link</Button>
@@ -149,13 +149,13 @@ function Buttons() {
         <Button size="sm">Small</Button>
         <Button>Default</Button>
         <Button size="lg">Large</Button>
-        <Button size="icon-xs" variant="outline" aria-label="Add">
+        <Button size="icon-xs" variant="secondary" aria-label="Add">
           <PlusIcon />
         </Button>
-        <Button size="icon-sm" variant="outline" aria-label="Copy">
+        <Button size="icon-sm" variant="secondary" aria-label="Copy">
           <CopyIcon />
         </Button>
-        <Button size="icon" variant="outline" aria-label="Settings">
+        <Button size="icon" variant="secondary" aria-label="Settings">
           <SettingsIcon />
         </Button>
         <Button size="icon-lg" variant="destructive" aria-label="Delete">
@@ -164,9 +164,9 @@ function Buttons() {
       </div>
       <div className="flex flex-wrap items-center gap-2">
         <ButtonGroup>
-          <Button variant="outline">Day</Button>
-          <Button variant="outline">Week</Button>
-          <Button variant="outline">Month</Button>
+          <Button variant="secondary">Day</Button>
+          <Button variant="secondary">Week</Button>
+          <Button variant="secondary">Month</Button>
         </ButtonGroup>
         <ButtonGroup>
           <Button>Deploy</Button>
@@ -316,7 +316,7 @@ function Surfaces() {
           <p className="font-semibold text-3xl tracking-tight">€24,810.00</p>
         </CardContent>
         <CardFooter className="gap-2">
-          <Button size="sm" variant="outline">
+          <Button size="sm" variant="secondary">
             View report
           </Button>
           <Button size="sm" variant="ghost">
@@ -342,7 +342,7 @@ function Surfaces() {
                 <p className="font-medium text-xs">{name}</p>
                 <p className="text-muted-foreground text-xs">{role}</p>
               </div>
-              <Button size="xs" variant="outline">
+              <Button size="xs" variant="secondary">
                 Manage
               </Button>
             </div>
@@ -421,7 +421,7 @@ function OverlayReplicas() {
         </div>
         <Input defaultValue="€120.00" />
         <div className="flex justify-end gap-2">
-          <Button variant="outline">Cancel</Button>
+          <Button variant="secondary">Cancel</Button>
           <Button>Refund</Button>
         </div>
       </div>
@@ -434,7 +434,7 @@ function LiveOverlays() {
     <div className="flex flex-wrap items-center gap-2">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline">
+          <Button variant="secondary">
             Dropdown <ChevronDownIcon data-icon="inline-end" />
           </Button>
         </DropdownMenuTrigger>
@@ -450,7 +450,7 @@ function LiveOverlays() {
       </DropdownMenu>
       <Popover>
         <PopoverTrigger asChild>
-          <Button variant="outline">Popover</Button>
+          <Button variant="secondary">Popover</Button>
         </PopoverTrigger>
         <PopoverContent>
           <p className="font-medium">Popover</p>
@@ -459,13 +459,13 @@ function LiveOverlays() {
       </Popover>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="outline">Tooltip</Button>
+          <Button variant="secondary">Tooltip</Button>
         </TooltipTrigger>
         <TooltipContent>Uses shadow-overlay</TooltipContent>
       </Tooltip>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline">Dialog</Button>
+          <Button variant="secondary">Dialog</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>
@@ -480,7 +480,7 @@ function LiveOverlays() {
       </Dialog>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">Sheet</Button>
+          <Button variant="secondary">Sheet</Button>
         </SheetTrigger>
         <SheetContent>
           <SheetHeader>
@@ -491,7 +491,7 @@ function LiveOverlays() {
       </Sheet>
       <Button
         onClick={() => toast.success("Payment captured")}
-        variant="outline"
+        variant="secondary"
       >
         Toast
       </Button>

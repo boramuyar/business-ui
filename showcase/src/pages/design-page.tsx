@@ -45,7 +45,7 @@ export function DesignPage() {
                 Raw
               </a>
             </Button>
-            <Button onClick={() => copyText(doc.source)} variant="outline">
+            <Button onClick={() => copyText(doc.source)} variant="secondary">
               <ClipboardCopyIcon data-icon="inline-start" />
               Copy as Markdown
             </Button>

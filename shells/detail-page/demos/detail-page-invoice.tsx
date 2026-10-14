@@ -30,7 +30,7 @@ export function DetailPageInvoice() {
     <DetailPage
       actions={
         <>
-          <Button variant="outline">Download PDF</Button>
+          <Button variant="secondary">Download PDF</Button>
           <Button>Send reminder</Button>
         </>
       }

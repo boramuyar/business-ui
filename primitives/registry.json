@@ -24,6 +24,7 @@
     "dropdown-menu/registry.json",
     "empty/registry.json",
     "field/registry.json",
+    "file-input/registry.json",
     "hover-card/registry.json",
     "input/registry.json",
     "input-group/registry.json",

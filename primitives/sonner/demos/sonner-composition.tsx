@@ -12,7 +12,7 @@ export function SonnerComposition() {
             action: { label: "Undo", onClick: () => toast("Removed again") },
           })
         }
-        variant="outline"
+        variant="secondary"
       >
         With description and action
       </Button>
@@ -24,7 +24,7 @@ export function SonnerComposition() {
             error: "Build failed",
           })
         }
-        variant="outline"
+        variant="secondary"
       >
         Promise toast
       </Button>
