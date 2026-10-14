@@ -115,7 +115,7 @@ function PaneBody({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="pane-body"
-      className={cn("flex min-h-0 flex-1 flex-col overflow-y-auto", className)}
+      className={cn("flex min-h-0 flex-1 flex-col overflow-y-auto *:shrink-0", className)}
       {...props}
     />
   )
