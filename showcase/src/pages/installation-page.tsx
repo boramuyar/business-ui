@@ -49,7 +49,7 @@ export function InstallationPage() {
     <div className="max-w-4xl">
       <PageHeader
         actions={
-          <Button onClick={() => copyText(usageMarkdown)} variant="outline">
+          <Button onClick={() => copyText(usageMarkdown)} variant="secondary">
             <ClipboardCopyIcon data-icon="inline-start" />
             Copy as Markdown
           </Button>

@@ -14,7 +14,7 @@
  *
  * Rules the parts enforce:
  * - One PageHeader per screen. The title is the only h1.
- * - Actions sit on the right of the title. At most one default (primary) button there; the rest use variant="outline" or go in a dropdown-menu.
+ * - Actions sit on the right of the title. At most one default (primary) button there; the rest use variant="secondary" or go in a dropdown-menu.
  * - Search, filters and view switches go in PageToolbar, never in the header.
  * - Width is narrow (forms), default, or full (wide tables and boards). Nothing else.
  */

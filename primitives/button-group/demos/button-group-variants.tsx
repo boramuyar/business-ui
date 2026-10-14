@@ -5,14 +5,14 @@ export function ButtonGroupVariants() {
   return (
     <>
       <ButtonGroup>
-        <Button variant="outline">Day</Button>
-        <Button variant="outline">Week</Button>
-        <Button variant="outline">Month</Button>
+        <Button variant="secondary">Day</Button>
+        <Button variant="secondary">Week</Button>
+        <Button variant="secondary">Month</Button>
       </ButtonGroup>
       <ButtonGroup orientation="vertical">
-        <Button variant="outline">Top</Button>
-        <Button variant="outline">Middle</Button>
-        <Button variant="outline">Bottom</Button>
+        <Button variant="secondary">Top</Button>
+        <Button variant="secondary">Middle</Button>
+        <Button variant="secondary">Bottom</Button>
       </ButtonGroup>
     </>
   )

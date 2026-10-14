@@ -18,7 +18,7 @@ export function CommandComposition() {
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <Button onClick={() => setOpen(true)} variant="outline">
+      <Button onClick={() => setOpen(true)} variant="secondary">
         Open command dialog
         <Kbd>Ctrl</Kbd>
         <Kbd>K</Kbd>

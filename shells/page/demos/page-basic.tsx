@@ -14,7 +14,7 @@ export function PageBasic() {
       <PageHeader
         actions={
           <>
-            <Button variant="outline">Export</Button>
+            <Button variant="secondary">Export</Button>
             <Button>New report</Button>
           </>
         }

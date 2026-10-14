@@ -22,7 +22,7 @@ export function FormPageCustomer() {
     <FormPage
       actions={
         <>
-          <Button type="button" variant="outline">
+          <Button type="button" variant="secondary">
             Cancel
           </Button>
           <Button type="submit">Create customer</Button>

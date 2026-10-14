@@ -18,7 +18,7 @@ export function DialogControlled() {
     <div className="flex flex-col items-center gap-2">
       <Dialog onOpenChange={setOpen} open={open}>
         <DialogTrigger asChild>
-          <Button variant="outline">Controlled dialog</Button>
+          <Button variant="secondary">Controlled dialog</Button>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader>

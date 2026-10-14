@@ -20,7 +20,7 @@ Each shell's header comment lists its slots and rules. The [component catalog](c
 ## Rules every shell keeps
 
 - One `PageHeader` per screen. Its title is the only `h1`.
-- Actions sit to the right of the title. At most one primary button; others are `outline` or live in a `dropdown-menu`.
+- Actions sit to the right of the title. At most one primary button; others are `secondary` or live in a `dropdown-menu`.
 - Search, filters and view switches go in the toolbar, never in the header.
 - Width is `narrow`, `default` or `full`.
 

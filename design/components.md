@@ -103,7 +103,7 @@ Actions for an item, opened with right click or long press.
 A modal window for a short, focused task that blocks the page.
 
 - Use: Short tasks with up to about three fields: rename, invite a member, add a note.
-- Use: Footer: Cancel (outline) then the primary action named for the result.
+- Use: Footer: Cancel (secondary) then the primary action named for the result.
 - Avoid: Destructive confirmations: use alert-dialog.
 - Avoid: Long forms, or when people need to see the page: use sheet or form-page.
 - Avoid: Mobile bottom panels: use drawer.
@@ -309,6 +309,17 @@ Label, control, description and error laid out as one form field.
 - Related: input, label, form-page
 - File: `components/ui/field.tsx`
 
+### file-input
+
+Picks one or more files with a button and lists what was chosen.
+
+- Use: Attaching files in a form: a receipt, a contract, several documents.
+- Use: multiple: when people add several files; each can be removed again.
+- Avoid: Plain text or numbers: use input.
+- Avoid: Large uploads with progress per file: build them on this, outside the form field.
+- Related: input, field, button
+- File: `components/ui/file-input.tsx`
+
 ### input-group
 
 An input with attached icons, text or buttons.
@@ -436,7 +447,7 @@ A small label for status, category or count.
 Triggers an action.
 
 - Use: default (primary): the one main action of a screen or dialog. At most one per header, dialog or form.
-- Use: outline: other actions next to the primary one. secondary: quiet actions in dense areas. ghost: toolbar and icon actions. destructive: deletes, only inside alert-dialog or a danger section. link: inline navigation in text.
+- Use: secondary: other actions next to the primary one, such as Cancel. ghost: toolbar and icon actions. destructive: deletes, only inside alert-dialog or a danger section. link: inline navigation in text.
 - Use: Label with a verb that names the result: "Create invoice", not "Submit".
 - Avoid: Going to another page: use a link (or Button asChild with an anchor).
 - Avoid: Holding an on or off state: use toggle.
@@ -487,7 +498,8 @@ A single-line text field.
 - Avoid: Multi-line text: use textarea.
 - Avoid: Choosing from known values: use select or combobox.
 - Avoid: Icons, prefixes or buttons inside the field: use input-group.
-- Related: field, input-group, textarea
+- Avoid: Picking files: use file-input.
+- Related: field, input-group, textarea, file-input
 - File: `components/ui/input.tsx`
 
 ### input-otp

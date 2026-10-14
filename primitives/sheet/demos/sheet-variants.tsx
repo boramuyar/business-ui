@@ -13,7 +13,7 @@ export function SheetVariants() {
     <>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">Right</Button>
+          <Button variant="secondary">Right</Button>
         </SheetTrigger>
         <SheetContent side="right">
           <SheetHeader>
@@ -24,7 +24,7 @@ export function SheetVariants() {
       </Sheet>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">Left</Button>
+          <Button variant="secondary">Left</Button>
         </SheetTrigger>
         <SheetContent side="left">
           <SheetHeader>
@@ -35,7 +35,7 @@ export function SheetVariants() {
       </Sheet>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">Top</Button>
+          <Button variant="secondary">Top</Button>
         </SheetTrigger>
         <SheetContent side="top">
           <SheetHeader>
@@ -46,7 +46,7 @@ export function SheetVariants() {
       </Sheet>
       <Sheet>
         <SheetTrigger asChild>
-          <Button variant="outline">Bottom</Button>
+          <Button variant="secondary">Bottom</Button>
         </SheetTrigger>
         <SheetContent side="bottom">
           <SheetHeader>

@@ -18,7 +18,7 @@ export function AlertDialogComposition() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="outline">Remove member</Button>
+        <Button variant="secondary">Remove member</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>

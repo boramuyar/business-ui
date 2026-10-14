@@ -7,7 +7,7 @@ export function ButtonGroupComposition() {
     <ButtonGroup>
       <ButtonGroupText>https://</ButtonGroupText>
       <Input placeholder="example.com" />
-      <Button variant="outline">Visit</Button>
+      <Button variant="secondary">Visit</Button>
     </ButtonGroup>
   )
 }

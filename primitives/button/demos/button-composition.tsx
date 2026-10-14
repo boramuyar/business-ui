@@ -5,13 +5,13 @@ import { ButtonGroup } from "@/components/ui/button-group"
 export function ButtonComposition() {
   return (
     <>
-      <Button variant="outline">
+      <Button variant="secondary">
         Inbox
         <Badge variant="secondary">12</Badge>
       </Button>
       <ButtonGroup>
-        <Button variant="outline">Save</Button>
-        <Button variant="outline">Discard</Button>
+        <Button variant="secondary">Save</Button>
+        <Button variant="secondary">Discard</Button>
       </ButtonGroup>
     </>
   )

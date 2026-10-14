@@ -1,0 +1,29 @@
+---
+title: File Input
+description: A button that picks files and lists what was chosen.
+status: stable
+---
+
+## Variants
+
+One file shows its name next to the button. With `multiple`, each pick adds to
+a list where files can be removed again.
+
+<Preview name="file-input-single" />
+
+<Preview name="file-input-multiple" />
+
+## States
+
+<Preview name="file-input-states" />
+
+## Composition
+
+Inside a `field`, the label points at the hidden input through `id`.
+
+<Preview name="file-input-field" />
+
+## Usage
+
+The native input stays in the form, so a plain form submit sends the files
+that are listed. Use `value` and `onValueChange` to control the list.

@@ -14,7 +14,7 @@ export function AlertComposition() {
       <AlertTitle>Unsaved changes</AlertTitle>
       <AlertDescription>Your edits are local only.</AlertDescription>
       <AlertAction>
-        <Button size="xs" variant="outline">
+        <Button size="xs" variant="secondary">
           Save now
         </Button>
       </AlertAction>

@@ -18,7 +18,7 @@ export function DropdownMenuStates() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">View options</Button>
+        <Button variant="secondary">View options</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-48">
         <DropdownMenuCheckboxItem

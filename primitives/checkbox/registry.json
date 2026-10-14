@@ -17,7 +17,6 @@
         }
       ],
       "dependencies": [
-        "lucide-react",
         "radix-ui"
       ],
       "registryDependencies": [

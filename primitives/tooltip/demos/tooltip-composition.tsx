@@ -11,7 +11,7 @@ export function TooltipComposition() {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button aria-label="Copy" size="icon" variant="outline">
+        <Button aria-label="Copy" size="icon" variant="secondary">
           <CopyIcon />
         </Button>
       </TooltipTrigger>

@@ -15,7 +15,7 @@ export function DrawerVariants() {
     <>
       <Drawer>
         <DrawerTrigger asChild>
-          <Button variant="outline">Bottom (default)</Button>
+          <Button variant="secondary">Bottom (default)</Button>
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
@@ -32,7 +32,7 @@ export function DrawerVariants() {
       </Drawer>
       <Drawer>
         <DrawerTrigger asChild>
-          <Button variant="outline">Full width</Button>
+          <Button variant="secondary">Full width</Button>
         </DrawerTrigger>
         <DrawerContent size="full">
           <DrawerHeader>
@@ -45,7 +45,7 @@ export function DrawerVariants() {
       </Drawer>
       <Drawer direction="right">
         <DrawerTrigger asChild>
-          <Button variant="outline">Right</Button>
+          <Button variant="secondary">Right</Button>
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>

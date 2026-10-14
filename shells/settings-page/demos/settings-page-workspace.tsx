@@ -39,7 +39,7 @@ export function SettingsPageWorkspace() {
           <FieldLabel htmlFor="settings-name">Workspace name</FieldLabel>
           <Input defaultValue="Acme Finance" id="settings-name" />
         </Field>
-        <Button className="self-start" variant="outline">
+        <Button className="self-start" variant="secondary">
           Save name
         </Button>
       </SettingsSection>
