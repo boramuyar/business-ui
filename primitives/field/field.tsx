@@ -1,7 +1,9 @@
 import { cva, type VariantProps } from "class-variance-authority"
-import { useMemo } from "react"
+import { createContext, useContext, useId, useMemo } from "react"
+import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
+import { Textarea } from "@/components/ui/textarea"
 import { cn } from "@/lib/utils"
 
 /**
@@ -12,10 +14,36 @@ import { cn } from "@/lib/utils"
  *      go above the control (orientation vertical) except for checkbox and
  *      switch rows.
  * @use Group related fields with FieldSet and FieldLegend.
+ * @use Pass invalid and required to Field instead of wiring ids by hand:
+ *      FieldLabel, FieldDescription and FieldError connect themselves, and
+ *      FieldInput, FieldTextarea or useFieldControl() connect the control.
  * @avoid Bare inputs with a placeholder instead of a label.
  * @avoid Wrapping groups of fields in cards: use FieldSet.
  * @related input, label, form-page
  */
+interface FieldContextValue {
+  controlId: string
+  descriptionId: string
+  errorId: string
+  invalid: boolean
+  required: boolean
+}
+
+const FieldContext = createContext<FieldContextValue | null>(null)
+
+/** Ids and state for the control inside a Field. Spread onto any control
+ * (select trigger, combobox input) that is not FieldInput or FieldTextarea. */
+function useFieldControl() {
+  const field = useContext(FieldContext)
+  if (!field) return {}
+  return {
+    id: field.controlId,
+    "aria-describedby": `${field.descriptionId} ${field.errorId}`,
+    "aria-invalid": field.invalid || undefined,
+    required: field.required || undefined,
+  }
+}
+
 function FieldSet({ className, ...props }: React.ComponentProps<"fieldset">) {
   return (
     <fieldset
@@ -81,16 +109,39 @@ const fieldVariants = cva(
 function Field({
   className,
   orientation = "vertical",
+  invalid = false,
+  required = false,
   ...props
-}: React.ComponentProps<"div"> & VariantProps<typeof fieldVariants>) {
+}: React.ComponentProps<"div"> &
+  VariantProps<typeof fieldVariants> & {
+    /** Marks the control invalid and turns the field destructive. */
+    invalid?: boolean
+    /** Marks the label with an asterisk and sets required on the control. */
+    required?: boolean
+  }) {
+  const id = useId()
+  const field = useMemo(
+    () => ({
+      controlId: `${id}-control`,
+      descriptionId: `${id}-description`,
+      errorId: `${id}-error`,
+      invalid,
+      required,
+    }),
+    [id, invalid, required]
+  )
+
   return (
-    <div
-      role="group"
-      data-slot="field"
-      data-orientation={orientation}
-      className={cn(fieldVariants({ orientation }), className)}
-      {...props}
-    />
+    <FieldContext.Provider value={field}>
+      <div
+        role="group"
+        data-slot="field"
+        data-orientation={orientation}
+        data-invalid={invalid || undefined}
+        className={cn(fieldVariants({ orientation }), className)}
+        {...props}
+      />
+    </FieldContext.Provider>
   )
 }
 
@@ -109,18 +160,29 @@ function FieldContent({ className, ...props }: React.ComponentProps<"div">) {
 
 function FieldLabel({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof Label>) {
+  const field = useContext(FieldContext)
+
   return (
     <Label
       data-slot="field-label"
+      htmlFor={field?.controlId}
       className={cn(
         "group/field-label peer/field-label flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-data-checked:border-brand-border has-data-checked:bg-brand-subtle has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-2",
         "has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col",
         className
       )}
       {...props}
-    />
+    >
+      {children}
+      {field?.required && (
+        <span aria-hidden="true" className="-ml-1.5 text-destructive">
+          *
+        </span>
+      )}
+    </Label>
   )
 }
 
@@ -138,9 +200,12 @@ function FieldTitle({ className, ...props }: React.ComponentProps<"div">) {
 }
 
 function FieldDescription({ className, ...props }: React.ComponentProps<"p">) {
+  const field = useContext(FieldContext)
+
   return (
     <p
       data-slot="field-description"
+      id={field?.descriptionId}
       className={cn(
         "text-left text-xs/relaxed leading-normal font-normal text-muted-foreground group-has-data-horizontal/field:text-balance [[data-variant=legend]+&]:-mt-1.5",
         "last:mt-0 nth-last-2:-mt-1",
@@ -190,6 +255,7 @@ function FieldError({
 }: React.ComponentProps<"div"> & {
   errors?: Array<{ message?: string } | undefined>
 }) {
+  const field = useContext(FieldContext)
   const content = useMemo(() => {
     if (children) {
       return children
@@ -226,6 +292,7 @@ function FieldError({
     <div
       role="alert"
       data-slot="field-error"
+      id={field?.errorId}
       className={cn("text-xs font-normal text-destructive", className)}
       {...props}
     >
@@ -234,15 +301,28 @@ function FieldError({
   )
 }
 
+/** An Input wired to the surrounding Field. */
+function FieldInput(props: React.ComponentProps<typeof Input>) {
+  return <Input {...useFieldControl()} {...props} />
+}
+
+/** A Textarea wired to the surrounding Field. */
+function FieldTextarea(props: React.ComponentProps<typeof Textarea>) {
+  return <Textarea {...useFieldControl()} {...props} />
+}
+
 export {
   Field,
   FieldContent,
   FieldDescription,
   FieldError,
   FieldGroup,
+  FieldInput,
   FieldLabel,
   FieldLegend,
   FieldSeparator,
   FieldSet,
+  FieldTextarea,
   FieldTitle,
+  useFieldControl,
 }

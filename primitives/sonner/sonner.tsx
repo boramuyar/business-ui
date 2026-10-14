@@ -1,3 +1,4 @@
+import * as React from "react"
 import {
   CircleCheckIcon,
   InfoIcon,
@@ -5,7 +6,6 @@ import {
   OctagonXIcon,
   TriangleAlertIcon,
 } from "lucide-react"
-import { useTheme } from "next-themes"
 import { Toaster as Sonner, type ToasterProps } from "sonner"
 
 /**
@@ -22,11 +22,11 @@ import { Toaster as Sonner, type ToasterProps } from "sonner"
  * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const isDark = useDarkClass()
 
   return (
     <Sonner
-      theme={theme as ToasterProps["theme"]}
+      theme={isDark ? "dark" : "light"}
       className="toaster group"
       icons={{
         success: <CircleCheckIcon className="size-4" />,
@@ -58,6 +58,25 @@ const Toaster = ({ ...props }: ToasterProps) => {
       {...props}
     />
   )
+}
+
+/** Follows the `.dark` class that the style's dark variant reads, so toasts
+ * match the page without a theme provider. */
+function useDarkClass() {
+  return React.useSyncExternalStore(
+    subscribeToRootClass,
+    () => document.documentElement.classList.contains("dark"),
+    () => false
+  )
+}
+
+function subscribeToRootClass(onChange: () => void) {
+  const observer = new MutationObserver(onChange)
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  })
+  return () => observer.disconnect()
 }
 
 export { Toaster }

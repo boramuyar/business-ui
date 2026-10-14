@@ -18,7 +18,6 @@
       ],
       "dependencies": [
         "lucide-react",
-        "next-themes",
         "sonner"
       ],
       "registryDependencies": [

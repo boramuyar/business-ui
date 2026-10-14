@@ -129,6 +129,28 @@ accent off and go back to plain Graphite, point it at primary:
 }
 ```
 
+## Older webviews
+
+Every color is written in OKLCH, the tints use `color-mix()`, and the chart
+ramp uses relative color syntax. Engines that predate those features, such as
+the system WKWebView that Office for Mac uses for add-ins, drop those
+declarations. The style therefore ends with three `@supports not` blocks that
+restate the affected tokens as precomputed `rgb()` values; modern browsers
+never apply them.
+
+The precomputed values come from the shipped colors. If you override
+`--brand` (or any other color) and support those webviews, restate your
+override and the tints derived from it, as `rgb()`, inside the matching block:
+
+```css
+@supports not (color: oklch(0 0 0)) {
+  :root { --brand: rgb(…); }
+}
+@supports not (color: color-mix(in oklab, red, white)) {
+  :root { --brand-subtle: rgb(…); --brand-border: rgb(…); --brand-strong: rgb(…); }
+}
+```
+
 ## Notes for consuming agents
 
 - Install `style` before primitives when setting up a new app.

@@ -1,27 +1,26 @@
 import * as React from "react"
 
-const MOBILE_BREAKPOINT = 768
-const MOBILE_BREAKPOINT_VAR = "--breakpoint-md"
+const MOBILE_BREAKPOINT = "48rem"
+const MOBILE_BREAKPOINT_VAR = "--breakpoint-sidebar"
 
-/** Reads the theme's md breakpoint so hosts with custom breakpoints (e.g. a
- * narrow Office taskpane) get the right mobile threshold. Falls back to 768px. */
-function getBreakpointPx(variableName: string, fallback: number): number {
-  if (typeof window === "undefined") return fallback
+/** Reads the theme's sidebar breakpoint, so the sidebar switches to its sheet
+ * at the same width where its `sidebar:` classes stop docking it. Hosts with a
+ * narrow viewport (e.g. an Office task pane) override `--breakpoint-sidebar`. */
+function getBreakpoint(): string {
+  if (typeof window === "undefined") return MOBILE_BREAKPOINT
   const value = getComputedStyle(document.documentElement)
-    .getPropertyValue(variableName)
+    .getPropertyValue(MOBILE_BREAKPOINT_VAR)
     .trim()
-  const match = value.match(/^(\d+)(px)?$/)
-  if (!match) return fallback
-  const parsed = Number(match[1])
-  return Number.isFinite(parsed) ? parsed : fallback
+  return value || MOBILE_BREAKPOINT
 }
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
 
   React.useEffect(() => {
-    const breakpoint = getBreakpointPx(MOBILE_BREAKPOINT_VAR, MOBILE_BREAKPOINT)
-    const mediaQuery = window.matchMedia(`(max-width: ${breakpoint - 1}px)`)
+    // The inverse of Tailwind's `sidebar:` variant, `(width >= breakpoint)`,
+    // so both agree for px and rem values alike.
+    const mediaQuery = window.matchMedia(`not all and (min-width: ${getBreakpoint()})`)
     const onChange = () => setIsMobile(mediaQuery.matches)
 
     mediaQuery.addEventListener("change", onChange)

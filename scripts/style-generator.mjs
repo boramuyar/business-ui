@@ -2,6 +2,8 @@ import { readFile, writeFile } from "node:fs/promises"
 import { dirname, resolve } from "node:path"
 import { fileURLToPath } from "node:url"
 
+import { buildColorFallbacks } from "./color-fallbacks.mjs"
+
 const rootDirectory = resolve(dirname(fileURLToPath(import.meta.url)), "..")
 
 const styleItem = {
@@ -56,6 +58,7 @@ export async function generateStyle(options = {}) {
     ":root": prefixVarKeys(lightCustom),
     ".dark": prefixVarKeys(darkCustom),
     ...(cssSource.css ?? {}),
+    ...buildColorFallbacks(colors),
   }
   const globalsCss = renderGlobalsCss({ css, cssVars })
   const registry = {

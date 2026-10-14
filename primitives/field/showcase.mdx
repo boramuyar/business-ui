@@ -13,8 +13,11 @@ container-query-driven `responsive`.
 
 ## States
 
-`data-invalid` propagates destructive styling; `FieldError` renders single or
-multiple messages.
+`invalid` turns the field destructive and `required` adds an asterisk to the
+label. `Field` owns the ids: `FieldLabel`, `FieldDescription` and `FieldError`
+connect themselves, and `FieldInput` and `FieldTextarea` connect the control.
+For any other control, spread `useFieldControl()` onto it. `FieldError`
+renders single or multiple messages.
 
 <Preview name="field-states" />
 

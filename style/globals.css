@@ -274,6 +274,10 @@
   --elevation-modal: 0 50px 100px -20px rgb(0 0 0 / 0.6), 0 30px 60px -30px rgb(0 0 0 / 0.7);
 }
 
+@theme {
+  --breakpoint-sidebar: 48rem;
+}
+
 @layer utilities {
   .small-caps {
     font-variant: all-small-caps;
@@ -295,5 +299,140 @@
   }
   .lucide {
     @apply size-3.5;
+  }
+}
+
+@supports not (color: oklch(0 0 0)) {
+  :root {
+    --background: rgb(255, 255, 255);
+    --foreground: rgb(9, 9, 9);
+    --card: rgb(255, 255, 255);
+    --card-foreground: rgb(9, 9, 9);
+    --popover: rgb(255, 255, 255);
+    --popover-foreground: rgb(9, 9, 9);
+    --primary: rgb(23, 23, 23);
+    --primary-foreground: rgb(250, 250, 250);
+    --brand: rgb(77, 81, 222);
+    --brand-foreground: rgb(250, 250, 250);
+    --secondary: rgb(244, 244, 244);
+    --secondary-foreground: rgb(24, 24, 24);
+    --muted: rgb(244, 244, 244);
+    --muted-foreground: rgb(114, 114, 114);
+    --accent: rgb(244, 244, 244);
+    --accent-foreground: rgb(24, 24, 24);
+    --destructive: rgb(231, 0, 11);
+    --destructive-foreground: rgb(250, 250, 250);
+    --success: rgb(34, 160, 107);
+    --warning: rgb(255, 178, 31);
+    --info: rgb(29, 122, 252);
+    --border: rgb(228, 228, 228);
+    --input: rgb(228, 228, 228);
+    --scrim: rgba(0, 0, 0, 0.1);
+    --sidebar: rgb(250, 250, 250);
+    --sidebar-foreground: rgb(9, 9, 9);
+    --sidebar-primary: rgb(23, 23, 23);
+    --sidebar-primary-foreground: rgb(250, 250, 250);
+    --sidebar-accent: rgb(234, 234, 234);
+    --sidebar-accent-foreground: rgb(24, 24, 24);
+    --sidebar-border: rgb(228, 228, 228);
+  }
+  .dark {
+    --background: rgb(9, 9, 9);
+    --foreground: rgb(250, 250, 250);
+    --card: rgb(24, 24, 24);
+    --card-foreground: rgb(250, 250, 250);
+    --popover: rgb(24, 24, 24);
+    --popover-foreground: rgb(250, 250, 250);
+    --primary: rgb(229, 229, 229);
+    --primary-foreground: rgb(23, 23, 23);
+    --brand: rgb(104, 117, 246);
+    --brand-foreground: rgb(250, 250, 250);
+    --secondary: rgb(39, 39, 39);
+    --secondary-foreground: rgb(250, 250, 250);
+    --muted: rgb(39, 39, 39);
+    --muted-foreground: rgb(160, 160, 160);
+    --accent: rgb(39, 39, 39);
+    --accent-foreground: rgb(250, 250, 250);
+    --destructive: rgb(187, 51, 73);
+    --destructive-foreground: rgb(250, 250, 250);
+    --success: rgb(34, 160, 107);
+    --warning: rgb(255, 178, 31);
+    --info: rgb(29, 122, 252);
+    --border: rgba(255, 255, 255, 0.1);
+    --input: rgba(255, 255, 255, 0.15);
+    --scrim: rgba(0, 0, 0, 0.4);
+    --sidebar: rgb(20, 20, 20);
+    --sidebar-foreground: rgb(250, 250, 250);
+    --sidebar-primary: rgb(229, 229, 229);
+    --sidebar-primary-foreground: rgb(23, 23, 23);
+    --sidebar-accent: rgb(39, 39, 39);
+    --sidebar-accent-foreground: rgb(250, 250, 250);
+    --sidebar-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@supports not (color: color-mix(in oklab, red, white)) {
+  :root {
+    --primary-subtle: rgb(229, 229, 229);
+    --primary-border: rgb(177, 177, 177);
+    --primary-strong: rgb(20, 20, 20);
+    --brand-subtle: rgb(235, 238, 254);
+    --brand-border: rgb(195, 205, 250);
+    --brand-strong: rgb(57, 63, 162);
+    --destructive-subtle: rgb(255, 235, 232);
+    --destructive-border: rgb(255, 195, 187);
+    --destructive-strong: rgb(169, 14, 20);
+    --success-subtle: rgb(236, 246, 239);
+    --success-border: rgb(197, 227, 209);
+    --success-strong: rgb(35, 118, 80);
+    --warning-subtle: rgb(255, 248, 237);
+    --warning-border: rgb(255, 233, 201);
+    --warning-strong: rgb(185, 131, 36);
+    --info-subtle: rgb(234, 243, 255);
+    --info-border: rgb(191, 218, 255);
+    --info-strong: rgb(29, 92, 183);
+  }
+  .dark {
+    --primary-subtle: rgb(45, 45, 45);
+    --primary-border: rgb(108, 108, 108);
+    --primary-strong: rgb(231, 231, 231);
+    --primary-emphasis: rgb(239, 239, 239);
+    --brand-subtle: rgb(25, 29, 48);
+    --brand-border: rgb(53, 60, 116);
+    --brand-strong: rgb(117, 132, 248);
+    --brand-emphasis: rgb(172, 186, 252);
+    --destructive-subtle: rgb(40, 20, 21);
+    --destructive-border: rgb(91, 33, 39);
+    --destructive-strong: rgb(196, 75, 89);
+    --destructive-emphasis: rgb(226, 155, 158);
+    --success-subtle: rgb(19, 35, 26);
+    --success-border: rgb(30, 78, 55);
+    --success-strong: rgb(68, 169, 121);
+    --success-emphasis: rgb(155, 205, 177);
+    --warning-subtle: rgb(49, 38, 21);
+    --warning-border: rgb(120, 86, 32);
+    --warning-strong: rgb(255, 186, 72);
+    --warning-emphasis: rgb(254, 216, 161);
+    --info-subtle: rgb(17, 30, 49);
+    --info-border: rgb(25, 63, 119);
+    --info-strong: rgb(59, 137, 253);
+    --info-emphasis: rgb(146, 190, 255);
+  }
+}
+
+@supports not (color: oklch(from red l c h)) {
+  :root {
+    --chart-1: rgb(176, 191, 255);
+    --chart-2: rgb(127, 143, 255);
+    --chart-3: rgb(89, 97, 240);
+    --chart-4: rgb(65, 64, 205);
+    --chart-5: rgb(47, 46, 153);
+  }
+  .dark {
+    --chart-1: rgb(178, 192, 255);
+    --chart-2: rgb(129, 145, 248);
+    --chart-3: rgb(91, 102, 228);
+    --chart-4: rgb(66, 70, 194);
+    --chart-5: rgb(47, 50, 145);
   }
 }

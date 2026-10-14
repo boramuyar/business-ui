@@ -1,15 +1,10 @@
-import { Field, FieldError, FieldLabel } from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import { Field, FieldError, FieldInput, FieldLabel } from "@/components/ui/field"
 
 export function FieldStates() {
   return (
-    <Field className="max-w-sm" data-invalid="true">
-      <FieldLabel htmlFor="field-demo-error">Workspace URL</FieldLabel>
-      <Input
-        aria-invalid
-        defaultValue="example .com"
-        id="field-demo-error"
-      />
+    <Field className="max-w-sm" invalid required>
+      <FieldLabel>Workspace URL</FieldLabel>
+      <FieldInput defaultValue="example .com" />
       <FieldError
         errors={[
           { message: "URLs cannot contain spaces." },

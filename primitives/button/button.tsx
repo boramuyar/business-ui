@@ -65,6 +65,8 @@ const Button = React.forwardRef<
     VariantProps<typeof buttonVariants> & {
       asChild?: boolean
       tooltip?: React.ReactNode
+      /** Which side of the button the tooltip opens on. */
+      tooltipSide?: React.ComponentProps<typeof TooltipContent>["side"]
     }
   // forwardRef (not ref-as-prop) so consumer refs are delivered on React 18 as
   // well as 19; it remains supported on 19, merely soft-deprecated.
@@ -75,6 +77,7 @@ const Button = React.forwardRef<
     size = "default",
     asChild = false,
     tooltip,
+    tooltipSide,
     ...props
   },
   ref
@@ -97,7 +100,7 @@ const Button = React.forwardRef<
   return (
     <Tooltip>
       <TooltipTrigger asChild>{button}</TooltipTrigger>
-      <TooltipContent>{tooltip}</TooltipContent>
+      <TooltipContent side={tooltipSide}>{tooltip}</TooltipContent>
     </Tooltip>
   )
 })

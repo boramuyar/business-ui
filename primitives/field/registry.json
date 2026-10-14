@@ -21,8 +21,10 @@
       ],
       "registryDependencies": [
         "boramuyar/business-ui/style",
+        "boramuyar/business-ui/input",
         "boramuyar/business-ui/label",
-        "boramuyar/business-ui/separator"
+        "boramuyar/business-ui/separator",
+        "boramuyar/business-ui/textarea"
       ]
     }
   ]
