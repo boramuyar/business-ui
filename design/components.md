@@ -306,6 +306,7 @@ The placeholder shown when a list or area has nothing in it yet.
 
 - Use: An empty table, a search with no results, a new workspace. Say what will appear here and offer the action that adds the first item.
 - Use: Always give it a title and a description.
+- Use: When the empty state is the screen's main content, make the title its heading: EmptyTitle asChild around an h2.
 - Use: It fills the area it replaces and centers its content. Put it in a flex column that fills that area, such as PaneBody.
 - Avoid: Errors: use alert.
 - Avoid: Loading: use skeleton.

@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from "class-variance-authority"
+import { Slot } from "radix-ui"
 import { cn } from "@/lib/utils"
 
 /**
@@ -8,6 +9,8 @@ import { cn } from "@/lib/utils"
  * @use An empty table, a search with no results, a new workspace. Say what
  *      will appear here and offer the action that adds the first item.
  * @use Always give it a title and a description.
+ * @use When the empty state is the screen's main content, make the title its
+ *      heading: EmptyTitle asChild around an h2.
  * @use It fills the area it replaces and centers its content. Put it in a
  *      flex column that fills that area, such as PaneBody.
  * @avoid Errors: use alert.
@@ -68,9 +71,17 @@ function EmptyMedia({
   )
 }
 
-function EmptyTitle({ className, ...props }: React.ComponentProps<"div">) {
+function EmptyTitle({
+  className,
+  asChild = false,
+  ...props
+}: React.ComponentProps<"div"> & {
+  /** Render your own element, such as an h2, with the title's styling. */
+  asChild?: boolean
+}) {
+  const Comp = asChild ? Slot.Root : "div"
   return (
-    <div
+    <Comp
       data-slot="empty-title"
       className={cn("font-heading text-sm font-medium", className)}
       {...props}

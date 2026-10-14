@@ -6,6 +6,7 @@ registry item.
 ## 2026-10-15
 
 - `dropdown-menu`: the menu is as wide as its longest item (at least 8rem or the trigger's width) instead of exactly the trigger's width, and items never wrap. A menu opened from an icon button used to squeeze its labels onto two lines.
+- `empty`: `EmptyTitle asChild` renders your own element, such as an `h2` when the empty state is the screen's main content.
 - `pane`: `PaneBody` children keep their height and the body scrolls, instead of squeezing children that clip their overflow, such as cards.
 - `item`: new `ItemGroupLabel` names the group that follows it, so a long list can be split into sections instead of tagging every row.
 - `sheet`, `drawer`: the scrim no longer blurs the page, so people can still read what the panel acts on, such as a conversation behind an approval sheet. Pass `blurBackdrop` to the content to blur it again.
