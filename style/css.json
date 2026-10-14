@@ -14,9 +14,6 @@
     "@import \"@fontsource-variable/inter\"": {},
     "@import \"@fontsource-variable/jetbrains-mono\"": {},
     "@custom-variant dark (&:is(.dark *))": {},
-    "@theme": {
-      "--breakpoint-sidebar": "48rem"
-    },
     "@layer utilities": {
       ".small-caps": {
         "font-variant": "all-small-caps"

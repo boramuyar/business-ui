@@ -1,4 +1,5 @@
 {
+  "breakpoint-sidebar": "48rem",
   "font-heading": "var(--font-sans)",
   "radius-xs": "calc(var(--radius) - 4px)",
   "radius-sm": "calc(var(--radius) - 2px)",
