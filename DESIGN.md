@@ -39,6 +39,13 @@ Pass the folders to scan; with none it scans `src`.
 
 To allow one line on purpose, put `// design-check-ignore: <reason>` on the line above it.
 
+## Rulebook
+
+Short rules every screen follows. Unsorted for now.
+
+- **Loading shows a skeleton of the real UI.** It has the same rows, columns, cards and spacing as the loaded screen, so nothing moves when the data arrives. Never put a centered spinner or "Loading…" text in place of content.
+- **A spinner means work is running right now.** Show it only on the thing doing the work: the button whose action runs, the step executing, the file uploading. Remove it when the work stops, including while waiting for the user.
+
 ## Guides
 
 Foundations:
