@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils"
  * @summary A row with media, title, description and actions.
  * @use Lists of people, files, integrations or settings rows where each entry
  *      has a title and a few details.
+ * @use variant divided for full-width lists that run edge to edge, such as a
+ *      narrow pane: square rows separated by a line, hover fills the row.
  * @use A row that opens something and also has its own actions: put the
  *      button or link in ItemTitle asChild. It covers the whole row, and
  *      ItemActions stay clickable above it.
@@ -25,7 +27,7 @@ function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
       role="list"
       data-slot="item-group"
       className={cn(
-        "group/item-group flex w-full flex-col gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2 has-data-[slot=item-separator]:gap-0",
+        "group/item-group flex w-full flex-col gap-4 has-data-[size=sm]:gap-2.5 has-data-[size=xs]:gap-2 has-data-[slot=item-separator]:gap-0 has-data-[variant=divided]:gap-0",
         className
       )}
       {...props}
@@ -55,6 +57,7 @@ const itemVariants = cva(
         default: "border-transparent",
         outline: "border-border",
         muted: "border-transparent bg-muted/50",
+        divided: "rounded-none border-transparent border-b-border",
       },
       size: {
         default: "gap-2.5 px-3 py-2.5",

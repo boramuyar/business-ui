@@ -26,6 +26,12 @@ export function ItemVariants() {
           <ItemDescription>Subtle background.</ItemDescription>
         </ItemContent>
       </Item>
+      <Item variant="divided">
+        <ItemContent>
+          <ItemTitle>Divided item</ItemTitle>
+          <ItemDescription>Square row with a line below, for edge-to-edge lists.</ItemDescription>
+        </ItemContent>
+      </Item>
     </>
   )
 }
