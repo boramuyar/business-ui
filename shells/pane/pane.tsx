@@ -100,7 +100,7 @@ function PaneToolbar({
   return (
     <div
       data-slot="pane-toolbar"
-      className={cn("flex shrink-0 items-center gap-2 p-2", className)}
+      className={cn("flex shrink-0 items-center gap-2 p-3", className)}
       {...props}
     >
       {children}
