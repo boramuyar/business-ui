@@ -592,13 +592,8 @@ Picks one value from a list in a dropdown.
 
 ### skeleton
 
-Placeholder shapes shown while content loads.
 
-- Use: Loading content whose layout is known: table rows, cards, a detail page. Match the shape of the real content.
-- Avoid: Actions in progress: use spinner in the button.
-- Avoid: Nothing to show: use empty.
-- Related: spinner, empty, progress
-- Guide: [patterns/feedback.md](patterns/feedback.md)
+
 - File: `components/ui/skeleton.tsx`
 
 ### slider

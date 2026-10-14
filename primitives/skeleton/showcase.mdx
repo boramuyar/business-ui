@@ -12,12 +12,13 @@ Shape the skeleton with sizing classes - lines, circles, and blocks.
 
 ## Composition
 
-A skeleton of an item row - avatar, two text lines, and an action.
+A loading list built from the real `item` rows. `SkeletonText` sits inside the title and description, so each row is exactly as tall as a loaded one.
 
 <Preview name="skeleton-composition" />
 
 ## Usage
 
-Use `skeleton` while content loads, matching the final layout so nothing
-jumps. For indeterminate operations without a layout use `spinner`; for
-measurable progress use `progress`.
+Every loading state is a skeleton of the screen it becomes. Build it from the
+same components and put `SkeletonText` with sample text where the text will be,
+so nothing moves when the data arrives. Spinners only mark work that is running
+right now, such as a button's action; for measurable progress use `progress`.

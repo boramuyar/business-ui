@@ -6,6 +6,7 @@ registry item.
 ## 2026-10-15
 
 - `sheet`, `drawer`: the scrim no longer blurs the page, so people can still read what the panel acts on, such as a conversation behind an approval sheet. Pass `blurBackdrop` to the content to blur it again.
+- `skeleton`: new `SkeletonText` for text placeholders. It goes inside the element that will hold the text, such as an `ItemTitle` or a table cell, and takes sample text that stays invisible, so a skeleton row is exactly as tall as a loaded one and wraps like it.
 - `dialog`, `alert-dialog`: new `blurBackdrop` prop on the content, on by default. The overlay components take the same switch as `blur`.
 
 ## 2026-10-14
