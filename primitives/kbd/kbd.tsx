@@ -1,3 +1,6 @@
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Kbd
  * @level primitive
@@ -7,9 +10,6 @@
  * @avoid Code or values: use font-mono text.
  * @related command, tooltip, dropdown-menu
  */
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   return (
     <kbd

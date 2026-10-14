@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils"
+
 /**
  * @component Skeleton
  * @level primitive
@@ -9,8 +11,6 @@
  * @related spinner, empty, progress
  * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
-import { cn } from "@/lib/utils"
-
 function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

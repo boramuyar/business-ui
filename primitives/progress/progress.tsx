@@ -1,3 +1,7 @@
+import { Progress as ProgressPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Progress
  * @level primitive
@@ -7,10 +11,6 @@
  * @related spinner, skeleton
  * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
-import { Progress as ProgressPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Progress({
   className,
   value,

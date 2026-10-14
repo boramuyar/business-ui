@@ -1,3 +1,10 @@
+/** biome-ignore-all lint/a11y/useFocusableInteractive: no-fix */
+
+import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
+import { Slot } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Breadcrumb
  * @level composite
@@ -9,13 +16,6 @@
  * @related sidebar, page
  * @guide https://ui.uyar.design/design/foundations/layout.md
  */
-/** biome-ignore-all lint/a11y/useFocusableInteractive: no-fix */
-
-import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react"
-import { Slot } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav

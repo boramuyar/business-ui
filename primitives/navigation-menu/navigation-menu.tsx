@@ -1,3 +1,9 @@
+import { cva } from "class-variance-authority"
+import { ChevronDownIcon } from "lucide-react"
+import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Navigation Menu
  * @level composite
@@ -7,12 +13,6 @@
  * @avoid Actions: use dropdown-menu.
  * @related sidebar, menubar
  */
-import { cva } from "class-variance-authority"
-import { ChevronDownIcon } from "lucide-react"
-import { NavigationMenu as NavigationMenuPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function NavigationMenu({
   className,
   children,

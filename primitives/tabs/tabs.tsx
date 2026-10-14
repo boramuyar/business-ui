@@ -1,3 +1,8 @@
+import { cva, type VariantProps } from "class-variance-authority"
+import { Tabs as TabsPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Tabs
  * @level composite
@@ -10,11 +15,6 @@
  * @avoid Sequential steps: use a stepper pattern.
  * @related toggle-group, sidebar, detail-page
  */
-import { cva, type VariantProps } from "class-variance-authority"
-import { Tabs as TabsPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Tabs({
   className,
   orientation = "horizontal",

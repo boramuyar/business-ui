@@ -1,3 +1,7 @@
+import { Avatar as AvatarPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Avatar
  * @level primitive
@@ -9,10 +13,6 @@
  * @avoid Decorative icons: use a lucide icon.
  * @related badge, item, hover-card
  */
-import { Avatar as AvatarPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Avatar({
   className,
   size = "default",

@@ -1,3 +1,7 @@
+import { Separator as SeparatorPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Separator
  * @level layout
@@ -9,10 +13,6 @@
  * @related field, page
  * @guide https://ui.uyar.design/design/foundations/layout.md
  */
-import { Separator as SeparatorPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Separator({
   className,
   orientation = "horizontal",

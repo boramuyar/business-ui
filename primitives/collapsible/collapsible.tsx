@@ -1,3 +1,5 @@
+import { Collapsible as CollapsiblePrimitive } from "radix-ui"
+
 /**
  * @component Collapsible
  * @level composite
@@ -8,8 +10,6 @@
  * @avoid Required fields: never hide them.
  * @related accordion, sidebar
  */
-import { Collapsible as CollapsiblePrimitive } from "radix-ui"
-
 function Collapsible({
   ...props
 }: React.ComponentProps<typeof CollapsiblePrimitive.Root>) {

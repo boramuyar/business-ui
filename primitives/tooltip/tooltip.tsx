@@ -1,3 +1,7 @@
+import { Tooltip as TooltipPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Tooltip
  * @level surface
@@ -10,10 +14,6 @@
  * @related popover, hover-card, kbd, toggle
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { Tooltip as TooltipPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function TooltipProvider({
   delayDuration = 0,
   ...props

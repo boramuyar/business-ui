@@ -4,7 +4,7 @@ Read this before building UI with Business UI. It says which component, shell, c
 
 The rules live in two places:
 
-- **Next to the code.** Every component and shell starts with a usage header (`@use`, `@avoid`, `@related`). Read it before you use the file.
+- **Next to the code.** Every component and shell carries a usage header (`@use`, `@avoid`, `@related`) right below its imports. Read it before you use the file.
 - **On the site.** This page and the guides it links to are published at [ui.uyar.design/design.md](https://ui.uyar.design/design.md), with an index for agents at [ui.uyar.design/llms.txt](https://ui.uyar.design/llms.txt). Read them there so you always get the current version. Don't copy them into an app.
 
 ## Build a screen in this order

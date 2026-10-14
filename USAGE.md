@@ -95,7 +95,7 @@ Run the check straight from the site, which always serves the current version:
 curl -fsSL https://ui.uyar.design/design-check.mjs | node --input-type=module - src
 ```
 
-Every installed component and shell also starts with a usage header (`@use`, `@avoid`, `@related`), so the rules travel with the code and update when you re-pull an item. The short version:
+Every installed component and shell also carries a usage header (`@use`, `@avoid`, `@related`) below its imports, so the rules travel with the code and update when you re-pull an item. The short version:
 
 - Start every screen from a shell. Create a new one in `components/shells/` only with a `@closest`, `@why` and `@reuses` header.
 - Colors are role tokens only. The style removes Tailwind's palette, so `bg-blue-500` and `text-white` render nothing.

@@ -66,7 +66,7 @@ Add the bullet in the same change that alters what a consumer installs or sees: 
 
 ## Usage headers
 
-Every primitive and shell starts with a usage header. It is the source of truth for when to use the item: agents read it in the file they are about to use, and `pnpm design:build` collects all headers into `design/components.md`.
+Every primitive and shell carries a usage header directly below its imports. It is the source of truth for when to use the item: agents read it in the file they are about to use, and `pnpm design:build` collects all headers into `design/components.md`.
 
 ```tsx
 /**
@@ -84,12 +84,13 @@ Every primitive and shell starts with a usage header. It is the source of truth 
 - Each `@avoid` names the item to use instead.
 - Shells use `@shell` instead of `@component` and also need `@closest`, `@why` and `@reuses`.
 - Continuation lines are indented under the tag text.
+- Keep the header below the imports and any `"use client"` directive. `shadcn add` drops every comment above the first import, so a header at the top of the file never reaches the app.
 
 When a change affects when an item should be used, update its header, run `pnpm design:build`, and update the matching guide in `design/` if it has one.
 
 ## Add a primitive
 
-1. Create `primitives/<name>/<name>.tsx`, starting with a usage header.
+1. Create `primitives/<name>/<name>.tsx` with a usage header below the imports.
 2. Create `primitives/<name>/index.ts` that exports the component file.
 3. Create `primitives/<name>/registry.json`.
 4. Add `primitives/<name>/registry.json` to `primitives/registry.json`.
@@ -121,7 +122,7 @@ Supported `status` values are `draft`, `experimental`, and `stable`.
 ## Add a shell
 
 1. Check `design/shells.md`: a new shell must do something the existing ones can't.
-2. Create `shells/<name>/<name>.tsx`, built from `@/components/shells/page`, starting with a shell usage header.
+2. Create `shells/<name>/<name>.tsx`, built from `@/components/shells/page`, with a shell usage header below the imports.
 3. Create `shells/<name>/index.ts`, `shells/<name>/registry.json` (target `@components/shells/<name>.tsx`, type `registry:component`), and add it to `shells/registry.json`.
 4. Add `shells/<name>/showcase.mdx` and a demo in `shells/<name>/demos/`. Shell pages appear at `/shells/<name>`.
 5. Add the shell to the table in `design/shells.md` and run `pnpm design:build`.

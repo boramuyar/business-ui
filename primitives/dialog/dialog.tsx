@@ -1,3 +1,9 @@
+import { XIcon } from "lucide-react"
+import { Dialog as DialogPrimitive } from "radix-ui"
+import type * as React from "react"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Dialog
  * @level surface
@@ -13,12 +19,6 @@
  * @related alert-dialog, sheet, drawer, popover, form-page
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { XIcon } from "lucide-react"
-import { Dialog as DialogPrimitive } from "radix-ui"
-import type * as React from "react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {

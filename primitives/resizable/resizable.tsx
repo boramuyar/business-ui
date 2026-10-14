@@ -1,3 +1,7 @@
+import type * as React from "react"
+import * as ResizablePrimitive from "react-resizable-panels"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Resizable
  * @level layout
@@ -9,10 +13,6 @@
  * @related detail-page, scroll-area
  * @guide https://ui.uyar.design/design/foundations/layout.md
  */
-import type * as React from "react"
-import * as ResizablePrimitive from "react-resizable-panels"
-import { cn } from "@/lib/utils"
-
 function ResizablePanelGroup({
   className,
   ...props

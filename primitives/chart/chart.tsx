@@ -1,3 +1,8 @@
+import * as React from "react"
+import type { TooltipValueType } from "recharts"
+import * as RechartsPrimitive from "recharts"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Chart
  * @level composite
@@ -11,11 +16,6 @@
  * @related card, overview-page, table
  * @guide https://ui.uyar.design/design/foundations/color.md
  */
-import * as React from "react"
-import type { TooltipValueType } from "recharts"
-import * as RechartsPrimitive from "recharts"
-import { cn } from "@/lib/utils"
-
 // Format: { THEME_NAME: CSS_SELECTOR }
 const THEMES = { light: "", dark: ".dark" } as const
 

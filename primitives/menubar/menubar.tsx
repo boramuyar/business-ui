@@ -1,3 +1,8 @@
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
+import { Menubar as MenubarPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Menubar
  * @level composite
@@ -9,11 +14,6 @@
  * @related dropdown-menu, navigation-menu
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { CheckIcon, ChevronRightIcon } from "lucide-react"
-import { Menubar as MenubarPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Menubar({
   className,
   ...props

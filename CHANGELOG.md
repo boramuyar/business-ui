@@ -5,8 +5,9 @@ registry item.
 
 ## 2026-10-14
 
+- All primitives and shells: the usage header sits below the imports instead of at the top of the file. `shadcn add` dropped every comment above the first import, so installed files arrived without their header and failed the design check. Re-add items to get the header.
 - `button`: the `outline` variant is now `secondary`, on a white (`bg-card`) fill, and the old grey `secondary` is gone. Replace `variant="outline"` with `variant="secondary"`. Buttons no longer use `bg-clip-padding`, which left a light ring between the fill and the shadow when zoomed in.
-- `checkbox`: the check is drawn on a centered 12px grid instead of lucide's `CheckIcon` with a pixel nudge, so it stays centered at every zoom level. Indeterminate boxes are filled and show a dash. No longer depends on `lucide-react`.
+- `checkbox`: the check is drawn on a centered 12px grid instead of lucide's `CheckIcon` with a pixel nudge, so it stays centered at every zoom level. Indeterminate boxes are filled and show a dash. No longer depends on `lucide-react`. In dark mode a checked box keeps its `brand` fill; the dark input background now applies only while unchecked.
 - `file-input`: new composite. A secondary button with a plus icon picks one file, or with `multiple` adds files to a list where each can be removed. The native input stays in the form.
 - `input`: the native file picker button looks like a small secondary button. The usage header points to `file-input` for files.
 - `scroll-area`: scrollbars are 6px instead of 10px.

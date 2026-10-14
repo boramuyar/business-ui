@@ -1,3 +1,8 @@
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
+import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Dropdown Menu
  * @level surface
@@ -10,11 +15,6 @@
  * @related button, context-menu, select, popover
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { CheckIcon, ChevronRightIcon } from "lucide-react"
-import { DropdownMenu as DropdownMenuPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function DropdownMenu({
   ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) {

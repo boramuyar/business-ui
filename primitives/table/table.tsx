@@ -1,3 +1,6 @@
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Table
  * @level composite
@@ -9,9 +12,6 @@
  * @avoid Layout: never use a table to place things on a page.
  * @related list-page, pagination, item, empty
  */
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div

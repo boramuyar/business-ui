@@ -1,14 +1,3 @@
-/**
- * @component Sidebar
- * @level composite
- * @summary The app's main navigation column.
- * @use Navigation between the main screens of an app. Group items by area;
- *      mark the current screen as active.
- * @avoid Navigation inside one screen: use tabs.
- * @avoid Settings sections: use SettingsNavItem in settings-page.
- * @related breadcrumb, tabs, settings-page
- * @guide https://ui.uyar.design/design/foundations/layout.md
- */
 "use client"
 
 import { cva, type VariantProps } from "class-variance-authority"
@@ -35,6 +24,17 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
 
+/**
+ * @component Sidebar
+ * @level composite
+ * @summary The app's main navigation column.
+ * @use Navigation between the main screens of an app. Group items by area;
+ *      mark the current screen as active.
+ * @avoid Navigation inside one screen: use tabs.
+ * @avoid Settings sections: use SettingsNavItem in settings-page.
+ * @related breadcrumb, tabs, settings-page
+ * @guide https://ui.uyar.design/design/foundations/layout.md
+ */
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
 const SIDEBAR_WIDTH = "16rem"

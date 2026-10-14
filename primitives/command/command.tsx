@@ -1,14 +1,3 @@
-/**
- * @component Command
- * @level composite
- * @summary A searchable list of commands or destinations, usually in a
- *          dialog.
- * @use A Cmd+K palette for jumping to records or running actions.
- * @use The list inside a combobox.
- * @avoid Choosing a form value: use combobox or select.
- * @avoid Primary navigation: use sidebar.
- * @related combobox, dialog, kbd
- */
 import { Command as CommandPrimitive } from "cmdk"
 import { CheckIcon, SearchIcon } from "lucide-react"
 import type * as React from "react"
@@ -22,6 +11,17 @@ import {
 import { InputGroup, InputGroupAddon } from "@/components/ui/input-group"
 import { cn } from "@/lib/utils"
 
+/**
+ * @component Command
+ * @level composite
+ * @summary A searchable list of commands or destinations, usually in a
+ *          dialog.
+ * @use A Cmd+K palette for jumping to records or running actions.
+ * @use The list inside a combobox.
+ * @avoid Choosing a form value: use combobox or select.
+ * @avoid Primary navigation: use sidebar.
+ * @related combobox, dialog, kbd
+ */
 function Command({
   className,
   ...props

@@ -1,3 +1,7 @@
+import { cva, type VariantProps } from "class-variance-authority"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Alert
  * @level primitive
@@ -15,10 +19,6 @@
  * @related sonner, alert-dialog, field, empty
  * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
-import { cva, type VariantProps } from "class-variance-authority"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 const alertVariants = cva(
   "group/alert relative grid w-full gap-0.5 rounded-md border border-border bg-card px-3 py-2.5 text-left text-xs text-card-foreground has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-24 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2.5 not-has-data-[slot=alert-description]:items-center has-data-[slot=alert-description]:*:[svg]:row-span-2 *:[svg]:box-border *:[svg]:size-7 *:[svg]:rounded-md *:[svg]:p-1.5",
   {

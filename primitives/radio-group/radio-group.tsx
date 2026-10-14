@@ -1,3 +1,7 @@
+import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Radio Group
  * @level primitive
@@ -10,10 +14,6 @@
  * @related toggle-group, select, checkbox, field
  * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
-import { RadioGroup as RadioGroupPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function RadioGroup({
   className,
   ...props

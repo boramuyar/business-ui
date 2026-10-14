@@ -1,3 +1,6 @@
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @shell Page
  * @level shell
@@ -18,9 +21,6 @@
  * - Search, filters and view switches go in PageToolbar, never in the header.
  * - Width is narrow (forms), default, or full (wide tables and boards). Nothing else.
  */
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 const pageWidths = {
   narrow: "max-w-2xl",
   default: "max-w-6xl",

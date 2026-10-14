@@ -1,3 +1,7 @@
+import { ChevronDownIcon } from "lucide-react"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Native Select
  * @level primitive
@@ -9,10 +13,6 @@
  * @related select, combobox
  * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
-import { ChevronDownIcon } from "lucide-react"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 type NativeSelectProps = Omit<React.ComponentProps<"select">, "size"> & {
   size?: "sm" | "default"
 }

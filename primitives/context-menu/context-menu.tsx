@@ -1,3 +1,8 @@
+import { CheckIcon, ChevronRightIcon } from "lucide-react"
+import { ContextMenu as ContextMenuPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Context Menu
  * @level surface
@@ -10,11 +15,6 @@
  * @related dropdown-menu, menubar
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { CheckIcon, ChevronRightIcon } from "lucide-react"
-import { ContextMenu as ContextMenuPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function ContextMenu({
   ...props
 }: React.ComponentProps<typeof ContextMenuPrimitive.Root>) {

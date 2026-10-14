@@ -1,6 +1,6 @@
 # Component catalog
 
-Generated from the usage header at the top of each component and shell. Do not edit by hand: change the header in the source file, then run `pnpm design:build`.
+Generated from the usage header of each component and shell. Do not edit by hand: change the header in the source file, then run `pnpm design:build`.
 
 Each entry says when to use the item and what to use instead. Install names match the headings: `pnpm dlx shadcn@latest add boramuyar/business-ui/<name>`.
 

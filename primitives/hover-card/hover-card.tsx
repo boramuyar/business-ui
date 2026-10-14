@@ -1,3 +1,7 @@
+import { HoverCard as HoverCardPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Hover Card
  * @level surface
@@ -10,10 +14,6 @@
  * @related tooltip, popover, avatar
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { HoverCard as HoverCardPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function HoverCard({
   ...props
 }: React.ComponentProps<typeof HoverCardPrimitive.Root>) {

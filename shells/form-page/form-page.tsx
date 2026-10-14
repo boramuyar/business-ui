@@ -1,3 +1,7 @@
+import type * as React from "react"
+import { Page, PageBody, PageHeader } from "@/components/shells/page"
+import { FieldGroup } from "@/components/ui/field"
+
 /**
  * @shell FormPage
  * @level shell
@@ -17,10 +21,6 @@
  * - Group related fields with FieldSet and FieldLegend instead of cards.
  * - actions: Cancel (variant="secondary") then the submit button named for the result ("Create invoice", not "Submit").
  */
-import type * as React from "react"
-import { Page, PageBody, PageHeader } from "@/components/shells/page"
-import { FieldGroup } from "@/components/ui/field"
-
 function FormPage({
   title,
   description,

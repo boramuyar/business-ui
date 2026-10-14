@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Builds design/components.md from the usage header at the top of every
+ * Builds design/components.md from the usage header below the imports of every
  * primitive and shell. The header comment is the source of truth; this file
  * only collects it so agents can scan every component in one place.
  *
@@ -73,7 +73,8 @@ async function readEntries(folder) {
 }
 
 function parseHeader(source) {
-  const header = source.match(/^\s*\/\*\*([\s\S]*?)\*\//)?.[1] ?? ""
+  const header =
+    source.match(/\/\*\*((?:(?!\*\/)[\s\S])*?@(?:component|shell)\b[\s\S]*?)\*\//)?.[1] ?? ""
   const tags = {}
   let current
 
@@ -98,7 +99,7 @@ function render(items) {
   const lines = [
     "# Component catalog",
     "",
-    "Generated from the usage header at the top of each component and shell. Do not edit by hand: change the header in the source file, then run `pnpm design:build`.",
+    "Generated from the usage header of each component and shell. Do not edit by hand: change the header in the source file, then run `pnpm design:build`.",
     "",
     "Each entry says when to use the item and what to use instead. Install names match the headings: `pnpm dlx shadcn@latest add boramuyar/business-ui/<name>`.",
     "",

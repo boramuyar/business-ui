@@ -1,3 +1,6 @@
+import type * as React from "react"
+import { Page, PageBody, PageHeader } from "@/components/shells/page"
+
 /**
  * @shell DetailPage
  * @level shell
@@ -18,9 +21,6 @@
  * - aside: key facts as label and value pairs: status badge, owner, dates, totals.
  * - children: the main content, grouped with PageSection or card.
  */
-import type * as React from "react"
-import { Page, PageBody, PageHeader } from "@/components/shells/page"
-
 function DetailPage({
   title,
   description,

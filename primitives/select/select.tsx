@@ -1,3 +1,8 @@
+import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
+import { Select as SelectPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Select
  * @level primitive
@@ -10,11 +15,6 @@
  * @related combobox, radio-group, native-select, field
  * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
-import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
-import { Select as SelectPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Select({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root>) {

@@ -1,3 +1,8 @@
+import { OTPInput, OTPInputContext } from "input-otp"
+import { MinusIcon } from "lucide-react"
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Input Otp
  * @level primitive
@@ -6,11 +11,6 @@
  * @avoid Passwords or any other text: use input.
  * @related input, field
  */
-import { OTPInput, OTPInputContext } from "input-otp"
-import { MinusIcon } from "lucide-react"
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
 function InputOTP({
   className,
   containerClassName,

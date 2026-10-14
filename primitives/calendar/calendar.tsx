@@ -1,14 +1,3 @@
-/**
- * @component Calendar
- * @level primitive
- * @summary A month grid for picking a date or a date range.
- * @use Inside a popover as a date picker, or inline when the date is the main
- *      input of a screen.
- * @avoid Dates people know by heart, such as a birth date: use input with a
- *        date format.
- * @avoid Scheduling views: build a dedicated layout.
- * @related popover, input, field
- */
 import {
   ChevronDownIcon,
   ChevronLeftIcon,
@@ -24,6 +13,17 @@ import {
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
+/**
+ * @component Calendar
+ * @level primitive
+ * @summary A month grid for picking a date or a date range.
+ * @use Inside a popover as a date picker, or inline when the date is the main
+ *      input of a screen.
+ * @avoid Dates people know by heart, such as a birth date: use input with a
+ *        date format.
+ * @avoid Scheduling views: build a dedicated layout.
+ * @related popover, input, field
+ */
 function Calendar({
   className,
   classNames,

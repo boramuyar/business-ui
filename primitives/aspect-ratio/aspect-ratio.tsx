@@ -1,3 +1,5 @@
+import { AspectRatio as AspectRatioPrimitive } from "radix-ui"
+
 /**
  * @component Aspect Ratio
  * @level layout
@@ -7,8 +9,6 @@
  * @avoid Text containers: let content set the height.
  * @related card, skeleton
  */
-import { AspectRatio as AspectRatioPrimitive } from "radix-ui"
-
 function AspectRatio({
   ...props
 }: React.ComponentProps<typeof AspectRatioPrimitive.Root>) {

@@ -1,3 +1,7 @@
+import { Slider as SliderPrimitive } from "radix-ui"
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Slider
  * @level primitive
@@ -9,10 +13,6 @@
  * @related input, toggle-group
  * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
-import { Slider as SliderPrimitive } from "radix-ui"
-import * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Slider({
   className,
   defaultValue,

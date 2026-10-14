@@ -1,3 +1,8 @@
+import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
+import type * as React from "react"
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Alert Dialog
  * @level surface
@@ -12,11 +17,6 @@
  * @related dialog, sonner, button
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { AlertDialog as AlertDialogPrimitive } from "radix-ui"
-import type * as React from "react"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-
 function AlertDialog({
   ...props
 }: React.ComponentProps<typeof AlertDialogPrimitive.Root>) {

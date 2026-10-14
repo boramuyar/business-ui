@@ -1,3 +1,12 @@
+import type * as React from "react"
+import {
+  Page,
+  PageBody,
+  PageHeader,
+  PageToolbar,
+  type PageWidth,
+} from "@/components/shells/page"
+
 /**
  * @shell ListPage
  * @level shell
@@ -18,15 +27,6 @@
  * - summary: up to four stat cards, only when the numbers change what people do next.
  * - children: a table, or a card grid when records are visual. Show empty when there are no rows.
  */
-import type * as React from "react"
-import {
-  Page,
-  PageBody,
-  PageHeader,
-  PageToolbar,
-  type PageWidth,
-} from "@/components/shells/page"
-
 function ListPage({
   title,
   description,

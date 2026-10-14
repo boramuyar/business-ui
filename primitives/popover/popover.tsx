@@ -1,3 +1,7 @@
+import { Popover as PopoverPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Popover
  * @level surface
@@ -10,10 +14,6 @@
  * @related dropdown-menu, tooltip, dialog, calendar
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import { Popover as PopoverPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Popover({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.Root>) {

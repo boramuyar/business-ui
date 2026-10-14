@@ -1,3 +1,8 @@
+import { ChevronDownIcon } from "lucide-react"
+import { Accordion as AccordionPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Accordion
  * @level composite
@@ -9,11 +14,6 @@
  * @avoid Primary navigation: use sidebar or navigation-menu.
  * @related collapsible, tabs
  */
-import { ChevronDownIcon } from "lucide-react"
-import { Accordion as AccordionPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Accordion({
   className,
   ...props

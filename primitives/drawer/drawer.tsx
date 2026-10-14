@@ -1,3 +1,7 @@
+import type * as React from "react"
+import { Drawer as DrawerPrimitive } from "vaul"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Drawer
  * @level surface
@@ -9,10 +13,6 @@
  * @related dialog, sheet
  * @guide https://ui.uyar.design/design/patterns/overlays.md
  */
-import type * as React from "react"
-import { Drawer as DrawerPrimitive } from "vaul"
-import { cn } from "@/lib/utils"
-
 function Drawer({
   ...props
 }: React.ComponentProps<typeof DrawerPrimitive.Root>) {

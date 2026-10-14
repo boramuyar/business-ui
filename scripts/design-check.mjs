@@ -94,7 +94,10 @@ async function checkFile(file) {
     }
   })
 
-  const header = source.match(/\/\*\*[\s\S]*?\*\//)?.[0] ?? ""
+  // The usage header is the doc comment that carries @component or @shell. It
+  // sits below the imports, because `shadcn add` drops comments above them.
+  const header =
+    source.match(/\/\*\*(?:(?!\*\/)[\s\S])*?@(?:component|shell)\b[\s\S]*?\*\//)?.[0] ?? ""
 
   if (isShellFile(path)) {
     const missing = SHELL_TAGS.filter((tag) => !new RegExp(`${tag}\\s+\\S`).test(header))

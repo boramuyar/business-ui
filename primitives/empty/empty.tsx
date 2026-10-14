@@ -1,3 +1,6 @@
+import { cva, type VariantProps } from "class-variance-authority"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Empty
  * @level composite
@@ -9,9 +12,6 @@
  * @related alert, skeleton, list-page
  * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
-
 function Empty({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

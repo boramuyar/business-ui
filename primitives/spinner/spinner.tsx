@@ -1,3 +1,7 @@
+import type * as React from "react"
+import { Loader2Icon } from "lucide-react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Spinner
  * @level primitive
@@ -9,10 +13,6 @@
  * @related skeleton, progress, button
  * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
-import type * as React from "react"
-import { Loader2Icon } from "lucide-react"
-import { cn } from "@/lib/utils"
-
 function Spinner({ className, ...props }: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <Loader2Icon

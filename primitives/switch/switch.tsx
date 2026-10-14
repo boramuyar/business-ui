@@ -1,3 +1,7 @@
+import { Switch as SwitchPrimitive } from "radix-ui"
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Switch
  * @level primitive
@@ -10,10 +14,6 @@
  * @related checkbox, toggle, toggle-group, settings-page
  * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
-import { Switch as SwitchPrimitive } from "radix-ui"
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Switch({
   className,
   size = "default",

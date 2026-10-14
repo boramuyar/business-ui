@@ -1,3 +1,6 @@
+import type * as React from "react"
+import { Page, PageBody, PageHeader } from "@/components/shells/page"
+
 /**
  * @shell OverviewPage
  * @level shell
@@ -15,9 +18,6 @@
  * - children: panels in a grid. Charts take full width or half width, never thirds.
  * - Use chart colors only through the chart-* tokens.
  */
-import type * as React from "react"
-import { Page, PageBody, PageHeader } from "@/components/shells/page"
-
 function OverviewPage({
   title,
   description,

@@ -1,3 +1,6 @@
+import type * as React from "react"
+import { cn } from "@/lib/utils"
+
 /**
  * @component Card
  * @level composite
@@ -11,9 +14,6 @@
  * @related item, table, overview-page
  * @guide https://ui.uyar.design/design/foundations/layout.md
  */
-import type * as React from "react"
-import { cn } from "@/lib/utils"
-
 function Card({
   className,
   size = "default",

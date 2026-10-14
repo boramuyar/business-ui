@@ -33,7 +33,7 @@ Climb these steps and stop at the first that works:
 3. Compose `Page` parts and components inside a screen.
 4. Create a new shell.
 
-A new shell goes in `components/shells/<name>.tsx`, builds on `page`, and starts with a header the design check verifies:
+A new shell goes in `components/shells/<name>.tsx`, builds on `page`, and carries a header below its imports that the design check verifies:
 
 ```tsx
 /**

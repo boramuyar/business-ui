@@ -1,3 +1,12 @@
+import type * as React from "react"
+import {
+  Page,
+  PageBody,
+  PageHeader,
+  PageSection,
+} from "@/components/shells/page"
+import { cn } from "@/lib/utils"
+
 /**
  * @shell SettingsPage
  * @level shell
@@ -15,15 +24,6 @@
  * - A section that needs a Save button puts it at the end of that section only.
  * - Destructive settings (delete workspace) go last, in their own section, behind alert-dialog.
  */
-import type * as React from "react"
-import {
-  Page,
-  PageBody,
-  PageHeader,
-  PageSection,
-} from "@/components/shells/page"
-import { cn } from "@/lib/utils"
-
 function SettingsPage({
   title,
   description,
