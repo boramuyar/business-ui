@@ -13,7 +13,15 @@ const styleItem = {
   type: "registry:style",
   title: "Business UI Style",
   description:
-    "Tailwind v4 theme, tokens, fonts, base styles, and custom utilities.",
+    "Tailwind v4 theme, tokens, base styles, and custom utilities. Install once per app.",
+}
+
+const fontsItem = {
+  name: "fonts",
+  type: "registry:item",
+  title: "Business UI Fonts",
+  description:
+    "Inter and JetBrains Mono from npm, the families the style's --font-sans and --font-mono name. Skip it when the app hosts the fonts itself.",
 }
 
 export const styleSourceFiles = [
@@ -60,7 +68,9 @@ export async function generateStyle(options = {}) {
     ...(cssSource.css ?? {}),
     ...buildColorFallbacks(colors),
   }
-  const globalsCss = renderGlobalsCss({ css, cssVars })
+  const fontsCss = cssSource.fonts?.css ?? {}
+  // The reference stylesheet (and the showcase) is a full install: style + fonts.
+  const globalsCss = renderGlobalsCss({ css: { ...css, ...fontsCss }, cssVars })
   const registry = {
     $schema: "https://ui.shadcn.com/schema/registry.json",
     items: [
@@ -69,6 +79,11 @@ export async function generateStyle(options = {}) {
         dependencies: cssSource.dependencies ?? [],
         cssVars,
         css,
+      },
+      {
+        ...fontsItem,
+        dependencies: cssSource.fonts?.dependencies ?? [],
+        css: fontsCss,
       },
     ],
   }
@@ -117,7 +132,10 @@ function prefixVarKeys(vars) {
 
 function renderGlobalsCss({ css, cssVars }) {
   const entries = Object.entries(css)
-  const directives = entries.filter(([key, value]) => isDirective(key, value))
+  // @import has to precede every other statement, wherever its source sits.
+  const directives = entries
+    .filter(([key, value]) => isDirective(key, value))
+    .sort(([a], [b]) => directiveOrder(a) - directiveOrder(b))
   const rules = entries.filter(([key, value]) => !isDirective(key, value))
 
   return [
@@ -130,6 +148,12 @@ function renderGlobalsCss({ css, cssVars }) {
     .filter(Boolean)
     .join("\n\n")
     .concat("\n")
+}
+
+function directiveOrder(key) {
+  return ["@import", "@plugin", "@custom-variant"].findIndex((prefix) =>
+    key.startsWith(prefix)
+  )
 }
 
 function isDirective(key, value) {

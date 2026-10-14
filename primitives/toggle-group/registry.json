@@ -21,7 +21,6 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/style",
         "boramuyar/business-ui/toggle"
       ]
     }

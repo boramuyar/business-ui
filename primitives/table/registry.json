@@ -15,9 +15,6 @@
           "type": "registry:ui",
           "target": "@ui/table.tsx"
         }
-      ],
-      "registryDependencies": [
-        "boramuyar/business-ui/style"
       ]
     }
   ]

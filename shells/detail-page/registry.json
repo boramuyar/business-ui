@@ -17,7 +17,6 @@
         }
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/style",
         "boramuyar/business-ui/page"
       ]
     }

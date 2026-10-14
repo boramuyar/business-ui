@@ -19,9 +19,6 @@
       "dependencies": [
         "input-otp",
         "lucide-react"
-      ],
-      "registryDependencies": [
-        "boramuyar/business-ui/style"
       ]
     }
   ]

@@ -18,9 +18,6 @@
       ],
       "dependencies": [
         "radix-ui"
-      ],
-      "registryDependencies": [
-        "boramuyar/business-ui/style"
       ]
     }
   ]

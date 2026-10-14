@@ -14,7 +14,7 @@ import { PageHeader } from "../components/page-header"
 import { navSections } from "../layout/site-nav"
 import { primitiveRoutes, shellRoutes } from "../primitives-data"
 
-const quickInstallCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/style`
+const quickInstallCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/style boramuyar/business-ui/fonts`
 
 const sectionCopy: Record<string, string> = {
   foundations:

@@ -5,7 +5,7 @@ a token-driven Tailwind v4 style, shadcn-compatible primitives and page shells, 
 agents can follow, previewed in a Vite showcase.
 
 ```bash
-pnpm dlx shadcn@latest add boramuyar/business-ui/style
+pnpm dlx shadcn@latest add boramuyar/business-ui/style boramuyar/business-ui/fonts
 pnpm dlx shadcn@latest add boramuyar/business-ui/button
 ```
 

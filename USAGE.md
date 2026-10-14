@@ -42,12 +42,25 @@ Use the GitHub registry address directly:
 pnpm dlx shadcn@latest add boramuyar/business-ui/<item>
 ```
 
-Examples:
+Set up the app once with the style and the fonts, then add items as you
+need them:
 
 ```bash
-pnpm dlx shadcn@latest add boramuyar/business-ui/style
+pnpm dlx shadcn@latest add boramuyar/business-ui/style boramuyar/business-ui/fonts
 pnpm dlx shadcn@latest add boramuyar/business-ui/button
 ```
+
+Items do not depend on `style`, so adding or re-adding one never touches
+your global CSS. Re-run the `style` add to pick up token changes.
+
+### Fonts
+
+The style names Inter Variable and JetBrains Mono Variable in `--font-sans`
+and `--font-mono`. The `fonts` item imports them from the
+`@fontsource-variable` npm packages. Skip it when the app serves the fonts
+itself, for example under a Content Security Policy that blocks the
+`data:` URIs a bundler inlines small font files as: declare `@font-face`
+rules for the same two family names instead.
 
 ### Optional: the `@business-ui` namespace
 
@@ -66,7 +79,7 @@ app's `components.json` once:
 Then install with the shorter address:
 
 ```bash
-pnpm dlx shadcn@latest add @business-ui/style @business-ui/button
+pnpm dlx shadcn@latest add @business-ui/style @business-ui/fonts @business-ui/button
 ```
 
 Both forms install the same files. Item dependencies always use the GitHub
@@ -74,7 +87,8 @@ address, so they resolve with or without the namespace.
 
 ## Common items
 
-- `boramuyar/business-ui/style` - theme, tokens, fonts, base styles, and custom utilities.
+- `boramuyar/business-ui/style` - theme, tokens, base styles, and custom utilities. Install once.
+- `boramuyar/business-ui/fonts` - Inter and JetBrains Mono from npm. Skip it if the app hosts them.
 - `boramuyar/business-ui/button` - button primitive.
 - `boramuyar/business-ui/use-mobile` - mobile viewport hook used by sidebar.
 - `boramuyar/business-ui/list-page` (and `page`, `detail-page`, `form-page`, `settings-page`, `overview-page`) - page shells, installed to `components/shells/`.
@@ -153,7 +167,7 @@ override and the tints derived from it, as `rgb()`, inside the matching block:
 
 ## Notes for consuming agents
 
-- Install `style` before primitives when setting up a new app.
+- Install `style` (and `fonts`, unless the app hosts them) once when setting up an app; items do not pull it in.
 - Use the full GitHub or `@business-ui` address. Bare names such as `button` refer to the public
   shadcn registry.
 - React 18 and 19 are both supported (typecheck-verified across all items).

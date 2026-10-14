@@ -22,7 +22,6 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/style",
         "boramuyar/business-ui/button",
         "boramuyar/business-ui/input",
         "boramuyar/business-ui/separator",

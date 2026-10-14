@@ -96,7 +96,7 @@ When a change affects when an item should be used, update its header, run `pnpm 
 4. Add `primitives/<name>/registry.json` to `primitives/registry.json`.
 5. Optionally create `primitives/<name>/showcase.mdx` for the routed showcase page.
 6. Use registry targets like `@ui/<name>.tsx`.
-7. Use full same-repository dependency addresses, for example `boramuyar/business-ui/style` and `boramuyar/business-ui/button`.
+7. Use full same-repository dependency addresses, for example `boramuyar/business-ui/button`. Do not list `style`: apps install it once, and a dependency on it would re-merge the style into the app's CSS on every add.
 
 Primitive source should use shadcn-compatible imports:
 
@@ -174,7 +174,7 @@ Use the layered shadow utilities instead of Tailwind's stock `shadow-sm`/`shadow
 - `shadow-raised` - cards and floating or inset sidebars.
 - `shadow-overlay` - popovers, menus, select and combobox lists, hover cards, tooltips, toasts.
 - `shadow-modal` - dialogs, alert dialogs, sheets, and drawers.
-- `style/css.json` - style dependencies, imports, plugins, base rules, and custom utilities.
+- `style/css.json` - style dependencies, imports, plugins, base rules, and custom utilities. Its `fonts` section becomes the separate `fonts` item.
 
 The showcase Vite config runs a local style generator plugin. When `style/colors.json`, `style/tokens.json`, `style/theme.json`, or `style/css.json` changes during `pnpm dev`, the plugin regenerates `style/globals.css` and `style/registry.json`, then reloads the page.
 

@@ -5,9 +5,11 @@ registry item.
 
 ## 2026-10-14
 
+- `fonts`: new item. It holds the Inter and JetBrains Mono imports and their `@fontsource-variable` packages, which used to come with `style`. Apps that serve the fonts themselves skip it.
+- All primitives, shells and `use-mobile`: no longer depend on `style`. Install `style` once per app; adding an item no longer re-merges the style into your global CSS.
 - All primitives and shells: the usage header sits below the imports instead of at the top of the file. `shadcn add` dropped every comment above the first import, so installed files arrived without their header and failed the design check. Re-add items to get the header.
 - `button`: the `outline` variant is now `secondary`, on a white (`bg-card`) fill, and the old grey `secondary` is gone. Replace `variant="outline"` with `variant="secondary"`. Buttons no longer use `bg-clip-padding`, which left a light ring between the fill and the shadow when zoomed in. New `tooltipSide` prop picks the side the `tooltip` opens on.
-- `style`: ends with `rgb()` fallbacks for engines without `oklch()`, `color-mix()` or relative color syntax, such as the WKWebView that Office for Mac uses for add-ins; they are computed from the shipped colors. Adds the `--breakpoint-sidebar` theme breakpoint (48rem), which drives the new `sidebar:` variant; override it in your own `@theme` block.
+- `style`: no longer imports fonts; add `fonts` for them. Ends with `rgb()` fallbacks for engines without `oklch()`, `color-mix()` or relative color syntax, such as the WKWebView that Office for Mac uses for add-ins; they are computed from the shipped colors. Adds the `--breakpoint-sidebar` theme breakpoint (48rem), which drives the new `sidebar:` variant; override it in your own `@theme` block.
 - `sidebar`: docks at the `sidebar:` breakpoint instead of `md:`, so a host can change where the sidebar docks without moving every `md:` layout. Saving the open state no longer throws where the Cookie Store API is missing (older webviews, jsdom), and the cookie now gets a real expiry date and `path=/`.
 - `use-mobile`: follows `--breakpoint-sidebar` instead of `--breakpoint-md`, and reads rem values; it used to fall back to 768px whenever the breakpoint was in rem.
 - `sonner`: follows the `.dark` class on `<html>` instead of `next-themes`, so the dependency is gone and no theme provider is needed.

@@ -16,7 +16,7 @@ import { copyText } from "../lib/copy-text"
 
 const installCommand = `pnpm dlx shadcn@latest add boramuyar/business-ui/<item>`
 
-const exampleCommands = `pnpm dlx shadcn@latest add boramuyar/business-ui/style
+const exampleCommands = `pnpm dlx shadcn@latest add boramuyar/business-ui/style boramuyar/business-ui/fonts
 pnpm dlx shadcn@latest add boramuyar/business-ui/button`
 
 const namespaceConfig = `{
@@ -25,14 +25,18 @@ const namespaceConfig = `{
   }
 }`
 
-const namespaceCommand = `pnpm dlx shadcn@latest add @business-ui/style @business-ui/button`
+const namespaceCommand = `pnpm dlx shadcn@latest add @business-ui/style @business-ui/fonts @business-ui/button`
 
 const previewCommand = `pnpm dlx shadcn@latest view boramuyar/business-ui/button`
 
 const commonItems = [
   {
     name: "boramuyar/business-ui/style",
-    description: "Theme, tokens, fonts, base styles, and custom utilities.",
+    description: "Theme, tokens, base styles, and custom utilities. Install once.",
+  },
+  {
+    name: "boramuyar/business-ui/fonts",
+    description: "Inter and JetBrains Mono from npm. Skip it if the app hosts them.",
   },
   {
     name: "boramuyar/business-ui/button",

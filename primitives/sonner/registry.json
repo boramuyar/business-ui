@@ -19,9 +19,6 @@
       "dependencies": [
         "lucide-react",
         "sonner"
-      ],
-      "registryDependencies": [
-        "boramuyar/business-ui/style"
       ]
     }
   ]

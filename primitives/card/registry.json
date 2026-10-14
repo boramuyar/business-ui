@@ -15,9 +15,6 @@
           "type": "registry:ui",
           "target": "@ui/card.tsx"
         }
-      ],
-      "registryDependencies": [
-        "boramuyar/business-ui/style"
       ]
     }
   ]

@@ -18,9 +18,6 @@
       ],
       "dependencies": [
         "vaul"
-      ],
-      "registryDependencies": [
-        "boramuyar/business-ui/style"
       ]
     }
   ]

@@ -52,7 +52,7 @@ const lines = [
   "",
   "## Install",
   "",
-  "- Style first: `pnpm dlx shadcn@latest add boramuyar/business-ui/style`",
+  "- Style and fonts once per app: `pnpm dlx shadcn@latest add boramuyar/business-ui/style boramuyar/business-ui/fonts`",
   "- Then items: `pnpm dlx shadcn@latest add boramuyar/business-ui/<item>`",
   `- Item JSON: ${siteUrl}/r/<item>.json`,
   "",

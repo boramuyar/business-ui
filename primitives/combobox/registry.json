@@ -21,7 +21,6 @@
         "lucide-react"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/style",
         "boramuyar/business-ui/button",
         "boramuyar/business-ui/input-group"
       ]

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 @import "shadcn/tailwind.css";
 @import "tw-animate-css";
-@plugin "tailwind-scrollbar";
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/jetbrains-mono";
+@plugin "tailwind-scrollbar";
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

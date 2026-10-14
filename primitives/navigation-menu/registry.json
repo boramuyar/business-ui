@@ -20,9 +20,6 @@
         "class-variance-authority",
         "lucide-react",
         "radix-ui"
-      ],
-      "registryDependencies": [
-        "boramuyar/business-ui/style"
       ]
     }
   ]

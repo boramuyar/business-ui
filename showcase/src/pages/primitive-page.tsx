@@ -112,9 +112,9 @@ export function PrimitivePage({
           <RailSection title="Depends on">
             <DependencyNames
               names={[
-                ...route.registryDependencies
-                  .map((name) => name.replace("boramuyar/business-ui/", ""))
-                  .filter((name) => name !== "style"),
+                ...route.registryDependencies.map((name) =>
+                  name.replace("boramuyar/business-ui/", "")
+                ),
                 ...route.dependencies,
               ]}
             />
