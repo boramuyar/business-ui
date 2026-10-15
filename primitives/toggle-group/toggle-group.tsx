@@ -14,6 +14,8 @@ import { cn } from "@/lib/utils"
  * @use 2 to 5 short options that switch a view or mode and apply immediately:
  *      List or Board, Day, Week or Month.
  * @use type="multiple" for toolbar formatting groups.
+ * @use variant="chip" type="multiple" spacing={1}: category filters on a list.
+ *      Leave out an "All" chip: with none on, the list shows everything.
  * @avoid Options need descriptions, or the choice is submitted with a form:
  *        use radio-group.
  * @avoid More than 5 options: use select.

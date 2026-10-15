@@ -662,6 +662,7 @@ A multi-line text field.
 A button that holds an on or off state.
 
 - Use: Toolbar states: bold, pin, show grid, mute. Usually icon-only with a tooltip.
+- Use: variant="chip" in a toggle-group with type="multiple": filter chips that narrow a list by category, each switched on and off on its own.
 - Avoid: Settings with a text label: use switch.
 - Avoid: One of several options: use toggle-group.
 - Avoid: Actions without state: use button.
@@ -675,6 +676,7 @@ A row of buttons where one (or several) can be active; also called a segmented c
 
 - Use: 2 to 5 short options that switch a view or mode and apply immediately: List or Board, Day, Week or Month.
 - Use: type="multiple" for toolbar formatting groups.
+- Use: variant="chip" type="multiple" spacing={1}: category filters on a list. Leave out an "All" chip: with none on, the list shows everything.
 - Avoid: Options need descriptions, or the choice is submitted with a form: use radio-group.
 - Avoid: More than 5 options: use select.
 - Avoid: Switching between areas of content: use tabs.

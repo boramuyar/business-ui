@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils"
  * @summary A button that holds an on or off state.
  * @use Toolbar states: bold, pin, show grid, mute. Usually icon-only with a
  *      tooltip.
+ * @use variant="chip" in a toggle-group with type="multiple": filter chips
+ *      that narrow a list by category, each switched on and off on its own.
  * @avoid Settings with a text label: use switch.
  * @avoid One of several options: use toggle-group.
  * @avoid Actions without state: use button.
@@ -22,6 +24,7 @@ const toggleVariants = cva(
       variant: {
         default: "bg-transparent",
         outline: "border border-input bg-transparent hover:bg-muted",
+        chip: "rounded-full border border-border bg-transparent hover:bg-muted aria-pressed:border-brand-border aria-pressed:bg-brand-subtle aria-pressed:text-brand-emphasis data-[state=on]:border-brand-border data-[state=on]:bg-brand-subtle data-[state=on]:text-brand-emphasis",
       },
       size: {
         default:
@@ -30,6 +33,10 @@ const toggleVariants = cva(
         lg: "h-9 min-w-9 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
       },
     },
+    compoundVariants: [
+      // A chip is shorter than a button at every size, so a row of them reads as filters, not actions.
+      { variant: "chip", className: "h-6 min-w-6 px-2.5" },
+    ],
     defaultVariants: {
       variant: "default",
       size: "default",
