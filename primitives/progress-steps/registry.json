@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "progress-steps",
+      "type": "registry:ui",
+      "title": "Progress Steps",
+      "description": "The steps of running work, each done, running, pending or failed.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "progress-steps.tsx",
+          "type": "registry:ui",
+          "target": "@ui/progress-steps.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/spinner"
+      ]
+    }
+  ]
+}

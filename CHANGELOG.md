@@ -5,6 +5,9 @@ registry item.
 
 ## 2026-10-15
 
+- `progress-steps`: new primitive listing the steps of running work, each done, running (with a spinner), pending or failed. Pair it with `ProgressCircle` on a screen that waits for one task.
+- `progress`: new `ProgressCircle`, the same value as a ring with room for a count in its center.
+- `switch`: an off switch has a `muted-foreground` track and a shadowed thumb, so it no longer looks disabled. The old track matched the border color and the white thumb barely showed on it; the track now has 3:1 contrast against the page.
 - `dropdown-menu`: the menu is as wide as its longest item (at least 8rem or the trigger's width) instead of exactly the trigger's width, and items never wrap. A menu opened from an icon button used to squeeze its labels onto two lines.
 - `empty`: `EmptyTitle asChild` renders your own element, such as an `h2` when the empty state is the screen's main content.
 - `pane`: `PaneBody` children keep their height and the body scrolls, instead of squeezing children that clip their overflow, such as cards.

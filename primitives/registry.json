@@ -38,6 +38,7 @@
     "pagination/registry.json",
     "popover/registry.json",
     "progress/registry.json",
+    "progress-steps/registry.json",
     "radio-group/registry.json",
     "resizable/registry.json",
     "scroll-area/registry.json",

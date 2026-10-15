@@ -1,0 +1,22 @@
+---
+title: Progress Steps
+description: The steps of running work and where it is.
+status: stable
+---
+
+## States
+
+A circle shows the share of steps done; the list names each step. One step
+runs at a time.
+
+<Preview name="progress-steps-running" />
+
+A failed step stops the work; the steps after it stay pending.
+
+<Preview name="progress-steps-failed" />
+
+## Usage
+
+Use `progress-steps` when people wait on work made of a few named steps.
+Only the running step shows a spinner. List the steps the work really goes
+through; never invent steps to fill the wait.
