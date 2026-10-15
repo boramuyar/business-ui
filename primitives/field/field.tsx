@@ -17,6 +17,8 @@ import { cn } from "@/lib/utils"
  * @use Pass invalid and required to Field instead of wiring ids by hand:
  *      FieldLabel, FieldDescription and FieldError connect themselves, and
  *      FieldInput, FieldTextarea or useFieldControl() connect the control.
+ * @use A dialog with a single field whose title already names it ("Rename
+ *      chat"): leave out the visible label and give the control an aria-label.
  * @avoid Bare inputs with a placeholder instead of a label.
  * @avoid Wrapping groups of fields in cards: use FieldSet.
  * @related input, label, form-page
