@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-15
 
+- `pane`: new `PaneFloatingAction`, a round button at the bottom right of the pane for the one action that adds to the body, such as a new folder. Its `label` is its tooltip and accessible name, and the body keeps room under its last row for it. `Pane` is now `relative`, and `pane` depends on `button`.
 - `progress-steps`: new primitive listing the steps of running work, each done, running (with a spinner), pending or failed. Pair it with `ProgressCircle` on a screen that waits for one task.
 - `progress`: new `ProgressCircle`, the same value as a ring with room for a count in its center.
 - `switch`: an off switch has a `muted-foreground` track and a shadowed thumb, so it no longer looks disabled. The old track matched the border color and the white thumb barely showed on it; the track now has 3:1 contrast against the page.

@@ -1,4 +1,5 @@
 import { Slot } from "radix-ui"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 /**
@@ -7,7 +8,7 @@ import { cn } from "@/lib/utils"
  * @summary A dense, fixed-height frame for narrow surfaces: a compact header, an optional toolbar, one scrolling body and a pinned footer.
  * @closest page
  * @why page flows with the document, with an xl title and wide gutters. A pane fills a container it does not control (a task pane, side panel or sheet), keeps its header and footer in view, and scrolls only its body.
- * @reuses Button, Item, Empty, ScrollArea
+ * @reuses Button, Item, Empty, ScrollArea, Tooltip
  * @use Office task panes, browser extension popups, side panels and docked inspectors.
  * @use The content of a full-height sheet or dialog: put PaneTitle asChild around DialogTitle or SheetTitle.
  * @avoid Full-width screens in an app window: use page or a page archetype.
@@ -20,13 +21,15 @@ import { cn } from "@/lib/utils"
  * - Icon actions sit on the right of the header; a back button goes in leading.
  * - Search and filters go in PaneToolbar, never in the header.
  * - PaneFooter holds the pane's actions, one or two equal-width buttons with the primary last.
+ * - PaneFloatingAction is the one action that adds to the body, such as a new folder, when the pane has
+ *   no footer. The body keeps room under its last row for it. Never pair it with a PaneFooter.
  */
 function Pane({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="pane"
       className={cn(
-        "flex h-full min-h-0 w-full min-w-0 flex-col bg-background",
+        "relative flex h-full min-h-0 w-full min-w-0 flex-col bg-background has-data-[slot=pane-floating-action]:[&_[data-slot=pane-body]]:pb-18",
         className
       )}
       {...props}
@@ -134,4 +137,42 @@ function PaneFooter({ className, ...props }: React.ComponentProps<"footer">) {
   )
 }
 
-export { Pane, PaneBody, PaneFooter, PaneHeader, PaneTitle, PaneToolbar }
+/**
+ * A round button floating over the body's bottom-right corner. `label` names it for screen readers and shows
+ * as its tooltip, so the button needs only an icon.
+ */
+function PaneFloatingAction({
+  className,
+  label,
+  ...props
+}: Omit<
+  React.ComponentProps<typeof Button>,
+  "size" | "variant" | "tooltip" | "aria-label"
+> & {
+  label: string
+}) {
+  return (
+    <Button
+      data-slot="pane-floating-action"
+      size="icon-lg"
+      tooltip={label}
+      tooltipSide="left"
+      aria-label={label}
+      className={cn(
+        "absolute right-4 bottom-4 z-10 size-11 rounded-full shadow-overlay [&_svg:not([class*='size-'])]:size-5",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+export {
+  Pane,
+  PaneBody,
+  PaneFloatingAction,
+  PaneFooter,
+  PaneHeader,
+  PaneTitle,
+  PaneToolbar,
+}
