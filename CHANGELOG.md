@@ -5,6 +5,9 @@ registry item.
 
 ## 2026-10-16
 
+- `item`: new selected state. `data-selected` on an `Item` gives it the `bg-brand-subtle` selection fill, the same as a selected `TableRow` and the active sidebar item, in every variant including `divided`. The fill stays under the pointer (hover tints only unselected rows) and focus rings are unchanged. Mark the title with `aria-current` for screen readers.
+- `badge`: new `xs` size for tags inside a dense row: 16px tall, with 4px side padding and a 2px radius. The text stays `text-xs` (12px) like the other sizes, because the type scale has no smaller step. `default` is still the default size.
+- `select`: the trigger looks like a secondary button: card background, border and `shadow-control`, with a muted fill on hover and while the list is open. It used to be a flat, transparent field, which read as a different kind of control from the buttons and menu triggers beside it.
 - `progress`: an empty `ProgressCircle` (value 0) draws no sliver at the top of the ring.
 - `alert`, `alert-dialog`: descriptions wrap with `text-pretty` at every width. Below `md` they were balanced, which left short ragged lines in left-aligned text and made narrow alerts taller than needed.
 - `sidebar`: `SidebarHeader` with one menu row is 40px with its rule, the height of `PaneHeader` beside it, so their bottom lines meet. It was 41px.

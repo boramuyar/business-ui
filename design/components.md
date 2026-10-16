@@ -354,6 +354,7 @@ A row with media, title, description and actions.
 - Use: Lists of people, files, integrations or settings rows where each entry has a title and a few details.
 - Use: variant divided for full-width lists that run edge to edge, such as a narrow pane: square rows separated by a line, hover fills the row.
 - Use: A row that opens something and also has its own actions: put the button or link in ItemTitle asChild. It covers the whole row, and ItemActions stay clickable above it.
+- Use: data-selected on the row that is the current one, such as the record open beside the list: it takes the brand selection fill, in every variant. Mark its title with aria-current too, so screen readers announce it.
 - Use: Long lists with kinds of rows (yours and shared, by source): split them into groups, each under an ItemGroupLabel, instead of a tag on every row.
 - Use: ItemLoadingMore at the end of a list that loads its next page as it scrolls, while that page loads.
 - Avoid: Making the whole row an anchor (Item asChild) when it has actions: links cannot contain buttons.
@@ -458,6 +459,7 @@ A small label for status, category or count.
 
 - Use: Showing a record's status in a table or header. Pick the variant by meaning: success, warning, destructive, info, secondary.
 - Use: Short labels only: one or two words.
+- Use: size sm next to a heading, xs for tags inside a dense row, such as an environment or region beside a name.
 - Avoid: Anything clickable that performs an action: use button.
 - Avoid: Filters people toggle on and off: use toggle or toggle-group.
 - Avoid: Long messages: use alert.
@@ -612,8 +614,14 @@ Picks one value from a list in a dropdown.
 
 ### skeleton
 
+Placeholder shapes shown while content loads.
 
-
+- Use: Any content that is loading. Build the skeleton from the real components (item, table, card) so it has the same rows, columns and spacing as the loaded screen.
+- Use: Text placeholders: SkeletonText inside the element that will hold the text, so each line keeps its real height.
+- Avoid: Actions in progress: use spinner in the button.
+- Avoid: Nothing to show: use empty.
+- Related: spinner, empty, progress
+- Guide: [patterns/feedback.md](patterns/feedback.md)
 - File: `components/ui/skeleton.tsx`
 
 ### slider

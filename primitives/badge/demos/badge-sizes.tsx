@@ -5,6 +5,7 @@ export function BadgeSizes() {
     <>
       <Badge>Default</Badge>
       <Badge size="sm">Small</Badge>
+      <Badge size="xs">Extra small</Badge>
     </>
   )
 }

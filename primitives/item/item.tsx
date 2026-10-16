@@ -16,6 +16,10 @@ import { cn } from "@/lib/utils"
  * @use A row that opens something and also has its own actions: put the
  *      button or link in ItemTitle asChild. It covers the whole row, and
  *      ItemActions stay clickable above it.
+ * @use data-selected on the row that is the current one, such as the record
+ *      open beside the list: it takes the brand selection fill, in every
+ *      variant. Mark its title with aria-current too, so screen readers
+ *      announce it.
  * @use Long lists with kinds of rows (yours and shared, by source): split
  *      them into groups, each under an ItemGroupLabel, instead of a tag on
  *      every row.
@@ -72,8 +76,9 @@ function ItemSeparator({
   )
 }
 
+// A selected row keeps its fill under the pointer: hover only tints rows that aren't selected.
 const itemVariants = cva(
-  "group/item relative flex w-full flex-wrap items-center rounded-md border text-xs transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 has-data-[target]:hover:bg-muted has-[[data-target]:focus-visible]:border-ring has-[[data-target]:focus-visible]:ring-[3px] has-[[data-target]:focus-visible]:ring-ring/50 [a]:transition-colors [a]:hover:bg-muted",
+  "group/item relative flex w-full flex-wrap items-center rounded-md border text-xs transition-colors duration-100 outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 not-data-[selected=true]:has-data-[target]:hover:bg-muted has-[[data-target]:focus-visible]:border-ring has-[[data-target]:focus-visible]:ring-[3px] has-[[data-target]:focus-visible]:ring-ring/50 data-[selected=true]:bg-brand-subtle [a]:transition-colors [a]:not-data-[selected=true]:hover:bg-muted",
   {
     variants: {
       variant: {
