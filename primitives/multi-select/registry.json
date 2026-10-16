@@ -1,0 +1,30 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "Multi Select",
+      "description": "Multi select UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "multi-select.tsx",
+          "type": "registry:ui",
+          "target": "@ui/multi-select.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/badge",
+        "boramuyar/business-ui/checkbox",
+        "boramuyar/business-ui/command",
+        "boramuyar/business-ui/popover"
+      ]
+    }
+  ]
+}

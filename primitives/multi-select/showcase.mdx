@@ -1,0 +1,26 @@
+---
+title: Multi Select
+description: Pick several values from a searchable list; the picked values show as tags under the field.
+status: stable
+---
+
+## Field
+
+The trigger looks like a `select` and says what is picked: the placeholder, or a short summary such as "4 of 6
+sheets". It opens a list over the page, so nothing around the field moves: search, an optional Select all, and a
+checkbox row for each option. Each picked value becomes a tag below the trigger, never inside it, and its × removes
+it. A disabled option can't be picked or removed.
+
+<Preview tall name="multi-select-field" />
+
+## States
+
+Nothing picked shows the placeholder. `invalid` on the field turns the trigger destructive, and `disabled` turns off
+the trigger and the tags' remove buttons.
+
+<Preview tall name="multi-select-states" />
+
+## Usage
+
+Use `multi-select` for several values from a list that is too long for checkboxes in the form. For one value use
+`select` or `combobox`; for category filters in a toolbar use `toggle-group` with `variant="chip"`.

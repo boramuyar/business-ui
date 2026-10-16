@@ -16,6 +16,7 @@ Two questions decide which control to use:
 | `radio-group` | 2 to 5 options in a form, especially when each needs a description. | There are more than 5 options. Use `select`. |
 | `select` | 6 to 15 options, or space is tight. | People need to search. Use `combobox`. |
 | `combobox` | More than about 15 options, or a list people know by name: customers, countries. | There are fewer than 6 options. Show them as `radio-group` or `toggle-group`. |
+| `multi-select` | Several values from a list too long to show as checkboxes. The picked values show as tags under the field. | A few options fit on screen. Use `checkbox` rows. |
 | `native-select` | Mobile-first forms where the platform picker is better. | Desktop forms. Use `select` for consistency. |
 | `slider` | An approximate number where feel matters: volume, zoom, a price range. | The value must be exact. Use `input` with `type="number"`. |
 
@@ -31,7 +32,9 @@ Is it one choice from a set?
   6 to 15                            → select
   more, or people search             → combobox
 Is it several choices from a set?
-  → checkboxes in a list, or toggle-group type="multiple" in a toolbar
+  A few, in a form                   → checkboxes in a list
+  Many, or people search             → multi-select
+  In a toolbar                       → toggle-group type="multiple"
 ```
 
 ## Rules
