@@ -373,7 +373,8 @@ function SidebarHeader({
     <div
       data-slot="sidebar-header"
       data-sidebar="header"
-      className={cn("flex flex-col gap-2 p-1 border-b", className)}
+      // 4px above, 3px below and the 1px rule: a menu row makes a 40px header, the height of PaneHeader beside it.
+      className={cn("flex flex-col gap-2 p-1 pb-0.75 border-b", className)}
       {...props}
     />
   )

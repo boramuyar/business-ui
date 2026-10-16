@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-16
 
+- `sidebar`: `SidebarHeader` with one menu row is 40px with its rule, the height of `PaneHeader` beside it, so their bottom lines meet. It was 41px.
 - `item`: new `ItemLoadingMore`, the centered spinner and label at the end of a list while its next page loads. `item` now depends on `spinner`.
 - `select`: `SelectItem` takes a `description`, a muted line under the label in the list. The closed select still shows only the label.
 - `progress`: new `ProgressResult`, what a `ProgressCircle` turns into when its task ends, at the same size: green with a check, amber with an exclamation mark, or red with a cross. `progress` now depends on `lucide-react`.
