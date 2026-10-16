@@ -136,7 +136,7 @@ function MultiSelect({
           aria-required={required || undefined}
           data-placeholder={pickedOptions.length === 0 || undefined}
           disabled={disabled}
-          className="flex h-8 w-full items-center justify-between gap-1.5 rounded-md border border-border bg-card py-2 pr-2 pl-2.5 text-left text-xs whitespace-nowrap shadow-control transition-colors outline-none select-none hover:bg-muted focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-expanded:bg-muted aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground dark:border-input dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
+          className="flex h-8 w-full items-center justify-between gap-1.5 rounded-md border border-input bg-transparent py-2 pr-2 pl-2.5 text-left text-xs whitespace-nowrap transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40"
           onKeyDown={(event) => {
             onKeyDown?.(event)
             if (event.defaultPrevented) return
