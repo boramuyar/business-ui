@@ -2,6 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { Slot } from "radix-ui"
 import type * as React from "react"
 import { Separator } from "@/components/ui/separator"
+import { Spinner } from "@/components/ui/spinner"
 import { cn } from "@/lib/utils"
 
 /**
@@ -18,6 +19,8 @@ import { cn } from "@/lib/utils"
  * @use Long lists with kinds of rows (yours and shared, by source): split
  *      them into groups, each under an ItemGroupLabel, instead of a tag on
  *      every row.
+ * @use ItemLoadingMore at the end of a list that loads its next page as it
+ *      scrolls, while that page loads.
  * @avoid Making the whole row an anchor (Item asChild) when it has actions:
  *        links cannot contain buttons.
  * @avoid Data people compare across columns: use table.
@@ -230,6 +233,31 @@ function ItemFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * The last row of a list while its next page loads: a spinner and a short label, centered. Remove it when the
+ * page arrives; the first page loads as a skeleton of the rows instead.
+ */
+function ItemLoadingMore({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div
+      data-slot="item-loading-more"
+      role="status"
+      className={cn(
+        "flex h-10 items-center justify-center gap-2 text-xs text-muted-foreground",
+        className
+      )}
+      {...props}
+    >
+      <Spinner role="presentation" aria-label={undefined} />
+      {children}
+    </div>
+  )
+}
+
 export {
   Item,
   ItemActions,
@@ -239,6 +267,7 @@ export {
   ItemGroup,
   ItemGroupLabel,
   ItemHeader,
+  ItemLoadingMore,
   ItemMedia,
   ItemSeparator,
   ItemTitle,

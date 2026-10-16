@@ -21,7 +21,8 @@
         "radix-ui"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/separator"
+        "boramuyar/business-ui/separator",
+        "boramuyar/business-ui/spinner"
       ]
     }
   ]

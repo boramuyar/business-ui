@@ -355,6 +355,7 @@ A row with media, title, description and actions.
 - Use: variant divided for full-width lists that run edge to edge, such as a narrow pane: square rows separated by a line, hover fills the row.
 - Use: A row that opens something and also has its own actions: put the button or link in ItemTitle asChild. It covers the whole row, and ItemActions stay clickable above it.
 - Use: Long lists with kinds of rows (yours and shared, by source): split them into groups, each under an ItemGroupLabel, instead of a tag on every row.
+- Use: ItemLoadingMore at the end of a list that loads its next page as it scrolls, while that page loads.
 - Avoid: Making the whole row an anchor (Item asChild) when it has actions: links cannot contain buttons.
 - Avoid: Data people compare across columns: use table.
 - Avoid: Peers shown as tiles in a grid: use card.
