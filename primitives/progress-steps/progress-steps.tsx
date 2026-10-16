@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 /**
  * @component Progress Steps
  * @level primitive
- * @summary The steps of running work, each done, running, pending or failed.
+ * @summary The steps of running work, each done, running, pending, done with a warning, or failed.
  * @use A task made of a few named steps that people wait for: comparing
  *      files, importing data, setting up an account. Pair it with a
  *      ProgressCircle for the share of steps done.
@@ -25,12 +25,13 @@ function ProgressSteps({ className, ...props }: React.ComponentProps<"ol">) {
   )
 }
 
-type ProgressStepStatus = "done" | "running" | "pending" | "failed"
+type ProgressStepStatus = "done" | "running" | "pending" | "warning" | "failed"
 
 const DEFAULT_STATUS_LABELS: Record<ProgressStepStatus, string> = {
   done: "Done",
   running: "In progress",
   pending: "Not started",
+  warning: "Done with a warning",
   failed: "Failed",
 }
 
@@ -51,7 +52,7 @@ function ProgressStep({
       data-status={status}
       aria-current={status === "running" ? "step" : undefined}
       className={cn(
-        "flex items-start gap-2 text-xs text-muted-foreground data-[status=done]:text-foreground data-[status=failed]:text-destructive-strong data-[status=running]:font-medium data-[status=running]:text-foreground",
+        "flex items-start gap-2 text-xs text-muted-foreground data-[status=done]:text-foreground data-[status=warning]:text-warning-strong data-[status=failed]:text-destructive-strong data-[status=running]:font-medium data-[status=running]:text-foreground",
         className
       )}
       {...props}
@@ -72,6 +73,16 @@ function ProgressStepMarker({ status }: { status: ProgressStepStatus }) {
     return (
       <span aria-hidden="true" className={cn(MARKER, "bg-brand text-brand-foreground")}>
         <CheckIcon className="size-2.5" strokeWidth={3.5} />
+      </span>
+    )
+  if (status === "warning")
+    return (
+      <span aria-hidden="true" className={cn(MARKER, "bg-warning text-warning-foreground")}>
+        {/* An exclamation mark: the icon set has none on its own. */}
+        <svg viewBox="0 0 10 10" className="size-2.5" fill="currentColor">
+          <rect x="4" y="1.5" width="2" height="4.5" rx="1" />
+          <circle cx="5" cy="8" r="1.1" />
+        </svg>
       </span>
     )
   if (status === "failed")

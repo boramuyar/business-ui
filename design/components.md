@@ -575,7 +575,7 @@ A bar showing how far a task or quota has come.
 
 ### progress-steps
 
-The steps of running work, each done, running, pending or failed.
+The steps of running work, each done, running, pending, done with a warning, or failed.
 
 - Use: A task made of a few named steps that people wait for: comparing files, importing data, setting up an account. Pair it with a ProgressCircle for the share of steps done.
 - Avoid: Steps people move through themselves: use a stepper pattern or tabs.

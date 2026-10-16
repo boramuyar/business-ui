@@ -15,6 +15,11 @@ A failed step stops the work; the steps after it stay pending.
 
 <Preview name="progress-steps-failed" />
 
+A step that finished without the result it aimed for, such as a solver that missed its goal, is a warning: the
+work goes on, and the step says what fell short.
+
+<Preview name="progress-steps-warning" />
+
 ## Usage
 
 Use `progress-steps` when people wait on work made of a few named steps.

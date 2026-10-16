@@ -5,6 +5,9 @@ registry item.
 
 ## 2026-10-16
 
+- `style`: new `warning-foreground` token for text and icons on a solid `warning` fill, dark in both themes, as `destructive-foreground` is light in both.
+- `progress-steps`: new `warning` status for a step that finished without the result it aimed for, such as a solver that missed its goal. It has an amber marker with an exclamation mark, and the step reads in the strong warning color.
+- `badge`: the `secondary` badge has a border in dark mode, like the other variants. Without a fill or a border there, it read as plain text.
 - `alert`: an alert with only a description lines its text up with the icon tile: one line centers on it, and longer text starts level with it, as a titled alert does. One line used to sit 4px high, because the tile still spanned the two rows a title and description share. The composition demo now includes one.
 - `pane`: `PaneFloatingAction` can now share a pane with a `PaneFooter`: it floats 16px above the footer instead of over it. The footer keeps the pane-wide actions, such as running every item, and the floating button still adds one.
 - `popover`: `PopoverContent` no longer puts a 10px gap between its children. A header, a search field and a list divided by rules now sit flush against them instead of with 10px of space on each side of every line. Space parts that no rule divides with their own padding, as the composition demo does.
