@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils"
  * @guide https://ui.uyar.design/design/patterns/feedback.md
  */
 const alertVariants = cva(
-  "group/alert relative grid w-full gap-0.5 rounded-md border border-border bg-card px-3 py-2.5 text-left text-xs text-card-foreground has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-24 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2.5 not-has-data-[slot=alert-description]:items-center has-data-[slot=alert-description]:*:[svg]:row-span-2 *:[svg]:box-border *:[svg]:size-7 *:[svg]:rounded-md *:[svg]:p-1.5",
+  "group/alert relative grid w-full gap-0.5 rounded-md border border-border bg-card px-3 py-2.5 text-left text-xs text-card-foreground has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-24 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2.5 not-has-data-[slot=alert-description]:items-center not-has-data-[slot=alert-title]:*:data-[slot=alert-description]:min-h-7 not-has-data-[slot=alert-title]:*:data-[slot=alert-description]:content-center has-data-[slot=alert-title]:has-data-[slot=alert-description]:*:[svg]:row-span-2 *:[svg]:box-border *:[svg]:size-7 *:[svg]:rounded-md *:[svg]:p-1.5",
   {
     variants: {
       variant: {

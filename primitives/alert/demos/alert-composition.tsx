@@ -40,6 +40,10 @@ export function AlertComposition() {
           <Button size="xs">Update card</Button>
         </AlertAction>
       </Alert>
+      <Alert variant="warning">
+        <TriangleAlertIcon />
+        <AlertDescription>The goal was not reached after 6 tries.</AlertDescription>
+      </Alert>
     </>
   )
 }
