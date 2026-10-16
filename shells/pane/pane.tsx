@@ -21,8 +21,9 @@ import { cn } from "@/lib/utils"
  * - Icon actions sit on the right of the header; a back button goes in leading.
  * - Search and filters go in PaneToolbar, never in the header.
  * - PaneFooter holds the pane's actions, one or two equal-width buttons with the primary last.
- * - PaneFloatingAction is the one action that adds to the body, such as a new folder, when the pane has
- *   no footer. The body keeps room under its last row for it. Never pair it with a PaneFooter.
+ * - PaneFloatingAction is the one action that adds to the body, such as a new folder. The body keeps room
+ *   under its last row for it. With a PaneFooter it floats 16px above the footer, so the footer keeps the
+ *   pane's actions (such as Run all) and the floating button keeps adding.
  */
 function Pane({ className, ...props }: React.ComponentProps<"div">) {
   return (
@@ -30,6 +31,9 @@ function Pane({ className, ...props }: React.ComponentProps<"div">) {
       data-slot="pane"
       className={cn(
         "relative flex h-full min-h-0 w-full min-w-0 flex-col bg-background has-data-[slot=pane-floating-action]:[&_[data-slot=pane-body]]:pb-18",
+        // A footer is its 1px rule, p-2 and an h-8 button: --spacing(12) + 1px. The floating action keeps its
+        // usual 16px gap above it.
+        "has-data-[slot=pane-footer]:[&>[data-slot=pane-floating-action]]:bottom-[calc(--spacing(16)+1px)]",
         className
       )}
       {...props}

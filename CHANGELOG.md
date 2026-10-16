@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-16
 
+- `pane`: `PaneFloatingAction` can now share a pane with a `PaneFooter`: it floats 16px above the footer instead of over it. The footer keeps the pane-wide actions, such as running every item, and the floating button still adds one.
 - `popover`: `PopoverContent` no longer puts a 10px gap between its children. A header, a search field and a list divided by rules now sit flush against them instead of with 10px of space on each side of every line. Space parts that no rule divides with their own padding, as the composition demo does.
 
 ## 2026-10-15
