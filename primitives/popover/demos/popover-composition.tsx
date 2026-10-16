@@ -16,12 +16,12 @@ export function PopoverComposition() {
       <PopoverTrigger asChild>
         <Button variant="secondary">Dimensions</Button>
       </PopoverTrigger>
-      <PopoverContent className="w-64">
-        <PopoverHeader>
+      <PopoverContent className="w-64 p-0">
+        <PopoverHeader className="border-b p-2.5">
           <PopoverTitle>Dimensions</PopoverTitle>
           <PopoverDescription>Set the layer size.</PopoverDescription>
         </PopoverHeader>
-        <FieldGroup className="p-3 pt-0">
+        <FieldGroup className="gap-3 p-2.5">
           <Field orientation="horizontal">
             <FieldLabel htmlFor="popover-demo-width">Width</FieldLabel>
             <Input

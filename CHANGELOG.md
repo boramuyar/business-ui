@@ -3,6 +3,10 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-16
+
+- `popover`: `PopoverContent` no longer puts a 10px gap between its children. A header, a search field and a list divided by rules now sit flush against them instead of with 10px of space on each side of every line. Space parts that no rule divides with their own padding, as the composition demo does.
+
 ## 2026-10-15
 
 - `toggle`, `toggle-group`: new `chip` variant for filter chips: rounded, 24px tall, brand when on. In a multiple toggle group with `spacing={1}`, each chip filters a list on its own, with no "All" chip.

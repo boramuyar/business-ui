@@ -47,6 +47,7 @@ Short rules every screen follows. Unsorted for now.
 - **Empty areas use `empty`, with a title and a description.** It fills the area it replaces and centers its content both ways, so put it in a flex column that fills that area, such as `PaneBody`.
 - **Menu items stay on one line.** Keep labels short ("System prompt", not "View the system prompt") instead of letting them wrap.
 - **Category filters are chips.** Use toggle-group with `variant="chip"` and `type="multiple"`, each chip switched on and off on its own. Leave out an "All" chip: with none on, the list shows everything.
+- **A rule is the separation.** When a line divides two parts, add no padding, margin or gap beside it: each part keeps its own inset and meets the line. `popover` has no gap between its children for this reason.
 - **A spinner means work is running right now.** Show it only on the thing doing the work: the button whose action runs, the step executing, the file uploading. Remove it when the work stops, including while waiting for the user.
 
 ## Guides
