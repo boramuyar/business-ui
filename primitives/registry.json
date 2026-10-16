@@ -33,6 +33,7 @@
     "kbd/registry.json",
     "label/registry.json",
     "menubar/registry.json",
+    "multi-select/registry.json",
     "native-select/registry.json",
     "navigation-menu/registry.json",
     "pagination/registry.json",
