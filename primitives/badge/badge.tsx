@@ -10,6 +10,8 @@ import { cn } from "@/lib/utils"
  * @use Showing a record's status in a table or header. Pick the variant by
  *      meaning: success, warning, destructive, info, secondary.
  * @use Short labels only: one or two words.
+ * @use size sm next to a heading, xs for tags inside a dense row, such as an
+ *      environment or region beside a name.
  * @avoid Anything clickable that performs an action: use button.
  * @avoid Filters people toggle on and off: use toggle or toggle-group.
  * @avoid Long messages: use alert.
@@ -38,6 +40,7 @@ const badgeVariants = cva(
       size: {
         default: "h-6 px-2 ",
         sm: "h-5 px-1.5",
+        xs: "h-4 rounded-xs px-1 leading-none",
       },
     },
     defaultVariants: {

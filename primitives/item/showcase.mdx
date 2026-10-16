@@ -21,6 +21,14 @@ grouped rows with separators.
 
 <Preview name="item-composition" className="flex-col items-stretch" />
 
+## Selected
+
+Set `data-selected` on the row that is the current one, such as the record open beside the list. It takes the
+brand selection fill of a selected table row, in every variant, and keeps it under the pointer. Mark its title with
+`aria-current` too, so screen readers announce it.
+
+<Preview name="item-selected" className="flex-col items-stretch" />
+
 ## Loading more
 
 A list that loads its next page as it scrolls ends in `ItemLoadingMore` while that page loads: a spinner and a
