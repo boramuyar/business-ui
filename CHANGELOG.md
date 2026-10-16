@@ -3,6 +3,12 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-17
+
+- `select`: the trigger is flat again, as it was before 2026-10-16: transparent with an `input` border, no `shadow-control`, and no muted fill on hover or while the list is open. The layout guide again says text fields and selects stay flat.
+- `multi-select`: the trigger is flat too, to match `select`.
+- `drawer`: `DrawerFooter` has a 12px inset and 12px gaps between its buttons (it had 16px and 8px). `DrawerHeader` keeps its 16px inset, like a dialog's.
+
 ## 2026-10-16
 
 - `multi-select`: new primitive for picking several values from a list. The trigger looks like a `select` and shows the placeholder or a summary such as "4 of 6 sheets". It opens a list over the page, so nothing around it grows: search, an optional Select all, and a checkbox row for each option. The picked values show as removable tags below the trigger, never inside it. Props: `options` (`value`, `label`, `disabled`), `value`, `onValueChange`, `placeholder`, `searchPlaceholder`, `selectAllLabel`, `emptyText`, `summary` and `removeLabel`. Every other prop goes to the trigger, so `useFieldControl()` spreads onto it.
