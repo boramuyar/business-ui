@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-16
 
+- `select`: `SelectItem` takes a `description`, a muted line under the label in the list. The closed select still shows only the label.
 - `progress`: new `ProgressResult`, what a `ProgressCircle` turns into when its task ends, at the same size: green with a check, amber with an exclamation mark, or red with a cross. `progress` now depends on `lucide-react`.
 - `style`: new `success-foreground` token for text and icons on a solid `success` fill.
 - `checkbox`, `radio-group`: no drop shadow. The bordered box reads as a control on its own, and the shadow made a column of checkboxes look heavy.
