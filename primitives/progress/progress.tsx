@@ -1,3 +1,4 @@
+import { CheckIcon, XIcon } from "lucide-react"
 import { Progress as ProgressPrimitive } from "radix-ui"
 import type * as React from "react"
 import { cn } from "@/lib/utils"
@@ -9,6 +10,8 @@ import { cn } from "@/lib/utils"
  * @use Uploads, imports and multi-step work with a known end; quota usage.
  * @use ProgressCircle: the main indicator of a screen given over to one
  *      task, such as a comparison or an import, with its steps listed below.
+ * @use ProgressResult: what ProgressCircle turns into when that task ends,
+ *      at the same size, so the screen doesn't move.
  * @avoid Unknown duration: use spinner or skeleton.
  * @related spinner, skeleton, progress-steps
  * @guide https://ui.uyar.design/design/patterns/feedback.md
@@ -89,4 +92,40 @@ function ProgressCircle({
   )
 }
 
-export { Progress, ProgressCircle }
+type ProgressResultStatus = "success" | "warning" | "failed"
+
+/**
+ * How finished work ended, in place of its ProgressCircle and at the same size: a filled circle, green with a
+ * check, amber with an exclamation mark, or red with a cross. The heading under it says the same in words, so the
+ * circle is hidden from screen readers.
+ */
+function ProgressResult({
+  className,
+  status,
+  ...props
+}: React.ComponentProps<"span"> & { status: ProgressResultStatus }) {
+  return (
+    <span
+      data-slot="progress-result"
+      data-status={status}
+      aria-hidden="true"
+      className={cn(
+        "inline-grid size-24 shrink-0 place-items-center rounded-full data-[status=failed]:bg-destructive data-[status=failed]:text-destructive-foreground data-[status=success]:bg-success data-[status=success]:text-success-foreground data-[status=warning]:bg-warning data-[status=warning]:text-warning-foreground",
+        className
+      )}
+      {...props}
+    >
+      {status === "success" && <CheckIcon className="size-1/2" strokeWidth={2.5} />}
+      {status === "failed" && <XIcon className="size-1/2" strokeWidth={2.5} />}
+      {status === "warning" && (
+        // An exclamation mark: the icon set has none on its own.
+        <svg viewBox="0 0 10 10" className="size-1/2" fill="currentColor">
+          <rect x="4.25" y="1" width="1.5" height="5.5" rx="0.75" />
+          <circle cx="5" cy="8.5" r="0.9" />
+        </svg>
+      )}
+    </span>
+  )
+}
+
+export { Progress, ProgressCircle, ProgressResult, type ProgressResultStatus }

@@ -5,6 +5,9 @@ registry item.
 
 ## 2026-10-16
 
+- `progress`: new `ProgressResult`, what a `ProgressCircle` turns into when its task ends, at the same size: green with a check, amber with an exclamation mark, or red with a cross. `progress` now depends on `lucide-react`.
+- `style`: new `success-foreground` token for text and icons on a solid `success` fill.
+- `checkbox`, `radio-group`: no drop shadow. The bordered box reads as a control on its own, and the shadow made a column of checkboxes look heavy.
 - `dialog`, `alert-dialog`: the width cap no longer depends on the `sm` breakpoint. It is the smaller of the size (24rem, or 20rem for a small alert dialog) and the viewport less 1rem each side, so an app that redefines `sm` (a task pane sets it to 360px) keeps the side margins instead of running edge to edge.
 - `style`: new `warning-foreground` token for text and icons on a solid `warning` fill, dark in both themes, as `destructive-foreground` is light in both.
 - `progress-steps`: new `warning` status for a step that finished without the result it aimed for, such as a solver that missed its goal. It has an amber marker with an exclamation mark, and the step reads in the strong warning color.

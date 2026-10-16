@@ -568,6 +568,7 @@ A bar showing how far a task or quota has come.
 
 - Use: Uploads, imports and multi-step work with a known end; quota usage.
 - Use: ProgressCircle: the main indicator of a screen given over to one task, such as a comparison or an import, with its steps listed below.
+- Use: ProgressResult: what ProgressCircle turns into when that task ends, at the same size, so the screen doesn't move.
 - Avoid: Unknown duration: use spinner or skeleton.
 - Related: spinner, skeleton, progress-steps
 - Guide: [patterns/feedback.md](patterns/feedback.md)
