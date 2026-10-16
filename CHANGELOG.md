@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-16
 
+- `progress`: an empty `ProgressCircle` (value 0) draws no sliver at the top of the ring.
 - `alert`, `alert-dialog`: descriptions wrap with `text-pretty` at every width. Below `md` they were balanced, which left short ragged lines in left-aligned text and made narrow alerts taller than needed.
 - `sidebar`: `SidebarHeader` with one menu row is 40px with its rule, the height of `PaneHeader` beside it, so their bottom lines meet. It was 41px.
 - `item`: new `ItemLoadingMore`, the centered spinner and label at the end of a list while its next page loads. `item` now depends on `spinner`.

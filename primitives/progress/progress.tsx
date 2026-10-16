@@ -83,7 +83,11 @@ function ProgressCircle({
             pathLength={100}
             strokeDasharray={100}
             strokeDashoffset={100 - filled}
-            className="stroke-brand transition-[stroke-dashoffset] duration-500"
+            // At 0 even a butt cap leaves a sliver where the scaled dash rounds up, so the empty ring hides it.
+            className={cn(
+              "stroke-brand transition-[stroke-dashoffset] duration-500",
+              filled === 0 && "opacity-0"
+            )}
           />
         </ProgressPrimitive.Indicator>
       </svg>
