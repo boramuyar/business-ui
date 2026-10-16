@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-17
 
+- `pane`: buttons pinned to a pane's edges keep 12px around them. `PaneFooter` has a 12px inset and 12px gaps (it had 8px), and `PaneFloatingAction` sits 12px from the pane's edges and 12px above a footer (it was 16px). The body's room for a floating action shrinks to match.
 - `select`: the trigger is flat again, as it was before 2026-10-16: transparent with an `input` border, no `shadow-control`, and no muted fill on hover or while the list is open. The layout guide again says text fields and selects stay flat.
 - `multi-select`: the trigger is flat too, to match `select`.
 - `drawer`: `DrawerFooter` has a 12px inset and 12px gaps between its buttons (it had 16px and 8px). `DrawerHeader` keeps its 16px inset, like a dialog's.

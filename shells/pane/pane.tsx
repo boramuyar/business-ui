@@ -21,8 +21,9 @@ import { cn } from "@/lib/utils"
  * - Icon actions sit on the right of the header; a back button goes in leading.
  * - Search and filters go in PaneToolbar, never in the header.
  * - PaneFooter holds the pane's actions, one or two equal-width buttons with the primary last.
+ * - Buttons pinned to the pane's edges keep 12px around them: the footer's inset and gap, and the floating action.
  * - PaneFloatingAction is the one action that adds to the body, such as a new folder. The body keeps room
- *   under its last row for it. With a PaneFooter it floats 16px above the footer, so the footer keeps the
+ *   under its last row for it. With a PaneFooter it floats 12px above the footer, so the footer keeps the
  *   pane's actions (such as Run all) and the floating button keeps adding.
  */
 function Pane({ className, ...props }: React.ComponentProps<"div">) {
@@ -30,10 +31,11 @@ function Pane({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="pane"
       className={cn(
-        "relative flex h-full min-h-0 w-full min-w-0 flex-col bg-background has-data-[slot=pane-floating-action]:[&_[data-slot=pane-body]]:pb-18",
-        // A footer is its 1px rule, p-2 and an h-8 button: --spacing(12) + 1px. The floating action keeps its
-        // usual 16px gap above it.
-        "has-data-[slot=pane-footer]:[&>[data-slot=pane-floating-action]]:bottom-[calc(--spacing(16)+1px)]",
+        // The body's room for a floating action: its 44px, its 12px inset and 12px clear of the last row.
+        "relative flex h-full min-h-0 w-full min-w-0 flex-col bg-background has-data-[slot=pane-floating-action]:[&_[data-slot=pane-body]]:pb-17",
+        // A footer is its 1px rule, p-3 and an h-8 button: --spacing(14) + 1px. The floating action keeps its
+        // usual 12px gap above it.
+        "has-data-[slot=pane-footer]:[&>[data-slot=pane-floating-action]]:bottom-[calc(--spacing(17)+1px)]",
         className
       )}
       {...props}
@@ -122,7 +124,10 @@ function PaneBody({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="pane-body"
-      className={cn("flex min-h-0 flex-1 flex-col overflow-y-auto *:shrink-0", className)}
+      className={cn(
+        "flex min-h-0 flex-1 flex-col overflow-y-auto *:shrink-0",
+        className
+      )}
       {...props}
     />
   )
@@ -133,7 +138,7 @@ function PaneFooter({ className, ...props }: React.ComponentProps<"footer">) {
     <footer
       data-slot="pane-footer"
       className={cn(
-        "grid shrink-0 auto-cols-fr grid-flow-col gap-2 border-t p-2",
+        "grid shrink-0 auto-cols-fr grid-flow-col gap-3 border-t p-3",
         className
       )}
       {...props}
@@ -163,7 +168,7 @@ function PaneFloatingAction({
       tooltipSide="left"
       aria-label={label}
       className={cn(
-        "absolute right-4 bottom-4 z-10 size-11 rounded-full shadow-overlay [&_svg:not([class*='size-'])]:size-5",
+        "absolute right-3 bottom-3 z-10 size-11 rounded-full shadow-overlay [&_svg:not([class*='size-'])]:size-5",
         className
       )}
       {...props}
