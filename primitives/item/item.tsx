@@ -85,7 +85,9 @@ const itemVariants = cva(
         default: "border-transparent",
         outline: "border-border",
         muted: "border-transparent bg-muted/50",
-        divided: "rounded-none border-transparent border-b-border",
+        // Only the line below: transparent sides would push the content 1px past a 12px inset, and a top
+        // border would add 1px to every row.
+        divided: "rounded-none border-x-0 border-t-0 border-b-border",
       },
       size: {
         default: "gap-2.5 px-3 py-2.5",
