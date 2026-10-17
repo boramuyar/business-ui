@@ -3,6 +3,10 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-18
+
+- `input-group`: a button at either end of a group sits as far from the side as from the top and bottom. An `icon-xs` button in a default group was 3.2px from the side and 3px from the top; the addon's negative margin is now 5px instead of 0.3rem, so all three gaps are 3px.
+
 ## 2026-10-17
 
 - `pane`: buttons pinned to a pane's edges keep 12px around them. `PaneFooter` has a 12px inset and 12px gaps (it had 8px), and `PaneFloatingAction` sits 12px from the pane's edges and 12px above a footer (it was 16px). The body's room for a floating action shrinks to match.
