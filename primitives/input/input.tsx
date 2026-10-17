@@ -10,16 +10,24 @@ import { cn } from "@/lib/utils"
  * @avoid Multi-line text: use textarea.
  * @avoid Choosing from known values: use select or combobox.
  * @avoid Icons, prefixes or buttons inside the field: use input-group.
+ * @use size="sm" (28px) in a row of small controls, such as a settings bar
+ *      beside select size="sm".
  * @avoid Picking files: use file-input.
  * @related field, input-group, textarea, file-input
  */
-function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+function Input({
+  className,
+  type,
+  size = "default",
+  ...props
+}: Omit<React.ComponentProps<"input">, "size"> & { size?: "sm" | "default" }) {
   return (
     <input
       type={type}
       data-slot="input"
+      data-size={size}
       className={cn(
-        "h-8 w-full min-w-0 rounded-md border border-input bg-transparent px-2.5 py-1 text-xs transition-colors outline-none file:mr-2 file:inline-flex file:h-6 file:items-center file:rounded-sm file:border file:border-border file:bg-card file:px-2 file:text-xs file:font-medium file:text-foreground file:shadow-control placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 md:text-xs dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
+        "h-8 w-full data-[size=sm]:h-7 min-w-0 rounded-md border border-input bg-transparent px-2.5 py-1 text-xs transition-colors outline-none file:mr-2 file:inline-flex file:h-6 file:items-center file:rounded-sm file:border file:border-border file:bg-card file:px-2 file:text-xs file:font-medium file:text-foreground file:shadow-control placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-input/50 disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 md:text-xs dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40",
         className
       )}
       {...props}

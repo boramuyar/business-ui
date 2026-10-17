@@ -4,6 +4,7 @@ import {
   InputGroupAddon,
   InputGroupButton,
   InputGroupInput,
+  InputGroupText,
 } from "@/components/ui/input-group"
 
 export function InputGroupSizes() {
@@ -26,6 +27,12 @@ export function InputGroupSizes() {
           <InputGroupButton size="xs" variant="secondary">
             Send invite
           </InputGroupButton>
+        </InputGroupAddon>
+      </InputGroup>
+      <InputGroup size="sm" className="w-28">
+        <InputGroupInput aria-label="Delay" inputMode="numeric" defaultValue="15" />
+        <InputGroupAddon align="inline-end">
+          <InputGroupText>s</InputGroupText>
         </InputGroupAddon>
       </InputGroup>
     </div>

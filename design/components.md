@@ -343,6 +343,7 @@ Picks one or more files with a button and lists what was chosen.
 An input with attached icons, text or buttons.
 
 - Use: Search fields with an icon, amounts with a currency, URLs with a prefix, inputs with an inline action.
+- Use: size="sm" (28px) in a row of small controls, such as a number with its unit beside select size="sm".
 - Avoid: Plain text fields: use input.
 - Related: input, field, button
 - File: `components/ui/input-group.tsx`
@@ -534,6 +535,7 @@ A searchable select: type to filter, then pick a value.
 A single-line text field.
 
 - Use: Short free text: names, emails, amounts, search. Always inside a field with a label, except a toolbar search.
+- Use: size="sm" (28px) in a row of small controls, such as a settings bar beside select size="sm".
 - Avoid: Multi-line text: use textarea.
 - Avoid: Choosing from known values: use select or combobox.
 - Avoid: Icons, prefixes or buttons inside the field: use input-group.

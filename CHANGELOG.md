@@ -9,6 +9,7 @@ registry item.
 - `select`: the trigger is flat again, as it was before 2026-10-16: transparent with an `input` border, no `shadow-control`, and no muted fill on hover or while the list is open. The layout guide again says text fields and selects stay flat.
 - `multi-select`: the trigger is flat too, to match `select`.
 - `drawer`: `DrawerFooter` has a 12px inset and 12px gaps between its buttons (it had 16px and 8px). `DrawerHeader` keeps its 16px inset, like a dialog's.
+- `input`, `input-group`: new `size="sm"`, 28px tall like `select` `size="sm"`, for a row of small controls such as a settings bar. `InputGroupInput` fills the group's height, so it fits either size.
 - `item`: a `divided` row has only its line below. Its transparent side borders put the content 13px in, 1px past an `ItemGroupLabel` or any other 12px inset, and its transparent top border made every row 1px taller.
 
 ## 2026-10-16
