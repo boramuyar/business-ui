@@ -1,6 +1,6 @@
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from "lucide-react"
 import { Select as SelectPrimitive } from "radix-ui"
-import type * as React from "react"
+import * as React from "react"
 import { cn } from "@/lib/utils"
 
 /**
@@ -11,14 +11,17 @@ import { cn } from "@/lib/utils"
  *      label.
  * @use glyph on SelectTrigger in a dense settings row: an icon in the same
  *      28px cell as a number-field's glyph, so values in a column line up.
- *      Give its SelectContent position="popper" align="start", so the list
- *      opens under the whole trigger, glyph included, at the trigger's width.
+ *      Give its SelectContent checkPosition="start": the list opens over the
+ *      trigger with the picked option's check where the glyph was.
  * @avoid Fewer than 6 options: use radio-group or toggle-group.
  * @avoid More than about 15 options, or people know the name: use combobox.
  * @avoid A list of actions: use dropdown-menu.
  * @related combobox, radio-group, native-select, field
  * @guide https://ui.uyar.design/design/patterns/selection-controls.md
  */
+/** Where the list's options show their check: after the label, or in the glyph's cell at the start. */
+const SelectCheckContext = React.createContext<"start" | "end">("end")
+
 function Select({
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Root>) {
@@ -94,37 +97,46 @@ function SelectContent({
   children,
   position = "item-aligned",
   align = "center",
+  checkPosition = "end",
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content>) {
+}: React.ComponentProps<typeof SelectPrimitive.Content> & {
+  /**
+   * "start" for a trigger with a glyph: each option starts with the glyph's 28px cell, the picked one showing its
+   * check there, so the list opens over the trigger with its edges on the trigger's.
+   */
+  checkPosition?: "start" | "end"
+}) {
   return (
-    <SelectPrimitive.Portal>
-      <SelectPrimitive.Content
-        data-slot="select-content"
-        data-align-trigger={position === "item-aligned"}
-        className={cn(
-          "relative z-50 max-h-(--radix-select-content-available-height) min-w-36 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md p-1 bg-popover text-popover-foreground shadow-overlay ring-1 ring-foreground/10 duration-100 data-[align-trigger=true]:animate-none data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
-          // A popper list is at least as wide as its trigger, padding included, so their edges line up.
-          position === "popper" &&
-            "min-w-(--radix-select-trigger-width) data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
-          className
-        )}
-        position={position}
-        align={align}
-        {...props}
-      >
-        <SelectScrollUpButton />
-        <SelectPrimitive.Viewport
-          data-position={position}
+    <SelectCheckContext.Provider value={checkPosition}>
+      <SelectPrimitive.Portal>
+        <SelectPrimitive.Content
+          data-slot="select-content"
+          data-align-trigger={position === "item-aligned"}
           className={cn(
-            "data-[position=popper]:h-(--radix-select-trigger-height) data-[position=popper]:w-full",
-            position === "popper" && ""
+            "relative z-50 max-h-(--radix-select-content-available-height) min-w-36 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-md p-1 bg-popover text-popover-foreground shadow-overlay ring-1 ring-foreground/10 duration-100 data-[align-trigger=true]:animate-none! data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
+            // A popper list is at least as wide as its trigger, padding included, so their edges line up.
+            position === "popper" &&
+              "min-w-(--radix-select-trigger-width) data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1",
+            className
           )}
+          position={position}
+          align={align}
+          {...props}
         >
-          {children}
-        </SelectPrimitive.Viewport>
-        <SelectScrollDownButton />
-      </SelectPrimitive.Content>
-    </SelectPrimitive.Portal>
+          <SelectScrollUpButton />
+          <SelectPrimitive.Viewport
+            data-position={position}
+            className={cn(
+              "data-[position=popper]:h-(--radix-select-trigger-height) data-[position=popper]:w-full",
+              position === "popper" && ""
+            )}
+          >
+            {children}
+          </SelectPrimitive.Viewport>
+          <SelectScrollDownButton />
+        </SelectPrimitive.Content>
+      </SelectPrimitive.Portal>
+    </SelectCheckContext.Provider>
   )
 }
 
@@ -150,20 +162,37 @@ function SelectItem({
   /** A muted line under the label that explains the option. It shows only in the list, not in the closed select. */
   description?: React.ReactNode
 }) {
+  const checkPosition = React.useContext(SelectCheckContext)
+
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
+      data-check={checkPosition}
       className={cn(
         "relative flex w-full cursor-default items-center gap-2 rounded-sm py-1.5 pr-8 pl-2 text-xs outline-hidden select-none focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        checkPosition === "start" && "gap-0 pr-2 pl-0",
         className
       )}
       {...props}
     >
-      <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
-        <SelectPrimitive.ItemIndicator>
-          <CheckIcon className="pointer-events-none" />
-        </SelectPrimitive.ItemIndicator>
-      </span>
+      {checkPosition === "start" ? (
+        // The list sits 4px inside its padding, so a 25px cell puts the label where the trigger's value starts
+        // and the check, 4px in, on the glyph's center.
+        <span
+          data-slot="select-item-check"
+          className="pointer-events-none flex w-[25px] shrink-0 items-center pl-1 text-muted-foreground"
+        >
+          <SelectPrimitive.ItemIndicator>
+            <CheckIcon className="pointer-events-none size-3.5" />
+          </SelectPrimitive.ItemIndicator>
+        </span>
+      ) : (
+        <span className="pointer-events-none absolute right-2 flex size-4 items-center justify-center">
+          <SelectPrimitive.ItemIndicator>
+            <CheckIcon className="pointer-events-none" />
+          </SelectPrimitive.ItemIndicator>
+        </span>
+      )}
       {description ? (
         // A div, so the item's rule for its last span (icon and label in a row) leaves the two lines stacked.
         <div className="flex min-w-0 flex-col gap-0.5">

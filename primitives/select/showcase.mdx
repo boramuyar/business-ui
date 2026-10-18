@@ -14,8 +14,9 @@ The trigger supports `default` and `sm`.
 
 `glyph` on `SelectTrigger` puts an icon or a short symbol in a 28px cell at the start, the same cell a `number-field`
 gives its glyph, so in a column of fields and selects every value starts at the same edge. Give the trigger an
-`aria-label`, since the glyph doesn't name it, and give the content `position="popper"` with `align="start"`: the
-default lines the picked item up with the value, which would shift the list past the glyph.
+`aria-label`, since the glyph doesn't name it, and give the content `checkPosition="start"`: every option starts with
+the glyph's cell, the picked one showing its check there, so the list opens over the trigger with its edges on the
+trigger's and the picked option on the value.
 
 <Preview tall name="select-glyph" />
 

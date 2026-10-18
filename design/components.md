@@ -645,7 +645,7 @@ Picks exactly one option from a small set, shown all at once.
 Picks one value from a list in a dropdown.
 
 - Use: 6 to 15 options, or when space is tight. Always inside a field with a label.
-- Use: glyph on SelectTrigger in a dense settings row: an icon in the same 28px cell as a number-field's glyph, so values in a column line up. Give its SelectContent position="popper" align="start", so the list opens under the whole trigger, glyph included, at the trigger's width.
+- Use: glyph on SelectTrigger in a dense settings row: an icon in the same 28px cell as a number-field's glyph, so values in a column line up. Give its SelectContent checkPosition="start": the list opens over the trigger with the picked option's check where the glyph was.
 - Avoid: Fewer than 6 options: use radio-group or toggle-group.
 - Avoid: More than about 15 options, or people know the name: use combobox.
 - Avoid: A list of actions: use dropdown-menu.
