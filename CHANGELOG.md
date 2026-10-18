@@ -7,7 +7,7 @@ registry item.
 
 - `number-field`: new primitive for numbers people tune. Type a value, shorthand (`25k`, `1.5m`), a unit or an expression with named values (`=base+0.5`, from `variables`), and the result shows while you type. Arrow keys step by `spec.step` (Shift ×10, Alt ×0.1), Enter keeps the typing and Escape drops it. An optional `glyph` (a symbol or icon) is a drag handle: drag sideways to change the value. `ScrubLabel` and `useNumberScrub` make a label the handle instead. Also `unit`, `format` (`grouped`, `compact`, `plain`), `trailing`, `invalid`, `disabled` and `readOnly` (a dashed edge for derived values). Exports `evaluateNumberExpression`, `formatNumber` and `clampToSpec`.
 - `preset-number-field`: new composite. A dropdown of usual values whose last item (`customLabel`) turns it into a `number-field` with an X; the X brings the dropdown back with the earlier preset. A saved value that isn't a preset opens as the field.
-- `select`: `SelectTrigger` takes a `glyph`, an icon or symbol in the same 28px cell as a `number-field`'s glyph, so values in a column line up.
+- `select`: `SelectTrigger` takes a `glyph`, a 14px icon or a symbol in the same 28px cell as a `number-field`'s glyph, so values in a column line up.
 - `toggle`, `toggle-group`: new `variant="segmented"`, a segmented control that fills its cell: the modes sit on a muted track and the picked one is raised. With `type="single"` it always keeps one mode on.
 - `input-group`: a button at either end of a group sits as far from the side as from the top and bottom. An `icon-xs` button in a default group was 3.2px from the side and 3px from the top; the addon's negative margin is now 5px instead of 0.3rem, so all three gaps are 3px.
 
