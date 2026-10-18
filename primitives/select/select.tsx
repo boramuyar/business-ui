@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils"
  *      label.
  * @use glyph on SelectTrigger in a dense settings row: an icon in the same
  *      28px cell as a number-field's glyph, so values in a column line up.
+ *      Give its SelectContent position="popper" align="start", so the list
+ *      opens under the whole trigger, glyph included, at the trigger's width.
  * @avoid Fewer than 6 options: use radio-group or toggle-group.
  * @avoid More than about 15 options, or people know the name: use combobox.
  * @avoid A list of actions: use dropdown-menu.

@@ -17,7 +17,7 @@ export function SelectGlyph() {
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent>
+      <SelectContent position="popper" align="start">
         {[1, 10, 25, 50, 100].map((size) => (
           <SelectItem key={size} value={String(size)}>
             {size}

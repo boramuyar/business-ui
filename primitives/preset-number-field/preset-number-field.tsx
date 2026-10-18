@@ -107,7 +107,8 @@ function PresetNumberField({
       >
         <SelectValue />
       </SelectTrigger>
-      <SelectContent>
+      {/* Under the whole trigger, glyph included, at its width. */}
+      <SelectContent position="popper" align="start">
         {presets.map((preset) => (
           <SelectItem
             key={preset.value}
