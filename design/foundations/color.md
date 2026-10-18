@@ -16,7 +16,7 @@ Pick a color by what it means, never by how it looks. The theme only contains ro
 | Success | `success` family | Paid, done, healthy. |
 | Warning | `warning` family | Needs attention soon: overdue, expiring, near a limit. |
 | Info | `info` family | Neutral notices and in-progress states: sent, processing. |
-| Lines | `border-border`, `border-input` | Dividers and control outlines. |
+| Lines | `border-border`, `border-input`, `border-border-subtle` | Dividers and control outlines. `border-subtle` is the lighter line between settings or rows that sit edge to edge, where a full border would grid the screen. |
 | Focus | `ring-ring` | Follows `brand`. Components set it already. |
 | Overlay backdrop | `bg-scrim` | Behind dialogs, sheets and drawers. |
 | Charts | `chart-1` to `chart-5` | Computed from `brand`. Use them in order. |
