@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils"
  * @summary Picks one value from a list in a dropdown.
  * @use 6 to 15 options, or when space is tight. Always inside a field with a
  *      label.
+ * @use glyph on SelectTrigger in a dense settings row: an icon in the same
+ *      28px cell as a number-field's glyph, so values in a column line up.
  * @avoid Fewer than 6 options: use radio-group or toggle-group.
  * @avoid More than about 15 options, or people know the name: use combobox.
  * @avoid A list of actions: use dropdown-menu.
@@ -43,10 +45,13 @@ function SelectValue({
 function SelectTrigger({
   className,
   size = "default",
+  glyph,
   children,
   ...props
 }: React.ComponentProps<typeof SelectPrimitive.Trigger> & {
   size?: "sm" | "default"
+  /** A small icon or symbol at the start, in the 28px cell a number-field gives its glyph. */
+  glyph?: React.ReactNode
 }) {
   return (
     <SelectPrimitive.Trigger
@@ -54,11 +59,25 @@ function SelectTrigger({
       data-size={size}
       className={cn(
         "flex w-fit items-center justify-between gap-1.5 rounded-md border border-input bg-transparent py-2 pr-2 pl-2.5 text-xs whitespace-nowrap transition-colors outline-none select-none focus-visible:border-ring focus-visible:ring-1 focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-1 aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground data-[size=default]:h-8 data-[size=sm]:h-7 *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        glyph !== undefined && "gap-0 pl-0",
         className
       )}
       {...props}
     >
-      {children}
+      {glyph === undefined ? (
+        children
+      ) : (
+        <>
+          <span
+            data-slot="select-glyph"
+            className="flex w-7 shrink-0 items-center justify-center self-stretch text-muted-foreground [&_svg:not([class*='size-'])]:size-3.5"
+          >
+            {glyph}
+          </span>
+          {/* SelectValue drops a className, so this span gives the value the room between the glyph and the chevron. */}
+          <span className="min-w-0 flex-1 truncate text-left">{children}</span>
+        </>
+      )}
       <SelectPrimitive.Icon asChild>
         <ChevronDownIcon className="pointer-events-none size-4 text-muted-foreground" />
       </SelectPrimitive.Icon>

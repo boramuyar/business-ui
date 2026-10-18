@@ -409,6 +409,17 @@ Moves between pages of a long list.
 - Related: table, list-page
 - File: `components/ui/pagination.tsx`
 
+### preset-number-field
+
+A dropdown of usual numbers whose last item turns it into a number field for any other value; the field's X turns it back.
+
+- Use: A setting with a few usual values and the odd custom one, such as a delay or a count.
+- Use: A saved value that isn't a preset opens as the field, so it shows.
+- Avoid: Only the presets are allowed: use select.
+- Avoid: Any value is as likely as another: use number-field.
+- Related: number-field, select
+- File: `components/ui/preset-number-field.tsx`
+
 ### sidebar
 
 The app's main navigation column.
@@ -581,6 +592,19 @@ The browser's own select element, styled.
 - Guide: [patterns/selection-controls.md](patterns/selection-controls.md)
 - File: `components/ui/native-select.tsx`
 
+### number-field
+
+A compact number input for parameters people tune: type a value, shorthand (25k) or an expression (=base+0.5), step with the arrow keys, or drag the glyph sideways.
+
+- Use: Rates, sizes, limits and counts in a dense settings row, with a glyph such as r or an icon inside as the drag handle and the full name as its tooltip.
+- Use: ScrubLabel with useNumberScrub to make a field's own label drag the value, in a label column or above the field.
+- Use: unit for the value's unit (%, bps, s), shown after the value.
+- Avoid: A few usual values with the odd custom one: use preset-number-field.
+- Avoid: Text, codes or ids: use input.
+- Avoid: A value chosen by feel along a track: use slider.
+- Related: input, input-group, preset-number-field, slider
+- File: `components/ui/number-field.tsx`
+
 ### progress
 
 A bar showing how far a task or quota has come.
@@ -621,6 +645,7 @@ Picks exactly one option from a small set, shown all at once.
 Picks one value from a list in a dropdown.
 
 - Use: 6 to 15 options, or when space is tight. Always inside a field with a label.
+- Use: glyph on SelectTrigger in a dense settings row: an icon in the same 28px cell as a number-field's glyph, so values in a column line up.
 - Avoid: Fewer than 6 options: use radio-group or toggle-group.
 - Avoid: More than about 15 options, or people know the name: use combobox.
 - Avoid: A list of actions: use dropdown-menu.
@@ -689,6 +714,7 @@ A button that holds an on or off state.
 
 - Use: Toolbar states: bold, pin, show grid, mute. Usually icon-only with a tooltip.
 - Use: variant="chip" in a toggle-group with type="multiple": filter chips that narrow a list by category, each switched on and off on its own.
+- Use: variant="segmented" in a toggle-group with type="single": a segmented control, the picked mode raised on a muted track.
 - Avoid: Settings with a text label: use switch.
 - Avoid: One of several options: use toggle-group.
 - Avoid: Actions without state: use button.
@@ -703,6 +729,7 @@ A row of buttons where one (or several) can be active; also called a segmented c
 - Use: 2 to 5 short options that switch a view or mode and apply immediately: List or Board, Day, Week or Month.
 - Use: type="multiple" for toolbar formatting groups.
 - Use: variant="chip" type="multiple" spacing={1}: category filters on a list. Leave out an "All" chip: with none on, the list shows everything.
+- Use: variant="segmented" type="single": a segmented control that fills its cell, such as Dynamic or Text in a settings row. It always keeps one mode on.
 - Avoid: Options need descriptions, or the choice is submitted with a form: use radio-group.
 - Avoid: More than 5 options: use select.
 - Avoid: Switching between areas of content: use tabs.

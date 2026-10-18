@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Number Field",
+      "description": "Number field UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "number-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/number-field.tsx"
+        }
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/input-group"
+      ]
+    }
+  ]
+}

@@ -16,6 +16,9 @@ import { cn } from "@/lib/utils"
  * @use type="multiple" for toolbar formatting groups.
  * @use variant="chip" type="multiple" spacing={1}: category filters on a list.
  *      Leave out an "All" chip: with none on, the list shows everything.
+ * @use variant="segmented" type="single": a segmented control that fills its
+ *      cell, such as Dynamic or Text in a settings row. It always keeps one
+ *      mode on.
  * @avoid Options need descriptions, or the choice is submitted with a form:
  *        use radio-group.
  * @avoid More than 5 options: use select.
@@ -48,22 +51,35 @@ function ToggleGroup({
     spacing?: number
     orientation?: "horizontal" | "vertical"
   }) {
+  // Segments are separate raised buttons 2px apart on the track, never joined.
+  const gap = variant === "segmented" ? 0.5 : spacing
+  // A segmented control always keeps one mode on: clicking the picked one again changes nothing.
+  const rootProps =
+    variant === "segmented" && props.type === "single"
+      ? {
+          ...props,
+          onValueChange: (next: string) => {
+            if (next) props.onValueChange?.(next)
+          },
+        }
+      : props
+
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"
       data-variant={variant}
       data-size={size}
-      data-spacing={spacing}
+      data-spacing={gap}
       data-orientation={orientation}
-      style={{ "--gap": spacing } as React.CSSProperties}
+      style={{ "--gap": gap } as React.CSSProperties}
       className={cn(
-        "group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-md data-vertical:flex-col data-vertical:items-stretch",
+        "group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-md data-vertical:flex-col data-vertical:items-stretch data-[variant=segmented]:h-8 data-[variant=segmented]:w-full data-[variant=segmented]:min-w-0 data-[variant=segmented]:bg-muted data-[variant=segmented]:p-0.5 data-[variant=segmented]:data-[size=sm]:h-7",
         className
       )}
-      {...props}
+      {...rootProps}
     >
       <ToggleGroupContext.Provider
-        value={{ variant, size, spacing, orientation }}
+        value={{ variant, size, spacing: gap, orientation }}
       >
         {children}
       </ToggleGroupContext.Provider>

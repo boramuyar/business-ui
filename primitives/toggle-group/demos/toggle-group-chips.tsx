@@ -28,7 +28,9 @@ export function ToggleGroupChips() {
         ))}
       </ToggleGroup>
       <p className="text-xs text-muted-foreground">
-        {shown.length === 0 ? "Showing every message" : `Showing ${shown.join(", ")}`}
+        {shown.length === 0
+          ? "Showing every message"
+          : `Showing ${shown.join(", ")}`}
       </p>
     </div>
   )

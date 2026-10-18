@@ -1,0 +1,18 @@
+---
+title: Preset Number Field
+description: A dropdown of usual numbers that turns into a number field for any other value.
+status: experimental
+---
+
+## Presets and a custom value
+
+It opens as a dropdown of the usual values. Its last item, such as Custom…, turns it into a `number-field` with an
+X; the X turns it back into the dropdown and puts back the preset picked before. A saved value that isn't a preset
+opens as the field, as the second one does here.
+
+<Preview name="preset-number-field-delay" />
+
+## Usage
+
+Use `preset-number-field` for a setting with a few usual values and the odd custom one, such as a delay. When only
+the presets are allowed use `select`; when any value is as likely as another use `number-field`.

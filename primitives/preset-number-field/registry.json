@@ -1,0 +1,29 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "items": [
+    {
+      "name": "preset-number-field",
+      "type": "registry:ui",
+      "title": "Preset Number Field",
+      "description": "Preset number field UI component.",
+      "categories": [
+        "ui"
+      ],
+      "files": [
+        {
+          "path": "preset-number-field.tsx",
+          "type": "registry:ui",
+          "target": "@ui/preset-number-field.tsx"
+        }
+      ],
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/input-group",
+        "boramuyar/business-ui/number-field",
+        "boramuyar/business-ui/select"
+      ]
+    }
+  ]
+}

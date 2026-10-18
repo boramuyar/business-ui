@@ -1,0 +1,30 @@
+---
+title: Number Field
+description: A compact number input for parameters people tune, with typing, arrow keys and drag to adjust.
+status: experimental
+---
+
+## Glyphs
+
+A short symbol or an icon inside the field is its drag handle: drag it sideways to change the value, one step per
+2px, ten times bigger with Shift and ten times smaller with Alt. Its full name is the tooltip. The field also takes
+shorthand such as `25k` or `1.5m`, a trailing unit, and arithmetic such as `=base+0.5` with the names passed in
+`variables`; while typing, the result shows in brand after the text. Enter keeps the typing and Escape drops it.
+
+<Preview name="number-field-glyphs" />
+
+## Label as handle
+
+`useNumberScrub` gives any element the same drag. Spread it on a `ScrubLabel` and pass `scrubbing` to the field, so
+the field's edge shows the drag.
+
+<Preview name="number-field-label" />
+
+## States
+
+<Preview name="number-field-states" />
+
+## Usage
+
+Use `number-field` for rates, sizes, limits and counts in a dense settings row. For a few usual values with the odd
+custom one use `preset-number-field`; for text use `input`.
