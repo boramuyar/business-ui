@@ -1,5 +1,6 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { createContext, useContext, useId, useMemo } from "react"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
@@ -16,7 +17,8 @@ import { cn } from "@/lib/utils"
  * @use Group related fields with FieldSet and FieldLegend.
  * @use Pass invalid and required to Field instead of wiring ids by hand:
  *      FieldLabel, FieldDescription and FieldError connect themselves, and
- *      FieldInput, FieldTextarea or useFieldControl() connect the control.
+ *      FieldInput, FieldTextarea, FieldCheckbox or useFieldControl() connect
+ *      the control.
  * @use A dialog with a single field whose title already names it ("Rename
  *      chat"): leave out the visible label and give the control an aria-label.
  * @avoid Bare inputs with a placeholder instead of a label.
@@ -34,7 +36,8 @@ interface FieldContextValue {
 const FieldContext = createContext<FieldContextValue | null>(null)
 
 /** Ids and state for the control inside a Field. Spread onto any control
- * (select trigger, combobox input) that is not FieldInput or FieldTextarea. */
+ * (select trigger, combobox input) that is not FieldInput, FieldTextarea or
+ * FieldCheckbox. */
 function useFieldControl() {
   const field = useContext(FieldContext)
   if (!field) return {}
@@ -313,8 +316,15 @@ function FieldTextarea(props: React.ComponentProps<typeof Textarea>) {
   return <Textarea {...useFieldControl()} {...props} />
 }
 
+/** A Checkbox wired to the surrounding Field, for a checkbox row
+ * (orientation horizontal) whose FieldLabel then toggles it. */
+function FieldCheckbox(props: React.ComponentProps<typeof Checkbox>) {
+  return <Checkbox {...useFieldControl()} {...props} />
+}
+
 export {
   Field,
+  FieldCheckbox,
   FieldContent,
   FieldDescription,
   FieldError,

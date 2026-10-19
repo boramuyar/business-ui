@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-19
 
+- `field`: new `FieldCheckbox`, a checkbox wired to its `Field` like `FieldInput`, so a checkbox row's `FieldLabel` toggles it and its description and error are announced.
 - `style`: new `chrome` and `chrome-foreground` colors for a host's frame around an app, near black in both themes (oklch 0.183 light, 0.1 dark), so the frame reads as outside the app.
 - `pane`: new `PaneAppBar`, the host's 28px bar above a pane: a leading `PaneAppBarButton` (or the product mark), the open app's name centred, and an empty end the host may cover with its own menu (`--pane-app-bar-end`, 32px by default).
 - `progress`: `Progress` passes its `value` to the bar, so screen readers hear how far it has come (`aria-valuenow`); it was marked indeterminate.

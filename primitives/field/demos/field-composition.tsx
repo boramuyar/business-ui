@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import {
   Field,
+  FieldCheckbox,
   FieldContent,
   FieldDescription,
   FieldGroup,
@@ -9,7 +9,6 @@ import {
   FieldLabel,
   FieldSeparator,
   FieldSet,
-  FieldTitle,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 
@@ -31,9 +30,9 @@ export function FieldComposition() {
       </FieldSet>
       <FieldSeparator>Preferences</FieldSeparator>
       <Field orientation="horizontal">
-        <Checkbox defaultChecked id="field-demo-updates" />
+        <FieldCheckbox defaultChecked />
         <FieldContent>
-          <FieldTitle>Product updates</FieldTitle>
+          <FieldLabel>Product updates</FieldLabel>
           <FieldDescription>A short monthly summary.</FieldDescription>
         </FieldContent>
       </Field>

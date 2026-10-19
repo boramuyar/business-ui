@@ -320,7 +320,7 @@ Label, control, description and error laid out as one form field.
 
 - Use: Every form control: input, select, textarea, checkbox, switch. Labels go above the control (orientation vertical) except for checkbox and switch rows.
 - Use: Group related fields with FieldSet and FieldLegend.
-- Use: Pass invalid and required to Field instead of wiring ids by hand: FieldLabel, FieldDescription and FieldError connect themselves, and FieldInput, FieldTextarea or useFieldControl() connect the control.
+- Use: Pass invalid and required to Field instead of wiring ids by hand: FieldLabel, FieldDescription and FieldError connect themselves, and FieldInput, FieldTextarea, FieldCheckbox or useFieldControl() connect the control.
 - Use: A dialog with a single field whose title already names it ("Rename chat"): leave out the visible label and give the control an aria-label.
 - Avoid: Bare inputs with a placeholder instead of a label.
 - Avoid: Wrapping groups of fields in cards: use FieldSet.

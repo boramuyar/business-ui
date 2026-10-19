@@ -20,6 +20,7 @@
         "class-variance-authority"
       ],
       "registryDependencies": [
+        "boramuyar/business-ui/checkbox",
         "boramuyar/business-ui/input",
         "boramuyar/business-ui/label",
         "boramuyar/business-ui/separator",
