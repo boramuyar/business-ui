@@ -7,6 +7,7 @@ registry item.
 
 - `style`: new `chrome` and `chrome-foreground` colors for a host's frame around an app, near black in both themes (oklch 0.183 light, 0.1 dark), so the frame reads as outside the app.
 - `pane`: new `PaneAppBar`, the host's 28px bar above a pane: a leading `PaneAppBarButton` (or the product mark), the open app's name centred, and an empty end the host may cover with its own menu (`--pane-app-bar-end`, 32px by default).
+- `progress`: `Progress` passes its `value` to the bar, so screen readers hear how far it has come (`aria-valuenow`); it was marked indeterminate.
 - `progress`: `ProgressResult` is 64px (`size-16`), smaller than the 96px `ProgressCircle` it replaces: a finished task needs a verdict, not a meter, and the heading under it says the rest. Its warning mark is hidden from screen readers like the other marks.
 - `progress-steps`: new `skipped` status for a step the work passed over on purpose, such as a solver whose Run if is FALSE: a muted dash, read as "Skipped". The warning mark is hidden from screen readers.
 
