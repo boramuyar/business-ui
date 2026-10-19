@@ -3,6 +3,11 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-19
+
+- `progress`: `ProgressResult` is 64px (`size-16`), smaller than the 96px `ProgressCircle` it replaces: a finished task needs a verdict, not a meter, and the heading under it says the rest. Its warning mark is hidden from screen readers like the other marks.
+- `progress-steps`: new `skipped` status for a step the work passed over on purpose, such as a solver whose Run if is FALSE: a muted dash, read as "Skipped". The warning mark is hidden from screen readers.
+
 ## 2026-10-18
 
 - `style`: new `border-subtle` color, a much lighter line than `border` (oklch 0.96 on white, 5% white in dark) for separators that run edge to edge between settings or rows, where a full border would grid the screen. Use it as `border-border-subtle` or `divide-border-subtle`.

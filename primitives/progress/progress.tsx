@@ -10,8 +10,9 @@ import { cn } from "@/lib/utils"
  * @use Uploads, imports and multi-step work with a known end; quota usage.
  * @use ProgressCircle: the main indicator of a screen given over to one
  *      task, such as a comparison or an import, with its steps listed below.
- * @use ProgressResult: what ProgressCircle turns into when that task ends,
- *      at the same size, so the screen doesn't move.
+ * @use ProgressResult: what ProgressCircle turns into when that task ends.
+ *      It is smaller than the ring: a finished task needs a verdict, not a
+ *      meter, and the heading under it says the rest.
  * @avoid Unknown duration: use spinner or skeleton.
  * @related spinner, skeleton, progress-steps
  * @guide https://ui.uyar.design/design/patterns/feedback.md
@@ -114,7 +115,7 @@ function ProgressResult({
       data-status={status}
       aria-hidden="true"
       className={cn(
-        "inline-grid size-24 shrink-0 place-items-center rounded-full data-[status=failed]:bg-destructive data-[status=failed]:text-destructive-foreground data-[status=success]:bg-success data-[status=success]:text-success-foreground data-[status=warning]:bg-warning data-[status=warning]:text-warning-foreground",
+        "inline-grid size-16 shrink-0 place-items-center rounded-full data-[status=failed]:bg-destructive data-[status=failed]:text-destructive-foreground data-[status=success]:bg-success data-[status=success]:text-success-foreground data-[status=warning]:bg-warning data-[status=warning]:text-warning-foreground",
         className
       )}
       {...props}
@@ -123,7 +124,7 @@ function ProgressResult({
       {status === "failed" && <XIcon className="size-1/2" strokeWidth={2.5} />}
       {status === "warning" && (
         // An exclamation mark: the icon set has none on its own.
-        <svg viewBox="0 0 10 10" className="size-1/2" fill="currentColor">
+        <svg viewBox="0 0 10 10" className="size-1/2" fill="currentColor" aria-hidden="true">
           <rect x="4.25" y="1" width="1.5" height="5.5" rx="0.75" />
           <circle cx="5" cy="8.5" r="0.9" />
         </svg>

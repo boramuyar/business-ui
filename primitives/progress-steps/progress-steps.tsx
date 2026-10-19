@@ -1,4 +1,4 @@
-import { CheckIcon, XIcon } from "lucide-react"
+import { CheckIcon, MinusIcon, XIcon } from "lucide-react"
 import type * as React from "react"
 import { Spinner } from "@/components/ui/spinner"
 import { cn } from "@/lib/utils"
@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 /**
  * @component Progress Steps
  * @level primitive
- * @summary The steps of running work, each done, running, pending, done with a warning, or failed.
+ * @summary The steps of running work, each done, running, pending, done with a warning, skipped, or failed.
  * @use A task made of a few named steps that people wait for: comparing
  *      files, importing data, setting up an account. Pair it with a
  *      ProgressCircle for the share of steps done.
@@ -25,13 +25,14 @@ function ProgressSteps({ className, ...props }: React.ComponentProps<"ol">) {
   )
 }
 
-type ProgressStepStatus = "done" | "running" | "pending" | "warning" | "failed"
+type ProgressStepStatus = "done" | "running" | "pending" | "warning" | "skipped" | "failed"
 
 const DEFAULT_STATUS_LABELS: Record<ProgressStepStatus, string> = {
   done: "Done",
   running: "In progress",
   pending: "Not started",
   warning: "Done with a warning",
+  skipped: "Skipped",
   failed: "Failed",
 }
 
@@ -79,10 +80,17 @@ function ProgressStepMarker({ status }: { status: ProgressStepStatus }) {
     return (
       <span aria-hidden="true" className={cn(MARKER, "bg-warning text-warning-foreground")}>
         {/* An exclamation mark: the icon set has none on its own. */}
-        <svg viewBox="0 0 10 10" className="size-2.5" fill="currentColor">
+        <svg viewBox="0 0 10 10" className="size-2.5" fill="currentColor" aria-hidden="true">
           <rect x="4" y="1.5" width="2" height="4.5" rx="1" />
           <circle cx="5" cy="8" r="1.1" />
         </svg>
+      </span>
+    )
+  if (status === "skipped")
+    // Did not run, by design: quieter than a failure and unlike a step still to come.
+    return (
+      <span aria-hidden="true" className={cn(MARKER, "bg-muted text-muted-foreground")}>
+        <MinusIcon className="size-2.5" strokeWidth={3.5} />
       </span>
     )
   if (status === "failed")

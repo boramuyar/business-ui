@@ -611,7 +611,7 @@ A bar showing how far a task or quota has come.
 
 - Use: Uploads, imports and multi-step work with a known end; quota usage.
 - Use: ProgressCircle: the main indicator of a screen given over to one task, such as a comparison or an import, with its steps listed below.
-- Use: ProgressResult: what ProgressCircle turns into when that task ends, at the same size, so the screen doesn't move.
+- Use: ProgressResult: what ProgressCircle turns into when that task ends. It is smaller than the ring: a finished task needs a verdict, not a meter, and the heading under it says the rest.
 - Avoid: Unknown duration: use spinner or skeleton.
 - Related: spinner, skeleton, progress-steps
 - Guide: [patterns/feedback.md](patterns/feedback.md)
@@ -619,7 +619,7 @@ A bar showing how far a task or quota has come.
 
 ### progress-steps
 
-The steps of running work, each done, running, pending, done with a warning, or failed.
+The steps of running work, each done, running, pending, done with a warning, skipped, or failed.
 
 - Use: A task made of a few named steps that people wait for: comparing files, importing data, setting up an account. Pair it with a ProgressCircle for the share of steps done.
 - Avoid: Steps people move through themselves: use a stepper pattern or tabs.
