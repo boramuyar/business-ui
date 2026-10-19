@@ -17,6 +17,8 @@ import { cn } from "@/lib/utils"
  * @guide https://ui.uyar.design/design/shells.md
  *
  * Rules the parts enforce:
+ * - PaneAppBar is the host's frame above the pane, not part of it: which app is open and the way back to
+ *   the app list. It stays dark in both themes and leaves its right end empty for the host's own menu.
  * - One PaneHeader per pane. Its title is the pane's heading; it truncates instead of wrapping.
  * - Icon actions sit on the right of the header; a back button goes in leading.
  * - Search and filters go in PaneToolbar, never in the header.
@@ -36,6 +38,60 @@ function Pane({ className, ...props }: React.ComponentProps<"div">) {
         // A footer is its 1px rule, p-3 and an h-8 button: --spacing(14) + 1px. The floating action keeps its
         // usual 12px gap above it.
         "has-data-[slot=pane-footer]:[&>[data-slot=pane-floating-action]]:bottom-[calc(--spacing(17)+1px)]",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+/**
+ * The host's 28px bar above a pane: a leading control (the way back to the app list, or the product mark on
+ * the app list itself), the open app's name centred, and an empty end the host may cover with its own menu.
+ * Set `--pane-app-bar-end` to widen that end when the host's menu is wider than 32px.
+ */
+function PaneAppBar({
+  className,
+  leading,
+  children,
+  ...props
+}: React.ComponentProps<"div"> & {
+  /** One PaneAppBarButton, or the product mark. */
+  leading?: React.ReactNode
+}) {
+  return (
+    <div
+      data-slot="pane-app-bar"
+      className={cn(
+        "grid h-7 shrink-0 grid-cols-[2rem_minmax(0,1fr)_var(--pane-app-bar-end,2rem)] items-center bg-chrome px-0.5 text-chrome-foreground",
+        className
+      )}
+      {...props}
+    >
+      <div className="flex items-center justify-center">{leading}</div>
+      <div className="min-w-0 truncate text-center font-medium text-xs">{children}</div>
+    </div>
+  )
+}
+
+/** The app bar's icon button. `label` names it for screen readers and shows as its tooltip. */
+function PaneAppBarButton({
+  className,
+  label,
+  ...props
+}: Omit<React.ComponentProps<typeof Button>, "size" | "variant" | "tooltip" | "aria-label"> & {
+  label: string
+}) {
+  return (
+    <Button
+      data-slot="pane-app-bar-button"
+      variant="ghost"
+      size="icon-xs"
+      tooltip={label}
+      tooltipSide="bottom"
+      aria-label={label}
+      className={cn(
+        "size-6 rounded-sm text-chrome-foreground hover:bg-chrome-foreground/10 hover:text-chrome-foreground aria-expanded:bg-chrome-foreground/10 [&_svg:not([class*='size-'])]:size-3.5",
         className
       )}
       {...props}
@@ -178,6 +234,8 @@ function PaneFloatingAction({
 
 export {
   Pane,
+  PaneAppBar,
+  PaneAppBarButton,
   PaneBody,
   PaneFloatingAction,
   PaneFooter,

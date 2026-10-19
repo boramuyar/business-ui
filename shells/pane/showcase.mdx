@@ -10,6 +10,10 @@ status: experimental
 
 ## Parts
 
+- `PaneAppBar`: the host's 28px bar above the pane, dark in both themes. `leading` holds one `PaneAppBarButton`
+  (the way back to the app list) or the product mark on the app list itself; the children are the open app's
+  name, centred. Its right end stays empty for the host's own menu; set `--pane-app-bar-end` when that menu is
+  wider than 32px.
 - `Pane`: fills its container as a column. Give the container a height.
 - `PaneHeader`: 40px tall. `leading` holds a back or menu button, `actions` holds icon buttons, and the children are the title.
 - `PaneTitle`: the heading. Use `asChild` around `DialogTitle` or `SheetTitle` when the pane is a sheet's content.
@@ -18,6 +22,8 @@ status: experimental
 - `PaneFooter`: one or two equal-width buttons, primary last.
 - `PaneFloatingAction`: a round button at the bottom right for the one action that adds to the body, such as a
   new folder. It takes an icon and a `label`, shown as its tooltip. The body keeps room under its last row.
+
+<Preview name="pane-app-bar" />
 
 <Preview name="pane-floating-action" />
 
