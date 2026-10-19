@@ -100,7 +100,7 @@ function ProgressCircle({
 type ProgressResultStatus = "success" | "warning" | "failed"
 
 /**
- * How finished work ended, in place of its ProgressCircle and at the same size: a filled circle, green with a
+ * How finished work ended, in place of its ProgressCircle and smaller than it: a filled circle, green with a
  * check, amber with an exclamation mark, or red with a cross. The heading under it says the same in words, so the
  * circle is hidden from screen readers.
  */
