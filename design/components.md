@@ -381,6 +381,7 @@ Picks several values from a list; the picked values show as tags under the field
 
 - Use: Several choices from a list too long to show as checkboxes, such as the sheets a workbook shows: the trigger opens a searchable list of checkbox rows, and each picked value becomes a removable tag below the trigger, never inside it.
 - Use: selectAllLabel when people often want every option.
+- Use: onSearchChange when the options live on a server: search there as people type and pass the matches as options, with loading while they load and knownOptions for the picked values the matches leave out.
 - Use: Inside a field with a label: spread useFieldControl() onto it.
 - Avoid: One value: use select or combobox.
 - Avoid: A few options that fit on screen: use checkboxes.

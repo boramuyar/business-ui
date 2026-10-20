@@ -13,6 +13,16 @@ it. A disabled option can't be picked or removed.
 
 <Preview tall name="multi-select-field" />
 
+## Search on a server
+
+When the options live on a server, such as everyone in a directory, give `onSearchChange`: it gets the search as
+people type, so the app can search there and pass the matches as `options`, with `loading` while they load. The
+list then shows the matches as they come, without filtering them again or offering Select all, and the trigger
+counts only what is picked. A picked value keeps its tag while the matches leave it out; values picked before the
+list opened get their labels from `knownOptions`.
+
+<Preview tall name="multi-select-search" />
+
 ## States
 
 Nothing picked shows the placeholder. `invalid` on the field turns the trigger destructive, and `disabled` turns off

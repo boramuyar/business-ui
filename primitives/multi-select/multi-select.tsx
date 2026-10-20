@@ -27,6 +27,9 @@ import { cn } from "@/lib/utils"
  *      checkbox rows, and each picked value becomes a removable tag below the
  *      trigger, never inside it.
  * @use selectAllLabel when people often want every option.
+ * @use onSearchChange when the options live on a server: search there as
+ *      people type and pass the matches as options, with loading while they
+ *      load and knownOptions for the picked values the matches leave out.
  * @use Inside a field with a label: spread useFieldControl() onto it.
  * @avoid One value: use select or combobox.
  * @avoid A few options that fit on screen: use checkboxes.
@@ -55,12 +58,29 @@ type MultiSelectProps = Omit<
   /** Adds a first row that picks every enabled option, or clears them when all are picked. */
   selectAllLabel?: string
   emptyText?: string
-  /** The trigger's text once values are picked, such as "3 of 7 sheets". */
-  summary?: (pickedCount: number, optionCount: number) => string
+  /**
+   * The trigger's text once values are picked, such as "3 of 7 sheets". Without a
+   * count of options while searching on a server, which only knows the matches.
+   */
+  summary?: (pickedCount: number, optionCount?: number) => string
   /** The accessible name of a tag's remove button. */
   removeLabel?: (label: string) => string
   /** Announces the field as required (aria-required on the trigger), as useFieldControl() passes it. */
   required?: boolean
+  /**
+   * Searches on a server: called with the search as people type (debounce it),
+   * and with "" when the list closes. The options are then the matches; they
+   * aren't filtered here, and Select all is left out.
+   */
+  onSearchChange?: (search: string) => void
+  /** The matches for the search are loading. */
+  loading?: boolean
+  loadingText?: string
+  /**
+   * Options already known, such as the values picked before the list opened, so
+   * a picked value keeps its label while the matches leave it out.
+   */
+  knownOptions?: MultiSelectOption[]
   /** Styles the wrapper of the trigger and the tags. Every other prop goes to the trigger. */
   className?: string
 }
@@ -82,8 +102,14 @@ function MultiSelect({
   selectAllLabel,
   emptyText = "No results",
   summary = (pickedCount, optionCount) =>
-    `${pickedCount} of ${optionCount} selected`,
+    optionCount === undefined
+      ? `${pickedCount} selected`
+      : `${pickedCount} of ${optionCount} selected`,
   removeLabel = (label) => `Remove ${label}`,
+  onSearchChange,
+  loading = false,
+  loadingText = "Loading…",
+  knownOptions,
   className,
   disabled,
   required,
@@ -92,8 +118,18 @@ function MultiSelect({
 }: MultiSelectProps) {
   const [open, setOpen] = React.useState(false)
   const [search, setSearch] = React.useState("")
+  const searching = onSearchChange !== undefined
   const picked = new Set(value)
-  const pickedOptions = options.filter((option) => picked.has(option.value))
+  // A server search only returns its matches, so the labels of every option
+  // seen are kept for the tags of picked values the matches leave out.
+  const seen = React.useRef(new Map<string, MultiSelectOption>())
+  for (const option of [...(knownOptions ?? []), ...options])
+    seen.current.set(option.value, option)
+  const pickedOptions = searching
+    ? value.map(
+        (item) => seen.current.get(item) ?? { value: item, label: item }
+      )
+    : options.filter((option) => picked.has(option.value))
   const enabledValues = options
     .filter((option) => !option.disabled)
     .map((option) => option.value)
@@ -116,9 +152,14 @@ function MultiSelect({
     )
   }
 
+  const changeSearch = (next: string) => {
+    setSearch(next)
+    onSearchChange?.(next)
+  }
+
   const changeOpen = (next: boolean) => {
     setOpen(next)
-    if (!next) setSearch("")
+    if (!next && search !== "") changeSearch("")
   }
 
   return (
@@ -149,7 +190,10 @@ function MultiSelect({
           <span className="truncate">
             {pickedOptions.length === 0
               ? placeholder
-              : summary(pickedOptions.length, options.length)}
+              : summary(
+                  pickedOptions.length,
+                  searching ? undefined : options.length
+                )}
           </span>
           <ChevronDownIcon className="pointer-events-none size-4 shrink-0 text-muted-foreground" />
         </PopoverTrigger>
@@ -157,15 +201,28 @@ function MultiSelect({
           align="start"
           className="w-(--radix-popover-trigger-width) p-0"
         >
-          <Command filter={matchLabel} label={searchPlaceholder}>
+          <Command
+            filter={matchLabel}
+            shouldFilter={!searching}
+            label={searchPlaceholder}
+          >
             <CommandInput
               value={search}
-              onValueChange={setSearch}
+              onValueChange={changeSearch}
               placeholder={searchPlaceholder}
             />
-            <CommandList aria-multiselectable>
-              <CommandEmpty>{emptyText}</CommandEmpty>
-              {selectAllLabel && search === "" && (
+            <CommandList aria-multiselectable aria-busy={loading || undefined}>
+              {loading && options.length === 0 ? (
+                <div
+                  role="status"
+                  className="py-6 text-center text-xs text-muted-foreground"
+                >
+                  {loadingText}
+                </div>
+              ) : (
+                <CommandEmpty>{emptyText}</CommandEmpty>
+              )}
+              {selectAllLabel && !searching && search === "" && (
                 <>
                   <CommandItem
                     value={SELECT_ALL}
