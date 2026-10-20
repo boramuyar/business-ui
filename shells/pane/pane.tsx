@@ -91,7 +91,7 @@ function PaneAppBarButton({
       tooltipSide="bottom"
       aria-label={label}
       className={cn(
-        "size-6 rounded-sm text-chrome-foreground hover:bg-chrome-foreground/10 hover:text-chrome-foreground aria-expanded:bg-chrome-foreground/10 [&_svg:not([class*='size-'])]:size-3.5",
+        "size-6 rounded-sm text-chrome-foreground hover:bg-chrome-foreground/10 hover:text-chrome-foreground aria-expanded:bg-chrome-foreground/10 aria-expanded:text-chrome-foreground [&_svg:not([class*='size-'])]:size-3.5",
         className
       )}
       {...props}

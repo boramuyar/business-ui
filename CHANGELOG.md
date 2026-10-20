@@ -3,6 +3,10 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-20
+
+- `pane`: an expanded `PaneAppBarButton` keeps the chrome's light icon. The ghost button's expanded state turned it dark, so a button that opens a menu or sheet from the app bar went black on black.
+
 ## 2026-10-19
 
 - `field`: new `FieldCheckbox`, a checkbox wired to its `Field` like `FieldInput`, so a checkbox row's `FieldLabel` toggles it and its description and error are announced.
