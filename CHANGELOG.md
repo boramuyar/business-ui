@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-20
 
+- `dialog`: `DialogContent` takes `size="pane"` for a whole view in a narrow host. Below `sm` it fills the screen from just under the host's bar (`--overlay-top-inset`, plus 8px) to the bottom with the scrim over the bar; from `sm` up it is a large centered dialog. Its content lays itself out with the pane shell.
 - `multi-select`: searches on a server. `onSearchChange` gets the search as people type, and `options` are then the matches, shown as they come, without filtering them again or offering Select all; `loading` and `loadingText` say the matches are on their way. A picked value keeps its tag while the matches leave it out, and `knownOptions` gives the labels of values picked before the list opened. `summary` gets no option count while searching, and its default reads "2 selected".
 - `pane`: an expanded `PaneAppBarButton` keeps the chrome's light icon. The ghost button's expanded state turned it dark, so a button that opens a menu or sheet from the app bar went black on black.
 
