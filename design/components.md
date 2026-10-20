@@ -116,7 +116,7 @@ A modal window for a short, focused task that blocks the page.
 
 - Use: Short tasks with up to about three fields: rename, invite a member, add a note.
 - Use: Footer: Cancel (secondary) then the primary action named for the result.
-- Use: size="pane" for a whole view in a narrow host such as a task pane (a skills browser, a prompt editor): on small screens it fills the screen just below the host's bar, with the scrim over the bar, and from sm up it is a large centered dialog. Compose it with the pane shell's PaneHeader and PaneBody. The host sets --overlay-top-inset to the height of its own bar, and any menu it draws over the corner.
+- Use: size="pane" for a whole view in a narrow host such as a task pane (a skills browser, a prompt editor): below the sidebar breakpoint it fills the screen just below the host's bar, with the scrim over the bar, and from there up it is a large centered dialog. Compose it with the pane shell's PaneHeader and PaneBody. The host sets --overlay-top-inset to the height of its own bar, and any menu it draws over the corner.
 - Avoid: Destructive confirmations: use alert-dialog.
 - Avoid: Long forms, or when people need to see the page: use sheet or form-page.
 - Avoid: Mobile bottom panels: use drawer.

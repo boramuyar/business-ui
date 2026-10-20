@@ -22,7 +22,7 @@ A dialog composing `field`, `input`, and `button` into a small form.
 
 ## Pane size
 
-`size="pane"` holds a whole view in a narrow host, such as an add-in's task pane. Below `sm` it fills the screen from just under the host's bar to the bottom, while the scrim still covers the bar, so it is clear the dialog sits above the app. From `sm` up it is a large centered dialog. Its content lays itself out: a header with a border and a body that scrolls, such as the pane shell's `PaneHeader` and `PaneBody`. The host sets `--overlay-top-inset` on the root to the height of its bar, or of a menu it paints over the corner, whichever is taller.
+`size="pane"` holds a whole view in a narrow host, such as an add-in's task pane. Below the `sidebar` breakpoint it fills the screen from just under the host's bar to the bottom, while the scrim still covers the bar, so it is clear the dialog sits above the app. From there up it is a large centered dialog. Its content lays itself out: a header with a border and a body that scrolls, such as the pane shell's `PaneHeader` and `PaneBody`. The host sets `--overlay-top-inset` on the root to the height of its bar, or of a menu it paints over the corner, whichever is taller.
 
 <Preview name="dialog-pane" tall />
 
