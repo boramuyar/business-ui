@@ -3,6 +3,10 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-21
+
+- `item`: `ItemTitle` is capped at its row's width (`max-w-full`), so a long name in a `truncate` span ends in an ellipsis instead of running past the row.
+
 ## 2026-10-20
 
 - `dialog`: `DialogContent` takes `size="pane"` for a whole view in a narrow host. Below the `sidebar` breakpoint it fills the screen from just under the host's bar (`--overlay-top-inset`, plus 8px) to the bottom with the scrim over the bar; from there up it is a large centered dialog. Its content lays itself out with the pane shell.

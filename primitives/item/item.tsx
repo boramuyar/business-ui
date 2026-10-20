@@ -181,7 +181,7 @@ function ItemTitle({
       data-slot="item-title"
       data-target={asChild || undefined}
       className={cn(
-        "line-clamp-1 flex w-fit items-center gap-2 text-xs font-medium underline-offset-4",
+        "line-clamp-1 flex w-fit max-w-full items-center gap-2 text-xs font-medium underline-offset-4",
         asChild &&
           "cursor-pointer text-left outline-none after:absolute after:inset-0 after:rounded-md",
         className
