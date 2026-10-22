@@ -23,6 +23,8 @@ import { cn } from "@/lib/utils"
  * @use Long lists with kinds of rows (yours and shared, by source): split
  *      them into groups, each under an ItemGroupLabel, instead of a tag on
  *      every row.
+ * @use ItemSeparator inset between rounded rows: a subtle line that ends
+ *      at the rows' content edge, before their corners round.
  * @use ItemLoadingMore at the end of a list that loads its next page as it
  *      scrolls, while that page loads.
  * @avoid Making the whole row an anchor (Item asChild) when it has actions:
@@ -64,13 +66,25 @@ function ItemGroupLabel({ className, ...props }: React.ComponentProps<"div">) {
 
 function ItemSeparator({
   className,
+  inset = false,
   ...props
-}: React.ComponentProps<typeof Separator>) {
+}: React.ComponentProps<typeof Separator> & {
+  /**
+   * Stops the line at the rows' content edge, short of their rounded corners, in the subtle border colour. The
+   * inset counts the rows' 1px transparent border, so the line starts where their media does.
+   */
+  inset?: boolean
+}) {
   return (
     <Separator
       data-slot="item-separator"
       orientation="horizontal"
-      className={cn("my-0", className)}
+      className={cn(
+        "my-0",
+        inset &&
+          "mx-3.25 bg-border-subtle data-horizontal:w-auto group-has-data-[size=xs]/item-group:mx-2.75",
+        className
+      )}
       {...props}
     />
   )

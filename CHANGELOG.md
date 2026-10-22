@@ -3,6 +3,10 @@
 Entries are grouped by the day a change lands on `main`, newest first, one bullet per
 registry item.
 
+## 2026-10-22
+
+- `item`: `ItemSeparator` takes `inset` for rounded rows: the line ends at the rows' content edge, short of their corners, in the subtle border colour.
+
 ## 2026-10-21
 
 - `item`: `ItemTitle` is capped at its row's width (`max-w-full`), so a long name in a `truncate` span ends in an ellipsis instead of running past the row.
