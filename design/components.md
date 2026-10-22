@@ -707,7 +707,7 @@ A multi-line text field.
 
 A button that holds an on or off state.
 
-- Use: Toolbar states: bold, pin, show grid, mute. Usually icon-only with a tooltip.
+- Use: Toolbar states: bold, pin, show grid, mute. Usually icon-only, named by its tooltip prop (and aria-label).
 - Use: variant="chip" in a toggle-group with type="multiple": filter chips that narrow a list by category, each switched on and off on its own.
 - Use: variant="segmented" in a toggle-group with type="single": a segmented control, the picked mode raised on a muted track.
 - Avoid: Settings with a text label: use switch.

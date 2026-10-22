@@ -19,6 +19,9 @@
       "dependencies": [
         "class-variance-authority",
         "radix-ui"
+      ],
+      "registryDependencies": [
+        "boramuyar/business-ui/tooltip"
       ]
     }
   ]

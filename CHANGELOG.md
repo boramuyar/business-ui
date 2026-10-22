@@ -5,6 +5,7 @@ registry item.
 
 ## 2026-10-22
 
+- `toggle`: takes `tooltip` and `tooltipSide`, as `button` does, so an icon-only toggle is named on hover and focus.
 - `combobox`: **breaking.** Rebuilt on `popover` and `command` (cmdk), like `multi-select`, instead of `@base-ui/react`, which is no longer a dependency. It picks one value: `options`, `value`, `onValueChange`, a select-like trigger with a search box in the list, and `onSearchChange`, `loading` and `knownOptions` for searching on a server. The chips mode is gone; use `multi-select` for several values.
 - `dialog`: `size="pane"` starts 40px below the host's bar instead of 8px, so the screen's own 40px header shows under the scrim and the dialog reads as opened over it.
 - `tabs`: the line variant's active indicator sits at `z-1` instead of `z-99`, so it no longer paints over sheets, dialogs and other overlays that open above the tabs.

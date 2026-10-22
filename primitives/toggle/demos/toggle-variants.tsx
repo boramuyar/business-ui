@@ -4,10 +4,10 @@ import { Toggle } from "@/components/ui/toggle"
 export function ToggleVariants() {
   return (
     <>
-      <Toggle aria-label="Toggle bold">
+      <Toggle aria-label="Bold" tooltip="Bold">
         <BoldIcon />
       </Toggle>
-      <Toggle aria-label="Toggle italic" variant="outline">
+      <Toggle aria-label="Italic" tooltip="Italic" variant="outline">
         <ItalicIcon />
       </Toggle>
     </>

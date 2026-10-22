@@ -1,14 +1,19 @@
 import { cva, type VariantProps } from "class-variance-authority"
 import { Toggle as TogglePrimitive } from "radix-ui"
 import type * as React from "react"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { cn } from "@/lib/utils"
 
 /**
  * @component Toggle
  * @level primitive
  * @summary A button that holds an on or off state.
- * @use Toolbar states: bold, pin, show grid, mute. Usually icon-only with a
- *      tooltip.
+ * @use Toolbar states: bold, pin, show grid, mute. Usually icon-only, named
+ *      by its tooltip prop (and aria-label).
  * @use variant="chip" in a toggle-group with type="multiple": filter chips
  *      that narrow a list by category, each switched on and off on its own.
  * @use variant="segmented" in a toggle-group with type="single": a
@@ -55,15 +60,31 @@ function Toggle({
   className,
   variant = "default",
   size = "default",
+  tooltip,
+  tooltipSide,
   ...props
 }: React.ComponentProps<typeof TogglePrimitive.Root> &
-  VariantProps<typeof toggleVariants>) {
-  return (
+  VariantProps<typeof toggleVariants> & {
+    /** Names an icon-only toggle on hover and focus, as Button's tooltip does. */
+    tooltip?: React.ReactNode
+    /** Which side of the toggle the tooltip opens on. */
+    tooltipSide?: React.ComponentProps<typeof TooltipContent>["side"]
+  }) {
+  const toggle = (
     <TogglePrimitive.Root
       data-slot="toggle"
       className={cn(toggleVariants({ variant, size, className }))}
       {...props}
     />
+  )
+
+  if (!tooltip) return toggle
+
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>{toggle}</TooltipTrigger>
+      <TooltipContent side={tooltipSide}>{tooltip}</TooltipContent>
+    </Tooltip>
   )
 }
 
