@@ -1,30 +1,31 @@
 ---
 title: Combobox
-description: Filterable input for picking one or many values from a list.
+description: A searchable select for picking one value from a long list.
 status: stable
 ---
 
-## Variants
+## Basic
 
-Single selection with text filtering, and a clearable value.
+The trigger looks like a select; it opens a list with a search box above it. Typing filters by label, and picking
+an option closes the list. Inside a field, spread `useFieldControl()` onto it.
 
 <Preview tall name="combobox-basic" />
 
-<Preview tall name="combobox-clearable" />
-
 ## States
 
-<Preview name="combobox-disabled" />
+Empty, disabled and invalid.
 
-## Composition
+<Preview name="combobox-states" />
 
-Multiple selection renders chips inside the anchor; `ComboboxGroup` and
-`ComboboxLabel` organize grouped lists the same way `select` does.
+## Server search
 
-<Preview tall name="combobox-multiple" />
+When the options live on a server, pass `onSearchChange` and give the matches as `options`, with `loading` while
+they load. `knownOptions` keeps the picked value's label when the matches leave it out.
+
+<Preview tall name="combobox-search" />
 
 ## Usage
 
-Use `combobox` when the option list is long enough to need filtering or when
-selecting multiple values as chips. For short static lists use `select` or
-`native-select`; for command-style navigation use `command`.
+Use `combobox` for one value from a list long enough to search, or one people know by name. For several values use
+`multi-select`; for 6 to 15 options people scan use `select`; for commands use `command`. It is built on `popover`
+and `command`, like `multi-select`, so the two open, search and pick the same way.

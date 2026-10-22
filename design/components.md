@@ -519,11 +519,14 @@ Marks one option on or off, or several items in a list.
 
 A searchable select: type to filter, then pick a value.
 
-- Use: More than about 15 options, or options people know by name: customers, countries, accounts.
+- Use: More than about 15 options, or options people know by name: customers, countries, accounts, the folder a service goes in.
+- Use: onSearchChange when the options live on a server: search there as people type and pass the matches as options, with loading while they load and knownOptions for the picked value the matches leave out.
+- Use: Inside a field with a label: spread useFieldControl() onto it.
 - Avoid: Fewer than 6 options: use radio-group or toggle-group.
 - Avoid: 6 to 15 options people scan rather than search: use select.
+- Avoid: Several values: use multi-select.
 - Avoid: Running commands: use command.
-- Related: select, command, field
+- Related: select, multi-select, command, field
 - Guide: [patterns/selection-controls.md](patterns/selection-controls.md)
 - File: `components/ui/combobox.tsx`
 

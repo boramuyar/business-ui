@@ -5,7 +5,7 @@
       "name": "combobox",
       "type": "registry:ui",
       "title": "Combobox",
-      "description": "Combobox UI component.",
+      "description": "A searchable select: type to filter, then pick one value.",
       "categories": [
         "ui"
       ],
@@ -17,12 +17,11 @@
         }
       ],
       "dependencies": [
-        "@base-ui/react",
         "lucide-react"
       ],
       "registryDependencies": [
-        "boramuyar/business-ui/button",
-        "boramuyar/business-ui/input-group"
+        "boramuyar/business-ui/command",
+        "boramuyar/business-ui/popover"
       ]
     }
   ]
