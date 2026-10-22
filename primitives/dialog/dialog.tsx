@@ -13,8 +13,9 @@ import { cn } from "@/lib/utils"
  * @use Footer: Cancel (secondary) then the primary action named for the result.
  * @use size="pane" for a whole view in a narrow host such as a task pane
  *      (a skills browser, a prompt editor): below the sidebar breakpoint it
- *      fills the screen just below the host's bar, with the scrim over the
- *      bar, and from there up it is a large centered dialog. Compose it with the pane
+ *      fills the screen from 40px below the host's bar, so the screen's own
+ *      40px header shows under the scrim and the dialog reads as over it; from
+ *      there up it is a large centered dialog. Compose it with the pane
  *      shell's PaneHeader and PaneBody. The host sets --overlay-top-inset to
  *      the height of its own bar, and any menu it draws over the corner.
  * @avoid Destructive confirmations: use alert-dialog.
@@ -83,7 +84,7 @@ function DialogContent({
   showCloseButton?: boolean
   /**
    * `pane` holds a whole view: below the sidebar breakpoint it fills the
-   * screen from just under the host's bar (`--overlay-top-inset`) to the
+   * screen from 40px under the host's bar (`--overlay-top-inset`) to the
    * bottom, and from there up it is a large centered dialog. Its content lays
    * itself out, as a pane does.
    */
@@ -98,7 +99,7 @@ function DialogContent({
         className={cn(
           "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[min(var(--container-sm),calc(100%-2rem))] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-md bg-popover p-4 text-xs/relaxed text-popover-foreground shadow-modal ring-1 ring-foreground/10 duration-100 outline-none data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
           size === "pane" &&
-            "flex flex-col gap-0 overflow-hidden p-0 max-sidebar:top-[calc(var(--overlay-top-inset,0px)+0.5rem)] max-sidebar:bottom-0 max-sidebar:left-0 max-sidebar:max-w-none max-sidebar:translate-x-0 max-sidebar:translate-y-0 max-sidebar:rounded-b-none max-sidebar:data-[state=closed]:zoom-out-100 max-sidebar:data-[state=open]:zoom-in-100 sidebar:h-[min(42rem,calc(100dvh-4rem))] sidebar:max-w-[min(var(--container-2xl),calc(100%-4rem))]",
+            "flex flex-col gap-0 overflow-hidden p-0 max-sidebar:top-[calc(var(--overlay-top-inset,0px)+2.5rem)] max-sidebar:bottom-0 max-sidebar:left-0 max-sidebar:max-w-none max-sidebar:translate-x-0 max-sidebar:translate-y-0 max-sidebar:rounded-b-none max-sidebar:data-[state=closed]:zoom-out-100 max-sidebar:data-[state=open]:zoom-in-100 sidebar:h-[min(42rem,calc(100dvh-4rem))] sidebar:max-w-[min(var(--container-2xl),calc(100%-4rem))]",
           className
         )}
         {...props}
